@@ -1,0 +1,214 @@
+
+Inferences of interest:
+
+- counterfactuals
+  "If I were rich ..." 
+    -> "I am not rich"
+  "I wish I were tall" 
+    -> "I am not tall"
+
+- requests
+  "Could you pass me the salt?" 
+    -> "I expect you to pass me the salt"
+    -> "I want you to pass me the salt"
+
+  Context-specific ones (could connect with schema reasoning)
+  "Is Sybil here?"
+    -> "The speaker wants to (meet/talk to) Sybil"
+    -> "The speaker expects the hearer to get Sybil if he's nearby"
+    -> "The speaker is probably on the phone or at the entrance of a residence or institution"
+  "Could I get the check?"
+    -> "The speaker is probably a patron at a sit-down restaurant"
+    -> "The speaker thinks the hearer works at the restaurant"
+    -> "The speaker expects the hearer to bring the check"
+
+
+  Indirect requests [Where the literal meaning does not correspond to expected answer]
+    "Can't you be friendly?" -> "Please be friendly"/"Are you able to act friendly?" (Gibbs 1983)
+    "Must you make the circle blue?" -> "Can you make the circle not blue?" (Clark & Lucy 1975)
+    "Why not color the circle blue?" -> "Can you color the circle blue?" (Clark & Lucy 1975)
+    "Would you mind telling me what time you close?" -> "Please tell me what time you close" (Clark 1979)
+
+- questions
+  "When are you getting married?"
+    -> "Addressee will get married in the near future"
+    -> "Questioner wants to know the expected date of the event"
+    -> "Questioner expects that the addressee probably knows the answer and will supply it"
+
+  "What is your dog's name?"
+    -> "Addressee owns a unique contextually-identifiable dog"
+
+  "Who did you meet yesterday?"
+    -> "Addressee met someone yesterday"
+
+  "Where did John go?"
+    -> "Questioner expects that the addressee probably knows where John is and will supply it"
+
+  "How did you open the door?"
+
+  "How many bones are there in the human body?"
+
+  "Which class did you choose?"
+
+  "Why did you follow me home?"
+
+  "Name a food high in zinc"
+
+
+- attitudinal and communicative verbs
+  * attitude: believe, want, hope, etc.
+  * communicative: say, promise, claim, denouce, etc.
+  "John denounced Bill as a charlatan"
+    -> "John probably believes that Bill is a charlatan"
+    -> "John asserted to his listeners (or readers) that Bill is a charlatan"
+    -> "John wanted his listeners (or readers) to believe that Bill is a charlatan"
+
+- implicatives
+  * See Karl Stratos' paper, Episodic Logic: Natural Logic + Reasoning, and
+    associated data for resources on implicatives (such as a list of verbs and
+    their formulation is an older EL format).
+  "She managed to quit smoking"
+    -> "She quit smoking"
+  "Oprah shocked that Obama gets no respect"
+    -> "Obama gets no respect"
+  
+**Later**
+- NLog-like inferences
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Gather sentences
+  Currently we have an automatic selection of sentences based on grep pattern for positive instances.
+  Then random sample of sentences for negative sample.
+
+  It would be even better if we can find a dataset that requires no sampling so
+  we can argue that there are tasks where these inferences are prevalent enough
+  to be critical. [Even if we can't we can argue that these are critical for
+  important but small set of language phenomena].
+
+  Switchboard dialogue corpus
+  
+  Dialogue corpus list
+  http://martinweisser.org/corpora_site/dialogue_corpora.html
+
+  Stories w/ dialogues (e.g. Old Man & the Sea) -- see Gotenburg project.
+
+
+
+
+  Coconut dataset:
+    Dialogues for joint problem solving:
+      - lots of conditionals, but not counterfactual
+      - questions but not requests (e.g. "Do you have any red chairs?") --
+        actually might be a good source for testing against patterns that look
+        like requests, but are not always (e.g. "Can you buy this?")
+      - lot's of textspeak and typos (I think this was done by a computer interface).
+      - fairly small dataset
+      - small domain
+
+  Michigan Corpus of Academic Spoken English
+    https://quod.lib.umich.edu/m/micase/
+    - Lots of attitudes ("think", "want", etc)
+    - Has counterfacturals
+    - very discourse like, with markers, changing mid-sentence, ungrammatical sentences
+
+  Physics tutoring corpus
+    - Lots of questions
+    - Decent number of counterfactuals
+    - Fairly clean transcriptions
+    - Some attitude verbs
+    - Not sure if I can find the whole corpus...
+
+  SPAADIA corpus
+    - booking interactions
+    - information questions, not many counterfactuals
+    - pretty clean, but no punctuation
+
+  SRI American Express travel agent dialogue
+    - Similar to SPAADIA
+
+  Switchboard corpus (datasets/switchboard)
+    - Decent candidate, there are lots of word matches, but many of them are
+      false positives (e.g. "you know, this is what I think" where 'you know'
+      is more of a discourse marker).
+    - No punctuation
+
+  TRAINS
+    - small domain
+    - lots of questions, but all of a limited type (similar to Coconut dataset).
+
+  Discourse Graphbank (/p/nl/corpora/ldc/LDC2005T08.tgz)
+    - Sample of Newswire and WSJ that is discourse (quotes from interviews mostly)
+    - More complex sentences that others might find more convincing (could be
+      good if we can show that our system does about as well, or perhaps only
+      slightly worse on these more complicated examples).
+    - Very clean data
+
+  Penn Discourse Treebank (/p/nl/corpora/ldc/LDC2008T05.tgz)
+    - Samples from Penn Treebank
+    - Marks a bunch of discourse relations (we may be able to sample for
+      certain phenomena through their annotations, since their annotations
+      include phenomena like attibutions and factives at a high level.)
+    - Very clean data
+    - Complex sentences
+
+  Loebner Prize
+    - Only selection transcripts are available which are just basic questions
+      asked to the chatbots - not conversational at all.
+
+  Top 100 titles in Gutenberg project
+    - Older English text and translated text may be problematic (e.g. Les Miserables,
+      The Iliad, Beowulf)
+    - Need to filter out analysis, translation, etc. sections
+
+  QA datasets for questions
+    - UIUC Question Classification dataset (http://cogcomp.org/Data/QA/QC/)
+    - Several thousand sentences for training set.  There's a test set with a few hundred.
+
+
+2. Get gold inferences from sentences
+  - One option is to simply evaluate correctness of generated inferences.  This
+    has the disadvantage of not being able to evaluate recall.
+  - Make a careful guide as to what sorts of inferences we want and have
+    students/MTurkers generate what they think are inferences.  This option
+    allows us to have a train/test split which we can use for development in a
+    way that ML/deep learning people would not be opposed.  We could even try
+    to train a NN on this task and report those results (hopefully it would be
+    worse).
+  - Have some external task for this sorts of inference...  Are there any
+    dialogue tasks that this would be appropriate for?
+
+3. Annotate ULFs
+  - Lots of work...
+  - We'll want to have completed refubishing our annotation environment before
+    we do this
+  - Maybe we can build a system that learns to generate ULFs based on whether
+    the final inference is correct?  (Dataset is almost definitely going to be
+    too small).
+
+4. Learn inference rules
+  - Build by hand based on training set of inferences + linguistics papers +
+    linguistic intuition
+  - Learn?  We could do this with the NN method.  Maybe look at the
+    rule-induction literature for inspiration?
+
+
+TODO:
+- Get list of verbs of communication (Levin, 1993)
+- Propositional attitude versb (Hintikka, 1971)
+- Factive and semi-factive verbs (Kiparsky and Kiparsky, 1971; Karttunen 1971)
+- Verbs of influence, verbs of commitment, verbs of orientation (Sag and Pollard, 1991)
+
+
