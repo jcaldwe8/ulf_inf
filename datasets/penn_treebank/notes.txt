@@ -1,0 +1,4 @@
+See /u/gkim21/old_projects/bigdata/project/data/input/PTB17/complete/
+
+For the raw WSJ file and script to obtain the data.  Note that a lot of these files are subsamples of WSJ.
+
