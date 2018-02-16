@@ -1,0 +1,13 @@
+Words in the Stratos implicatives list not found in Uppen morph (based on
+check_uppen_morph_coverage.py -- check_v2()):
+  fact        - only in impl-list.txt
+  influence   - only in impl-list.txt
+  make sure   - only in impl-list.txt (but we can have rule: X make sure that Y -> Y)
+  mindboggle  - only in impl-list.txt
+  prevail on  - only in impl-list.txt
+  truth       - only in impl-list.txt
+  turn out    - rules exist (need to add some how)
+
+We can probably ignore all but 'make sure' and 'turn out'.  These we'll have to
+add custom (similar to custom_e_lemmas.txt).
+

@@ -70,7 +70,7 @@ locked	lock	V PAST WK#lock	V PPART WK
 overborne	overbear	V PPART STR
 eroded	erode	V PAST WK#erode	V PPART WK
 forced	force	V PAST WK#force	V PPART WK
-feed	feed	V PAST WK#feed	V PPART WK
+feed	fee	V PAST WK#fee	V PPART WK
 underachieved	underachieve	V PAST WK#underachieve	V PPART WK
 walked	walk	V PAST WK#walk	V PPART WK
 interfused	interfuse	V PAST WK#interfuse	V PPART WK
@@ -230,7 +230,7 @@ adumbrated	adumbrate	V PAST WK#adumbrate	V PPART WK
 waffled	waffle	V PAST WK#waffle	V PPART WK
 embowered	embower	V PAST WK#embower	V PPART WK
 reviewed	review	V PAST WK#review	V PPART WK
-hedgehopped	hedgehop	V PAST WK#hedgehop	V PPART WK#hedgehop	V PAST WK#hedgehop	V PPART WK
+hedgehopped	hedge-hop	V PAST WK#hedge-hop	V PPART WK#hedgehop	V PAST WK#hedgehop	V PPART WK
 flyfished	fly-fish	V PAST WK#fly-fish	V PPART WK
 clonked	clonk	V PAST WK#clonk	V PPART WK
 wantoned	wanton	V PAST WK#wanton	V PPART WK
@@ -239,7 +239,7 @@ japanned	japan	V PAST WK#japan	V PPART WK
 barded	bard	V PAST WK#bard	V PPART WK
 adulated	adulate	V PAST WK#adulate	V PPART WK
 captivated	captivate	V PAST WK#captivate	V PPART WK
-weed	weed	V PAST WK#weed	V PPART WK
+weed	wee	V PAST WK#wee	V PPART WK
 hated	hate	V PAST WK#hate	V PPART WK
 interpreted	interpret	V PAST WK#interpret	V PPART WK
 whelmed	whelm	V PAST WK#whelm	V PPART WK
@@ -254,7 +254,7 @@ slunk	slink	V PAST STR#slink	V PPART STR
 cherished	cherish	V PAST WK#cherish	V PPART WK
 monopolized	monopolize	V PAST WK#monopolize	V PPART WK
 ventilated	ventilate	V PAST WK#ventilate	V PPART WK
-roughcast	roughcast	V PAST STR#roughcast	V PPART STR#roughcast	V PAST STR#roughcast	V PPART STR
+roughcast	rough-cast	V PAST STR#rough-cast	V PPART STR#roughcast	V PAST STR#roughcast	V PPART STR
 darraigned	deraign	V PAST WK#deraign	V PPART WK
 deep-froze	deepfreeze	V PAST STR
 reasoned	reason	V PAST WK#reason	V PPART WK
@@ -650,7 +650,7 @@ proselytised	proselytize	V PAST WK#proselytize	V PPART WK
 corresponded	correspond	V PAST WK#correspond	V PPART WK
 untied	untie	V PAST WK#untie	V PPART WK
 blustered	bluster	V PAST WK#bluster	V PPART WK
-got	got	V PAST STR#got	V PPART STR#got	V PPART STR
+got	get	V PAST STR#get	V PPART STR#got	V PPART STR
 hammed	ham	V PAST WK#ham	V PPART WK
 alined	align	V PAST WK#align	V PPART WK
 rooted	root	V PAST WK#root	V PPART WK
@@ -828,7 +828,7 @@ swum	swim	V PAST STR#swim	V PPART STR
 methodized	methodize	V PAST WK#methodize	V PPART WK
 forbad	forbid	V PAST STR
 enounced	enounce	V PAST WK#enounce	V PPART WK
-lathed	lathe	V PAST WK#lathe	V PPART WK#lathe	V PAST WK#lathe	V PPART WK
+lathed	lath	V PAST WK#lath	V PPART WK#lathe	V PAST WK#lathe	V PPART WK
 bugled	bugle	V PAST WK#bugle	V PPART WK
 fished	fish	V PAST WK#fish	V PPART WK
 tally-hoed	tally-ho	V PAST WK#tally-ho	V PPART WK
@@ -902,7 +902,7 @@ discontinued	discontinue	V PAST WK#discontinue	V PPART WK
 screened	screen	V PAST WK#screen	V PPART WK
 sloganeered	sloganeer	V PAST WK#sloganeer	V PPART WK
 tainted	taint	V PAST WK#taint	V PPART WK
-dehorned	dehorn	V PAST WK#dehorn	V PPART WK#dehorn	V PAST WK#dehorn	V PPART WK
+dehorned	de-horn	V PAST WK#de-horn	V PPART WK#dehorn	V PAST WK#dehorn	V PPART WK
 combed	comb	V PAST WK#comb	V PPART WK
 quantified	quantify	V PAST WK#quantify	V PPART WK
 anatomized	anatomize	V PAST WK#anatomize	V PPART WK
@@ -974,7 +974,7 @@ predisposed	predispose	V PAST WK#predispose	V PPART WK
 conquered	conquer	V PAST WK#conquer	V PPART WK
 exorcised	exorcise	V PAST WK#exorcise	V PPART WK
 trended	trend	V PAST WK#trend	V PPART WK
-bathed	bathe	V PAST WK#bathe	V PPART WK#bathe	V PAST WK#bathe	V PPART WK
+bathed	bath	V PAST WK#bath	V PPART WK#bathe	V PAST WK#bathe	V PPART WK
 feathered	feather	V PAST WK#feather	V PPART WK
 subsumed	subsume	V PAST WK#subsume	V PPART WK
 sequestered	sequester	V PAST WK#sequester	V PPART WK
@@ -987,7 +987,7 @@ hook-uped	hook-up	V PAST WK#hook-up	V PPART WK
 wet-nursed	wet-nurse	V PAST WK#wet-nurse	V PPART WK
 distanced	distance	V PAST WK#distance	V PPART WK
 reaped	reap	V PAST WK#reap	V PPART WK
-palled	pall	V PAST WK#pall	V PPART WK#pall	V PAST WK#pall	V PPART WK
+palled	pal	V PAST WK#pal	V PPART WK#pall	V PAST WK#pall	V PPART WK
 befogged	befog	V PAST WK#befog	V PPART WK
 delated	delate	V PAST WK#delate	V PPART WK
 empoisoned	empoison	V PAST WK#empoison	V PPART WK
@@ -1039,7 +1039,7 @@ deceived	deceive	V PAST WK#deceive	V PPART WK
 hoarsened	hoarsen	V PAST WK#hoarsen	V PPART WK
 bottlefed	bottle-feed	V PAST STR#bottle-feed	V PPART STR
 laughed	laugh	V PAST WK#laugh	V PPART WK
-pinpointed	pinpoint	V PAST WK#pinpoint	V PPART WK#pinpoint	V PAST WK#pinpoint	V PPART WK
+pinpointed	pin-point	V PAST WK#pin-point	V PPART WK#pinpoint	V PAST WK#pinpoint	V PPART WK
 disheveled	dishevel	V PAST WK#dishevel	V PPART WK
 interposed	interpose	V PAST WK#interpose	V PPART WK
 underestimated	underestimate	V PAST WK#underestimate	V PPART WK
@@ -1074,7 +1074,7 @@ inherited	inherit	V PAST WK#inherit	V PPART WK
 staked	stake	V PAST WK#stake	V PPART WK
 te-heed	te-hee	V PAST WK#te-hee	V PPART WK
 shop-lifted	shop-lift	V PAST WK#shop-lift	V PPART WK
-recovered	recover	V PAST WK#recover	V PPART WK#recover	V PAST WK#recover	V PPART WK
+recovered	re-cover	V PAST WK#re-cover	V PPART WK#recover	V PAST WK#recover	V PPART WK
 collided	collide	V PAST WK#collide	V PPART WK
 enwound	enwind	V PAST STR#enwind	V PPART STR
 overcome	overcome	V PPART STR
@@ -1228,7 +1228,7 @@ pored	pore	V PAST WK#pore	V PPART WK
 shortchanged	short-change	V PAST WK#short-change	V PPART WK
 regulated	regulate	V PAST WK#regulate	V PPART WK
 accoutered	accoutre	V PAST WK#accoutre	V PPART WK
-sprung	sprung	V PAST STR#sprung	V PPART STR
+sprung	spring	V PAST STR#spring	V PPART STR
 transfused	transfuse	V PAST WK#transfuse	V PPART WK
 punished	punish	V PAST WK#punish	V PPART WK
 deposited	deposit	V PAST WK#deposit	V PPART WK
@@ -1475,7 +1475,7 @@ massacred	massacre	V PAST WK#massacre	V PPART WK
 entranced	entrance	V PAST WK#entrance	V PPART WK
 sawed	saw	V PAST WK#saw	V PPART WK
 fueled	fuel	V PAST WK#fuel	V PPART WK
-stunk	stunk	V PAST STR#stunk	V PPART STR
+stunk	stink	V PAST STR#stink	V PPART STR
 forbid	forbid	V PPART STR
 replayed	replay	V PAST WK#replay	V PPART WK
 coagulated	coagulate	V PAST WK#coagulate	V PPART WK
@@ -1498,7 +1498,7 @@ telexed	telex	V PAST WK#telex	V PPART WK
 mounded	mound	V PAST WK#mound	V PPART WK
 bugged	bug	V PAST WK#bug	V PPART WK
 embossed	emboss	V PAST WK#emboss	V PPART WK
-wrapped	wrapped	V PAST WK#wrapped	V PPART WK
+wrapped	wrap	V PAST WK#wrap	V PPART WK
 shushed	shush	V PAST WK#shush	V PPART WK
 crayoned	crayon	V PAST WK#crayon	V PPART WK
 assured	assure	V PAST WK#assure	V PPART WK
@@ -1575,7 +1575,7 @@ everted	evert	V PAST WK#evert	V PPART WK
 cross-stitched	cross-stitch	V PAST WK#cross-stitch	V PPART WK
 decolonized	decolonize	V PAST WK#decolonize	V PPART WK
 finessed	finesse	V PAST WK#finesse	V PPART WK
-overexposed	overexpose	V PAST WK#overexpose	V PPART WK#overexpose	V PAST WK#overexpose	V PPART WK
+overexposed	over-expose	V PAST WK#over-expose	V PPART WK#overexpose	V PAST WK#overexpose	V PPART WK
 forearmed	forearm	V PAST WK#forearm	V PPART WK
 coiffured	coiffure	V PAST WK#coiffure	V PPART WK
 outclassed	outclass	V PAST WK#outclass	V PPART WK
@@ -1882,7 +1882,7 @@ starved	starve	V PAST WK#starve	V PPART WK
 iodated	iodate	V PAST WK#iodate	V PPART WK
 trumpeted	trumpet	V PAST WK#trumpet	V PPART WK
 prevued	preview	V PAST WK#preview	V PPART WK
-bypassed	bypass	V PAST WK#bypass	V PPART WK#bypass	V PAST WK#bypass	V PPART WK
+bypassed	by-pass	V PAST WK#by-pass	V PPART WK#bypass	V PAST WK#bypass	V PPART WK
 chooked	jook	V PAST WK#jook	V PPART WK
 embellished	embellish	V PAST WK#embellish	V PPART WK
 fifed	fife	V PAST WK#fife	V PPART WK
@@ -2306,7 +2306,7 @@ remembered	remember	V PAST WK#remember	V PPART WK
 carried	carry	V PAST WK#carry	V PPART WK
 holped	holp	V PAST WK#holp	V PPART WK
 muddied	muddy	V PAST WK#muddy	V PPART WK
-jaywalked	jaywalk	V PAST WK#jaywalk	V PPART WK#jaywalk	V PAST WK#jaywalk	V PPART WK
+jaywalked	jay-walk	V PAST WK#jay-walk	V PPART WK#jaywalk	V PAST WK#jaywalk	V PPART WK
 cheapened	cheapen	V PAST WK#cheapen	V PPART WK
 blistered	blister	V PAST WK#blister	V PPART WK
 syllogised	syllogize	V PAST WK#syllogize	V PPART WK
@@ -2358,10 +2358,10 @@ cartelized	cartelize	V PAST WK#cartelize	V PPART WK
 truanted	truant	V PAST WK#truant	V PPART WK
 buoyed	buoy	V PAST WK#buoy	V PPART WK
 cooeyed	cooee	V PAST WK#cooee	V PPART WK
-smote	smote	V PAST STR
+smote	smite	V PAST STR
 Romanized	Romanize	V PAST WK#Romanize	V PPART WK
 battledored	battledore	V PAST WK#battledore	V PPART WK
-jackknifed	jackknife	V PAST WK#jackknife	V PPART WK#jackknife	V PAST WK#jackknife	V PPART WK
+jackknifed	jack-knife	V PAST WK#jack-knife	V PPART WK#jackknife	V PAST WK#jackknife	V PPART WK
 ventured	venture	V PAST WK#venture	V PPART WK
 populated	populate	V PAST WK#populate	V PPART WK
 added	add	V PAST WK#add	V PPART WK
@@ -2468,7 +2468,7 @@ rattled	rattle	V PAST WK#rattle	V PPART WK
 side-tracked	side-track	V PAST WK#side-track	V PPART WK
 relaid	relay	V PAST STR#relay	V PPART STR
 wainscoted	wainscot	V PAST WK#wainscot	V PPART WK
-clammed	clem	V PAST WK#clem	V PPART WK#clem	V PAST STR#clem	V PPART STR
+clammed	clam	V PAST WK#clam	V PPART WK#clem	V PAST STR#clem	V PPART STR
 dragooned	dragoon	V PAST WK#dragoon	V PPART WK
 experimentalised	experimentalize	V PAST WK#experimentalize	V PPART WK
 hemagglutinated	haemagglutinate	V PAST WK#haemagglutinate	V PPART WK
@@ -2620,7 +2620,7 @@ overemphasized	over-emphasize	V PAST WK#over-emphasize	V PPART WK
 colonized	colonize	V PAST WK#colonize	V PPART WK
 riced	rice	V PAST WK#rice	V PPART WK
 skelped	skelp	V PAST WK#skelp	V PPART WK
-skyrocketed	skyrocket	V PAST WK#skyrocket	V PPART WK#skyrocket	V PAST WK#skyrocket	V PPART WK
+skyrocketed	sky-rocket	V PAST WK#sky-rocket	V PPART WK#skyrocket	V PAST WK#skyrocket	V PPART WK
 churned	churn	V PAST WK#churn	V PPART WK
 sublimated	sublimate	V PAST WK#sublimate	V PPART WK
 symbolled	symbol	V PAST WK#symbol	V PPART WK
@@ -2812,7 +2812,7 @@ crossstitched	cross-stitch	V PAST WK#cross-stitch	V PPART WK
 shrinkwrapped	shrink-wrap	V PAST WK#shrink-wrap	V PPART WK
 absorbed	absorb	V PAST WK#absorb	V PPART WK
 crumbed	crumb	V PAST WK#crumb	V PPART WK
-stonewalled	stonewall	V PAST WK#stonewall	V PPART WK#stonewall	V PAST WK#stonewall	V PPART WK
+stonewalled	stone-wall	V PAST WK#stone-wall	V PPART WK#stonewall	V PAST WK#stonewall	V PPART WK
 elicited	elicit	V PAST WK#elicit	V PPART WK
 immigrated	immigrate	V PAST WK#immigrate	V PPART WK
 smoothed	smooth	V PAST WK#smooth	V PPART WK
@@ -2866,7 +2866,7 @@ sortied	sortie	V PAST WK#sortie	V PPART WK
 outthought	outthink	V PAST STR#outthink	V PPART STR
 shepherded	shepherd	V PAST WK#shepherd	V PPART WK
 withered	wither	V PAST WK#wither	V PPART WK
-found	found	V PAST STR#found	V PPART STR
+found	find	V PAST STR#find	V PPART STR
 seised	seise	V PAST WK#seise	V PPART WK
 atomized	atomize	V PAST WK#atomize	V PPART WK
 racqueted	racket	V PAST WK#racket	V PPART WK
@@ -3089,7 +3089,7 @@ meshed	mesh	V PAST WK#mesh	V PPART WK
 mauled	maul	V PAST WK#maul	V PPART WK
 tortured	torture	V PAST WK#torture	V PPART WK
 embodied	embody	V PAST WK#embody	V PPART WK
-slue	slue	V PAST STR
+slue	slay	V PAST STR
 solaced	solace	V PAST WK#solace	V PPART WK
 vindicated	vindicate	V PAST WK#vindicate	V PPART WK
 abreacted	abreact	V PAST WK#abreact	V PPART WK
@@ -3144,7 +3144,7 @@ satirized	satirize	V PAST WK#satirize	V PPART WK
 phlebotomised	phlebotomize	V PAST WK#phlebotomize	V PPART WK
 harrumphed	harrumph	V PAST WK#harrumph	V PPART WK
 rippled	ripple	V PAST WK#ripple	V PPART WK
-predigested	predigest	V PAST WK#predigest	V PPART WK#predigest	V PAST WK#predigest	V PPART WK
+predigested	pre-digest	V PAST WK#pre-digest	V PPART WK#predigest	V PAST WK#predigest	V PPART WK
 superabounded	superabound	V PAST WK#superabound	V PPART WK
 supped	sup	V PAST WK#sup	V PPART WK
 anointed	anoint	V PAST WK#anoint	V PPART WK
@@ -3167,7 +3167,7 @@ catered	cater	V PAST WK#cater	V PPART WK
 nonplused	nonplus	V PAST WK#nonplus	V PPART WK
 safeconducted	safe-conduct	V PAST WK#safe-conduct	V PPART WK
 blow-waved	blow-wave	V PAST WK#blow-wave	V PPART WK
-reacted	react	V PAST WK#react	V PPART WK#react	V PAST WK#react	V PPART WK
+reacted	re-act	V PAST WK#re-act	V PPART WK#react	V PAST WK#react	V PPART WK
 involuted	involute	V PAST WK#involute	V PPART WK
 stooled	stool	V PAST WK#stool	V PPART WK
 bet	bet	V PAST STR#bet	V PPART STR
@@ -3247,7 +3247,7 @@ cancelled	cancel	V PAST WK#cancel	V PPART WK
 copped	cop	V PAST WK#cop	V PPART WK
 cramped	cramp	V PAST WK#cramp	V PPART WK
 dissertated	dissertate	V PAST WK#dissertate	V PPART WK
-wised	wise	V PAST WK#wise	V PPART WK#wise	V PAST WK#wise	V PPART WK
+wised	wis	V PAST WK#wis	V PPART WK#wise	V PAST WK#wise	V PPART WK
 misinformed	misinform	V PAST WK#misinform	V PPART WK
 vamped	vamp	V PAST WK#vamp	V PPART WK
 addled	addle	V PAST WK#addle	V PPART WK
@@ -3279,7 +3279,7 @@ calmed	calm	V PAST WK#calm	V PPART WK
 certificated	certificate	V PAST WK#certificate	V PPART WK
 checked	check	V PAST WK#check	V PPART WK
 levered	lever	V PAST WK#lever	V PPART WK
-crossbred	cross-breed	V PAST STR#cross-breed	V PPART STR#cross-breed	V PAST STR#cross-breed	V PPART STR
+crossbred	crossbreed	V PAST STR#crossbreed	V PPART STR#cross-breed	V PAST STR#cross-breed	V PPART STR
 falsified	falsify	V PAST WK#falsify	V PPART WK
 jounced	jounce	V PAST WK#jounce	V PPART WK
 pushed	push	V PAST WK#push	V PPART WK
@@ -3356,7 +3356,7 @@ remoulded	remould	V PAST WK#remould	V PPART WK
 apostatised	apostatize	V PAST WK#apostatize	V PPART WK
 italicized	italicize	V PAST WK#italicize	V PPART WK
 reexported	re-export	V PAST WK#re-export	V PPART WK
-swopped	swop	V PAST STR#swop	V PPART STR#swop	V PAST WK#swop	V PPART WK
+swopped	swap	V PAST STR#swap	V PPART STR#swop	V PAST WK#swop	V PPART WK
 wreaked	wreak	V PAST WK#wreak	V PPART WK
 shut	shut	V PAST STR#shut	V PPART STR
 credited	credit	V PAST WK#credit	V PPART WK
@@ -3377,7 +3377,7 @@ serenaded	serenade	V PAST WK#serenade	V PPART WK
 gaoled	jail	V PAST WK#jail	V PPART WK
 forgated	forgat	V PAST WK#forgat	V PPART WK
 fought	fight	V PAST STR#fight	V PPART STR
-repressed	repress	V PAST WK#repress	V PPART WK#repress	V PAST WK#repress	V PPART WK
+repressed	re-press	V PAST WK#re-press	V PPART WK#repress	V PAST WK#repress	V PPART WK
 leathered	leather	V PAST WK#leather	V PPART WK
 readied	ready	V PAST WK#ready	V PPART WK
 baa'd	baa	V PAST WK#baa	V PPART WK
@@ -3439,7 +3439,7 @@ battled	battle	V PAST WK#battle	V PPART WK
 funned	fun	V PAST WK#fun	V PPART WK
 kidnaped	kidnap	V PAST WK#kidnap	V PPART WK
 roosted	roost	V PAST WK#roost	V PPART WK
-reserved	reserve	V PAST WK#reserve	V PPART WK#reserve	V PAST WK#reserve	V PPART WK
+reserved	re-serve	V PAST WK#re-serve	V PPART WK#reserve	V PAST WK#reserve	V PPART WK
 fowled	fowl	V PAST WK#fowl	V PPART WK
 scurried	scurry	V PAST WK#scurry	V PPART WK
 wert	be	V 2sg PAST STR
@@ -3600,7 +3600,7 @@ attitudinized	attitudinize	V PAST WK#attitudinize	V PPART WK
 dupped	dup	V PAST WK#dup	V PPART WK
 patted	pat	V PAST WK#pat	V PPART WK
 assassinated	assassinate	V PAST WK#assassinate	V PPART WK
-sidetracked	sidetrack	V PAST WK#sidetrack	V PPART WK#sidetrack	V PAST WK#sidetrack	V PPART WK
+sidetracked	side-track	V PAST WK#side-track	V PPART WK#sidetrack	V PAST WK#sidetrack	V PPART WK
 bestridden	bestride	V PPART STR
 spliced	splice	V PAST WK#splice	V PPART WK
 bioassayed	bio-assay	V PAST WK#bio-assay	V PPART WK
@@ -3634,7 +3634,7 @@ hectored	hector	V PAST WK#hector	V PPART WK
 wrongfooted	wrong-foot	V PAST WK#wrong-foot	V PPART WK
 edited	edit	V PAST WK#edit	V PPART WK
 jutted	jut	V PAST WK#jut	V PPART WK
-daydreamed	daydream	V PAST WK#daydream	V PPART WK#daydream	V PAST WK#daydream	V PPART WK
+daydreamed	day-dream	V PAST WK#day-dream	V PPART WK#daydream	V PAST WK#daydream	V PPART WK
 spaded	spade	V PAST WK#spade	V PPART WK
 whipped	whip	V PAST WK#whip	V PPART WK
 dowed	dow	V PAST WK#dow	V PPART WK
@@ -3652,7 +3652,7 @@ tailored	tailor	V PAST WK#tailor	V PPART WK
 undid	undo	V PAST STR
 blenched	blench	V PAST WK#blench	V PPART WK
 wigwagged	wigwag	V PAST WK#wigwag	V PPART WK
-sideslipped	sideslip	V PAST WK#sideslip	V PPART WK#sideslip	V PAST WK#sideslip	V PPART WK
+sideslipped	side-slip	V PAST WK#side-slip	V PPART WK#sideslip	V PAST WK#sideslip	V PPART WK
 accrued	accrue	V PAST WK#accrue	V PPART WK
 preconceived	preconceive	V PAST WK#preconceive	V PPART WK
 quadrupled	quadruple	V PAST WK#quadruple	V PPART WK
@@ -3740,7 +3740,7 @@ Gothicised	Gothicize	V PAST WK#Gothicize	V PPART WK
 chuckled	chuckle	V PAST WK#chuckle	V PPART WK
 Teutonised	Teutonize	V PAST WK#Teutonize	V PPART WK
 beagled	beagle	V PAST WK#beagle	V PPART WK
-burred	burr	V PAST WK#burr	V PPART WK#burr	V PAST WK#burr	V PPART WK
+burred	bur	V PAST WK#bur	V PPART WK#burr	V PAST WK#burr	V PPART WK
 domesticized	domesticate	V PAST WK#domesticate	V PPART WK
 podzolized	podzolize	V PAST WK#podzolize	V PPART WK
 memorised	memorize	V PAST WK#memorize	V PPART WK
@@ -3998,7 +3998,7 @@ relumed	relume	V PAST WK#relume	V PPART WK
 aboutfaced	about-face	V PAST WK#about-face	V PPART WK
 functioned	function	V PAST WK#function	V PPART WK
 grappled	grapple	V PAST WK#grapple	V PPART WK
-rebound	rebound	V PAST STR#rebound	V PPART STR
+rebound	rebind	V PAST STR#rebind	V PPART STR
 spanceled	spancel	V PAST WK#spancel	V PPART WK
 refinanced	refinance	V PAST WK#refinance	V PPART WK
 invalided	invalid	V PAST WK#invalid	V PPART WK
@@ -4083,7 +4083,7 @@ wasn't	be	V 1sg CONTR NEG PAST STR#be	V 3sg CONTR NEG PAST STR
 adjusted	adjust	V PAST WK#adjust	V PPART WK
 disabused	disabuse	V PAST WK#disabuse	V PPART WK
 kowtowed	kowtow	V PAST WK#kowtow	V PPART WK
-reformed	reform	V PAST WK#reform	V PPART WK#reform	V PAST WK#reform	V PPART WK
+reformed	re-form	V PAST WK#re-form	V PPART WK#reform	V PAST WK#reform	V PPART WK
 callipered	calliper	V PAST WK#calliper	V PPART WK
 predicated	predicate	V PAST WK#predicate	V PPART WK
 outshot	outshoot	V PAST STR#outshoot	V PPART STR
@@ -4132,7 +4132,7 @@ shoved	shove	V PAST WK#shove	V PPART WK
 unsheathed	unsheathe	V PAST WK#unsheathe	V PPART WK
 surged	surge	V PAST WK#surge	V PPART WK
 sweawayed	sweat	V PAST WK#sweat	V PPART WK
-retraced	retrace	V PAST WK#retrace	V PPART WK#retrace	V PAST WK#retrace	V PPART WK
+retraced	re-trace	V PAST WK#re-trace	V PPART WK#retrace	V PAST WK#retrace	V PPART WK
 calibrated	calibrate	V PAST WK#calibrate	V PPART WK
 clutched	clutch	V PAST WK#clutch	V PPART WK
 thirled	thirl	V PAST WK#thirl	V PPART WK
@@ -4184,7 +4184,7 @@ shikarred	shikar	V PAST WK#shikar	V PPART WK
 place-kicked	place-kick	V PAST WK#place-kick	V PPART WK
 re-trod	re-tread	V PAST STR#re-tread	V PPART STR
 fagged	fag	V PAST WK#fag	V PPART WK
-slimed	slime	V PAST WK#slime	V PPART WK#slime	V PAST WK#slime	V PPART WK
+slimed	slim	V PAST WK#slim	V PPART WK#slime	V PAST WK#slime	V PPART WK
 tilled	till	V PAST WK#till	V PPART WK
 wooed	woo	V PAST WK#woo	V PPART WK
 solfaed	sol-fa	V PAST WK#sol-fa	V PPART WK
@@ -4194,7 +4194,7 @@ belonged	belong	V PAST WK#belong	V PPART WK
 rodomontaded	rodomontade	V PAST WK#rodomontade	V PPART WK
 dadoed	dado	V PAST WK#dado	V PPART WK
 prorated	prorate	V PAST WK#prorate	V PPART WK
-coedited	cp-edit	V PAST WK#cp-edit	V PPART WK#cp-edit	V PAST WK#cp-edit	V PPART WK
+coedited	coedit	V PAST WK#coedit	V PPART WK#co-edit	V PAST WK#cp-edit	V PPART WK
 pricked	prick	V PAST WK#prick	V PPART WK
 puddled	puddle	V PAST WK#puddle	V PPART WK
 agitated	agitate	V PAST WK#agitate	V PPART WK
@@ -4269,7 +4269,7 @@ prated	prate	V PAST WK#prate	V PPART WK
 barnstormed	barnstorm	V PAST WK#barnstorm	V PPART WK
 overcalled	overcall	V PAST WK#overcall	V PPART WK
 overflown	overfly	V PPART STR
-proofread	proofread	V PAST STR#proofread	V PPART STR#proofread	V PAST STR#proofread	V PPART STR
+proofread	proof-read	V PAST STR#proof-read	V PPART STR#proofread	V PAST STR#proofread	V PPART STR
 dissented	dissent	V PAST WK#dissent	V PPART WK
 enthralled	enthrall	V PAST WK#enthrall	V PPART WK
 glamourized	glamorize	V PAST WK#glamorize	V PPART WK
@@ -4402,7 +4402,7 @@ comanaged	co-manage	V PAST WK#co-manage	V PPART WK
 bossed	boss	V PAST WK#boss	V PPART WK
 famished	famish	V PAST WK#famish	V PPART WK
 fobbed	fob	V PAST WK#fob	V PPART WK
-oversimplified	oversimplify	V PAST WK#oversimplify	V PPART WK#oversimplify	V PAST WK#oversimplify	V PPART WK
+oversimplified	over-simplify	V PAST WK#over-simplify	V PPART WK#oversimplify	V PAST WK#oversimplify	V PPART WK
 faradised	faradize	V PAST WK#faradize	V PPART WK
 illumined	illumine	V PAST WK#illumine	V PPART WK
 sassed	sass	V PAST WK#sass	V PPART WK
@@ -4414,7 +4414,7 @@ hypnotised	hypnotize	V PAST WK#hypnotize	V PPART WK
 reconditioned	recondition	V PAST WK#recondition	V PPART WK
 spired	spire	V PAST WK#spire	V PPART WK
 staved	stave	V PAST WK#stave	V PPART WK
-dratted	dratted	V PAST WK#dratted	V PPART WK
+dratted	drat	V PAST WK#drat	V PPART WK
 declassed	declass	V PAST WK#declass	V PPART WK
 interfered	interfere	V PAST WK#interfere	V PPART WK
 strowed	strow	V PAST WK#strow	V PPART WK
@@ -4459,7 +4459,7 @@ provided	provide	V PAST WK#provide	V PPART WK
 danced	dance	V PAST WK#dance	V PPART WK
 minimised	minimize	V PAST WK#minimize	V PPART WK
 ululated	ululate	V PAST WK#ululate	V PPART WK
-freewheeled	freewheel	V PAST WK#freewheel	V PPART WK#freewheel	V PAST WK#freewheel	V PPART WK
+freewheeled	free-wheel	V PAST WK#free-wheel	V PPART WK#freewheel	V PAST WK#freewheel	V PPART WK
 backspaced	backspace	V PAST WK#backspace	V PPART WK
 clipped	clip	V PAST WK#clip	V PPART WK
 leistered	leister	V PAST WK#leister	V PPART WK
@@ -4477,7 +4477,7 @@ blacklegged	blackleg	V PAST WK#blackleg	V PPART WK
 ingeminated	ingeminate	V PAST WK#ingeminate	V PPART WK
 outcropped	outcrop	V PAST WK#outcrop	V PPART WK
 pled	plead	V PAST STR#plead	V PPART STR
-smelt	smelt	V PAST STR#smelt	V PPART STR
+smelt	smell	V PAST STR#smell	V PPART STR
 supported	support	V PAST WK#support	V PPART WK
 systematized	systematize	V PAST WK#systematize	V PPART WK
 ameliorated	ameliorate	V PAST WK#ameliorate	V PPART WK
@@ -4560,7 +4560,7 @@ botanized	botanize	V PAST WK#botanize	V PPART WK
 reunited	reunite	V PAST WK#reunite	V PPART WK
 transilluminated	transilluminate	V PAST WK#transilluminate	V PPART WK
 warmed	warm	V PAST WK#warm	V PPART WK
-sunk	sunk	V PAST STR#sunk	V PPART STR
+sunk	sink	V PAST STR#sink	V PPART STR
 summarized	summarize	V PAST WK#summarize	V PPART WK
 Occidentalized	Occidentalize	V PAST WK#Occidentalize	V PPART WK
 cupeled	cupel	V PAST WK#cupel	V PPART WK
@@ -4665,7 +4665,7 @@ committed	commit	V PAST WK#commit	V PPART WK
 culminated	culminate	V PAST WK#culminate	V PPART WK
 methodised	methodize	V PAST WK#methodize	V PPART WK
 sneered	sneer	V PAST WK#sneer	V PPART WK
-mothproofed	mothproof	V PAST WK#mothproof	V PPART WK#mothproof	V PAST WK#mothproof	V PPART WK
+mothproofed	moth-proof	V PAST WK#moth-proof	V PPART WK#mothproof	V PAST WK#mothproof	V PPART WK
 arrayed	array	V PAST WK#array	V PPART WK
 prostrated	prostrate	V PAST WK#prostrate	V PPART WK
 petered	peter	V PAST WK#peter	V PPART WK
@@ -4777,7 +4777,7 @@ focalized	focalize	V PAST WK#focalize	V PPART WK
 socketed	socket	V PAST WK#socket	V PPART WK
 vowelised	vowelize	V PAST WK#vowelize	V PPART WK
 condensed	condense	V PAST WK#condense	V PPART WK
-clad	clothe	V PAST STR#clothe	V PPART STR#clothe	V PPART STR
+clad	clad	V PAST STR#clad	V PPART STR#clothe	V PPART STR
 democratised	democratize	V PAST WK#democratize	V PPART WK
 emotionalized	emotionalize	V PAST WK#emotionalize	V PPART WK
 carved	carve	V PAST WK#carve	V PPART WK
@@ -4900,11 +4900,11 @@ narcotised	narcotize	V PAST WK#narcotize	V PPART WK
 weekended	weekend	V PAST WK#weekend	V PPART WK
 managed	manage	V PAST WK#manage	V PPART WK
 re-served	re-serve	V PAST WK#re-serve	V PPART WK
-roughhoused	roughhouse	V PAST WK#roughhouse	V PPART WK#roughhouse	V PAST WK#roughhouse	V PPART WK
+roughhoused	rough-house	V PAST WK#rough-house	V PPART WK#roughhouse	V PAST WK#roughhouse	V PPART WK
 wavered	waver	V PAST WK#waver	V PPART WK
 filched	filch	V PAST WK#filch	V PPART WK
 inhibited	inhibit	V PAST WK#inhibit	V PPART WK
-skied	sky	V PAST WK#sky	V PPART WK#sky	V PAST WK#sky	V PPART WK
+skied	ski	V PAST WK#ski	V PPART WK#sky	V PAST WK#sky	V PPART WK
 betided	betide	V PAST WK#betide	V PPART WK
 legalized	legalize	V PAST WK#legalize	V PPART WK
 reft	reft	V PAST STR#reft	V PPART STR
@@ -4990,7 +4990,7 @@ cornered	corner	V PAST WK#corner	V PPART WK
 rotted	rot	V PAST WK#rot	V PPART WK
 trimmed	trim	V PAST WK#trim	V PPART WK
 expiated	expiate	V PAST WK#expiate	V PPART WK
-copper-bottomed	copper-bottomed	V PAST WK#copper-bottomed	V PPART WK
+copper-bottomed	copper-bottom	V PAST WK#copper-bottom	V PPART WK
 diabolized	diabolize	V PAST WK#diabolize	V PPART WK
 swished	swish	V PAST WK#swish	V PPART WK
 thrombosed	thrombose	V PAST WK#thrombose	V PPART WK
@@ -5080,7 +5080,7 @@ signed	sign	V PAST WK#sign	V PPART WK
 Hispanicized	Hispanicize	V PAST WK#Hispanicize	V PPART WK
 redeemed	redeem	V PAST WK#redeem	V PPART WK
 abducted	abduct	V PAST WK#abduct	V PPART WK
-bitted	bitt	V PAST WK#bitt	V PPART WK#bitt	V PAST WK#bitt	V PPART WK
+bitted	bit	V PAST WK#bit	V PPART WK#bitt	V PAST WK#bitt	V PPART WK
 dissimilated	dissimilate	V PAST WK#dissimilate	V PPART WK
 wast	be	V 2sg PAST STR
 cared	care	V PAST WK#care	V PPART WK
@@ -5189,7 +5189,7 @@ amortized	amortize	V PAST WK#amortize	V PPART WK
 transmitted	transmit	V PAST WK#transmit	V PPART WK
 psyched	psych	V PAST WK#psych	V PPART WK
 flummoxed	flummox	V PAST WK#flummox	V PPART WK
-used	used	V PAST WK#used	V PPART WK#used	V PAST#used	V PPART
+used	use	V PAST WK#use	V PPART WK#used	V PAST#used	V PPART
 contorted	contort	V PAST WK#contort	V PPART WK
 splodged	splodge	V PAST WK#splodge	V PPART WK
 stockpiled	stockpile	V PAST WK#stockpile	V PPART WK
@@ -5510,7 +5510,7 @@ deafened	deafen	V PAST WK#deafen	V PPART WK
 fanned	fan	V PAST WK#fan	V PPART WK
 backpedalled	back-pedal	V PAST WK#back-pedal	V PPART WK
 mended	mend	V PAST WK#mend	V PPART WK
-refunded	refund	V PAST WK#refund	V PPART WK#refund	V PAST WK#refund	V PPART WK
+refunded	re-fund	V PAST WK#re-fund	V PPART WK#refund	V PAST WK#refund	V PPART WK
 aggrieved	aggrieve	V PAST WK#aggrieve	V PPART WK
 disported	disport	V PAST WK#disport	V PPART WK
 honed	hone	V PAST WK#hone	V PPART WK
@@ -5741,7 +5741,7 @@ fillagreed	fillagree	V PAST WK#fillagree	V PPART WK
 imped	imp	V PAST WK#imp	V PPART WK
 meted	mete	V PAST WK#mete	V PPART WK
 refuted	refute	V PAST WK#refute	V PPART WK
-recreated	recreate	V PAST WK#recreate	V PPART WK#recreate	V PAST WK#recreate	V PPART WK
+recreated	re-create	V PAST WK#re-create	V PPART WK#recreate	V PAST WK#recreate	V PPART WK
 destined	destine	V PAST WK#destine	V PPART WK
 ducked	duck	V PAST WK#duck	V PPART WK
 playbacked	playback	V PAST WK#playback	V PPART WK
@@ -5823,7 +5823,7 @@ decried	decry	V PAST WK#decry	V PPART WK
 ebonized	ebonize	V PAST WK#ebonize	V PPART WK
 scabbled	scabble	V PAST WK#scabble	V PPART WK
 worrited	worrit	V PAST WK#worrit	V PPART WK
-rejoined	rejoin	V PAST WK#rejoin	V PPART WK#rejoin	V PAST WK#rejoin	V PPART WK
+rejoined	re-join	V PAST WK#re-join	V PPART WK#rejoin	V PAST WK#rejoin	V PPART WK
 barred	bar	V PAST WK#bar	V PPART WK
 spaced	space	V PAST WK#space	V PPART WK
 bridged	bridge	V PAST WK#bridge	V PPART WK
@@ -5867,7 +5867,7 @@ spreadeagled	spread-eagle	V PAST WK#spread-eagle	V PPART WK
 strove	strive	V PAST STR
 regressed	regress	V PAST WK#regress	V PPART WK
 belied	belie	V PAST WK#belie	V PPART WK
-overburdened	overburden	V PAST WK#overburden	V PPART WK#overburden	V PAST WK#overburden	V PPART WK
+overburdened	over-burden	V PAST WK#over-burden	V PPART WK#overburden	V PAST WK#overburden	V PPART WK
 bitten	bite	V PPART STR
 thrummed	thrum	V PAST WK#thrum	V PPART WK
 eloigned	eloign	V PAST WK#eloign	V PPART WK
@@ -5967,7 +5967,7 @@ hydrogenized	hydrogenate	V PAST WK#hydrogenate	V PPART WK
 skellied	skelly	V PAST WK#skelly	V PPART WK
 anodized	anodize	V PAST WK#anodize	V PPART WK
 blotted	blot	V PAST WK#blot	V PPART WK
-possed	posse	V PAST WK#posse	V PPART WK#posse	V PAST WK#posse	V PPART WK
+possed	poss	V PAST WK#poss	V PPART WK#posse	V PAST WK#posse	V PPART WK
 veneered	veneer	V PAST WK#veneer	V PPART WK
 bawled	bawl	V PAST WK#bawl	V PPART WK
 typewritten	typewrite	V PPART STR
@@ -6075,18 +6075,18 @@ tamponed	tampon	V PAST WK#tampon	V PPART WK
 flenched	flense	V PAST WK#flense	V PPART WK
 patronised	patronize	V PAST WK#patronize	V PPART WK
 unbridled	unbridle	V PAST WK#unbridle	V PPART WK
-blest	blest	V PAST STR#blest	V PPART STR
+blest	bless	V PAST STR#bless	V PPART STR
 circumfused	circumfuse	V PAST WK#circumfuse	V PPART WK
 clinched	clinch	V PAST WK#clinch	V PPART WK
 dibbed	dib	V PAST WK#dib	V PPART WK
 remarried	remarry	V PAST WK#remarry	V PPART WK
 emplaced	emplace	V PAST WK#emplace	V PPART WK
 fleshed	flesh	V PAST WK#flesh	V PPART WK
-tinged	tinge	V PAST WK#tinge	V PPART WK#tinge	V PAST WK#tinge	V PPART WK
+tinged	ting	V PAST WK#ting	V PPART WK#tinge	V PAST WK#tinge	V PPART WK
 abjured	abjure	V PAST WK#abjure	V PPART WK
 dethroned	dethrone	V PAST WK#dethrone	V PPART WK
 took	take	V PAST STR
-masterminded	mastermind	V PAST WK#mastermind	V PPART WK#mastermind	V PAST WK#mastermind	V PPART WK
+masterminded	master-mind	V PAST WK#master-mind	V PPART WK#mastermind	V PAST WK#mastermind	V PPART WK
 premiered	premier	V PAST WK#premier	V PPART WK
 bankrolled	bankroll	V PAST WK#bankroll	V PPART WK
 re-signed	re-sign	V PAST WK#re-sign	V PPART WK
@@ -6144,17 +6144,17 @@ gauped	gawp	V PAST WK#gawp	V PPART WK
 septupled	septuple	V PAST WK#septuple	V PPART WK
 embanked	embank	V PAST WK#embank	V PPART WK
 reined	rein	V PAST WK#rein	V PPART WK
-undersigned	undersigned	V PAST WK#undersigned	V PPART WK
+undersigned	undersign	V PAST WK#undersign	V PPART WK
 forfeited	forfeit	V PAST WK#forfeit	V PPART WK
 streamlined	streamline	V PAST WK#streamline	V PPART WK
 visited	visit	V PAST WK#visit	V PPART WK
-rent	rent	V PAST STR#rent	V PPART STR
+rent	rend	V PAST STR#rend	V PPART STR
 superheated	superheat	V PAST WK#superheat	V PPART WK
 miscalculated	miscalculate	V PAST WK#miscalculate	V PPART WK
 pinched	pinch	V PAST WK#pinch	V PPART WK
 scandalised	scandalize	V PAST WK#scandalize	V PPART WK
 unriddled	unriddle	V PAST WK#unriddle	V PPART WK
-shillyshallied	shillyshally	V PAST WK#shillyshally	V PPART WK#shillyshally	V PAST WK#shillyshally	V PPART WK
+shillyshallied	shilly-shally	V PAST WK#shilly-shally	V PPART WK#shillyshally	V PAST WK#shillyshally	V PPART WK
 counterplotted	counterplot	V PAST WK#counterplot	V PPART WK
 tallowed	tallow	V PAST WK#tallow	V PPART WK
 deplaned	deplane	V PAST WK#deplane	V PPART WK
@@ -6247,7 +6247,7 @@ orated	orate	V PAST WK#orate	V PPART WK
 rid	rid	V PAST STR#rid	V PPART STR
 wobbled	wobble	V PAST WK#wobble	V PPART WK
 built	build	V PAST STR#build	V PPART STR
-hummed	hum	V PAST STR#hum	V PPART STR#hum	V PAST WK#hum	V PPART WK
+hummed	hem	V PAST STR#hem	V PPART STR#hum	V PAST WK#hum	V PPART WK
 scintillated	scintillate	V PAST WK#scintillate	V PPART WK
 surrogated	surrogate	V PAST WK#surrogate	V PPART WK
 rampaged	rampage	V PAST WK#rampage	V PPART WK
@@ -6394,7 +6394,7 @@ shunted	shunt	V PAST WK#shunt	V PPART WK
 bow-wowed	bow-wow	V PAST WK#bow-wow	V PPART WK
 civilised	civilize	V PAST WK#civilize	V PPART WK
 underpaid	underpay	V PAST STR#underpay	V PPART STR
-overestimated	overestimate	V PAST WK#overestimate	V PPART WK#overestimate	V PAST WK#overestimate	V PPART WK
+overestimated	over-estimate	V PAST WK#over-estimate	V PPART WK#overestimate	V PAST WK#overestimate	V PPART WK
 held	hold	V PAST STR#hold	V PPART STR
 mediated	mediate	V PAST WK#mediate	V PPART WK
 consumed	consume	V PAST WK#consume	V PPART WK
@@ -6579,7 +6579,7 @@ concurred	concur	V PAST WK#concur	V PPART WK
 interosculated	interosculate	V PAST WK#interosculate	V PPART WK
 recollected	recollect	V PAST WK#recollect	V PPART WK
 uprisen	uprise	V PPART STR
-eyed	eyed	V PAST WK#eyed	V PPART WK
+eyed	eye	V PAST WK#eye	V PPART WK
 reminded	remind	V PAST WK#remind	V PPART WK
 allured	allure	V PAST WK#allure	V PPART WK
 cohobated	cohobate	V PAST WK#cohobate	V PPART WK
@@ -6591,7 +6591,7 @@ recycled	recycle	V PAST WK#recycle	V PPART WK
 diffracted	diffract	V PAST WK#diffract	V PPART WK
 robed	robe	V PAST WK#robe	V PPART WK
 split	split	V PAST STR#split	V PPART STR
-rubbernecked	rubberneck	V PAST WK#rubberneck	V PPART WK#rubberneck	V PAST WK#rubberneck	V PPART WK
+rubbernecked	rubber-neck	V PAST WK#rubber-neck	V PPART WK#rubberneck	V PAST WK#rubberneck	V PPART WK
 waffed	waff	V PAST WK#waff	V PPART WK
 belly-landed	belly-land	V PAST WK#belly-land	V PPART WK
 assigned	assign	V PAST WK#assign	V PPART WK
@@ -6723,7 +6723,7 @@ carbolized	carbolize	V PAST WK#carbolize	V PPART WK
 mutinied	mutiny	V PAST WK#mutiny	V PPART WK
 dwelt	dwell	V PAST STR#dwell	V PPART STR
 out-heroded	out-Herod	V PAST WK#out-Herod	V PPART WK
-redressed	redress	V PAST WK#redress	V PPART WK#redress	V PAST WK#redress	V PPART WK
+redressed	re-dress	V PAST WK#re-dress	V PPART WK#redress	V PAST WK#redress	V PPART WK
 arbitrated	arbitrate	V PAST WK#arbitrate	V PPART WK
 chuntered	chunter	V PAST WK#chunter	V PPART WK
 romanticised	romanticize	V PAST WK#romanticize	V PPART WK
@@ -6737,7 +6737,7 @@ tut-tutted	tut-tut	V PAST WK#tut-tut	V PPART WK
 correlated	correlate	V PAST WK#correlate	V PPART WK
 painted	paint	V PAST WK#paint	V PPART WK
 replied	reply	V PAST WK#reply	V PPART WK
-bussed	buss	V PAST WK#buss	V PPART WK#buss	V PAST WK#buss	V PPART WK
+bussed	bus	V PAST WK#bus	V PPART WK#buss	V PAST WK#buss	V PPART WK
 miaowed	meow	V PAST WK#meow	V PPART WK
 disagreed	disagree	V PAST WK#disagree	V PPART WK
 hallooed	halloo	V PAST WK#halloo	V PPART WK
@@ -6791,7 +6791,7 @@ penned	pen	V PAST WK#pen	V PPART WK
 rethought	rethink	V PAST STR#rethink	V PPART STR
 afforded	afford	V PAST WK#afford	V PPART WK
 reeved	reeve	V PAST WK#reeve	V PPART WK
-shrunk	shrunk	V PAST STR#shrunk	V PPART STR
+shrunk	shrink	V PAST STR#shrink	V PPART STR
 winded	wind	V PAST WK#wind	V PPART WK
 wrong-footed	wrong-foot	V PAST WK#wrong-foot	V PPART WK
 attached	attach	V PAST WK#attach	V PPART WK
@@ -6845,7 +6845,7 @@ vibrated	vibrate	V PAST WK#vibrate	V PPART WK
 quitclaimed	quitclaim	V PAST WK#quitclaim	V PPART WK
 embraced	embrace	V PAST WK#embrace	V PPART WK
 palmed	palm	V PAST WK#palm	V PPART WK
-steamrollered	steamroller	V PAST WK#steamroller	V PPART WK#steamroller	V PAST WK#steamroller	V PPART WK
+steamrollered	steam-roller	V PAST WK#steam-roller	V PPART WK#steamroller	V PAST WK#steamroller	V PPART WK
 charmed	charm	V PAST WK#charm	V PPART WK
 tautologised	tautologize	V PAST WK#tautologize	V PPART WK
 coerced	coerce	V PAST WK#coerce	V PPART WK
@@ -6899,7 +6899,7 @@ bluepenciled	blue-pencil	V PAST WK#blue-pencil	V PPART WK
 stoned	stone	V PAST WK#stone	V PPART WK
 bestrid	bestride	V PPART STR
 feuded	feud	V PAST WK#feud	V PPART WK
-cleft	cleft	V PAST STR#cleft	V PPART STR
+cleft	cleave	V PAST STR#cleave	V PPART STR
 behaved	behave	V PAST WK#behave	V PPART WK
 centrifuged	centrifuge	V PAST WK#centrifuge	V PPART WK
 hefted	heft	V PAST WK#heft	V PPART WK
@@ -7103,7 +7103,7 @@ infixed	infix	V PAST WK#infix	V PPART WK
 investigated	investigate	V PAST WK#investigate	V PPART WK
 martyred	martyr	V PAST WK#martyr	V PPART WK
 raided	raid	V PAST WK#raid	V PPART WK
-recounted	recount	V PAST WK#recount	V PPART WK#recount	V PAST WK#recount	V PPART WK
+recounted	re-count	V PAST WK#re-count	V PPART WK#recount	V PAST WK#recount	V PPART WK
 undersealed	underseal	V PAST WK#underseal	V PPART WK
 issued	issue	V PAST WK#issue	V PPART WK
 sponged	sponge	V PAST WK#sponge	V PPART WK
@@ -7250,7 +7250,7 @@ emaciated	emaciate	V PAST WK#emaciate	V PPART WK
 enshrined	enshrine	V PAST WK#enshrine	V PPART WK
 striated	striate	V PAST WK#striate	V PPART WK
 unharnessed	unharness	V PAST WK#unharness	V PPART WK
-counterattacked	counterattack	V PAST WK#counterattack	V PPART STR#counterattack	V PAST WK#counterattack	V PPART WK
+counterattacked	counter-attack	V PAST WK#counter-attack	V PPART STR#counterattack	V PAST WK#counterattack	V PPART WK
 winched	winch	V PAST WK#winch	V PPART WK
 cohabited	cohabit	V PAST WK#cohabit	V PPART WK
 balled	ball	V PAST WK#ball	V PPART WK
@@ -7440,7 +7440,7 @@ done	do	V PPART STR
 nagged	nag	V PAST WK#nag	V PPART WK
 besmeared	besmear	V PAST WK#besmear	V PPART WK
 instilled	instill	V PAST WK#instill	V PPART WK
-bore	bore	V PAST STR
+bore	bear	V PAST STR
 unfroze	unfreeze	V PAST STR
 consternated	consternate	V PAST WK#consternate	V PPART WK
 neglected	neglect	V PAST WK#neglect	V PPART WK
@@ -7582,7 +7582,7 @@ silver-plated	silver-plate	V PAST WK#silver-plate	V PPART WK
 upraised	upraise	V PAST WK#upraise	V PPART WK
 rifted	rift	V PAST WK#rift	V PPART WK
 over-exposed	over-expose	V PAST WK#over-expose	V PPART WK
-pasted	past	V PAST WK#past	V PPART WK#past	V PAST WK#past	V PPART WK
+pasted	paste	V PAST WK#paste	V PPART WK#past	V PAST WK#past	V PPART WK
 clobbered	clobber	V PAST WK#clobber	V PPART WK
 refereed	referee	V PAST WK#referee	V PPART WK
 yarned	yarn	V PAST WK#yarn	V PPART WK
@@ -7758,7 +7758,7 @@ furrowed	furrow	V PAST WK#furrow	V PPART WK
 hypnotized	hypnotize	V PAST WK#hypnotize	V PPART WK
 forbore	forbear	V PAST STR
 plunged	plunge	V PAST WK#plunge	V PPART WK
-ground	ground	V PAST STR#ground	V PPART STR
+ground	grind	V PAST STR#grind	V PPART STR
 presided	preside	V PAST WK#preside	V PPART WK
 agonized	agonize	V PAST WK#agonize	V PPART WK
 carbonated	carbonate	V PAST WK#carbonate	V PPART WK
@@ -8012,7 +8012,7 @@ denationalised	denationalize	V PAST WK#denationalize	V PPART WK
 soft-soaped	soft-soap	V PAST WK#soft-soap	V PPART WK
 reprehended	reprehend	V PAST WK#reprehend	V PPART WK
 ingurgitated	ingurgitate	V PAST WK#ingurgitate	V PPART WK
-overheated	overheat	V PAST WK#overheat	V PPART WK#overheat	V PAST WK#overheat	V PPART WK
+overheated	over-heat	V PAST WK#over-heat	V PPART WK#overheat	V PAST WK#overheat	V PPART WK
 belled	bell	V PAST WK#bell	V PPART WK
 cashiered	cashier	V PAST WK#cashier	V PPART WK
 demoralised	demoralize	V PAST WK#demoralize	V PPART WK
@@ -8037,7 +8037,7 @@ bedimmed	bedim	V PAST WK#bedim	V PPART WK
 deported	deport	V PAST WK#deport	V PPART WK
 hallaled	halal	V PAST WK#halal	V PPART WK
 stylopized	stylopize	V PAST WK#stylopize	V PPART WK
-throve	throve	V PAST STR
+throve	thrive	V PAST STR
 bunched	bunch	V PAST WK#bunch	V PPART WK
 politicised	politicize	V PAST WK#politicize	V PPART WK
 toadied	toady	V PAST WK#toady	V PPART WK
@@ -8290,7 +8290,7 @@ name-dropped	name-drop	V PAST WK#name-drop	V PPART WK
 fragmented	fragment	V PAST WK#fragment	V PPART WK
 internationalised	internationalize	V PAST WK#internationalize	V PPART WK
 donated	donate	V PAST WK#donate	V PPART WK
-matted	matt	V PAST WK#matt	V PPART WK#matt	V PAST WK#matt	V PPART WK
+matted	mat	V PAST WK#mat	V PPART WK#matt	V PAST WK#matt	V PPART WK
 Islamized	Islamize	V PAST WK#Islamize	V PPART WK
 softlanded	softland	V PAST WK#softland	V PPART WK
 discontented	discontent	V PAST WK#discontent	V PPART WK
@@ -8303,7 +8303,7 @@ fancied	fancy	V PAST WK#fancy	V PPART WK
 commenced	commence	V PAST WK#commence	V PPART WK
 ionised	ionize	V PAST WK#ionize	V PPART WK
 benamed	bename	V PAST WK#bename	V PPART WK
-manhandled	manhandle	V PAST WK#manhandle	V PPART WK#manhandle	V PAST WK#manhandle	V PPART WK
+manhandled	man-handle	V PAST WK#man-handle	V PPART WK#manhandle	V PAST WK#manhandle	V PPART WK
 caucused	caucus	V PAST WK#caucus	V PPART WK
 gutted	gut	V PAST WK#gut	V PPART WK
 test-drove	test-drive	V PAST STR
@@ -8465,7 +8465,7 @@ cohered	cohere	V PAST WK#cohere	V PPART WK
 consigned	consign	V PAST WK#consign	V PPART WK
 drafted	draft	V PAST WK#draft	V PPART WK
 repartitioned	repartition	V PAST WK#repartition	V PPART WK
-'s	's	V 3sg PAST STR
+'s	be	V 3sg PAST STR
 double-crossed	double-cross	V PAST WK#double-cross	V PPART WK
 chirmed	chirm	V PAST WK#chirm	V PPART WK
 swatted	swat	V PAST WK#swat	V PPART WK
@@ -8597,7 +8597,7 @@ threeped	threap	V PAST WK#threap	V PPART WK
 purfled	purfle	V PAST WK#purfle	V PPART WK
 fluoridated	fluoridate	V PAST WK#fluoridate	V PPART WK
 prophesied	prophesy	V PAST WK#prophesy	V PPART WK
-routed	route	V PAST WK#route	V PPART WK#route	V PAST WK#route	V PPART WK
+routed	rout	V PAST WK#rout	V PPART WK#route	V PAST WK#route	V PPART WK
 contrasted	contrast	V PAST WK#contrast	V PPART WK
 bickered	bicker	V PAST WK#bicker	V PPART WK
 conducted	conduct	V PAST WK#conduct	V PPART WK
@@ -8734,7 +8734,7 @@ clouded	cloud	V PAST WK#cloud	V PPART WK
 cannonballed	cannonball	V PAST WK#cannonball	V PPART WK
 outgone	outgo	V PPART STR
 ramified	ramify	V PAST WK#ramify	V PPART WK
-represented	represent	V PAST WK#represent	V PPART WK#represent	V PAST WK#represent	V PPART WK
+represented	re-present	V PAST WK#re-present	V PPART WK#represent	V PAST WK#represent	V PPART WK
 poisoned	poison	V PAST WK#poison	V PPART WK
 rolled	roll	V PAST WK#roll	V PPART WK
 civilized	civilize	V PAST WK#civilize	V PPART WK
@@ -8756,7 +8756,7 @@ inferred	infer	V PAST WK#infer	V PPART WK
 fingerprinted	fingerprint	V PAST WK#fingerprint	V PPART WK
 despited	despite	V PAST WK#despite	V PPART WK
 crated	crate	V PAST WK#crate	V PPART WK
-sicked	sick	V PAST STR#sick	V PPART STR#sick	V PAST WK#sick	V PPART WK
+sicked	sic	V PAST STR#sic	V PPART STR#sick	V PAST WK#sick	V PPART WK
 timed	time	V PAST WK#time	V PPART WK
 dawdled	dawdle	V PAST WK#dawdle	V PPART WK
 air-mailed	air-mail	V PAST WK#air-mail	V PPART WK
@@ -8820,7 +8820,7 @@ legalised	legalize	V PAST WK#legalize	V PPART WK
 massproduced	mass-produce	V PAST WK#mass-produce	V PPART WK
 emitted	emit	V PAST WK#emit	V PPART WK
 shanghaied	shanghai	V PAST WK#shanghai	V PPART WK
-receded	recede	V PAST WK#recede	V PPART WK#recede	V PAST WK#recede	V PPART WK
+receded	re-cede	V PAST WK#re-cede	V PPART WK#recede	V PAST WK#recede	V PPART WK
 bechanced	bechance	V PAST WK#bechance	V PPART WK
 condemned	condemn	V PAST WK#condemn	V PPART WK
 hovered	hover	V PAST WK#hover	V PPART WK
@@ -9044,7 +9044,7 @@ tumefied	tumefy	V PAST WK#tumefy	V PPART WK
 hocus-pocussed	hocus-pocus	V PAST WK#hocus-pocus	V PPART WK
 kernelled	kernel	V PAST WK#kernel	V PPART WK
 executed	execute	V PAST WK#execute	V PPART WK
-bound	bound	V PAST STR#bound	V PPART STR
+bound	bind	V PAST STR#bind	V PPART STR
 camouflaged	camouflage	V PAST WK#camouflage	V PPART WK
 loitered	loiter	V PAST WK#loiter	V PPART WK
 conjoined	conjoin	V PAST WK#conjoin	V PPART WK
@@ -9321,7 +9321,7 @@ anodised	anodize	V PAST WK#anodize	V PPART WK
 punched	punch	V PAST WK#punch	V PPART WK
 spewed	spew	V PAST WK#spew	V PPART WK
 dry-cleaned	dry-clean	V PAST WK#dry-clean	V PPART WK
-resorted	resort	V PAST WK#resort	V PPART WK#resort	V PAST WK#resort	V PPART WK
+resorted	re-sort	V PAST WK#re-sort	V PPART WK#resort	V PAST WK#resort	V PPART WK
 enmeshed	enmesh	V PAST WK#enmesh	V PPART WK
 airdropped	airdrop	V PAST WK#airdrop	V PPART WK
 jeopardised	jeopardize	V PAST WK#jeopardize	V PPART WK
@@ -9336,7 +9336,7 @@ unfolded	unfold	V PAST WK#unfold	V PPART WK
 censed	cense	V PAST WK#cense	V PPART WK
 catheterised	catheterize	V PAST WK#catheterize	V PPART WK
 shadowboxed	shadow-box	V PAST WK#shadow-box	V PPART WK
-plated	plate	V PAST WK#plate	V PPART WK#plate	V PAST WK#plate	V PPART WK
+plated	plait	V PAST WK#plait	V PPART WK#plate	V PAST WK#plate	V PPART WK
 vocalised	vocalize	V PAST WK#vocalize	V PPART WK
 countermoved	countermove	V PAST WK#countermove	V PPART WK
 caddied	caddie	V PAST WK#caddie	V PPART WK
@@ -9452,7 +9452,7 @@ untucked	untuck	V PAST WK#untuck	V PPART WK
 evicted	evict	V PAST WK#evict	V PPART WK
 frets	fret	V PPART STR
 bantered	banter	V PAST WK#banter	V PPART WK
-gated	gate	V PAST WK#gate	V PPART WK#gate	V PAST WK#gate	V PPART WK
+gated	gat	V PAST WK#gat	V PPART WK#gate	V PAST WK#gate	V PPART WK
 juddered	judder	V PAST WK#judder	V PPART WK
 metathesized	metathesize	V PAST WK#metathesize	V PPART WK
 surcharged	surcharge	V PAST WK#surcharge	V PPART WK
@@ -9488,16 +9488,16 @@ fathomed	fathom	V PAST WK#fathom	V PPART WK
 flavoured	flavour	V PAST WK#flavour	V PPART WK
 lobbed	lob	V PAST WK#lob	V PPART WK
 popularised	popularize	V PAST WK#popularize	V PPART WK
-redded	redd	V PAST WK#redd	V PPART WK#redd	V PAST WK#redd	V PPART WK
+redded	red	V PAST WK#red	V PPART WK#redd	V PAST WK#redd	V PPART WK
 torrified	torrefy	V PAST WK#torrefy	V PPART WK
-resounded	resound	V PAST WK#resound	V PPART WK#resound	V PAST WK#resound	V PPART WK
+resounded	re-sound	V PAST WK#re-sound	V PPART WK#resound	V PAST WK#resound	V PPART WK
 antedated	antedate	V PAST WK#antedate	V PPART WK
 skeletonised	skeletonize	V PAST WK#skeletonize	V PPART WK
 pealed	peal	V PAST WK#peal	V PPART WK
 underwritten	underwrite	V PPART STR
 intimidated	intimidate	V PAST WK#intimidate	V PPART WK
 undocked	undock	V PAST WK#undock	V PPART WK
-bellyached	bellyache	V PAST WK#bellyache	V PPART WK#bellyache	V PAST WK#bellyache	V PPART WK
+bellyached	belly-ache	V PAST WK#belly-ache	V PPART WK#bellyache	V PAST WK#bellyache	V PPART WK
 blurred	blur	V PAST WK#blur	V PPART WK
 sjamboked	sjambok	V PAST WK#sjambok	V PPART WK
 bucklered	buckler	V PAST WK#buckler	V PPART WK
@@ -9537,7 +9537,7 @@ beheld	behold	V PAST STR#behold	V PPART STR
 ensiled	ensile	V PAST WK#ensile	V PPART WK
 married	marry	V PAST WK#marry	V PPART WK
 rubefied	rubefy	V PAST WK#rubefy	V PPART WK
-sheathed	sheathe	V PAST WK#sheathe	V PPART WK#sheathe	V PAST WK#sheathe	V PPART WK
+sheathed	sheath	V PAST WK#sheath	V PPART WK#sheathe	V PAST WK#sheathe	V PPART WK
 joy-rided	joy-ride	V PAST WK#joy-ride	V PPART WK
 resulted	result	V PAST WK#result	V PPART WK
 spot-welded	spot-weld	V PAST WK#spot-weld	V PPART WK
@@ -9552,7 +9552,7 @@ obliterated	obliterate	V PAST WK#obliterate	V PPART WK
 flailed	flail	V PAST WK#flail	V PPART WK
 slatted	slat	V PAST WK#slat	V PPART WK
 subjectified	subjectify	V PAST WK#subjectify	V PPART WK
-crosschecked	crosscheck	V PAST WK#crosscheck	V PPART WK#crosscheck	V PAST WK#crosscheck	V PPART WK
+crosschecked	cross-check	V PAST WK#cross-check	V PPART WK#crosscheck	V PAST WK#crosscheck	V PPART WK
 emigrated	emigrate	V PAST WK#emigrate	V PPART WK
 saved	save	V PAST WK#save	V PPART WK
 countermarched	countermarch	V PAST WK#countermarch	V PPART WK
@@ -9573,7 +9573,7 @@ rehoused	rehouse	V PAST WK#rehouse	V PPART WK
 incised	incise	V PAST WK#incise	V PPART WK
 biffed	biff	V PAST WK#biff	V PPART WK
 unearthed	unearth	V PAST WK#unearth	V PPART WK
-associated	associated	V PAST WK#associated	V PPART WK
+associated	associate	V PAST WK#associate	V PPART WK
 outgained	outgain	V PAST WK#outgain	V PPART WK
 hyposensitized	hyposensitize	V PAST WK#hyposensitize	V PPART WK
 gestured	gesture	V PAST WK#gesture	V PPART WK

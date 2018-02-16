@@ -11,8 +11,8 @@ import argparse
 import os
 from collections import namedtuple
 
-Features = namedtuple('Features', ['pos', 'features'])
-MorphEntry = namedtuple('MorphEntry', ['token', 'lemma', 'featurelists'])
+LemmaInfo = namedtuple('LemmaInfo', ['lemma', 'pos', 'features'])
+MorphEntry = namedtuple('MorphEntry', ['token', 'lemmas'])
 
 # Rudimentary function to determine if a line is commented:
 # (i.e. first characteris a semicolon)
@@ -35,15 +35,20 @@ def parse_arguments():
 
 # Reads a morph data line and returns a MorphEntry tuple.
 # Each line consists of 
-#   [word token]\t[lemma]\t[feature list 1]\t...\t[feature list n]
-# where each feature list is space separated with the first feature being the
-# POS.
+#   [word token]\t[lemma info 1]#...#[feature list n]
+# where [lemma info m] consists of
+#   [lemma]\t[space separated features]
+# where the space separated features start with POS.
+# NB: surely there's more structure on the features, but I'm not too interested
+#     in that right now.
 def read_morph_line(l):
-  segments = [s for s in (s.strip() for s in l.split('\t')) if s != '']
-  assert len(segments) > 2, "{}".format(l)
-  flists = [Features(pos=ts[0], features=ts[1:]) for ts in \
-      (s.split(' ') for s in segments[2:])]
-  return MorphEntry(token=segments[0], lemma=segments[1], featurelists=flists)
+  token, info = [s.strip() for s in l.split('\t', 1)]
+  lemmatexts = [lt for lt in (e.strip() for e in info.split('#')) if lt != '']
+  # For each lemma, separate by space, strip, and organize into namedtuple.
+  lemmasplit = [(lemma, info) for lemma, info in ([e1.strip() for e1 in e.split('\t')] for e in lemmatexts)]
+  lemmas = [LemmaInfo(lemma=lemma, pos=ts[0], features=ts[1:]) for lemma, ts in \
+      ((lem, [e.strip() for e in info.split(' ')]) for lem, info in lemmasplit)]
+  return MorphEntry(token=token, lemmas=lemmas)
 
 # Reads a morph file and returns a list of MorphEntry tuples.
 def load_morph_file(f="morph-1.5/data/morph_english.flat"):
@@ -54,11 +59,11 @@ def load_morph_file(f="morph-1.5/data/morph_english.flat"):
   print "Morph file loaded."
   return entries
 
-# Checks if the Feature tuple has one of the POS tags in poses and that
+# Checks if the LemmaInfo tuple has one of the POS tags in poses and that
 # at least one of its features is in the features list.
-def contains_feature(ftuple, poses, features):
-  if ftuple.pos in poses:
-    for f in ftuple.features:
+def contains_feature(linfo, poses, features):
+  if linfo.pos in poses:
+    for f in linfo.features:
       if f in features:
         return True
   return False
@@ -70,20 +75,21 @@ def contains_feature(ftuple, poses, features):
 def filter_morph_data(entries, poses, features):
   # Helper function (restructures the MorphEntry tuple according to filter).
   def filter_morph_entry(entry):
-    ff = [f for f in entry.featurelists if contains_feature(f, poses, features)]
-    if len(ff) > 0:
-      return MorphEntry(token=entry.token, lemma=entry.lemma, featurelists=ff)
+    lis = [li for li in entry.lemmas if contains_feature(li, poses, features)]
+    if len(lis) > 0:
+      return MorphEntry(token=entry.token, lemmas=lis)
     else:
       return None
   # Apply filter to all.
   return [f for f in (filter_morph_entry(e) for e in entries) if f] 
 
-def features_str(features):
-  return " ".join([features.pos] + features.features)
+def lemmainfo_str(lemmainfo):
+  return lemmainfo.lemma + "\t" + \
+      " ".join([lemmainfo.pos] + lemmainfo.features)
 
 def morphentry_str(entry):
-  return "\t".join([entry.token, entry.lemma] + \
-      [features_str(fl) for fl in entry.featurelists])
+  return entry.token + "\t" + \
+      "#".join([lemmainfo_str(li) for li in entry.lemmas])
 
 def write_entries(filepath, entries):
   out = file(filepath, 'w')
