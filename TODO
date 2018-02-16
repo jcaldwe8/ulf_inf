@@ -1,5 +1,19 @@
 
-1. Maybe think of a better structure to the datasets so that the ignored files
+Short-term
+* Make module for implicative loading
+* Incorporate the morphology list into the pattern matching
+* Add patterns for questions
+* Download the gutenburg project data
+  - need filter for weird texts (e.g. the bible), or old texts (e.g. beowulf)
+    or maybe none... not sure yet...
+    Maybe based on translation time (modern translations of old texts may be fine)
+  - Determine how to get sentence boundaries (maybe use NLTK or Stanford since
+    this is more structured text).
+* Record stats of samples for datasets
+
+
+Long-term
+* Maybe think of a better structure to the datasets so that the ignored files
 can all sit in the same location (so we don't need to update the gitignore
 every time we add a dataset).
 
