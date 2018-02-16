@@ -1,0 +1,5 @@
+
+1. Maybe think of a better structure to the datasets so that the ignored files
+can all sit in the same location (so we don't need to update the gitignore
+every time we add a dataset).
+
