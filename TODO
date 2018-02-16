@@ -1,6 +1,5 @@
 
 Short-term
-* Make module for implicative loading
 * Incorporate the morphology list into the pattern matching
 * Add patterns for questions
 * Download the gutenburg project data
@@ -10,6 +9,8 @@ Short-term
   - Determine how to get sentence boundaries (maybe use NLTK or Stanford since
     this is more structured text).
 * Record stats of samples for datasets
+* Add multiword coverage to Uppen Morph data.
+* Figure out the relationship between impl-list.txt, imp.lisp, and weak-imp.lisp in stratos-data.
 
 
 Long-term
