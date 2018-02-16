@@ -16,3 +16,6 @@ datasets/discourse_graphbank/normalized_discourse_graphbank
 datasets/switchboard/switchboard_ldc
 datasets/switchboard/switchboard_ms
 
+# Ignore decompressed filtered datasets.
+filtered_datasets
+
