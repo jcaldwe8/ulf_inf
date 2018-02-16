@@ -18,10 +18,14 @@ from itertools import groupby
 
 # Paths to local modules.
 UPPEN_MORPH_PATH = "resources/uppen_morph_analysis"
+CUSTOMIZED_RESOURCE_PATH = "resources/customized_resources"
 
 # Load local functions.
 sys.path.append(UPPEN_MORPH_PATH)
 from uppen_morph import load_morph_file 
+
+sys.path.append(CUSTOMIZED_RESOURCE_PATH)
+from customized_resources import load_stratos_impl_forms
 
 #
 # Global vars.
@@ -61,45 +65,7 @@ REQUEST_PATTERNS = [
 CF_RE = [re.compile(p) for p in CF_PATTERNS]
 REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
 
-
-# TODO: Move all the implicative verb and verb form lookup into it's own files under ~/research/ulf_inf/resources/ and call as a library.
-
-def load_impl_list():
-  STRATOS_IMPL_LIST_PATH = "resources/customized_resources/stratos-impl-list-corrected-2-8-2018.txt"
-  lines = file(STRATOS_IMPL_LIST_PATH, 'r').read().splitlines()
-  # Filter out commented lines.
-  lines = [l.strip() for l in lines if len(l) > 0 and l[0] != ";"]
-  return lines
-
-def load_e_lemma_dictionary():
-  E_LEMMA_PATH = "resources/customized_resources/e_lemma_reformatted.txt"
-  E_LEMMA_CUSTOM_PATH = "resources/customized_resources/gene_custom_lemma_list.txt"
-  
-  orig_lines = file(E_LEMMA_PATH, 'r').read().splitlines()
-  custom_lines = file(E_LEMMA_CUSTOM_PATH, 'r').read().splitlines()
-  orig_lines.extend(custom_lines)
-
-  # Filter out commented lines.
-  lines = [l.strip() for l in orig_lines if len(l) > 0 and l[0] != ";"]
-  
-  # Split into key-value pairs.
-  #     key     : lemma
-  #     value   : comma separated list of derivations
-  split = [l.split(" -> ") for l in lines]
-  mapping = { k : v.split(",") for k, v in split }
-  return mapping
-
-def flatten(ll):
-  return [item for sublist in ll for item in sublist]
-
-def load_impl_forms_list():
-  impl_words = load_impl_list()
-  elemma_map = load_e_lemma_dictionary()
-  impl_forms = flatten([elemma_map[w] for w in impl_words if w in elemma_map])
-  impl_words.extend(impl_forms)
-  return impl_words
-
-IMPL_FORMS = load_impl_forms_list()
+IMPL_FORMS = load_stratos_impl_forms()
 
 #
 # Helper functions.
@@ -107,11 +73,11 @@ IMPL_FORMS = load_impl_forms_list()
 
 # Parses arguments and returns the result of parser.parse_args() from argparse.
 def parse_arguments():
-  parser = argparse.ArgumentParser(description='Extracts transcriptions from the Switchboard corpus into 1 line per utterance.')
+  parser = argparse.ArgumentParser(description='Extracts sentences that may have phenomena of interest from a dataset.')
   
-  parser.add_argument('-inputtype', '--inputtype', choices=['file', 'dir'], required=True)
-  parser.add_argument('-inputpath', '--inputpath', type=str, required=True)
-  parser.add_argument('-target', '--target', type=str, required=True)
+  parser.add_argument('-stype', '--source_type', choices=['file', 'dir'], required=True)
+  parser.add_argument('-spath', '--source_path', type=str, required=True)
+  parser.add_argument('-tpath', '--target_path', type=str, required=True)
   
   args = parser.parse_args()
   return args
@@ -220,20 +186,20 @@ def countdict_update(cd1, cd2):
 args = parse_arguments()
 
 # Extract transcriptions.
-if args.inputtype == 'file':
-  out = file(args.target, 'w')
-  filter_file(args.inputpath, out)
+if args.source_type == 'file':
+  out = file(args.target_path, 'w')
+  filter_file(args.source_path, out)
   out.close()  
 
 else:
   numfile = 0
   filter_counts = defaultdict(int)
-  for dirname, subdirlist, filelist in os.walk(args.inputpath):
+  for dirname, subdirlist, filelist in os.walk(args.source_path):
     for f in filelist:
       # Only extract if it's an annotation file.
       print "Extracting file {}".format(numfile)
       numfile += 1
-      out = file(os.path.join(args.target, f), 'w')
+      out = file(os.path.join(args.target_path, f), 'w')
       linemap, countmap = filter_file(os.path.join(dirname, f), out)
       out.close()
 

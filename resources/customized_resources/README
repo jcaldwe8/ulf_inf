@@ -1,0 +1,21 @@
+Contain resources that were modified from the original form by us to fix
+errors, add missing information, or to make it compatible with use with other
+resources.
+
+**File Descriptions**
+
+customized_resource.py -
+  Python accessor functions for resources in this folder..
+
+stratos-impl-list-corrected-2-8-2018.txt - 
+  Typos corrected and redundant words removed so the line count is more
+  reliable.
+
+e_lemma_reformmated.txt - 
+  Changed the encoding from the original, which was a binary variant which
+  caused a headache during parsing, to UNICODE (the default for Python 3). 
+
+gene_custom_e_lemma_list.txt -
+  Additional entries in the format of e_lemma.txt.  These are entries that
+  existed in stratos-impl-list.txt, but missing from the original e_lemma.txt.
+
