@@ -1,0 +1,83 @@
+!
+! Copyright 1992 The University of Pennsylvania
+!
+! Permission to use, copy, modify, and distribute this software and its
+! documentation for any purpose and without fee is hereby granted, provided
+! that the above copyright notice appear in all copies and that both that
+! copyright notice and this permission notice appear in supporting 
+! documentation, and that the name of U. of Pennsylvania not be used in 
+! advertising or publicity pertaining to distribution of the software without 
+! specific, written prior permission.  U. of Pennsylvania makes no 
+! representations about the suitability of this software for any purpose.  
+! It is provided "as is" without express or implied warranty.
+!
+! THE UNIVERSITY OF PENNSYLVANIA DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS 
+! SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, 
+! IN NO EVENT SHALL THE UNIVERSITY OF PENNSYLVANIA BE LIABLE FOR ANY SPECIAL, 
+! INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+! LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+! OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+! PERFORMANCE OF THIS SOFTWARE.
+!
+!
+
+! File menu 
+appfilemenu.choosedatabase:		Scegli database
+appfilemenu.chooselogfile:		Scegli file di log
+appfilemenu.save:			Aggiorna
+appfilemenu.quit:			Esci
+
+! Delete menu
+appdeletemenu.deletekey:		Cancella Chiave
+appdeletemenu.deleteentry:		Cancella Entry
+
+! Mode labels
+appmode.lookup:		** Cerca **
+appmode.modify:		** Modifica **
+appmode.add:		** Aggiungi **
+appmode.deletekey:	** Cancella Chiave **
+appmode.deleteentry:	** Cancella Entry **
+
+! Error messages for XMDBM
+apperror.dbnotspecified: 	ERRORE: Database file non specificato
+apperror.dbcantcreate:		ERRORE -  Database File non puo' essere creato: %s
+apperror.dbcantopen:		ERRORE -  Database File non puo' essere aperto: %s
+apperror.logcantopen:		ERRORE -  Log File non puo' essere aperto: %s
+apperror.logcantwrite:		ERRORE: errore di scrittura sul log file
+apperror.nologflag:		ERRORE: programma inizia con flag -nolog
+apperror.nochanges:		Nessun cambiamento da salvare
+apperror.readonly:		XMDBM e' in modalita' di sola lettura
+apperror.keynotfoundw:		ERRORE -  Chiave non trovata: %s
+apperror.keynotfoundwo:		ERRORE -  Chiave non trovata
+apperror.keynotdeleted:		ERRORE -  Chiave non cancellata
+apperror.keychanged:		ATTENZIONE: chiave e' cambiata
+apperror.cantencodeentry:	ERRORE - entry non puo' essere codificata
+apperror.entrynotdeleted:	ERRORE - entry non cancellata
+apperror.entrynotadded:		ERRORE - chiave/entry non aggiunta
+apperror.entrynotchosen:	ERRORE: devi scegliere un entry da modificare
+apperror.entrynotmodified:	ERRORE - entry non modificata
+apperror.rootmissing:		ERRORE: manca la radice
+apperror.tryexceedmaxentries:	ERRORE: Tentativo di eccedere numero massimo di entries
+apperror.exceedsmaxentries:	Numero di entries supera il massimo numero permesso
+
+! Verify messages for XMDBM
+appverify.modify:		Sostituire entry con %s %s?
+appverify.newentry:		La nuova entry e':
+appverify.deletekey:		Cancellare chiave e tutte le entries associate?
+appverify.deletewarning:	Attenzione: cancellare questa entry cancellera' anche la chiave
+appverify.deleteentry:		Cancellare questa entry?
+appverify.losechanges:		Il file e' stato modificato. VUOI PERDERE I CAMBIAMENTI?
+appverify.createnewdb:		Il file non esiste. Vuoi creare un file nuovo?
+appverify.alreadymodified:      Il file e' stato modificato esternamente.  Salvare ugualmente le modifiche? 
+
+! Strings for use in the history
+apphistory.lookup:		Chiave: %s\nEntries: 
+apphistory.keynotfound:		Chiave non trovata: %s
+apphistory.modify:		Entry: %s nella chiave: %s modificata a %s\n\n
+apphistory.deletekey:		Chiave: %s e tutte le entries cancellate\n\n
+apphistory.deleteentry:		Entry %s cancellata dalla chiave: %s\n\n
+apphistory.addentry:		Chiave: %s Entry: %s aggiunta\n\n
+apphistory.dbsaved:		Database File aggiornato\n\n
+
+! Strings specific to the log file
+applog.userinfo:		Utente: %s	%s

@@ -1,0 +1,91 @@
+!
+! Copyright 1992 The University of Pennsylvania
+!
+! Permission to use, copy, modify, and distribute this software and its
+! documentation for any purpose and without fee is hereby granted, provided
+! that the above copyright notice appear in all copies and that both that
+! copyright notice and this permission notice appear in supporting 
+! documentation, and that the name of U. of Pennsylvania not be used in 
+! advertising or publicity pertaining to distribution of the software without 
+! specific, written prior permission.  U. of Pennsylvania makes no 
+! representations about the suitability of this software for any purpose.  
+! It is provided "as is" without express or implied warranty.
+!
+! THE UNIVERSITY OF PENNSYLVANIA DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS 
+! SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, 
+! IN NO EVENT SHALL THE UNIVERSITY OF PENNSYLVANIA BE LIABLE FOR ANY SPECIAL, 
+! INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+! LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+! OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+! PERFORMANCE OF THIS SOFTWARE.
+!
+!
+
+XMDBM.title:  			XMDB Gestione
+XMDBM*filebutton.label:	   	Archivio
+XMDBM*lookupbutton.label:  	Cerca
+XMDBM*modifybutton.label:  	Modifica
+XMDBM*addbutton.label:	    	Aggiungi
+XMDBM*deletebutton.label:   	Cancella
+XMDBM*dummybutton.label:    	Dummy
+XMDBM*clearbutton.label:    	Ripulisci
+XMDBM*donebutton.label:	    	Comando Eseguito
+
+XMDBM*modelabel.width: 		600
+XMDBM*modelabel.borderWidth: 	0
+XMDBM*modelabel.justify: 	center		! do not change
+
+XMDBM*historytext.height: 	450
+XMDBM*historytext.width: 	600
+XMDBM*historytext*scrollVertical: always	! do not change
+
+XMDBM*errormsgshell.borderWidth: 3
+XMDBM*errormsgshell.title: 	ERRORE
+XMDBM*errormsgok.label:   	OK
+XMDBM*errormsgdialog.label: 	C'e' un errore (non meglio specificato)
+XMDBM*keydialog.label:    	Chiave:
+XMDBM*keydialog.textWidth:    	400
+XMDBM*keydialog.borderWidth: 	0
+XMDBM*rootdialog.label:    	Radice:
+XMDBM*rootdialog.textWidth:     400
+XMDBM*rootdialog.borderWidth: 	0
+
+XMDBM*verifyok.label:   		OK
+XMDBM*verifycancel.label:  	CANCELLA
+XMDBM*verifyshell.title: 	VERIFICA 
+XMDBM*verifydialog.borderWidth:  3
+XMDBM*verifydialog.label.resizeable: 	True	! do not change
+
+XMDBM*delentrychoiceslabel.label:  	Entries:
+XMDBM*delentrychoiceslabel.borderWidth:  0
+XMDBM*delentrychoices.longest: 		375
+XMDBM*delentrychoices.numberStrings: 	6  
+XMDBM*delentrychoices.defaultColumns: 	1
+
+XMDBM*addkeyentrieslabel.label:  	Entries:
+XMDBM*addkeyentrieslabel.borderWidth:  	0
+XMDBM*addkeyentries.longest: 		375
+XMDBM*addkeyentries.numberStrings: 	6  
+XMDBM*addkeyentries.defaultColumns: 	1
+
+XMDBM*modifychoiceslabel.label:  	Entries:
+XMDBM*modifychoiceslabel.borderWidth:  	0
+XMDBM*modifychoices.longest: 		375
+XMDBM*modifychoices.numberStrings: 	6
+! **NOTE** numberStrings should be the same as in xmdbm.h
+XMDBM*modifychoices.defaultColumns: 	1
+
+XMDBM*speechparts.defaultColumns: 	1
+XMDBM*subspeechshell.borderWidth: 	5
+XMDBM*subspeechshell.title: 
+
+XMDBM*dbfileshell.title: 	Nome del file database
+XMDBM*dbfiledialog.label:   	Database: 
+XMDBM*dbfiledialog.value:  
+
+XMDBM*logfileshell.title: 	Nome del file di log (memorizza sessione)
+XMDBM*logfiledialog.label:   	File di log (memorizza sessione)
+XMDBM*logfiledialog.value:  
+
+
+

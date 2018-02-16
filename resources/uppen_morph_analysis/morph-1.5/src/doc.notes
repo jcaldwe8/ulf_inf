@@ -1,0 +1,3 @@
+* Two kinds of retrieval functions: one for encoded databases and
+  another for plain. See DECODE in coding.c.
+

@@ -1,0 +1,99 @@
+!
+! Copyright 1992 The University of Pennsylvania
+!
+! Permission to use, copy, modify, and distribute this software and its
+! documentation for any purpose and without fee is hereby granted, provided
+! that the above copyright notice appear in all copies and that both that
+! copyright notice and this permission notice appear in supporting 
+! documentation, and that the name of U. of Pennsylvania not be used in 
+! advertising or publicity pertaining to distribution of the software without 
+! specific, written prior permission.  U. of Pennsylvania makes no 
+! representations about the suitability of this software for any purpose.  
+! It is provided "as is" without express or implied warranty.
+!
+! THE UNIVERSITY OF PENNSYLVANIA DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS 
+! SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, 
+! IN NO EVENT SHALL THE UNIVERSITY OF PENNSYLVANIA BE LIABLE FOR ANY SPECIAL, 
+! INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+! LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+! OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+! PERFORMANCE OF THIS SOFTWARE.
+!
+!
+XMDBM*foreground:		SlateBlue4
+XMDBM*background:		AntiqueWhite1
+XMDBM*font: 			-b&h-lucidatypewriter-bold-r-normal-sans-24-240-75-75-m-140-iso8859-1
+!XMDBM.title:  			XMDB Maintenance
+XMDBM*filebutton.label:	   	File
+XMDBM*lookupbutton.label:  	Lookup
+XMDBM*modifybutton.label:  	Modify
+XMDBM*addbutton.label:	    	Add
+XMDBM*deletebutton.label:   	Delete
+XMDBM*dummybutton.label:    	Dummy
+XMDBM*clearbutton.label:    	Clear
+XMDBM*donebutton.label:	    	Done
+
+XMDBM*modelabel.width: 		475
+XMDBM*modelabel.borderWidth: 	0
+! do not translate the next line
+XMDBM*modelabel.justify: 	center
+
+XMDBM*historytext.height: 	425
+XMDBM*historytext.width: 	625
+! do not translate the next line
+XMDBM*historytext*scrollVertical: always
+
+XMDBM*errormsgshell.borderWidth: 3
+XMDBM*errormsgshell.title: 	ERROR
+XMDBM*errormsgok.label:   	OK
+XMDBM*errormsgdialog.label: 	An unspecified error has occurred
+XMDBM*errormsgdialog.errormsgok.borderWidth: 4
+XMDBM*keydialog.label:    	Key: 
+XMDBM*keydialog.textWidth:    	290
+XMDBM*keydialog.borderWidth: 	0
+XMDBM*rootdialog.label:    	Root: 
+XMDBM*rootdialog.textWidth:    	285
+XMDBM*rootdialog.borderWidth: 	0
+
+XMDBM*verifyok.label:   		OK
+XMDBM*verifycancel.label:  	CANCEL
+XMDBM*verifyshell.title: 	VERIFY
+XMDBM*verifydialog.borderWidth:  3
+XMDBM*verifydialog.verifyok.borderWidth: 4
+XMDBM*verifydialog.verifycancel.borderWidth: 2
+! do not translate the next line
+XMDBM*verifydialog.label.resizeable: 	True
+
+XMDBM*delentrychoiceslabel.label:  	Entries:
+XMDBM*delentrychoiceslabel.borderWidth:  0
+XMDBM*delentrychoices.longest: 		250
+XMDBM*delentrychoices.numberStrings: 	6  
+XMDBM*delentrychoices.defaultColumns: 	1
+
+XMDBM*addkeyentrieslabel.label:  	Entries:
+XMDBM*addkeyentrieslabel.borderWidth:  	0
+XMDBM*addkeyentries.longest: 		250
+XMDBM*addkeyentries.numberStrings: 	6  
+XMDBM*addkeyentries.defaultColumns: 	1
+
+XMDBM*modifychoiceslabel.label:  	Entries:
+XMDBM*modifychoiceslabel.borderWidth:  	0
+XMDBM*modifychoices.longest: 		250
+XMDBM*modifychoices.numberStrings: 	6
+! **NOTE** numberStrings should be the same as in xmdbm.h
+XMDBM*modifychoices.defaultColumns: 	1
+
+XMDBM*speechparts.defaultColumns: 	1
+XMDBM*subspeechshell.borderWidth: 	5
+XMDBM*subspeechshell.title: 
+
+XMDBM*dbfileshell.title: 	DB Filename
+XMDBM*dbfiledialog.label:   	Database: 
+XMDBM*dbfiledialog.value:  
+
+XMDBM*logfileshell.title: 	Log Filename
+XMDBM*logfiledialog.label:   	Log file: 
+XMDBM*logfiledialog.value:  
+
+
+

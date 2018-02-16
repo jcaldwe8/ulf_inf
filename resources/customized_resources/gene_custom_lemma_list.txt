@@ -1,0 +1,18 @@
+; Additional verbs from Stratos' impl-list (corrected version from Feb 8) that
+; was not included in e_lemma.txt by Yasumasa Someya.
+; ============================================================================
+asseverate -> asseverates,asseverating,asseverated
+disenchant -> disenchants,disenchanting,disenchanted
+dumbfound -> dumbfounds,dumbfounding,dumbfounded
+excoriate -> excoriates,excoriating,excoriated
+execrate -> execrates,execrating,execrated
+flabbergast -> flabbergasts,flabbergasting,flabbergasted
+interdict -> interdicts,interdicting,interdicted
+labor -> labors,laboring,labored
+make sure -> makes sure,making sure,made sure
+mindboggle -> mindboggles,mindboggling,mindboggled
+perplex -> perplexes,perplexing,perplexed
+prevail -> prevails,prevailing,prevailed
+saction -> sactions,sactioning,sactioned
+turn out -> turns out,turning out,turned out
+vituperate -> vituperates,vituperating,vituperated

@@ -1,0 +1,86 @@
+!
+! Copyright 1992 The University of Pennsylvania
+!
+! Permission to use, copy, modify, and distribute this software and its
+! documentation for any purpose and without fee is hereby granted, provided
+! that the above copyright notice appear in all copies and that both that
+! copyright notice and this permission notice appear in supporting 
+! documentation, and that the name of U. of Pennsylvania not be used in 
+! advertising or publicity pertaining to distribution of the software without 
+! specific, written prior permission.  U. of Pennsylvania makes no 
+! representations about the suitability of this software for any purpose.  
+! It is provided "as is" without express or implied warranty.
+!
+! THE UNIVERSITY OF PENNSYLVANIA DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS 
+! SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, 
+! IN NO EVENT SHALL THE UNIVERSITY OF PENNSYLVANIA BE LIABLE FOR ANY SPECIAL, 
+! INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+! LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+! OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+! PERFORMANCE OF THIS SOFTWARE.
+!
+!
+
+! Name of program
+appname.title:				XMDB Maintenance
+
+! File menu 
+appfilemenu.choosedatabase:		Choose Database
+appfilemenu.chooselogfile:		Choose Log File
+appfilemenu.save:			Save
+appfilemenu.quit:			Quit
+
+! Delete menu
+appdeletemenu.deletekey:		Delete Key
+appdeletemenu.deleteentry:		Delete Entry
+
+! Mode labels
+appmode.lookup:		** Look-up **
+appmode.modify:		** Modify **
+appmode.add:		** Add **
+appmode.deletekey:	** Delete Key **
+appmode.deleteentry:	** Delete Entry **
+
+! Error messages for XMDBM
+apperror.dbnotspecified: 	ERROR: Database file not specified
+apperror.dbcantcreate:		ERROR:  cannot create database file: %s
+apperror.dbcantopen:		ERROR -  Cannot open database file: %s
+apperror.logcantopen:		ERROR -  Cannot open log file: %s
+apperror.logcantwrite:		ERROR: error writing to log file
+apperror.nologflag:		ERROR: Program started with -nolog flag
+apperror.nochanges:		No changes to be saved
+apperror.readonly:		XMDBM is in read-only mode
+apperror.keynotfoundw:		ERROR - Key not found: %s
+apperror.keynotfoundwo:		ERROR -  Key not found
+apperror.keynotdeleted:		ERROR -  Key not deleted
+apperror.keychanged:		CAUTION: Key has changed
+apperror.cantencodeentry:	ERROR - cannot encode entry
+apperror.entrynotdeleted:	ERROR - entry not deleted
+apperror.entrynotadded:		ERROR - key/entry not added
+apperror.entrynotchosen:	ERROR: must choose an entry to modify
+apperror.entrynotmodified:	ERROR - entry not modified
+apperror.rootmissing:		ERROR: Missing root
+apperror.tryexceedmaxentries:	ERROR: Attempt to exceed maximum number of entries
+apperror.exceedsmaxentries:	Number of entries greater than max allowed
+
+! Verify messages for XMDBM
+appverify.modify:		Replace entry with %s %s?
+appverify.newentry:		The new entry is: 
+appverify.deletekey:		Delete the key and all associated entries?
+appverify.deletewarning:	Warning:  deleting this entry will delete the key as well
+appverify.deleteentry:		Delete this entry? 
+appverify.losechanges:		File has been modified.  LOSE CHANGES?
+appverify.createnewdb:		File doesn't exist.  Create new file?
+appverify.alreadymodified:	File has been modified externally.  Save changes anyway?
+
+! Strings for use in the history
+apphistory.lookup:		Key: %s\nEntries: 
+apphistory.keynotfound:		Key not found: %s
+apphistory.modify:		Entry: %s successfully modified to\n       %s in key: %s\n\n
+apphistory.deletekey:		Key: %s and all entries successfully deleted\n\n
+apphistory.deleteentry:		Entry %s successfully deleted from key: %s\n\n
+apphistory.addentry:		Key: %s   Entry: %s successfully added.\n\n
+apphistory.dbsaved:		Database file successfully saved.\n\n
+
+! Strings specific to the log file
+applog.userinfo:		User: %s	%s

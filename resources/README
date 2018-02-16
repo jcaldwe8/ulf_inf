@@ -1,0 +1,24 @@
+Gene Kim 2/15/2018
+
+Language processing resources for the ULF inference project. 
+At this point all the resources are files contains lexicons for particular
+phenomena or mappings between word forms.  This may change in the future to
+include proper programming libraries.  
+
+The top-level scripts are used to process the original resources into the form
+that I'm interested in, whether that be the file formatting or simplifying the
+resource to only contain information that I care about.  All python scripts
+intended for external use as modules are contained in subdirectories for the
+files contained within. 
+
+Top subdirectories are mostly original resources (perhaps with an additional
+level to add a script without modification of the resource folder).  The
+directory named 'customized_resources' contain resources that were modified
+from the original form by us to fix errors, add missing information, or to
+make it compatible with use with other resources.
+
+TODO: if we add other types of resources (other than lemma transformations and
+      lemma lists) we should make top-level subdirectories named according to
+      purpose and have the original and customized resources within those
+      folders.
+

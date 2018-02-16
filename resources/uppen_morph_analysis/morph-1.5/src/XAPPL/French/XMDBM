@@ -1,0 +1,67 @@
+XMDBM.title:  			XMDB Maintenance
+XMDBM*filebutton.label:	   	Fichier
+XMDBM*lookupbutton.label:  	Chercher
+XMDBM*modifybutton.label:  	Changer
+XMDBM*addbutton.label:	    	Ajouter
+XMDBM*deletebutton.label:   	Effacer
+XMDBM*dummybutton.label:    	Dummy
+XMDBM*clearbutton.label:    	Effacer l'ecran
+XMDBM*donebutton.label:	    	Fin
+
+XMDBM*modelabel.width: 		550
+XMDBM*modelabel.borderWidth: 	0
+XMDBM*modelabel.justify: 	center
+
+XMDBM*historytext.height: 	450
+XMDBM*historytext.width: 	550
+XMDBM*historytext*scrollVertical: always
+
+XMDBM*errormsgshell.borderWidth: 3
+XMDBM*errormsgshell.title: 	ERREUR
+XMDBM*errormsgok.label:   	OK
+XMDBM*errormsgdialog.label: 	Erreur non-identifiee
+XMDBM*keydialog.label:    	Mot: 
+XMDBM*keydialog.textWidth:    	375
+XMDBM*keydialog.borderWidth: 	0
+XMDBM*rootdialog.label:    	Racine: 
+XMDBM*rootdialog.textWidth:    	355
+XMDBM*rootdialog.borderWidth: 	0
+
+XMDBM*verifyok.label:   		OK
+XMDBM*verifycancel.label:  	ANNULER
+XMDBM*verifyshell.title: 	VERIFIER
+XMDBM*verifydialog.borderWidth:  3
+XMDBM*verifydialog.label.resizeable: 	True
+
+XMDBM*delentrychoiceslabel.label:  	Entrees:
+XMDBM*delentrychoiceslabel.borderWidth:  0
+XMDBM*delentrychoices.longest: 		345
+XMDBM*delentrychoices.numberStrings: 	6  
+XMDBM*delentrychoices.defaultColumns: 	1
+
+XMDBM*addkeyentrieslabel.label:  	Entrees:
+XMDBM*addkeyentrieslabel.borderWidth:  	0
+XMDBM*addkeyentries.longest: 		345
+XMDBM*addkeyentries.numberStrings: 	6  
+XMDBM*addkeyentries.defaultColumns: 	1
+
+XMDBM*modifychoiceslabel.label:  	Entrees:
+XMDBM*modifychoiceslabel.borderWidth:  	0
+XMDBM*modifychoices.longest: 		345
+XMDBM*modifychoices.numberStrings: 	6  
+XMDBM*modifychoices.defaultColumns: 	1
+
+XMDBM*speechparts.defaultColumns: 	1
+XMDBM*subspeechshell.borderWidth: 	5
+XMDBM*subspeechshell.title: 
+
+XMDBM*dbfileshell.title: 	Fichier DB
+XMDBM*dbfiledialog.label:   	Base de donnees:
+XMDBM*dbfiledialog.value:  
+
+XMDBM*logfileshell.title: 	Nom du fichier log
+XMDBM*logfiledialog.label:   	Fichier Log:
+XMDBM*logfiledialog.value:  
+
+
+

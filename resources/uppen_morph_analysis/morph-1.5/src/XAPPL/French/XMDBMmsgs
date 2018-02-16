@@ -1,0 +1,73 @@
+! File menu 
+appfilemenu.choosedatabase:		Chosir la base de donnees
+appfilemenu.chooselogfile:		Chosir le fichier LOG
+appfilemenu.save:			Sauver
+appfilemenu.quit:			Quitter
+
+! Delete menu
+appdeletemenu.deletekey:		Effacer le mot
+appdeletemenu.deleteentry:		Effacer l'entree
+
+! Mode labels
+appmode.lookup:		** Recherche **
+appmode.modify:		** Changer **
+appmode.add:		** Ajouter **
+appmode.deletekey:	** Effacer le Mot **
+appmode.deleteentry:	** Effacer l'Entree **
+
+! Error messages for XMDBM
+apperror.dbnotspecified: 	ERREUR: Fichier de base de donnees non specifie
+apperror.dbcantcreate:		ERREUR: Ne peut creer la base de donne: %s
+apperror.dbcantopen:		ERREUR - Ouverture du fichier %s impossible
+apperror.logcantopen:		ERREUR -  Ouverture du log fichier %s impossible
+apperror.logcantwrite:		ERREUR: Ecriture du fichier log impossible
+apperror.nologflag:		ERREUR: option -nolog necessaire au lancement
+apperror.nochanges:		Pas de changements a sauver
+apperror.readonly:		XMDBM est en mode lecture
+apperror.keynotfoundw:		ERREUR -  Mot inconnu: %s
+apperror.keynotfoundwo:		ERREUR -  Mot inconnu
+apperror.keynotdeleted:		ERREUR -  Le mot n'as pas ete efface
+apperror.keychanged:		CAUTION: Le mot a ete change
+apperror.cantencodeentry:	ERREUR - Codage impossible
+apperror.entrynotdeleted:	ERREUR - L'entree n'a pas ete efface
+apperror.entrynotadded:		ERREUR - Le mot/entree n'a pas ete ajoute
+apperror.entrynotchosen:	ERREUR: Vous devez choisir une entree
+apperror.entrynotmodified:	ERREUR - L'entree n'a pas ete modifiee
+apperror.rootmissing:		ERREUR: Racine manquante
+apperror.tryexceedmaxentries:	ERREUR: Nombre d'entrees maximal depasse
+apperror.exceedsmaxentries:	Nombre d'entrees maximal depasse
+
+! Verify messages for XMDBM
+appverify.modify:		Replacer entree avec %s %s?
+appverify.newentry:		La nouvelle entree est:
+appverify.deletekey:		Effacer le mot et les entrees dependantes?
+appverify.deletewarning:	Attention: effacer cette entre efface aussi le mot
+appverify.deleteentry:		Effacer cette entree? 
+appverify.losechanges:		Le fichier a ete modifie.  Ne pas enregistrer le changements?
+appverify.createnewdb:		Fichier inexistant.  Creer un nouveau fichier?
+appverify.alreadymodified:      Le fichier sur disque a change'.  Sauvegarde de la nouvelle version?
+
+! Strings for use in the history
+apphistory.lookup:		Mot: %s\nEntrees: 
+apphistory.keynotfound:		Mot inconnu: %s
+apphistory.modify:		Entree: %s changee a\n       %s dans le mot: %s\n\n
+apphistory.deletekey:		Mot: %s et les entrees effaces\n\n
+apphistory.deleteentry:		Entree %s effacee du mot: %s\n\n
+apphistory.addentry:		Mot %s et l'entree %s ajoutee: %s\n\n
+apphistory.dbsaved:		Fichier de donnees sauver avec succes.\n\n
+
+!Strings specfic to the log file
+applog.userinfo:		Utilisateur: %s\t%s
+
+
+
+
+
+
+
+
+
+
+
+
+
