@@ -1,0 +1,57 @@
+Gene Kim 2/8/2018
+
+The Grammatical Ingredients of Counterfactuality
+Sabine Iatridou
+
+See some of the notes in the grep patterns for counterfactuals.
+
+Morphological and aspectual factors influencing counterfactuals are shared
+between wish and conditionals.  The factors in the conditional consequent are
+lexicalized in wish as evidenced by the analysis of Greek.  In Greek 'wish' is
+said by adding morphological and aspectual markers to the verb translating to
+'want'.  Those markers correspond to the consequent in conditionals that lead
+to counterfactuality.  
+
+Also, these markers correspond to past tense thus leading to a 'fake past' phenomenon.
+The past tense seems to be overloaded with counterfactuality:
+  "I wish I was tall" (past tense) -> "I am not tall" (present tense)
+  "I wish I had owned a car" (pluperfect) -> "I did not own a car" (past tense)
+
+Iatridou argues this is because the "past tense morpheme" has the following meaning schema:
+  T(x) excludes C(x)
+where T(x) is "Topic(x)" and C(x) is "the x that for all we know is the x of the speaker"
+
+Thus where x is times:
+  T(x): the time interval we are talking about (i.e. topic time)
+  C(x): the time interval that for all we know is the time of the speaker (i.e. utterance time)
+So T(x) exludes C(x) -> topic time excludes utterance time
+Given the treatment of future as a modal operation this means that the topic
+time is before the utterance time (i.e. past tense)
+
+Where x is worlds:
+  T(x): the worlds we are talking about (i.e. topic worlds)
+  C(x): the worlds that for all we know is the worlds of the speaker (i.e. actual world)
+So T(x) excludes C(x) -> topic worlds exclude the actual world
+Thus the topic worlds can be counterfactual to the actual world (in fact at
+least one thing must be counterfactual, so some relevant aspect of it given the
+context and assertion).
+
+Also, telics and activities lead to the "future less livid" (FLV) interpretation.  This
+is not counterfactual, but the it is unlikely to happen. Statives lead to counterfactuals.
+Stage-level statives can be either depending on the context.
+
+Telic (FLV):
+  If he took the syrup, he would get better
+  If you gave him that book, he would read it
+  If he read this book, he would pass his exams
+Individual-level Statives (CF):
+  If I knew this were chocolate, I would eat it
+  If I were/was tall, I would be able to reach the ceiling
+  If Peter smoked/were a smoker, I would not like him
+Stage-level Statives (FLV or CF):
+  If he were drunk at meetings, the boss would be angry (FLV)
+  If he were drunk, he would get louder (CF)
+
+-- can we do a similar analysis for gerunds + perfect aspect + progressives + copula
+   to pose a theory of why they have shared surface structures?
+
