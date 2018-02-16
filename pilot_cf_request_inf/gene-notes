@@ -1,0 +1,39 @@
+Summary:
+
+*General sample*
+65 formulas
+5 good inferences from 3 formulas
+0 bad inferences
+
+*Selective sample*
+71 formulas
+45 good inferences from 39 formulas
+8 context dependently correcy from 4 formulas
+13 incorrect from 10
+
+Errors due to sentences that did not appear in the small ~10 sentence 
+development set we used.
+  action-based counterfactuals: "If I were to V"
+  non-request generic questions: "Can you ride horses?"
+
+The inferences tend to fail on:
+  If x.pro were to V
+
+We probably want to infer:
+  x.pro doesn't plan to V
+  "If I were to travel to Europe"
+  x.pro doesn't expect to V
+  "If I were to win the lottery"
+or even in some cases [maybe this is just doesn't expect, with more semantic information regarding impossibility]
+  x.pro will not V
+  "If I were to be born again"
+
+
+Also on questions that aren't really requests:
+1. Generic 'you' asking whether an action/event is possible
+  "Can you tell wheat and barley apart?"
+2. Question about ability without much of request-like meaning
+  "Can you ride horses?"
+  "Can you do bookkeeping?"
+
+

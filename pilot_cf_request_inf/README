@@ -1,0 +1,87 @@
+SEE ALSO ./ttt-readme
+====================================================================
+Nov 8/17 THE "dribble" FILE CURRENTLY CONTAINS DEMO OUTPUT
+====================================================================
+Nov 4/17
+
+THIS DIRECTORY IS FOR TTT-BASED CODE TO MAKE FORWARD INFERENCES FROM
+ULFSs. THE RULES ARE AIMED AT SOME OF THE ULFs I ANNOTATED AT
+http://www.cs.rochester.edu/~gkim21/el-annotator/login.php,
+SENTENCES 914630-914711. I DRAFT THE KINDS OF INFERENCE RULES THAT
+SEEM POSSIBLE IN ../ttt-inference-rule-drafts, BASED ON THE INITIAL 
+SEGMENT OF THE ABOVE SENTENCE RANGE, COPIED INTO
+../inference-possibilities-from-ulf-annotations.
+====================================================================
+
+To use the code under acl, do
+(load "init.lisp")
+
+The main functions for direct use are in
+ "inference-functions.lisp".
+
+"inference-rules-and-helpers.lisp" contains the ttt rules for shallow
+matching of relevant subexpressions of a ulf, and helper functions
+(e.g., predicates ending in '?' and functions ending in '!', usable
+in ttt patterns). Deeper searches for a match are done by functions 
+in "inference-functions.lisp". Using deeper search directly via ttt
+operators like ^* and ^@ proved troublesome in some cases.
+
+So in particular, you can apply a single rule to a ulf like this, for example:
+  (infer-falsehood-from-positive-counterfactual-wish ulf)
+(where 'ulf' is a formula, not a name of a formula).
+
+You can also apply multiple rules to multiple ulfs. E.g., suppose we've set 
+  (setq *req* '((pres would.aux-v) you.pro please.adv-s speak_up.v))
+  (setq *req2* '(((pres can.aux-v) somebody.pro (help.v me.pro)) ?))
+
+Then you could apply two rules like this:
+
+  (results-from-applying-rules 
+    '(infer-want-from-request infer-expect-from-request) 
+    (list *req* *req2*) nil)
+
+This returns a list of form
+  ((ulf result ... result) ... (ulf result ... result)),
+i.e., each furmula with its inferences (if any).  Note that the ulfs are 
+being supplied as values, not names, to 'results-from-applying-rules. 
+(The code could be changed so that ulfs are supplied by name.) The third, 
+nil argument says not to discard empty results. That means we can get
+elements like (ulf) on the results list, i.e., the input ulf, with no
+results. Such elements are discarded if the third argument of
+'results-from-applying-rules' is T (or another non-nil value).
+
+You can also apply all the currently coded rules in "inference-functions.lisp"
+at once, on a list of ulfs, in this manner for example:
+
+  (results-from-applying-rules *rule-names* (list *wish* *wish2*) {nil,T})
+
+The rule names are stored in *rule-names* at the beginning of the file
+"inference-functions.lisp". Loading "test-ulfs.lisp" produces a list
+of test ulfs named *test-ulfs*.
+
+The above is not an efficient way to try rules on ulfs, but it'll do for
+initial trials.
+
+The "dribble" file currently contains a demo output
+
+                 -----------
+
+Of secondary interest:
+
+"tests-preliminary.lisp" contains experimental inference examples used in
+the course of development.
+
+"tests-gene.lisp" contains an initial attempt to process Gene's examples,
+not entirely successful.
+
+"ttt-preds-and-functions.lisp" is a carry-over from caption processing,
+and might contain code usable in further development.
+
+"ttt-repair-and-canonicalization-rules.lisp~" also are a carry-over, not
+currently (Nov 7/17) being used.
+
+"inference.lisp~" is an early partial version of the inference rules and
+helpers (still using ^*)
+
+"ttt.lisp" is for indirect loading of ttt (but it's loaded in "init.lisp")
+

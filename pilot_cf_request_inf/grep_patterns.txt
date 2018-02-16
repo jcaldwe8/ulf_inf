@@ -1,0 +1,54 @@
+Here are the selection methods I used.  Basically I wrote up a simple grep
+function for each phenomenon that covers a variable, but not representative,
+subset.
+
+
+Requests:
+
+Starts with "Can" or "Could" and ends with a question mark.
+
+  grep -P "(Can|Could) .*\?"
+
+Hence, we got a bunch of simple questions that start the same way.  In
+hindsight I should have included "Would", "Will", etc or even more interesting
+patterns including negations, "need" somewhere in the sentence.  Actually,
+that's why I named the file "tatoeba-simple-requests" because I was planning to
+get more complex patterns, but I forgot to go back to that once I started
+annotating...
+
+
+Counterfactual If conditionals
+
+  grep -P "If .*(was|were|had).*\."
+
+Starts with "If", contains "was", "were", "had" somewhere in the sentence and
+ends in a period.  I added the "was", "were", "had" condition because we just
+got a too many simple conditionals otherwise.  I could have gotten a list of
+past-participles to make a more complex pattern that covered cases like "If I
+ran I would be healthy", but I figured we're trying to show inference capacity,
+not necessarily representative coverage.  I think the pattern still left enough
+variability in the sentences for interesting inferences.  We still got some
+simple conditionals when "was"/"were"/"had" appeared in the consequent.
+
+
+Inverted If
+
+Starts with "Were", "Had"
+
+  grep -P "(Were|Had) .*"
+
+
+Wish:
+
+"wish" occurs somewhere in the sentence
+
+  grep -P ".*(wish|Wish).*"
+
+
+I then just annotated the first 12-14 sentences in each of those sets, skipping
+ones where we haven't covered how to do the annotations.  Most of the sentences
+that I skipped used it-extraposition, which we haven't completely zoned in on
+how to annotate.  It-extraposition is really common in negated conditionals:
+"If it were not for your advice...", "If it had not been for your raincoat,
+...", "If it were not for your family, ...", etc.
+ 

@@ -1,0 +1,506 @@
+dribbling to file "experiment-11-9-17.dribble"
+ 
+NIL
+[1] CL-USER(4): (load "experiment-11-9-17.lisp")
+; Loading
+;    /home/vax8/u60/gkim21/research/elcc/annotation_tool/documents/pilot-annotations-2017/request-counterfactual-inference/code/experiment-11-9-17.lisp
+;   Loading
+;      /home/vax8/u60/gkim21/research/elcc/annotation_tool/documents/pilot-annotations-2017/request-counterfactual-inference/code/init.lisp
+;     Loading /p/nl/tools/ttt/src/load.lisp
+; Loading system definition from /home/vax4/p30/nl/tools/ttt/src/ttt.asd into #<The ASDF0 package>
+;       Loading /home/vax4/p30/nl/tools/ttt/src/ttt.asd
+; Registering #<SYSTEM "ttt">
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/package.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/expressions.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/keys.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/bindings.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/trees.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/patterns.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/unrestricted-seq.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/restricted-seq.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/fpseq-gen.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/descendant.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/vertical.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/operators/literal.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/sticky.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/predicates.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/template-construction.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/transductions.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/tests.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/util.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/process-tb.fasl
+;       Fast loading /home/vax4/p30/nl/tools/ttt/src/search-tb.fasl
+;     Loading
+;        /home/vax8/u60/gkim21/research/elcc/annotation_tool/documents/pilot-annotations-2017/request-counterfactual-inference/code/inference-rules-and-helpers.lisp
+;     Loading
+;        /home/vax8/u60/gkim21/research/elcc/annotation_tool/documents/pilot-annotations-2017/request-counterfactual-inference/code/inference-functions.lisp
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+Output from selectively sampled formulas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(((((ADV-S
+     (IF.PS
+      (ANYONE.PRO (WAS-CF.V (TO (ASK.V (WHQ (SUB WHAT.PRO ((THE.D (POINT-OF.N (THE.D STORY.N))) ((PRES BE.V) (= [*H])))))))))))
+    |,|
+    (I.PRO REALLY.ADV-S
+     ((PRES DO.AUX-S) NOT.ADV-S (KNOW.V (WHQ (SUB WHAT.PRO ((THE.D (POINT-OF.N (THE.D STORY.N))) ((PRES BE.V) (= [*H])))))))))
+   \.)
+  (ANYONE.PRO
+   ((PRES DO.AUX-S) NOT.ADV-S
+    (WAS.V (TO (ASK.V (WHQ (SUB WHAT.PRO ((THE.D (POINT-OF.N (THE.D STORY.N))) ((PRES BE.V) (= [*H])))))))))))
+ [Hmmm, not quite right.  We want something like "No one is asking ..."]
+ 
+ ((((ADV-S
+     (IF.PS
+      (YOU.PRO
+       ((LEND.V SOMEONE.PRO ($ CURRENCY |us_dollar| 20)) AND-THEN.C (NEVER.ADV-S ((SEE.V (THAT.D PERSON.N)) AGAIN.ADV-A))))))
+    |,| (IT.PRO ((PAST BE.V) PROBABLY.ADV-S WORTH_IT.A)))
+   \.))
+ [This isn't counterfactual]
+
+ ((((ADV-S (IF.PS (WE.PRO (KNOW-CF.V (THE.D (SUB WHAT.REL (WE.PRO (PROG (DO.V [*H]))))))))) |,|
+    (IT.PRO ((PRES WOULD.AUX-S) NOT.ADV-S ((PASV CALL.V) (K RESEARCH.N)))))
+   \.)
+  (WE.PRO ((PRES DO.AUX-S) NOT.ADV-S (KNOW.V (THE.D (SUB WHAT.REL (WE.PRO (PROG (DO.V [*H])))))))))
+ [Good!] 
+
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V (IN.P (YOUR.D SITUATION.N)))))) |,|
+    (I.PRO ((PRES WOULD.AUX-S) (DO.V (THE.D (SAME.A THING.N))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (IN.P (YOUR.D SITUATION.N)))))
+ [Good!]
+
+
+ ((((ADV-S (IF.PS (ONLY.ADV-S (YOU.PRO ((PERF-CF (TELL.V ME.PRO (THE.D (WHOLE.A STORY.N)))) (ADV-E (AT.P (THAT.D TIME.N))))))))
+    {REF1}.S)
+   [!]))
+ [Missed b/c of incorrect adv-e scoping.]
+
+ ((((ADV-S (IF.PS (THERE.PRO (WERE-CF.V (NO.D AIR.N))))) |,|
+    ((K MAN.N) ((PRES COULD.AUX-S) NOT.ADV-S (LIVE.V EVEN.ADV-A (TEN.D (PLUR MINUTE.N))))))
+   \.)
+  (THERE.PRO ((PRES BE.V) NOT.ADV-S (NO.D AIR.N))))
+ [Good, but not the way we'd want to say it.]
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V RICH.A)))) |,| (I.PRO ((PRES WOULD.AUX-S) (DO.V SO.ADV-A)))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+ [Good!]
+
+
+ ((((ADV-S (AS.PS (IT.PRO (PRES BE.V)))) |,| (I.PRO ((PRES CAN.AUX-V) (DO.V NOTHING.PRO)))) \.))
+ [This isn't counterfactual]
+
+ ((((ADV-S (IF.PRO ((K (PLUR WISH.N)) (WERE-CF.V (K (PLUR HORSE.N)))))) |,|
+    ((K (PLUR BEGGAR.N)) ((PRES MIGHT.AUX-S) (RIDE.V (K (PLUR HORSE.N))))))
+   \.)
+  ((K (PLUR WISH.N)) ((PRES BE.V) NOT.ADV-S (K (PLUR HORSE.N)))))
+ [Good!]
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V (TO (GO.V ABROAD.ADV-A)))))) |,|
+    (I.PRO ((PRES WOULD.AUX-S) (GO.V (ADV-A (BY.P (K BOAT.N)))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (TO (GO.V ABROAD.ADV-A)))))
+ [Not quite right...]
+
+ ((((ADV-S (IF.PS (ONLY.ADV-S (WE.PRO (HAD-CF.V (A.D GARDEN.N)))))) {REF1}.S) [!])
+  (WE.PRO ((PRES DO.AUX-S) NOT.ADV-S (HAVE.V (A.D GARDEN.N)))))
+ [Good!]
+
+ ((((ADV-S (IF.PS (YOU.PRO (WERE-CF.V (TO (WIN.V (THE-GEN.D LOTTERY.N))))))) |,|
+    (SUB WHAT.PRO ((PRES WOULD.AUX-S) YOU.PRO ((BUY.V [*H]) (ADV-A (WITH.P (THE.D MONEY.N)))))))
+   [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO ((BUY.V [*H]) (ADV-A (WITH.P (THE.D MONEY.N))))))))
+  [Not good, this isn't a request.]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO ((BUY.V [*H]) (ADV-A (WITH.P (THE.D MONEY.N))))))))
+  [Not good, this isn't a request.]]
+  (YOU.PRO ((PRES BE.V) NOT.ADV-S (TO (WIN.V (THE-GEN.D LOTTERY.N))))))
+  [Not quite right...]
+
+ ((((ADV-S (IF.PS ((THE.D SUN.N) (WERE-CF.V (TO (RISE.V (ADV-A (IN.P (THE.D WEST.N))))))))) |,|
+    (I.PRO ((PRES WOULD.AUX-S) NOT.ADV-S (CHANGE.V (MY.D MIND.N)))))
+   \.)
+  ((THE.D SUN.N) ((PRES BE.V) NOT.ADV-S (TO (RISE.V (ADV-A (IN.P (THE.D WEST.N))))))))
+ [Not quite right...]
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V (TO ((PASV BEAR.V) AGAIN.ADV-S)))))) |,| (I.PRO ((PRES WOULD.AUX-S) (BE.V MUSICIAN.N))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (TO ((PASV BEAR.V) AGAIN.ADV-S)))))
+ [Sure]
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V (TO (TELL.V YOU.PRO (THE.D TRUTH.N))))))) |,|
+    (YOU.PRO ((PRES WOULD.AUX-S) (BE.V SURPRISED.A))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (TO (TELL.V YOU.PRO (THE.D TRUTH.N))))))
+ [Not quite]
+
+ ((((ADV-S (PERF-CF HE.PRO (KNOW.V (THE.D (WHAT.REL ((PAST BE.V) (ABOUT_TO.ADV-S HAPPEN.V))))))) |,|
+    (HE.PRO ((PRES WOULD.AUX-S) (PERF (CHANGE.V (HIS.D PLAN.N))))))
+   \.)
+  (HE.PRO ((PAST DO.AUX-S) NOT.ADV-S (KNOW.V (THE.D (WHAT.REL ((PAST BE.V) (ABOUT_TO.ADV-S HAPPEN.V))))))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF THEY.PRO (KNOW.V (THE.D (WHAT.REL ((PAST BE.V) (ABOUT_TO.ADV-S HAPPEN.V))))))) |,|
+    (THEY.PRO ((PRES WOULD.AUX-S) (PERF (CHANGE.V (THEIR.D (PLUR PLAN.N)))))))
+   \.)
+  (THEY.PRO ((PAST DO.AUX-S) NOT.ADV-S (KNOW.V (THE.D (WHAT.REL ((PAST BE.V) (ABOUT_TO.ADV-S HAPPEN.V))))))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF HE.PRO (TAKE.V (((HIS.D DOCTOR.N) 'S) ADVICE.N)))) |,|
+    (HE.PRO ((PRES MIGHT.AUX-S) NOT.ADV-S (PERF DIE.V))))
+   \.)
+  (HE.PRO ((PAST DO.AUX-S) NOT.ADV-S (TAKE.V (((HIS.D DOCTOR.N) 'S) ADVICE.N)))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF I.PRO (ARRIVE.V EARLIER.ADV-E))) |,| (I.PRO ((PRES COULD.AUX-S) (PERF (SEE.V |Kelly|))))) \.)
+  (I.PRO ((PAST DO.AUX-S) NOT.ADV-S (ARRIVE.V EARLIER.ADV-E))))
+ [Good -- but seems trivial...]
+
+ ((((ADV-S (WERE-CF.V I.PRO (= YOU.PRO))) |,| (I.PRO ((PRES WOULD.AUX-S) (IGNORE.V IT.PRO)))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (= YOU.PRO))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO (= YOU.PRO))) |,| (I.PRO ((PRES WOULD.AUX-S) (FOLLOW.V (HIS.D ADVICE.N))))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (= YOU.PRO))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF HE.PRO (KNOW.V (THE.D (PLUR FACT.N))))) |,|
+    ((THE.D ACCIDENT.N) ((PRES MIGHT.AUX-S) (PERF (PASV AVOID.V)))))
+   \.)
+  (HE.PRO ((PAST DO.AUX-S) NOT.ADV-S (KNOW.V (THE.D (PLUR FACT.N))))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF HE.PRO (KNOW.V (THE.D TRUTH.N)))) |,| (HE.PRO ((PRES WOULD.AUX-S) (PERF (TELL.V ME.PRO))))) \.)
+  (HE.PRO ((PAST DO.AUX-S) NOT.ADV-S (KNOW.V (THE.D TRUTH.N)))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO BIRD.N)) |,| (I.PRO ((PRES WOULD.AUX-S) (FLY.V (ADV-A (TO.P YOU.PRO)))))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S BIRD.N)))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO (IN.P (YOUR.D POSITION.N)))) |,| (I.PRO ((PRES WOULD.AUX-S) (OPPOSE.V (THAT.D PLAN.N))))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (IN.P (YOUR.D POSITION.N)))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF I.PRO (REALIZE.V (THE.D (SUB WHAT.REL (YOU.PRO ((PAST INTEND.V) [*H]))))))) |,|
+    (I.PRO ((PRES WOULD.AUX-S) NOT.ADV-S (PERF AGREE.V))))
+   \.)
+  (I.PRO ((PAST DO.AUX-S) NOT.ADV-S (REALIZE.V (THE.D (SUB WHAT.REL (YOU.PRO ((PAST INTEND.V) [*H]))))))))
+ [Good!]
+
+ ((((ADV-S (PERF-CF I.PRO (KNOW.V (ADV-A (ABOUT.P IT.PRO))))) |,| (I.PRO ((PRES WOULD.AUX-S) (PERF (TELL.V YOU.PRO))))) \.)
+  (I.PRO ((PAST DO.AUX-S) NOT.ADV-S (KNOW.V (ADV-A (ABOUT.P IT.PRO))))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO (IN.P (YOUR.D PLACE.N)))) (I.PRO ((PRES WOULD.AUX-S) (DO.V (THE.D (SAME.A THING.N)))))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (IN.P (YOUR.D PLACE.N)))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO (IN.PRO (YOUR.D POSITION.N)))) |,| (I.PRO (((PRES WOULD.AUX-S) (DO.V IT.PRO)) AT_ONCE.ADV-S))) \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (IN.PRO (YOUR.D POSITION.N)))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V I.PRO (FREE.A (ADV-A (FROM.P (K WORK.N)))))) |,|
+    (I.PRO ((PRES COULD.AUX-V) (READ.V (THESE.D (PLUR BOOK.N))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S (FREE.A (ADV-A (FROM.P (K WORK.N)))))))
+ [Good!]
+
+ ((((ADV-S (WERE-CF.V YOU.PRO (TO (KNOW.V (THE.D FACT.N))))) (YOU.PRO ((PRES WOULD.AUX-S) (BE.V SURPRISED.A)))) \.)
+  (YOU.PRO ((PRES BE.V) NOT.ADV-S (TO (KNOW.V (THE.D FACT.N))))))
+ [Not quite right]
+
+ (((((PRES COULD.AUX-V) YOU.PRO ((CALL.V AGAIN.ADV-A) LATER.ADV-E)) |,| PLEASE.ADV-S) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO ((CALL.V AGAIN.ADV-A) LATER.ADV-E)))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO ((CALL.V AGAIN.ADV-A) LATER.ADV-E))))))
+  [Good!]
+ ((((PRES CAN.AUX-V) YOU.PRO
+    (IMAGINE.V
+     (THE.D
+      (SUB WHAT.REL
+       ((OUR.D (PLUR LIFE.N)) ((PRES WOULD.AUX-S) ((BE.V (LIKE.A WHAT.PRO)) (ADV-E (WITHOUT.P (K ELECTRICITY.N))))))))))
+   [?]) ; Mistake in annotation (it should be can.aux-s)
+  (I.PRO
+   ((PRES WANT.V)
+    (THAT
+     (YOU.PRO
+      (IMAGINE.V
+       (THE.D
+        (SUB WHAT.REL
+         ((OUR.D (PLUR LIFE.N)) ((PRES WOULD.AUX-S) ((BE.V (LIKE.A WHAT.PRO)) (ADV-E (WITHOUT.P (K ELECTRICITY.N)))))))))))))
+  [Not quite right... this isn't really a request]
+  (I.PRO
+   ((PRES EXPECT.V)
+    (THAT
+     (YOU.PRO
+      (IMAGINE.V
+       (THE.D
+        (SUB WHAT.REL
+         ((OUR.D (PLUR LIFE.N)) ((PRES WOULD.AUX-S) ((BE.V (LIKE.A WHAT.PRO)) (ADV-E (WITHOUT.P (K ELECTRICITY.N))))))))))))))
+  [Not quite right... this isn't really a request]
+
+ ((((PRES CAN.AUX-V) I.PRO (STAY.V (ADV-A (AT.P (YOUR.D PLACE.N))))) [?]))
+
+ (((((PRES COULD.AUX-V) YOU.PRO (TURN_ON.V (THE.D LIGHT.N))) PLEASE.ADV-S) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (TURN_ON.V (THE.D LIGHT.N))))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (TURN_ON.V (THE.D LIGHT.N)))))))
+  [Good!]
+
+ (((((PRES COULD.AUX-V) YOU.PRO (DO.V ME.V (A.D FAVOUR.N))) PLEASE.ADV-S) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (DO.V ME.V (A.D FAVOUR.N))))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (DO.V ME.V (A.D FAVOUR.N)))))))
+  [Good!]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (JUSTIFY.V (THE.D (USE-OF.N (K VIOLENCE.N))))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (JUSTIFY.V (THE.D (USE-OF.N (K VIOLENCE.N))))))))
+  [Context-dep]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (JUSTIFY.V (THE.D (USE-OF.N (K VIOLENCE.N)))))))))
+  [Context-dep]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (DO.V (KA BOOKKEEP.V))) [?]) 
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (DO.V (KA BOOKKEEP.V))))))
+  [Context-dep]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (DO.V (KA BOOKKEEP.V)))))))
+  [Context-dep]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (KEEP.V (A.D SECRET.N))) [?]) 
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (KEEP.V (A.D SECRET.N))))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (KEEP.V (A.D SECRET.N)))))))
+  [Good!]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (RIDE.V (A-GEN.D HORSE.N))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (RIDE.V (A-GEN.D HORSE.N))))))
+  [Context-dep]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (RIDE.V (A-GEN.D HORSE.N)))))))
+  [Context-dep]
+
+ ((((PRES CAN.AUX-V) YOU.PRO ((TELL.V (K WHEAT.N)) (ADV-A (FROM.P (K BARLEY.N))))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO ((TELL.V (K WHEAT.N)) (ADV-A (FROM.P (K BARLEY.N))))))))
+  [Not a request]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO ((TELL.V (K WHEAT.N)) (ADV-A (FROM.P (K BARLEY.N)))))))))
+  [Not a request]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (THROW.V (A.D FASTBALL.N))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (THROW.V (A.D FASTBALL.N))))))
+  [Context-dep]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (THROW.V (A.D FASTBALL.N)))))))
+  [Context-dep]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (EAT.V (K (RAW.A (PLUR OYSTER.N))))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (EAT.V (K (RAW.A (PLUR OYSTER.N))))))))
+  [Not a request]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (EAT.V (K (RAW.A (PLUR OYSTER.N)))))))))
+  [Not a request]
+
+ ((((PRES CAN.AUX-V) YOU.PRO (BREAK_AWAY.V (FROM-ARG.P (YOUR.D (PLUR PARENT-RLN.N))))) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (BREAK_AWAY.V (FROM-ARG.P (YOUR.D (PLUR PARENT-RLN.N))))))))
+  [Sure]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (BREAK_AWAY.V (FROM-ARG.P (YOUR.D (PLUR PARENT-RLN.N)))))))))
+  [Sure]
+ ((((I.PRO ((PRES WISH.V) (THT (I.PRO (COULD-CF.AUX-V (CARE.V MORE.ADV-A (ABOUT-ARG.P (MY.D (PLUR GRADE.N))))))))) BUT.CC
+    (IT.PRO
+     ((PRES SEEM.V)
+      (THAT |,|
+       ((ADV-E (AT.P (A.D (CERTAIN.A (N+PREDS POINT.N (OF.N (MY.D LIFE.N))))))) |,|
+        (I.PRO
+         ((PAST DECIDE.V) (THT (THEY.PRO ((PRES WOULD.AUX-S) NOT.ADV-S ((BE.V (SO.ADV-A IMPORTANT.A)) ANYMORE.ADV-E)))))))))))
+   \.)
+  (I.PRO ((PRES CAN.AUX-V) NOT.ADV-S (CARE.V MORE.ADV-A (ABOUT-ARG.P (MY.D (PLUR GRADE.N)))))))
+  [Good!]
+ 
+ (((SUB (WHAT.D (FAMOUS.A (PLUR SONG.N)))
+    (((PRES DO.V) YOU.PRO (WISH.V (THT (YOU.PRO (PERF-CF (COMPOSE.V [*H])))))) |,| AND.CC
+     (WHY.ADV-S ((PRES DO.V) YOU.PRO (WISH.V (THT (YOU.PRO (PERF-CF (COMPOSE.V [*H])))))))))
+   [?])
+  (YOU.PRO ((PAST DO.AUX-S) NOT.ADV-S (COMPOSE.V [*H]))))
+  [Not quite right -- need reference to *h]
+
+ (((I.PRO ((PRES WISH.V) (THT (YOU.PRO (PERF-CF (TELL.V ME.PRO (THE.D TRUTH.N))))))) \.)
+  (YOU.PRO ((PAST DO.AUX-S) NOT.ADV-S (TELL.V ME.PRO (THE.D TRUTH.N)))))
+ [Good!]
+
+ (((YOU.PRO ((PRES WILL.AUX-S) (WISH.V (THT (YOU.PRO (PERF-CF NEVER.ADV-E (SEE.V IT.PRO))))))) \.)
+  (YOU.PRO ((PAST DO.AUX-S) NOT.ADV-S NEVER.ADV-E (SEE.V IT.PRO))) 
+  [Sure, but not the ideal representation]
+  (NEVER.ADV-E ((PAST DO.AUX-S) NOT.ADV-S (SEE.V IT.PRO))))
+  [Sure, but not the ideal representation]
+
+ (((I.PRO ((PRES WISH.V) (THT (YOU.PRO (PERF-CF ((TELL.V ME.PRO (THE.D TRUTH.N)) THEN.ADV-E)))))) \.)
+  (YOU.PRO ((PAST DO.AUX-S) NOT.ADV-S ((TELL.V ME.PRO (THE.D TRUTH.N)) THEN.ADV-E))))
+  [Good!]
+
+ ((((YOUR.D WISH.N) ((PRES WILL.AUX-S) (COME_TRUE.V (ADV-E (IN.P (THE.D (NEAR.A FUTURE.N))))))) \.))
+ ;; No result as expected
+
+ (((I.PRO ((PRES WISH.V) (THT (I.PRO (COULD-CF.AUX-V (LIVE.V (ADV-A (NEAR.P (YOUR.D HOUSE.N))))))))) \.)
+  (I.PRO ((PRES CAN.AUX-V) NOT.ADV-S (LIVE.V (ADV-A (NEAR.P (YOUR.D HOUSE.N)))))))
+  [Good!]
+
+ (((I.PRO ((PRES WISH.V) (THT (I.PRO (COULD-CF.AUX-V (GO.V (ADV-A (TO.P (THE.D PART.N))) (ADV-A (WITH.P YOU.PRO)))))))) \.)
+  ;; Typo, part.n -> party.n
+  (I.PRO ((PRES CAN.AUX-V) NOT.ADV-S (GO.V (ADV-A (TO.P (THE.D PART.N))) (ADV-A (WITH.P YOU.PRO))))))
+  [Good! despite the typo]
+
+ (((I.PRO ((PRES WISH.V) (THT (YOU.PRO (COULD-CF.AUX-V (COME.V (ADV-A (WITH.P US.PRO)))))))) \.)
+  (YOU.PRO ((PRES CAN.AUX-V) NOT.ADV-S (COME.V (ADV-A (WITH.P US.PRO))))))
+  [Good!]
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT
+      (YOU.PRO
+       (COULD-CF.AUX-V
+        (DROP_IN.V (ADV-A (AT.P (MY.D HOUSE.N))) (ADV-A (ON.P (YOUR.D (N+PREDS WAY.N ({TOWARD}.P (K HOME.N))))))))))))
+   \.)
+  (YOU.PRO
+   ((PRES CAN.AUX-V) NOT.ADV-S
+    (DROP_IN.V (ADV-A (AT.P (MY.D HOUSE.N))) (ADV-A (ON.P (YOUR.D (N+PREDS WAY.N ({TOWARD}.P (K HOME.N))))))))))
+  [Good!]
+
+ (((I.PRO ((PRES WISH.V) (THT (YOU.PRO (WERE-CF.V (CLOSE.A (ADV-A (TO.P ME.PRO)))))))) \.)
+  (YOU.PRO ((PRES BE.V) NOT.ADV-S (CLOSE.A (ADV-A (TO.P ME.PRO))))))
+  [Good!]
+
+ (((I.PRO ((PRES WISH.V) (THT (YOU.PRO (PERF-CF NOT.ADV-S (TELL.V (THE.D STORY.N) (TO-ARG.P (MY.D MOTHER-RLN.N)))))))) \.)
+  (NOT.ADV-S ((PAST DO.AUX-S) NOT.ADV-S (TELL.V (THE.D STORY.N) (TO-ARG.P (MY.D MOTHER-RLN.N)))))
+  [Sure, but not the preferred representation]
+  (PERF-CF ((PAST DO.AUX-S) (TELL.V (THE.D STORY.N) (TO-ARG.P (MY.D MOTHER-RLN.N))))))
+  [Error]
+
+ (((I.PRO ((PRES WISH.V) (THT (I.PRO (WERE-CF.V RICH.A))))) \.) 
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+  [Good!]
+
+ (((I.PRO ((PRES WISH.V) (THT ((OUR.D CLASSROOM.N) (WERE-CF.V AIR-CONDITIONED.A))))) \.)
+  ((OUR.D CLASSROOM.N) ((PRES BE.V) NOT.ADV-S AIR-CONDITIONED.A))))
+  [Good!]
+
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+Output from generally sampled formulas
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+((((THEY.PRO ((PRES BE.V) (SENSIBLE.A (PLUR GIRL.N)))) \.))
+ (((YOU.PRO
+    ((PRES BE.V) NOT.ADV-S
+     (MORE-X-THAN ((DEGREE1 GOOD.A) (ADV-A (AT.P (K (REMEMBER.V (PLUR THING.N))))))
+      (I.PRO (PRES BE.V) ((DEGREE2 GOOD.A) (ADV-A (AT.P (K (REMEMBER.V (PLUR THING.N))))))))))
+   \.))
+ (((YOU.PRO ((PRES MUST.AUX-S) (WORK.V MORE.ADV-A))) \.))
+ (((I.PRO ((PRES DO.AUX-S) NOT.ADV-S (AGREE.V (WITH-ARG.P HIM.PRO)))) \.))
+ (((((THE-GEN.D SPIRIT.N) ((PRES BE.V) WILLING.A)) |,| BUT.CC ((THE-GEN.D FLESH.N) ((PRES BE.V) WEAK.A))) \.))
+ (((SUB (HOW.ADV-A BEAUTIFUL.A) (YOU.PRO ((PRES BE.V) [*H]))) [!]))
+ (((IT.PRO
+    ((PRES BE.V)
+     (MORE-X-THAN ((DEGREE1 EASY.A) (ADV-A (TO.P (TO (HAVE.V (K FUN.A))))))
+      ({IT.PRO ((PRES BE.V) ((DEGREE2 EASY.A) (ADV-A (TO.P (TO WORK.V)))))))))
+   \.))
+ (((IT.PRO
+    ((PRES BE.V)
+     (MORE-X-THAN (DEGREE1 DIFFICULT.A) (YOU.PRO ((PRES THINK.V) (THT (IT.PRO ((PRES BE.V) (DEGREE2 DIFFICULT.A)))))))))
+   \.))
+ (((HE.PRO ((PAST TELL.V) ME.PRO (THT (HE.PRO ((PAST WILL.AUX-S) (GO.V (ADV-A (TO.P |Venice|)))))))) \.))
+ ((({YOU.PRO} (GO.V AND.CC (SPEAK.V (ADV-A (TO.P (MY.D COLLEAGUE-RLN.N)))))) \.))
+ (((WHO.PRO ((PRES BE.V) (= (THOSE.D (PLUR GUY.N))))) [?])) ((({YOU.PRO} ((TELL.V ME.PRO) (ADV-A (ABOUT.P IT.PRO)))) [!]))
+ ((({YOU}.PRO (LET.V US.PRO (TO (NON- (BE.V (IN.P (K ((TOO.ADV-A MUCH.A) (OF.P (A.D HURRY.N)))))))))) \.))
+ (((SUB (IN.P (WHICH.D FOLDER.N)) ((PAST DO.AUX-S) YOU.PRO ((SAVE.V (THE.D FILE.N)) (ADV-A [*H])))) [?]))
+ (((IT.PRO ((PRES SEEM.V) (TO-ARG.P ME.PRO) (THAT ((THE.D TRAIN.N) ((PRES BE.V) LATE.A))))) \.))
+ (((HE.PRO (((PAST LEARN.V) (THE.D NEWS.N)) (WHILE.ADV-A (KA (READ.V (THE-GEN.D NEWSPAPER.N)))))) \.))
+ (((|Maria| ((PRES HAVE.V) (K (LONG.A HAIR.N)))) \.))
+ (((I.PRO
+    ((PRES DO.AUX-S) NOT.ADV-S
+     (KNOW.V (IF-WHETHER (I.PRO ((PRES WILL.AUX-S) (HAVE.V (K (N+PREDS TIME.N (TO.P (KA (DO.V IT.PRO))))))))))))
+   \.))
+ (((YOU.PRO ((PRES DO.AUX-S) NOT.ADV-S (HAVE.V (TO (COME.V TOMORROW.ADV-E))))) \.))
+ ((({YOU}.PRO (ASK.V |Trang| (IF-WHETHER (HE.PRO ((PRES PROG) (GO_OUT.V (ADV-E (THIS.A EVENING.N)))))))) \.))
+ (((I.PRO ((PRES HAVE.V) (TO (TAKE.V (K MEDICINE.N))))) \.))
+ (((PLEASE.ADV-S ({YOU}.PRO ((DO.V NOT.ADV-S (TAKE.V (K (PLUR PHOTO.N)))) HERE.ADV-E))) \.))
+ ((((SHE.PRO ((PRES HAVE_GOT.V) (A.D (FAIR.A COMPLEXION.N)))) WHILE-WHEREAS.CC
+    ((HER.D BROTHER.N) ((PRES BE.V) (VERY.ADV-A DARK.A))))
+   \.))
+ (((((ADV-E (IN.P (A.D TOWN.N))) (YOU.PRO ((PRES MAY.AUX-S) (PASS.V (ADV-A UNNOTICED.A))))) |,| WHEREAS.CC
+    ((ADV-E (IN.P (A.D VILLAGE.N))) (IT.PRO ((PRES BE.V) IMPOSSIBLE.A))))
+   \.))
+ (((|Nara| ((PRES BE.V) (A.D ((QUIET.A AND.CC BEAUTIFUL.A) CITY.N)))) \.)) (((WHO.PRO ((PRES SAY.V) THAT.PRO)) [?]))
+ (((IT.PRO ((PRES BE.V) (TOTALLY.ADV-A WRONG.A))) [!]))
+ (((I.PRO (((PRES PROG) (TAKE.V (A.D WALK.N))) (ADV-E (IN.P (A.D PARK.N))))) \.))
+ ((((ADV-E (WHEN.PS (I.PRO ((PAST BE.V) CHILD.N)))) |,|
+    (I.PRO ((PAST WILL.AUX-S) ((SPEND.V (K (PLUR HOUR.N)) (KA (READ.V ALONE.ADV-A))) (ADV-E (IN.P (MY.D ROOM.N)))))))
+   \.))
+ ((((MY.D HOBBY.N) ((PRES BE.V) (= (TO (LISTEN.V (TO-ARG.P (K MUSIC.N))))))) \.))
+ ((((K (PLUR WOLF.N)) ((PRES WILL.AUX-S) NOT.ADV-S USUALLY.ADV-F (ATTACK.V (K (PLUR PERSON.N))))) \.))
+ ((((ADV-S (IF.PS (YOU.PRO ((PRES BE.V) FREE.A)))) |,| ({YOU}.PRO (GIVE.V ME.PRO (A.D HAND.N)))) \.))
+ (('|"| (((PRES CAN.AUX-V) SOMEBODY.PRO (HELP.V ME.PRO)) [?]) |"|)
+  (I.PRO ((PRES WANT.V) (THAT (SOMEBODY.PRO (HELP.V ME.PRO)))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (SOMEBODY.PRO (HELP.V ME.PRO))))))
+  [Good!]
+
+ (('|"| ((I.PRO ((PRES WILL.AUX-V) {REF1}.V)) \.) |"|)) ((((I.PRO (PRES WORK.V)) (EVEN.ADV-S (ON.P |Sunday|))) \.))
+ (((PLEASE.ADV-S (((PRES WILL.AUX-V) YOU.PRO (CLOSE.V (THE.D DOOR.N))) (ADV-E (WHEN.PS (YOU.PRO (PRES GO_OUT.V)))))) \.))
+ (((HE.PRO (((PRES PROG) NOT.ADV-S (WORK.V MUCH.ADV-A)) (ADV-E (AT.P (THE.D MOMENT.N))))) \.))
+ (((YOU.PRO ((PRES PERF) (GIVE.V ME.PRO (YOUR.D COLD.N)))) \.))
+ ((((IT.PRO (PAST HAPPEN.V)) (ADV-E ((A.D (LONG.A TIME.N)) AGO.P))) \.)) ((AH.X [!]))
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V RICH.A)))) |,|
+    (I.PRO ((PRES WOULD.AUX-S) (BUY.V MYSELF.PRO (A.D (N+PREDS HOUSE.N (IN.P |Spain|)))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+  [Good!]
+ (((SUB WHERE.PRO ((PRES PERF) YOU.PRO (BE.V [*H]))) [?])) (((HERE.ADV-E ((THE.D BRIDE.N) COME.V)) [!]))
+ (((I.PRO ((PRES HOPE.V) (THT (HE.PRO ((PRES WILL.AUX-S) (BE.V (ABLE_TO.A (KA COME.V)))))))) [!]))
+ (((I.PRO ((PRES WOULD.AUX-S) (LIKE.V (TO (SEE.V HIM.PRO))))) \.))
+ (((SUB WHAT.PRO (((PRES PERF) YOU.PRO (PROG (DO.V [*H]))) (ADV-E (ALL.A (THIS.A TIME.N))))) [!]))
+ ((((THEY.PRO ((PRES WILL.AUX-S) NEVER.ADV-F ACCEPT.V)) |;| (IT.PRO ((PRES BE.V) (TOO.ADV-A FAR.A)))) \.))
+ ((((IT.PRO ((PRES PERF) (PROG SNOW.V))) (ADV-E (ALL.A NIGHT.N))) \.))
+ ((((HER.D GARDEN.N) ((PRES BE.V) (N+PREDS WORK.N (OF.P (K ART.N))))) \.))
+ ((((IT.PRO ((PRES PERF) (BE.V (TEN.A (PLUR YEAR.N))))) (ADV-S (SINCE.PS (WE.PRO (LAST.ADV-A (PAST MEET.V)))))) \.))
+ ((((ADV-S (IF.PS (YOU.PRO ((PRES DO.AUX-S) NOT.ADV-S (WANT.V (TO (STAY.V ALONE.ADV-A))))))) |,|
+    (I.PRO ((PRES CAN.AUX-V) (KEEP.V YOU.PRO COMPANY.N))))
+   \.))
+ (((((K WATER.N) ((PRES FREEZE.V) (ADV-A (AT.P ((K (ZERO.A (PLUR (|Celsius.N| DEGREE.N))))))))) |,|
+    ((PRES DO.AUX-S) (NOT.ADV-S (IT.PRO {REF1}.V))))
+   [?]))
+ (((HOW_COME.ADV-S (YOU.PRO (((PRES KNOW.V) (ADV-A (SO.ADV-A MUCH.A))) (ADV-A (ABOUT.P (|Japanese.A| HISTORY.N)))))) [?]))
+ ((((ADV-S (IF.PS (YOU.PRO ((PRES TAKE.V) (K (N+PREDS CARE.N (OF.P (THE.D (SMALL.A (PLUR THING.N)))))))))) |,|
+    ((THE.D (BIG.A (PLUR THING.N))) ((PRES WILL.AUX-S) (TAKE.V (K (N+PREDS CARE.N (OF.P THEMSELVES.PRO)))))))
+   \.))
+ (((((PRES COULD.AUX-V) YOU.PRO (TURN.V ON.ADV-A (THE.D LIGHT.N))) PLEASE.ADV-S) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (TURN.V ON.ADV-A (THE.D LIGHT.N))))))
+  [Good!]
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (TURN.V ON.ADV-A (THE.D LIGHT.N)))))))
+  [Good!]
+ (((SHE.PRO (((PRES PROG) (SELL.V (K (PLUR DRUG.N)))) (ADV-A (AT.P (K (PLUR CONCERT.N)))))) \.))
+ ((((ADV-E (WHEN.PS (WE.PRO ((PRES SEEK.V) (TO (DISCOVER.V (THE.D (N+PREDS (BEST.A {REF1}.N) (IN.P OTHERS.PRO))))))))) |,|
+    (WE.PRO SOMEHOW.ADV-S ((PRES BRING_OUT.V) (THE.D (N+PREDS (BEST.A {REF1}.N) (IN.P OURSELVES.PRO))))))
+   \.))
+ ((({YOU}.PRO (TURN.V RIGHT.ADV-A (ADV-A (AT.P (THE.D CROSSROAD.N))))) \.)) ((({YOU}.PRO (FORGET.V IT.PRO)) \.))
+ (((IT.PRO ((PRES BE.V) NOT.ADV-S (WORTH.A IT.PRO))) \.))
+ (((I.PRO (((PAST BURY.V) (MY.D DOG.N)) (ADV-E (AT.P (THE.D (PET.N CEMETERY.N)))))) \.))
+ ((((WE.PRO (((PRES BE_GOING.V) (TO (EAT.V (A.D (LOT-OF.N {REF1}.PRO))))) TONIGHT.ADV-E)) SO.CC
+    (I.PRO ((PRES HOPE.V) (THT (YOU.PRO ((PRES BE.V) NOT.ADV-S (ON.P (A.D DIET.N))))))))
+   \.))
+ (((THEY.PRO ((PAST FORGET.V) (TO (LOCK.V (THE.D DOOR.N))))) \.))
+ ((((EVEN.PD (K (PLASTIC.A SURGERY.N)))
+    ((PRES WILL.AUX-S) NOT.ADV-S ((DO.V ANYTHING.PRO) (ADV-A (FOR.P (YOUR.D UGLINESS.N))))))
+   \.))
+ (((YOU.PRO ((PRES NEED.AUX-V) NOT.ADV-S (TELEPHONE.V ME.PRO))) \.))
+ ((((PRES DO.AUX-S) IT.PRO ALSO.ADV-S (WORK.V (ADV-A (WITHOUT.P (K REGISTRATION.N))))) [?]))
+ ((((THERE.PRO ((PRES BE.V) ((FQUAN (QUITE.ADV-A (A.A LOT_OF.A))) (N+PREDS (PLUR THING.N) (TO.P (KA DO.V)))))) |;|
+    ((PRES DO.AUX-S) YOU.PRO (WANT.V (SOME.D HELP.N))))
+   [?]))
+ (((I.PRO ((PAST HEAR.V) (THT ((A.D ((COTTON.N CANDY.N) SHOP.N)) ((PRES PERF) (JUST.ADV-E OPEN.V)))))) \.))
+ (((({YOU}.PRO (LET.V US.PRO (K GO.V))) |,| (VOC (PLUR DUDE.N))) \.))
+ ((((WE.PRO ((PRES HAVE.V) (TO (((TAKE.V HIM.PRO) (ADV-A (TO.P (THE.D HOSPITAL.N)))) IMMEDIATELY.ADV-E)))) |;|
+    (HE.PRO ((PRES BE.V) (SERIOUSLY.ADV-A INJURED.A))))
+   [!]))
+ (((I.PRO STILL.ADV-A
+    ((PRES HAVE.V) ((FQUAN (A.A FEW.A)) (N+PREDS (PLUR THING.N) (SUB THT.REL (I.PRO ((PRES NEED.V) (TO (DO.V [*H])))))))))
+   \.)))
+
+
+
+T
+CL-USER(3): :ex

@@ -1,0 +1,181 @@
+(load "init.lisp")
+(load "test-ulfs.lisp")
+
+(setq output (results-from-applying-rules *rule-names* *test-ulfs* t))
+(format t "~s" output)
+
+; I've put in blank lines for readability
+
+((((PRES WOULD.AUX-V) YOU.PRO PLEASE.ADV-S SPEAK_UP.V)
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO SPEAK_UP.V))))
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO SPEAK_UP.V)))))
+
+ ((((PRES CAN.AUX-V) SOMEBODY.PRO (HELP.V ME.PRO)) [?])
+  (I.PRO ((PRES WANT.V) (THAT (SOMEBODY.PRO (HELP.V ME.PRO)))))
+  (I.PRO ((PRES EXPECT.V) (THAT (SOMEBODY.PRO (HELP.V ME.PRO))))))
+
+ (((PLEASE.ADV-S
+    ((PRES WILL.AUX-S) YOU.PRO
+     (CLOSE.V (THE.D DOOR.N)
+      (ADV-E (WHEN.PS (YOU.PRO ((PRES GO.V) OUT.ADV-A))))))))
+  (I.PRO
+   ((PRES WANT.V)
+    (THAT
+     (YOU.PRO
+      (CLOSE.V (THE.D DOOR.N)
+       (ADV-E (WHEN.PS (YOU.PRO ((PRES GO.V) OUT.ADV-A)))))))))
+  (I.PRO
+   ((PRES EXPECT.V)
+    (THAT
+     (YOU.PRO
+      (CLOSE.V (THE.D DOOR.N)
+       (ADV-E (WHEN.PS (YOU.PRO ((PRES GO.V) OUT.ADV-A))))))))))
+
+ (((((PRES COULD.AUX-V) YOU.PRO (TURN_ON.V (THE.D LIGHT.N)))
+    PLEASE.ADV-S)
+   [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (TURN_ON.V (THE.D LIGHT.N))))))
+  (I.PRO
+   ((PRES EXPECT.V) (THAT (YOU.PRO (TURN_ON.V (THE.D LIGHT.N)))))))
+
+ ((I.PRO
+   ((PRES WISH.V) (THT (HE.PRO (WOULD-CF.AUX-S (FINISH.V IT.PRO))))))
+  (HE.PRO ((PRES WILL.AUX-S) NOT.ADV-S (FINISH.V IT.PRO))))
+
+ ((I.PRO ((PRES WISH.V) (THT (HE.PRO (WOULD-CF.AUX-V LEAVE.V)))))
+  (HE.PRO ((PRES WILL.AUX-V) NOT.ADV-S LEAVE.V)))
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT
+      (SHE.PRO
+       (WOULD-CF.AUX-S
+        (STOP.V (KA (PLAY.V (THAT.D (STUPID.A MUSIC.N))))))))))
+   \.)
+  (SHE.PRO
+   ((PRES WILL.AUX-S) NOT.ADV-S
+    (STOP.V (KA (PLAY.V (THAT.D (STUPID.A MUSIC.N))))))))
+
+ ((IF.C (I.PRO (WERE-CF.V RICH.A))
+   (I.PRO ((PRES WOULD.AUX-V) (TRAVEL.V (TO-ARG.P |Rome|)))))
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+
+ ((IF.C (SHE.PRO (HAD-CF.V (A.D HAMMER.N)))
+   (SHE.PRO ((PRES WOULD.AUX-V (SWING.V IT.PRO)))))
+  (SHE.PRO ((PRES DO.AUX-S) NOT.ADV-S (HAVE.V (A.D HAMMER.N)))))
+
+ ((IF.C (SHE.PRO (PERF-CF (HAVE.V (A.D HAMMER.N))))
+   (SHE.PRO ((PAST WOULD.AUX-V) ((PERF SWING.V) IT.PRO))))
+  (SHE.PRO ((PAST DO.AUX-S) NOT.ADV-S (HAVE.V (A.D HAMMER.N)))))
+
+ ((((ADV-S (IF.PS (I.PRO (WERE-CF.V YOU.PRO)))); **should be (= you.pro)
+                                   ;^^^^^^^^
+    (I.PRO ((PRES WOULD.AUX-S) (BE.V (ABLE.V (TO SUCCEED.A))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S YOU.PRO)))
+
+ ((((ADV-S
+     (IF.PS
+      (YOU.PRO
+       (WERE-CF.V (TO (FALL.V (ADV-A (FROM.P (THAT.D BRIDGE.N)))))))))
+    |,|
+    (IT.PRO
+     ((PRES WOULD.AUX-S)
+      (BE.V
+       (ALMOST.ADV-A
+        (IMPOSSIBLE.A (ADV-A (TO.P (RESCUE.V YOU.PRO)))))))))
+   \.)
+  (YOU.PRO
+   ((PRES BE.V) NOT.ADV-S
+    (TO (FALL.V (ADV-A (FROM.P (THAT.D BRIDGE.N)))))))) ; pretty close to correct
+
+ ((((ADV-S (IF.PS (I.PRO (HAD-CF.V (K MONEY.N))))) |,|
+    (I.PRO
+     ((PRES WOULD.AUX-S)
+      (PAY.V (SUB WHAT.PRO (I.PRO ((PRES OWE.V) YOU.PRO [*H])))))))
+   \.)
+  (I.PRO ((PRES DO.AUX-S) NOT.ADV-S (HAVE.V (K MONEY.N)))))
+
+ ((((ADV-S
+     (IF.PS (ONLY.ADV-S (I.PRO (PERF-CF (TAKE.V (YOUR.D ADVICE.N)))))))
+    {REF1}.S)
+   \.)
+  (I.PRO ((PAST DO.AUX-S) NOT.ADV-S (TAKE.V (YOUR.D ADVICE.N)))))
+
+ ((((ADV-S (PERF-CF I.PRO (KNOW.V (YOUR.D (TELEPHONE.N NUMBER.N)))))
+   ;^^^^^^^^^^^^^^^^^^^ your version
+    |,| (I.PRO ((PAST WOULD.AUX-S) (PERF (CALL.V YOU.PRO)))))
+   \.)
+  (I.PRO
+   ((PAST DO.AUX-S) NOT.ADV-S
+    (KNOW.V (YOUR.D (TELEPHONE.N NUMBER.N))))))
+
+ ((({IF}.C (I.PRO (PERF-CF (KNOW.V (YOUR.D (TELEPHONE.N NUMBER.N)))))
+   ;^^^^^^^^^^^^^^^^^^^^^^^ version2
+    (I.PRO ((PAST WOULD.AUX-S) (PERF (CALL.V YOU.PRO)))))
+   \.)
+  (I.PRO
+   ((PAST DO.AUX-S) NOT.ADV-S
+    (KNOW.V (YOUR.D (TELEPHONE.N NUMBER.N))))))
+
+ ((((ADV-S (WERE-CF.V I.PRO RICH.A)) |,|
+   ;^^^^^^^^^^^^^^^^^^^^your version
+    (I.PRO ((PRES WOULD.AUX-S) (HELP.V (THE.D (POOR.A {REF1}.N))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+
+ ((({IF}.C (I.PRO (WERE-CF.V RICH.A))
+   ;^^^^^^^^^^^^^^^^^^^^version2
+    (I.PRO ((PRES WOULD.AUX-S) (HELP.V (THE.D (POOR.A {REF1}.N))))))
+   \.)
+  (I.PRO ((PRES BE.V) NOT.ADV-S RICH.A)))
+
+ ((((PRES COULD.AUX-V) YOU.PRO
+    ((DIAL.V {REF1}.PRO) (ADV-A (FOR.P ME.PRO))))
+   [?])
+  (I.PRO
+   ((PRES WANT.V)
+    (THAT (YOU.PRO ((DIAL.V {REF1}.PRO) (ADV-A (FOR.P ME.PRO)))))))
+  (I.PRO
+   ((PRES EXPECT.V)
+    (THAT (YOU.PRO ((DIAL.V {REF1}.PRO) (ADV-A (FOR.P ME.PRO))))))))
+
+ ((((PRES COULD.AUX-V) YOU.PRO PLEASE.ADV-S (REPEAT.V THAT.PRO)) [?])
+  (I.PRO ((PRES WANT.V) (THAT (YOU.PRO (REPEAT.V THAT.PRO)))))
+  (I.PRO ((PRES EXPECT.V) (THAT (YOU.PRO (REPEAT.V THAT.PRO))))))
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT (I.PRO ((PRES COULD.AUX-V) (GO.V (ADV-A (TO.P |Japan|))))))))
+                ;^^^^^^^^^^^^^^^^^^^^ your version -- no result, but thus
+                ;                     the ulf shouldn't be printed! (bug??)
+   \.))
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT (I.PRO (COULD-CF.AUX-V (GO.V (ADV-A (TO.P |Japan|))))))))
+                ^^^^^^^^^^^^^^^^^^^^version 2 -- there's a result
+   \.)
+  (I.PRO ((PRES CAN.AUX-V) NOT.ADV-S (GO.V (ADV-A (TO.P |Japan|))))))
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT
+      (SHE.PRO
+       ((PRES WOULD.AUX-S)
+        ;^^^^^^^^^^^^^^^^ your version; again, the ulf shouldn't show ...
+        (STOP.V (KA (PLAY.V (THAT.D (STUPID.A MUSIC.N))))))))))
+   \.))
+
+ (((I.PRO
+    ((PRES WISH.V)
+     (THT
+      (SHE.PRO
+       (WOULD-CF.AUX-S
+       ;^^^^^^^^^^^^^^^ version 2 -- a result is produced.
+        (STOP.V (KA (PLAY.V (THAT.D (STUPID.A MUSIC.N))))))))))
+   \.)
+  (SHE.PRO
+   ((PRES WILL.AUX-S) NOT.ADV-S
+    (STOP.V (KA (PLAY.V (THAT.D (STUPID.A MUSIC.N)))))))))
+

@@ -1,0 +1,294 @@
+;; Text file that simply lists all the selectively sampled formulas.
+;; This is meant to be loaded into Lisp with the 'read' function.
+
+;; 
+;; If statements
+;;
+
+(((adv-s (If.ps (anyone.pro 
+                 (was-cf.v (to (ask.v  
+                                 (whq (sub what.pro 
+                                           ((the.d (point-of.n (the.d story.n))) 
+                                               ((pres be.v) (= *h))))))))))) \,
+     (I.pro really.adv-s 
+            ((pres do.aux-s) not.adv-s 
+               (know.v {(whq (sub what.pro 
+                                  ((the.d (point-of.n (the.d story.n))) 
+                                     ((pres be.v) (= *h)))))})))) \.)
+
+(((adv-s (If.ps (you.pro ((lend.v someone.pro ($ currency |us_dollar| 20)) and-then.c
+                         (never.adv-s ((see.v (that.d person.n)) again.adv-a)))))) \,
+   (It.pro ((past be.v) probably.adv-s worth_it.a))) \.)
+
+(((adv-s (If.ps 
+          (we.pro (know-cf.v 
+                    (the.d (sub what.rel (we.pro (prog (do.v *h))))))))) \,
+   (it.pro ((pres would.aux-s) not.adv-s ((pasv call.v) (k research.n))))) \.)
+
+(((adv-s (If.ps (I.pro (were-cf.v (in.p (your.d situation.n)))))) \,
+   (I.pro ((pres would.aux-s) (do.v (the.d (same.a thing.n)))))) \.)
+
+
+(((adv-s (If.ps (only.adv-s (you.pro ((perf-cf (tell.v me.pro (the.d (whole.a story.n))))
+                                       (adv-e (at.p (that.d time.n))))))))
+   {ref1}.s) !)
+(((adv-s (If.ps (there.pro (were-cf.v (no.d air.n))))) \,
+   ((k man.n) ((pres could.aux-s) not.adv-s (live.v even.adv-a (ten.d (plur minute.n)))))) \.)
+
+(((adv-s (If.ps (I.pro (were-cf.v rich.a)))) \,
+   (I.pro ((pres would.aux-s) (do.v so.adv-a)))) \.)
+(((adv-s (As.ps (It.pro (pres be.v)))) \,
+   (I.pro ((pres can.aux-v) (do.v nothing.pro)))) \.)
+
+(((adv-s (If.pro ((k (plur wish.n)) (were-cf.v (k (plur horse.n)))))) \,
+   ((k (plur beggar.n)) ((pres might.aux-s) (ride.v {(k (plur horse.n))})))) \.)
+
+(((adv-s (If.ps (I.pro (were-cf.v (to (go.v abroad.adv-a)))))) \,
+   (I.pro ((pres would.aux-s) (go.v (adv-a (by.p (k boat.n))))))) \.)
+
+(((adv-s (If.ps (only.adv-s (we.pro (had-cf.v (a.d garden.n)))))) {ref1}.s) !)
+
+(((adv-s (If.ps (you.pro (were-cf.v (to (win.v (the-gen.d lottery.n))))))) \,
+   (sub what.pro 
+        ((pres would.aux-s) you.pro ((buy.v *h) 
+                                       (adv-a (with.p (the.d money.n))))))) ?)
+
+(((adv-s (If.ps ((the.d sun.n) (were-cf.v (to (rise.v 
+                                              (adv-a (in.p (the.d west.n))))))))) \,
+   (I.pro ((pres would.aux-s) not.adv-s (change.v (my.d mind.n))))) \.)
+
+(((adv-s (If.ps (I.pro (were-cf.v (to ((pasv bear.v) again.adv-s)))))) \,
+   (I.pro ((pres would.aux-s) (be.v musician.n)))) \.)
+
+(((adv-s (If.ps (I.pro (were-cf.v (to (tell.v you.pro (the.d truth.n))))))) \,
+    (you.pro ((pres would.aux-s) (be.v surprised.a)))) \.)
+
+;;
+;; Inverted if statements.
+;;
+
+(((adv-s (perf-cf he.pro 
+                    (know.v (the.d (what.rel 
+                                      ((past be.v) 
+                                          (about_to.adv-s happen.v))))))) \,
+    (he.pro ((pres would.aux-s) (perf (change.v (his.d plan.n)))))) \.)
+
+(((adv-s (perf-cf they.pro 
+                    (know.v (the.d (what.rel 
+                                      ((past be.v) 
+                                          (about_to.adv-s happen.v))))))) \,
+    (they.pro ((pres would.aux-s) (perf (change.v (their.d (plur plan.n))))))) \.)
+
+(((adv-s (perf-cf he.pro (take.v (((his.d doctor.n) 's) advice.n)))) \,
+    (he.pro ((pres might.aux-s) not.adv-s (perf die.v)))) \.) 
+
+(((adv-s (perf-cf I.pro (arrive.v earlier.adv-e))) \,
+    (I.pro ((pres could.aux-s) (perf (see.v |Kelly|))))) \.)
+
+(((adv-s (Were-cf.v I.pro (= you.pro))) \,
+    (I.pro ((pres would.aux-s) (ignore.v it.pro)))) \.)
+
+(((adv-s (Were-cf.v I.pro (= you.pro))) \,
+    (I.pro ((pres would.aux-s) (follow.v (his.d advice.n))))) \.)
+
+(((adv-s (perf-cf he.pro (know.v (the.d (plur fact.n))))) \,
+    ((the.d accident.n) ((pres might.aux-s) (perf (pasv avoid.v))))) \.)
+
+(((adv-s (perf-cf he.pro (know.v (the.d truth.n)))) \,
+    (he.pro ((pres would.aux-s) (perf (tell.v me.pro))))) \.)
+
+
+(((adv-s (Were-cf.v I.pro bird.n)) \,
+    (I.pro ((pres would.aux-s) (fly.v (adv-a (to.p you.pro)))))) \.)
+
+(((adv-s (Were-cf.v I.pro (in.p (your.d position.n)))) \,
+    (I.pro ((pres would.aux-s) (oppose.v (that.d plan.n))))) \.)
+
+(((adv-s (perf-cf 
+          I.pro 
+          (realize.v
+            (the.d (sub what.rel 
+                        (you.pro ((past intend.v) *h))))))) \,
+    (I.pro ((pres would.aux-s) not.adv-s (perf agree.v)))) \.)
+
+(((adv-s (perf-cf
+          I.pro
+          (know.v (adv-a (about.p it.pro))))) \,
+    (I.pro ((pres would.aux-s) (perf (tell.v you.pro))))) \.)
+
+(((adv-s (Were-cf.v I.pro (in.p (your.d place.n)))) 
+    (I.pro ((pres would.aux-s) (do.v (the.d (same.a thing.n)))))) \.)
+
+(((adv-s (Were-cf.v I.pro (in.pro (your.d position.n)))) \,
+    (I.pro (((pres would.aux-s) (do.v it.pro)) at_once.adv-s))) \.)
+
+(((adv-s (Were-cf.v I.pro 
+                    (free.a (adv-a (from.p (k work.n)))))) \,
+    (I.pro ((pres could.aux-v) (read.v (these.d (plur book.n)))))) \.)
+
+(((adv-s (Were-cf.v you.pro (to (know.v (the.d fact.n))))) 
+    (you.pro ((pres would.aux-s) (be.v surprised.a)))) \.)
+;;
+;; Requests
+;;
+
+
+((((pres Could.aux-v) 
+    you.pro 
+    ((call.v again.adv-a) later.adv-e)) \, 
+  please.adv-s) ?)
+
+(((pres Can.aux-v) 
+  you.pro 
+  (imagine.v (the.d (sub what.rel 
+                         ((our.d (plur life.n)) 
+                            ((pres would.aux-s) 
+                                ((be.v (like.a what.pro))
+                                 (adv-e (without.p (k electricity.n)))))))))) ?)
+
+(((pres Can.aux-v)
+  I.pro
+  (stay.v (adv-a (at.p (your.d place.n))))) ?)
+
+((((pres Could.aux-v)
+   you.pro
+   (turn_on.v (the.d light.n))) please.adv-s) ?)
+
+((((pres Could.aux-v)
+   you.pro
+   (do.v me.v (a.d favour.n))) please.adv-s) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (justify.v (the.d (use-of.n (k violence.n))))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (do.v (ka bookkeep.v))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (keep.v (a.d secret.n))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (ride.v (a-gen.d horse.n))) ?)
+
+(((pres Can.aux-v) 
+  you.pro
+  ((tell.v (k wheat.n))
+     (adv-a (from.p (k barley.n))))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (throw.v (a.d fastball.n))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (eat.v (k (raw.a (plur oyster.n))))) ?)
+
+(((pres Can.aux-v)
+  you.pro
+  (break_away.v (from-arg.p (your.d (plur parent-rln.n))))) ?)
+;;
+;; Wishes.
+;;
+
+
+(((I.pro 
+   ((pres wish.v)
+      (tht
+        (I.pro (could-cf.aux-v (care.v more.adv-a (about-arg.p (my.d (plur grade.n))))))))) but.cc
+  (it.pro 
+    ((pres seem.v) 
+      (that \,
+        ((adv-e (at.p (a.d (certain.a (n+preds point.n 
+                                               (of.n (my.d life.n))))))) \,
+           (I.pro 
+             ((past decide.v) 
+                (tht 
+                  (they.pro ((pres would.aux-s) not.adv-s 
+                               ((be.v (so.adv-a important.a)) anymore.adv-e))))))))))) \.)
+
+((sub (What.d (famous.a (plur song.n))) 
+      (((pres do.v) you.pro 
+          (wish.v 
+            (tht
+              (you.pro (perf-cf (compose.v *h)))))) \, 
+       and.cc
+       (why.adv-s 
+         {((pres do.v) you.pro 
+             (wish.v 
+               (tht
+                 (you.pro (perf-cf (compose.v *h))))))}))) ?)
+
+((I.pro ((pres wish.v)
+           (tht 
+             (you.pro (perf-cf (tell.v me.pro (the.d truth.n))))))) \.)
+
+((You.pro
+  ((pres will.aux-s)
+     (wish.v
+       (tht
+         (you.pro (perf-cf never.adv-e (see.v it.pro))))))) \.)
+
+((I.pro
+   ((pres wish.v)
+     (tht
+       (you.pro 
+         (perf-cf ((tell.v me.pro (the.d truth.n)) then.adv-e)))))) \.)
+
+(((Your.d wish.n)
+    ((pres will.aux-s) 
+       (come_true.v (adv-e (in.p (the.d (near.a future.n))))))) \.)
+
+((I.pro 
+    ((pres wish.v)
+       (tht
+         (I.pro 
+           (could-cf.aux-v (live.v (adv-a (near.p (your.d house.n))))))))) \.)
+
+((I.pro
+   ((pres wish.v)
+      (tht
+        (I.pro
+          (could-cf.aux-v
+            (go.v (adv-a (to.p (the.d part.n)))
+                  (adv-a (with.p you.pro)))))))) \.)
+
+((I.pro
+   ((pres wish.v)
+      (tht
+        (you.pro (could-cf.aux-v (come.v (adv-a (with.p us.pro)))))))) \.)
+
+((I.pro
+   ((pres wish.v)
+      (tht
+        (you.pro
+          (could-cf.aux-v
+            (drop_in.v (adv-a (at.p (my.d house.n)))
+                       (adv-a (on.p (your.d (n+preds way.n
+                                                     ({toward}.p (k home.n)))))))))))) \.)
+
+((I.pro
+   ((pres wish.v)
+     (tht
+       (you.pro 
+         (were-cf.v (close.a (adv-a (to.p me.pro)))))))) \.)
+
+((I.pro
+  ((pres wish.v)
+    (tht
+      (you.pro
+        (perf-cf not.adv-s (tell.v (the.d story.n) (to-arg.p (my.d mother-rln.n)))))))) \.)
+
+((I.pro
+  ((pres wish.v)
+    (tht
+      (I.pro (were-cf.v rich.a))))) \.)
+
+((I.pro
+  ((pres wish.v)
+    (tht
+      ((our.d classroom.n) (were-cf.v air-conditioned.a))))) \.)
+
