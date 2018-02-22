@@ -1,2 +1,15 @@
 "I am at ease, because I know that if anything were to happen to him, it would
 be the end of me." -- Les Miserable
+
+
+
+# It seems to indicate counterfactuality even though the antecedent is in the
+# present tense.  Is this still the case even if the counterfactuality isn't
+# embedded in a past tense communicative verbi?
+# NEVERMIND: it doesn't reflect counterfactuality, it reflects a future conditional (thus it is in present tense).
+Saturday, he amended his remarks to say that he would continue to abide by the cease-fire if the U.S. ends its financial support for the Contras. -- Discourse Graphbank 
+
+I said that I would do it if you help me
+I would do it if you help me
+
+
