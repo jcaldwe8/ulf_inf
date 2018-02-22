@@ -1,6 +1,9 @@
 
 Short-term
-* Incorporate the morphology list into the pattern matching
+* Get regex schemas working for all patterns.
+* Filter "you know [^that]" from the switchboard corpus
+* Sentence boundary on switchboard is really bad (maybe we can see where the turn taking happens -- if the other person just responds with Uh-huh, or yeah, or something similar (maybe less than 3 tokens) we assume the current speaker is on the same sentence?
+* Getting LOTS of false positives on switchboard requests
 * Add patterns for questions
 * Download the gutenburg project data
   - need filter for weird texts (e.g. the bible), or old texts (e.g. beowulf)

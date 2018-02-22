@@ -19,57 +19,31 @@ from itertools import groupby
 # Paths to local modules.
 UPPEN_MORPH_PATH = "resources/uppen_morph_analysis"
 CUSTOMIZED_RESOURCE_PATH = "resources/customized_resources"
+REGEX_GEN_PATH = "resources/regex_generation"
 
 # Load local functions.
 sys.path.append(UPPEN_MORPH_PATH)
-from uppen_morph import load_morph_file 
+from uppen_morph import load_morph_file, filter_morph_data 
 
 sys.path.append(CUSTOMIZED_RESOURCE_PATH)
-from customized_resources import load_stratos_impl_forms
+from customized_resources import load_stratos_impl_list, load_stratos_impl_forms
 
-#
-# Global vars.
-#
+sys.path.append(REGEX_GEN_PATH)
+from regex_gen import gen_regex
 
-# TODO: handle punctuation preceding sentence -- e.g. quoted words.  Probably want to just preprocess the datasets to separate the quotes and punctuation from words so we don't have to deal with this... So the tokens are most normalized.
 
-CF_PATTERNS = [
-    # Basic
-    # TODO: add past verb and past participles.
-    ".*(if|If) .*(was|were|had).*",
-    ".*(if|If) .*(was|were|had).* (would|wouldn't|will|won't|'d) .*",
-    # Inverted
-    # TODO: add past verb and past participles.
-    ".*(would|wouldn't|will|won't|'d).* (if|If) .*",
-    # Implicit 'if'.
-    "(Were|Had|were|had) .*",
-    ".*(would|wouldn't|will|won't|'d) .* (were|had) .*",
-    # 'wish'
-    ".*(wish|Wish).*" # can add past verb/past participle to limit to counterfactuals.
-    ]
-
-REQUEST_PATTERNS = [
-    # Basic.
-    # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
-    # TODO: generalize the capitalization
-    ".* (would|will|can|could) you .*",
-    ".* (I|We|we|You|you) need .*",
-    ".* may I .*",
-    "Could I .*",
-    # Negative requests (aka "false requests")
-    ".*(won't|wouldn't|can't|couldn't) .*\?",
-    ".*(would|could|wouldn't|couldn't|won't|can't) you .*",
-    ".*(must|Must) you .*"
-    ]
-
-CF_RE = [re.compile(p) for p in CF_PATTERNS]
-REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
-
-IMPL_FORMS = load_stratos_impl_forms()
 
 #
 # Helper functions.
 #
+
+
+# Capitalizes a word or a list of words.
+def capitalize(e):
+  if type(e) == list:
+    return [capitalize(w) for w in e]
+  if type(e) == str:
+    return e[0].upper() + e[1:]
 
 # Parses arguments and returns the result of parser.parse_args() from argparse.
 def parse_arguments():
@@ -81,6 +55,7 @@ def parse_arguments():
   
   args = parser.parse_args()
   return args
+
 
 # Forms a dictionary from token labels to token values for a line in the
 # Switchboard corpus.
@@ -107,9 +82,10 @@ def write_line(curid, curtmaps, lout, mout):
 
 
 def is_counterfactual(l):
-  for p in CF_RE:
+  #for p in CF_RE:
+  for p, schema in CF_SCHEMA_RE:
     if re.match(p, l):
-      return p.pattern
+      return schema
   return None
 
 def is_request(l):
@@ -184,6 +160,130 @@ def countdict_update(cd1, cd2):
   return cd1
 
 args = parse_arguments()
+
+#
+# Global vars.
+#
+
+WILL_FORMS = ["will", "would", "wo", "'d"]
+CAN_FORMS = ["can", "could", "ca"]
+WISH_FORMS = ["wish", "wished", "wishing"]
+
+REQUEST_MODALS = WILL_FORMS + CAN_FORMS
+PERMISSION_MODALS = CAN_FORMS + ["may"]
+
+# Load Stratos implicative list and get past tense forms.
+STRATOS_IMPL = load_stratos_impl_list()
+UPPEN_MORPHS = load_morph_file()
+#past_ltom = {li.lemma : m.token for m in \
+#    filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PAST"]) for li in m.lemmas}
+#ppart_ltom = {li.lemma : m.token for m in \
+#    filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PPART"]) for li in m.lemmas}
+#STRATOS_PAST = [past_ltom[imp] for imp in STRATOS_IMPL if imp in past_ltom]
+#STRATOS_PPART = [ppart_ltom[imp] for imp in STRATOS_IMPL if imp in ppart_ltom]
+UPPEN_PAST  = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PAST"])]
+UPPEN_PPART = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PPART"])]
+
+
+# TODO: handle punctuation preceding sentence -- e.g. quoted words.  Probably want to just preprocess the datasets to separate the quotes and punctuation from words so we don't have to deal with this... So the tokens are most normalized.
+
+CF_PATTERNS = [
+    # Basic
+    # TODO: add past verb and past participles.
+    ".*(if|If) .*(was|were|had).*",
+    ".*(if|If) .*(was|were|had).* (would|wouldn't|will|won't|'d) .*",
+    # Inverted
+    # TODO: add past verb and past participles.
+    ".*(would|wouldn't|will|won't|'d).* (if|If) .*",
+    # Implicit 'if'.
+    "(Were|Had|were|had) .*",
+    ".*(would|wouldn't|will|won't|'d) .* (were|had) .*",
+    # 'wish'
+    ".*(wish|Wish).*" # can add past verb/past participle to limit to counterfactuals.
+    ]
+
+
+
+REQUEST_PATTERNS = [
+    # Basic.
+    # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
+    # TODO: generalize the capitalization
+    "(.+ |)(Would|would|Will|will|Can|can|Could|could) you .*",
+    "(.+ |)(I|We|we|You|you) need you .+",
+    ".* may I .*",
+    "Could I .*",
+    # Negative requests (aka "false requests")
+    "(.+ |)(won't|wouldn't|can't|couldn't|Won't|Wouldn't|Can't|Couldn't) .+\?",
+    "(.+ |)(wouldn't|couldn't|won't|can't|Wouldn't|Couldn't|Won't|Can't) you(| .+)",
+    "(.+ |)(must|Must) you(| .+)"
+    ]
+
+
+GENERATIVE_SCHEMA_DEFS = {}
+
+CF_DIRECT_SCHEMA_DEFS = {
+  # Move begin, end, mid to defaults.
+  # TODO: figure out how to escape/not escape grep patterns..,
+  "<begin?>"    : "<regex>(.*\S+ |)",  # beginning of sentence or separated from previous word.
+  "<end?>"      : "<regex>(| \S+.*)",  # end of sentence or separated from next word.
+  "<mid?>"      : "<regex>( .+ | )",   # one space separation or spaces with something in the middle.
+  "<mid>"       : "<regex>( .+ )",     # something in between
+  "<futr>"      : WILL_FORMS + capitalize(WILL_FORMS),
+  "<wish>"      : WISH_FORMS + capitalize(WISH_FORMS),
+  "<past>"      : UPPEN_PAST,
+  "<ppart>"     : UPPEN_PPART,
+  "<1stpron>"   : ["i", "we"] + capitalize(["i", "we"])
+    }
+
+# TODO: change all these list-based patterns to be lists.
+REQUEST_DIRECT_SCHEMA_DEFS = {
+  "<reqmodal>" : REQUEST_MODALS + capitalize(REQUEST_MODALS), 
+  "<permmodal>" : PERMISSION_MODALS + capitalize(PERMISSION_MODALS)
+  }
+
+CF_SCHEMAS = [
+    # Basic
+    "<begin?>(if|If)<mid>(was|were|had|<past>|<ppart>)<mid?>(<futr>) .+",
+    # Inverted
+    "<begin?>(<futr>)<mid>if<mid>(was|were|had|<past>|<ppart>) .+",
+    # Implicit 'if'.
+    "(Were|Had|were|had)<mid>(<futr>) .+",
+    "<begin?>(<futr>)<mid>(were|had) .+",
+
+    # 'wish'
+    ".+ (<wish>) .+", # can add past verb/past participle to limit to counterfactuals.
+    
+    # More general one to allow negative examples.
+    #"<begin?>(if|If)<mid>(was|were|had|<past>|<ppart>) .*", # fairly general explicit 'if'
+    "<begin?>(if|If) .*", # most general explicit 'if'
+    "(were|had|Were|Had)<end?>" # general implicit 'if'
+    ]
+
+REQUEST_SCHEMAS = [
+    # Basic.
+    # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
+    ".* (<reqmodal>) you .*",
+    ".* (<1stpron>) need you .*",
+    "<begin?>(<permmodal>) I .+",
+    
+    # Negative requests (aka "false requests")
+    "<begin?>(<reqmodal>) (n't|not) you .+",
+    "<begin?>(must|Must) you .*"
+    ]
+
+CF_RE = [re.compile(p) for p in CF_PATTERNS]
+REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
+
+
+CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_DIRECT_SCHEMA_DEFS, use_defaults=True)), schema) for \
+    schema in CF_SCHEMAS]
+
+#print "CF_SCHEMA_RE"
+#for re in CF_SCHEMA_RE:
+#  print re
+#sys.exit()
+
+IMPL_FORMS = load_stratos_impl_forms()
 
 # Extract transcriptions.
 if args.source_type == 'file':
