@@ -61,15 +61,20 @@ def load_morph_file(f="morph-1.5/data/morph_english.flat"):
 
 # Checks if the LemmaInfo tuple has one of the POS tags in poses and that
 # at least one of its features is in the features list.
+# If features is an empty list, it is ignored -- only the POS tag must match
+# one in poses.
 def contains_feature(linfo, poses, features):
   if linfo.pos in poses:
+    if len(linfo.features) == 0:
+      return True
     for f in linfo.features:
       if f in features:
         return True
   return False
 
 # Filters the morphological data to so that only entries containing something
-# in the feature list is included.
+# in the feature list is included.  If features is an empty list all features
+# are accepted (i.e. filtering is only based on POS tags).
 # TODO: generalize so that we can specify more complicated feature structures
 # (e.g. both features, included).
 def filter_morph_data(entries, poses, features):
