@@ -89,15 +89,17 @@ def is_counterfactual(l):
   return None
 
 def is_request(l):
-  for p in REQUEST_RE:
+  #for p in REQUEST_RE:
+  for p, schema in REQUEST_SCHEMA_RE:
     if re.match(p, l):
-      return p.pattern
+      return schema
   return None
 
 def is_question(l):
   # TODO
   return False
 
+# TODO: remove (at least until implicatives are separated).
 def is_communicative(l):
   # TODO
   return False
@@ -116,9 +118,11 @@ def is_interesting(l):
   return is_counterfactual(l) or is_request(l) or is_question(l) or \
       is_communicative(l) or is_implicative(l)
 
-
-
-
+# Return the merge of two dictionaries without modifying either input.
+def merge_dicts(d1, d2):
+  d = d1.copy()
+  d.update(d2)
+  return d
 
 def filter_file(filename, out):
   filtered = defaultdict(list)
@@ -183,7 +187,9 @@ UPPEN_MORPHS = load_morph_file()
 #STRATOS_PPART = [ppart_ltom[imp] for imp in STRATOS_IMPL if imp in ppart_ltom]
 UPPEN_PAST  = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PAST"])]
 UPPEN_PPART = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PPART"])]
-
+UPPEN_PRES = list(set([li.lemma for m in \
+    filter_morph_data(UPPEN_MORPHS, poses=["V"], features=[]) \
+    for li in m.lemmas]))
 
 # TODO: handle punctuation preceding sentence -- e.g. quoted words.  Probably want to just preprocess the datasets to separate the quotes and punctuation from words so we don't have to deal with this... So the tokens are most normalized.
 
@@ -218,28 +224,39 @@ REQUEST_PATTERNS = [
     "(.+ |)(must|Must) you(| .+)"
     ]
 
-
-GENERATIVE_SCHEMA_DEFS = {}
-
-CF_DIRECT_SCHEMA_DEFS = {
-  # Move begin, end, mid to defaults.
-  # TODO: figure out how to escape/not escape grep patterns..,
+#
+# Define schema mappings.
+#
+GENERAL_SCHEMA_DEFS = {
   "<begin?>"    : "<regex>(.*\S+ |)",  # beginning of sentence or separated from previous word.
   "<end?>"      : "<regex>(| \S+.*)",  # end of sentence or separated from next word.
   "<mid?>"      : "<regex>( .+ | )",   # one space separation or spaces with something in the middle.
   "<mid>"       : "<regex>( .+ )",     # something in between
-  "<futr>"      : WILL_FORMS + capitalize(WILL_FORMS),
-  "<wish>"      : WISH_FORMS + capitalize(WISH_FORMS),
-  "<past>"      : UPPEN_PAST,
-  "<ppart>"     : UPPEN_PPART,
   "<1stpron>"   : ["i", "we"] + capitalize(["i", "we"])
     }
 
+CF_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
+    {
+      # Move begin, end, mid to defaults.
+      # TODO: figure out how to escape/not escape grep patterns..,
+      "<futr>"      : WILL_FORMS + capitalize(WILL_FORMS),
+      "<wish>"      : WISH_FORMS + capitalize(WISH_FORMS),
+      "<pres>"      : UPPEN_PRES,
+      "<past>"      : UPPEN_PAST,
+      "<ppart>"     : UPPEN_PPART
+      })
+
 # TODO: change all these list-based patterns to be lists.
-REQUEST_DIRECT_SCHEMA_DEFS = {
-  "<reqmodal>" : REQUEST_MODALS + capitalize(REQUEST_MODALS), 
-  "<permmodal>" : PERMISSION_MODALS + capitalize(PERMISSION_MODALS)
-  }
+REQUEST_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
+    {
+      "<reqmodal>"  : REQUEST_MODALS + capitalize(REQUEST_MODALS), 
+      "<permmodal>" : PERMISSION_MODALS + capitalize(PERMISSION_MODALS),
+      "<pres>"      : UPPEN_PRES
+      })
+
+#
+# Declare schema patterns for each phenomenon.
+#
 
 CF_SCHEMAS = [
     # Basic
@@ -259,24 +276,35 @@ CF_SCHEMAS = [
     "(were|had|Were|Had)<end?>" # general implicit 'if'
     ]
 
+# TODO: test further on a dataset with more requests (so far done on discourse treebank which came up with 2...)
 REQUEST_SCHEMAS = [
     # Basic.
     # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
-    ".* (<reqmodal>) you .*",
-    ".* (<1stpron>) need you .*",
-    "<begin?>(<permmodal>) I .+",
+    # Can/Will you ...
+    "<begin?>(<reqmodal>) you<mid?>(<pres>)<end?>",
+    # I need you ... TODO: see if we should add "to" after "you"
+    "<begin?>(<1stpron>) need you<mid?>(<pres>)<end?>",
+    # Can/May I ... V[pres] ...
+    "<begin?>(<permmodal>) I<mid?>(<pres>)<end?>",
     
     # Negative requests (aka "false requests")
-    "<begin?>(<reqmodal>) (n't|not) you .+",
-    "<begin?>(must|Must) you .*"
+    "<begin?>(<reqmodal>) (n't|not) you<mid?>(<pres>)<end?>",
+    "<begin?>(must|Must) you<mid?>(<pres>)<end?>"
     ]
+
+#
+# Generate regular expressions from schemas.
+#
 
 CF_RE = [re.compile(p) for p in CF_PATTERNS]
 REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
 
 
-CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_DIRECT_SCHEMA_DEFS, use_defaults=True)), schema) for \
+CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_SCHEMA_DEFS, use_defaults=True)), schema) for \
     schema in CF_SCHEMAS]
+REQUEST_SCHEMA_RE = [(re.compile(gen_regex(schema, REQUEST_SCHEMA_DEFS, use_defaults=True)), schema) for \
+    schema in REQUEST_SCHEMAS]
+
 
 #print "CF_SCHEMA_RE"
 #for re in CF_SCHEMA_RE:
