@@ -19,7 +19,7 @@ import sys
 from collections import defaultdict
 from itertools import groupby
 
-# TODO: make sure full_stop_split handles all the cases correctly (browse over and check if there are any issues).
+# TODO: break apart n't, commas, periods, quotation marks, 's
 
 #
 # Constants.
@@ -55,12 +55,75 @@ def full_stop_split(context):
     l = l.strip()
     cursent_comps.append(l)
     if (len(l) > 1 and re.match("^\w(\.|\?|!|!\?)$", l[-2:])) or \
-        (len(l) > 2 and re.match("^(.|\?|!|!\?)''$", l[-3:])):
+        (len(l) > 2 and re.match("^(\.|\?|!)''$", l[-3:])) or \
+        (len(l) > 1 and re.match("^(\.|\?|!)(\"|')$", l[-2:])):
       sents.append(" ".join(cursent_comps))
       cursent_comps = []
   if len(cursent_comps) > 0:
     sents.append(" ".join(cursent_comps))
   return sents
+
+
+# Space-separate punctuation and contractions in given token.
+# Call recursively because the phenomena can be stacked.
+def expand_token(token, sent_end=False):
+  # Identifies the ending substring of input that is punctuation and returns
+  # a pair of the prefixing string and the punctuation string.
+  # Returns None if there's no ending punctuation.
+  def suffix_punct(string):
+    for i in range(len(string)):
+      letter = string[len(string) - i - 1]
+      sent_punct = ["!", ",", "?", ";", "'", "\"", "`", "(", ")", "[", "]", "{", "}"]
+      if sent_end:
+        sent_punct.append(".")
+      if letter not in sent_punct:
+        if i == 0:
+          return None
+        else:
+          return (string[:len(string) - i], string[len(string) - i:])
+    return None
+  # Reverse of suffix_punct
+  def prefix_punct(string):
+    if suffix_punct(string[::-1]):
+      pre, suf = suffix_punct(string[::-1])
+      return (suf[::-1], pre[::-1])
+    else:
+      return None
+
+  if re.match("^.+('s|'d|'m)$", token):
+    # One letter contractions.
+    return expand_token(token[:-2]) + [token[-2:]]
+  elif re.match("^.+(n't|'ve|'ll|'re)$", token):
+    # Two letter contractions.
+    return expand_token(token[:-3]) + [token[-3:]]
+  elif re.match("^\S+(''|\")$", token):
+    # Quotes
+    return expand_token(token[:-2]) + [token[-2:]]
+  elif re.match("^\S+'$", token):
+    return expand_token(token[:-1]) + [token[-1:]]
+  elif suffix_punct(token):
+    # Ending punctuation.
+    pre, suf = suffix_punct(token)
+    return expand_token(pre) + [suf]
+  elif prefix_punct(token):
+    # Starting punctuation.
+    pre, suf = prefix_punct(token)
+    return [pre] + expand_token(suf)
+  else:
+    return [token]
+
+
+
+# Space-separate punctuation and contractions.
+def expand_sent(sent):
+  tokens = sent.split(" ")
+  newtokens = []
+  for t in tokens[:-1]:
+    newtokens.extend(expand_token(t))
+  newtokens.extend(expand_token(tokens[-1], sent_end=True))
+  return " ".join(newtokens)
+    
+
 
 # Normalizes given file to one sentence per line and writes them to out.
 def normalize_file(filename, out):
@@ -71,8 +134,9 @@ def normalize_file(filename, out):
   for c in contexts:
     for sent in full_stop_split(c):
       # This is done after full_stop_split because the newlines are good signals for full stops.
-      flattened = sent.replace("\n", " ").strip()       
-      out.write(flattened) 
+      flattened = sent.replace("\n", " ").strip()
+      expanded = expand_sent(flattened)
+      out.write(expanded) 
       out.write("\n")
 
 
