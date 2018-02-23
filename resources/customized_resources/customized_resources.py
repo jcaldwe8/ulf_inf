@@ -81,6 +81,7 @@ def flatten(ll):
 # Load list of all derivational forms of the implicatives.
 #   Takes the stratos implicatives list and expands it to include the e_lemma
 #   list derivations.
+# TODO: update to uppen or delete
 def load_stratos_impl_forms():
   impl_words = load_stratos_impl_list()
   elemma_map = load_e_lemma_dictionary()
