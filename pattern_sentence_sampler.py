@@ -17,9 +17,9 @@ from collections import defaultdict
 from itertools import groupby
 
 # Paths to local modules.
-UPPEN_MORPH_PATH = "resources/uppen_morph_analysis"
-CUSTOMIZED_RESOURCE_PATH = "resources/customized_resources"
-REGEX_GEN_PATH = "resources/regex_generation"
+UPPEN_MORPH_PATH            = "resources/uppen_morph_analysis"
+CUSTOMIZED_RESOURCE_PATH    = "resources/customized_resources"
+REGEX_GEN_PATH              = "resources/regex_generation"
 
 # Load local functions.
 sys.path.append(UPPEN_MORPH_PATH)
@@ -37,7 +37,6 @@ from regex_gen import gen_regex
 # Helper functions.
 #
 
-
 # Capitalizes a word or a list of words.
 def capitalize(e):
   if type(e) == list:
@@ -47,7 +46,9 @@ def capitalize(e):
 
 # Parses arguments and returns the result of parser.parse_args() from argparse.
 def parse_arguments():
-  parser = argparse.ArgumentParser(description='Extracts sentences that may have phenomena of interest from a dataset.')
+  parser = argparse.ArgumentParser(
+      description='Extracts sentences that may have phenomena of interest ' +
+                  'from a dataset.')
   
   parser.add_argument('-stype', '--source_type', choices=['file', 'dir'], required=True)
   parser.add_argument('-spath', '--source_path', type=str, required=True)
@@ -56,7 +57,6 @@ def parse_arguments():
   args = parser.parse_args()
   return args
 
-
 # Forms a dictionary from token labels to token values for a line in the
 # Switchboard corpus.
 def line_token_map(line):
@@ -64,7 +64,6 @@ def line_token_map(line):
   assert(len(tokens) == 7)
   tmap = { label : val for label, val in zip(SWITCHBOARD_TOKEN_LABELS, tokens) }
   return tmap
-
 
 # Write the current utterance transcriptions (as stored in curid and curtmaps) 
 # into lout and mout.
@@ -79,7 +78,6 @@ def write_line(curid, curtmaps, lout, mout):
     mtokens = [tmap['ms_word'] for tmap in curtmaps]
     cleaned_mtokens = clean_tokens(mtokens)
     mout.write(prefix + " ".join(cleaned_mtokens) + suffix)
-
 
 def is_counterfactual(l):
   #for p in CF_RE:
@@ -99,11 +97,6 @@ def is_question(l):
   # TODO
   return False
 
-# TODO: remove (at least until implicatives are separated).
-def is_communicative(l):
-  # TODO
-  return False
-
 def is_implicative(l):
   # TODO: generalize for various capitalizations
   # TODO: handle multi-token impl forms correctly.
@@ -116,7 +109,7 @@ def is_implicative(l):
 
 def is_interesting(l):
   return is_counterfactual(l) or is_request(l) or is_question(l) or \
-      is_communicative(l) or is_implicative(l)
+      is_implicative(l)
 
 # Return the merge of two dictionaries without modifying either input.
 def merge_dicts(d1, d2):
@@ -141,9 +134,6 @@ def filter_file(filename, out):
       if is_question(l):
         filtered['question'].append(l)
         out.write(str(is_question(l)) + "[question]")
-      if is_communicative(l):
-        filtered['communicative'].append(l)
-        out.write(str(is_communicative(l)) + "[communicative]")
       if is_implicative(l):
         filtered['implicative'].append(l)
         out.write(str(is_implicative(l)) + "[implicative]")
@@ -179,19 +169,11 @@ PERMISSION_MODALS = CAN_FORMS + ["may"]
 # Load Stratos implicative list and get past tense forms.
 STRATOS_IMPL = load_stratos_impl_list()
 UPPEN_MORPHS = load_morph_file()
-#past_ltom = {li.lemma : m.token for m in \
-#    filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PAST"]) for li in m.lemmas}
-#ppart_ltom = {li.lemma : m.token for m in \
-#    filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PPART"]) for li in m.lemmas}
-#STRATOS_PAST = [past_ltom[imp] for imp in STRATOS_IMPL if imp in past_ltom]
-#STRATOS_PPART = [ppart_ltom[imp] for imp in STRATOS_IMPL if imp in ppart_ltom]
 UPPEN_PAST  = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PAST"])]
 UPPEN_PPART = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=["PPART"])]
 UPPEN_PRES = list(set([li.lemma for m in \
     filter_morph_data(UPPEN_MORPHS, poses=["V"], features=[]) \
     for li in m.lemmas]))
-
-# TODO: handle punctuation preceding sentence -- e.g. quoted words.  Probably want to just preprocess the datasets to separate the quotes and punctuation from words so we don't have to deal with this... So the tokens are most normalized.
 
 CF_PATTERNS = [
     # Basic
@@ -213,7 +195,6 @@ CF_PATTERNS = [
 REQUEST_PATTERNS = [
     # Basic.
     # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
-    # TODO: generalize the capitalization
     "(.+ |)(Would|would|Will|will|Can|can|Could|could) you .*",
     "(.+ |)(I|We|we|You|you) need you .+",
     ".* may I .*",
@@ -238,7 +219,6 @@ GENERAL_SCHEMA_DEFS = {
 CF_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
     {
       # Move begin, end, mid to defaults.
-      # TODO: figure out how to escape/not escape grep patterns..,
       "<futr>"      : WILL_FORMS + capitalize(WILL_FORMS),
       "<wish>"      : WISH_FORMS + capitalize(WISH_FORMS),
       "<pres>"      : UPPEN_PRES,
@@ -246,7 +226,6 @@ CF_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
       "<ppart>"     : UPPEN_PPART
       })
 
-# TODO: change all these list-based patterns to be lists.
 REQUEST_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
     {
       "<reqmodal>"  : REQUEST_MODALS + capitalize(REQUEST_MODALS), 
@@ -266,10 +245,8 @@ CF_SCHEMAS = [
     # Implicit 'if'.
     "(Were|Had|were|had)<mid>(<futr>) .+",
     "<begin?>(<futr>)<mid>(were|had) .+",
-
     # 'wish'
     ".+ (<wish>) .+", # can add past verb/past participle to limit to counterfactuals.
-    
     # More general one to allow negative examples.
     #"<begin?>(if|If)<mid>(was|were|had|<past>|<ppart>) .*", # fairly general explicit 'if'
     "<begin?>(if|If) .*", # most general explicit 'if'
@@ -299,17 +276,10 @@ REQUEST_SCHEMAS = [
 CF_RE = [re.compile(p) for p in CF_PATTERNS]
 REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
 
-
 CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_SCHEMA_DEFS, use_defaults=True)), schema) for \
     schema in CF_SCHEMAS]
 REQUEST_SCHEMA_RE = [(re.compile(gen_regex(schema, REQUEST_SCHEMA_DEFS, use_defaults=True)), schema) for \
     schema in REQUEST_SCHEMAS]
-
-
-#print "CF_SCHEMA_RE"
-#for re in CF_SCHEMA_RE:
-#  print re
-#sys.exit()
 
 IMPL_FORMS = load_stratos_impl_forms()
 
