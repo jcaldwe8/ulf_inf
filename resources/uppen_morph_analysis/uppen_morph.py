@@ -65,7 +65,7 @@ def load_morph_file(f="morph-1.5/data/morph_english.flat"):
 # one in poses.
 def contains_feature(linfo, poses, features):
   if linfo.pos in poses:
-    if len(linfo.features) == 0:
+    if len(features) == 0:
       return True
     for f in linfo.features:
       if f in features:
