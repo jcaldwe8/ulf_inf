@@ -9,7 +9,7 @@ The original dataset generally contains 1-5 sentences per context.
 
 
 Example call:
-  python normalize_dataset.py --inputpath "data" --inputtype "dir" --target "normalized_dataset"
+  python normalize_dataset.py -spath "data" -stype "dir" -tpath "normalized_dataset"
 """
 
 import argparse
@@ -19,7 +19,6 @@ import sys
 from collections import defaultdict
 from itertools import groupby
 
-# TODO: break apart n't, commas, periods, quotation marks, 's
 
 #
 # Constants.
@@ -37,9 +36,9 @@ RAW_FILENAME_RE = re.compile("^\d+$")
 def parse_arguments():
   parser = argparse.ArgumentParser(description='Extracts transcriptions from the Switchboard corpus into 1 line per utterance.')
   
-  parser.add_argument('-inputtype', '--inputtype', choices=['file', 'dir'], required=True)
-  parser.add_argument('-inputpath', '--inputpath', type=str, required=True)
-  parser.add_argument('-target', '--target', type=str, required=True)
+  parser.add_argument('-stype', '--sourcetype', choices=['file', 'dir'], required=True)
+  parser.add_argument('-spath', '--sourcepath', type=str, required=True)
+  parser.add_argument('-tpath', '--targetpath', type=str, required=True)
   
   args = parser.parse_args()
   return args
@@ -62,7 +61,6 @@ def full_stop_split(context):
   if len(cursent_comps) > 0:
     sents.append(" ".join(cursent_comps))
   return sents
-
 
 # Space-separate punctuation and contractions in given token.
 # Call recursively because the phenomena can be stacked.
@@ -112,8 +110,6 @@ def expand_token(token, sent_end=False):
   else:
     return [token]
 
-
-
 # Space-separate punctuation and contractions.
 def expand_sent(sent):
   tokens = sent.split(" ")
@@ -122,8 +118,6 @@ def expand_sent(sent):
     newtokens.extend(expand_token(t))
   newtokens.extend(expand_token(tokens[-1], sent_end=True))
   return " ".join(newtokens)
-    
-
 
 # Normalizes given file to one sentence per line and writes them to out.
 def normalize_file(filename, out):
@@ -147,26 +141,20 @@ def normalize_file(filename, out):
 args = parse_arguments()
 
 # Extract transcriptions.
-if args.inputtype == 'file':
-  out = file(args.target, 'w')
-  normalize_file(args.inputpath, out)
+if args.sourcetype == 'file':
+  out = file(args.targetpath, 'w')
+  normalize_file(args.sourcepath, out)
   out.close()  
 
 else:
   numfile = 0
-  for dirname, subdirlist, filelist in os.walk(args.inputpath):
+  for dirname, subdirlist, filelist in os.walk(args.sourcepath):
     for f in filelist:
       # Only extract if it's a raw file.
       if re.match(RAW_FILENAME_RE, f):
         print "Extracting file {}".format(numfile)
         numfile += 1
-        out = file(os.path.join(args.target, f), 'w')
+        out = file(os.path.join(args.targetpath, f), 'w')
         normalize_file(os.path.join(dirname, f), out)
         out.close()
-
-
-
-
-
-
 
