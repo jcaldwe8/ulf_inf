@@ -1,0 +1,9 @@
+Files from Project Gutenberg : https://www.gutenberg.org
+
+wget_dataset.py is a script for downloading books lists from Project Gutenberg.
+The books are downloaded in text file formats (.txt or .txt.utf-8 extensions)
+and books where a text format does not exist are ignored.  This tends not to be
+an issue because books without text file formats tend to be specialized
+documents (e.g. scientific documents, dictionaries, etc.) which we are not
+interested in.
+

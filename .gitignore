@@ -11,6 +11,7 @@ datasets/monroe_spoken_dialogue/data
 datasets/spaadia/data
 datasets/ubuntu_dialogue_corpus/Ubuntu-dialogue-corpus
 datasets/uiuc_qc/data
+datasets/project_gutenberg/top100-*/
 
 # Also ignore extracted/normalized corpus files that are decompressed.
 datasets/discourse_graphbank/normalized_discourse_graphbank
