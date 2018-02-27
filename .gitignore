@@ -19,7 +19,7 @@ datasets/switchboard/switchboard_ldc
 datasets/switchboard/switchboard_ms
 datasets/monroe_spoken_dialogue/normalized_data
 datasets/uiuc_qc/normalized_train
-
+datasets/project_gutenberg/normalized_top100-*/
 
 # Ignore decompressed filtered datasets.
 filtered_datasets

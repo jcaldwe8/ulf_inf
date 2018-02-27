@@ -21,16 +21,15 @@ import re
 import sys
 from collections import defaultdict
 from itertools import groupby
+from unidecode import unidecode
 
 #
 # Constants.
 #
 
 CONTEXT_DELIM = "\r\n\r\n"
-RAW_FILENAME_RE = re.compile("^\d+$")
 
 # TODO: handle utf-8 characters (either by first importing it to ascii, or by handling the characters directly.  Importing to ascii will probably be easier...)
-
 
 HEADER_DELIM_RE = "^\*\*\* START OF THIS PROJECT GUTENBERG EBOOK .+ \*\*\*$"
 FOOTER_DELIM_RE = "^\*\*\* END OF THIS PROJECT GUTENBERG EBOOK .+ \*\*\*$"
@@ -46,27 +45,45 @@ def parse_arguments():
   parser.add_argument('-stype', '--sourcetype', choices=['file', 'dir'], required=True)
   parser.add_argument('-spath', '--sourcepath', type=str, required=True)
   parser.add_argument('-tpath', '--targetpath', type=str, required=True)
-  
+  parser.add_argument('-ignore', '--ignorefile', type=str)
+
   args = parser.parse_args()
   return args
 
-# TODO: turn these functions into libraries since both Project Gutenberg and Discourse Graphbank use these functions.  These will likely be useful elsewhere as well.
+# TODO: turn these splitting functions into libraries since both Project Gutenberg and Discourse Graphbank use these functions.  These will likely be useful elsewhere as well.
+
+# Each pattern must have three groups, where the third group is the sentence boundary.  full_stop_split makes these assumptions when using these patterns.
+FULL_STOP_PATTERNS = [
+    "(\w)(\.|\?|!)+($| [A-Z'\"`])",
+    "(\.|\?|!)+(\"|')+($| [A-Z'\"`])"
+    ]
 
 # Split context by inferred full stops.
+# NB: this was modified from the version for Discourse Graphbank because the assumptions are different.  In Discourse Graphbank all ends of sentences are followed by a newline, but not in Project Gutenberg files.
 def full_stop_split(context):
-  # Full stop if it's a character + period or a period and quotation followed by a newline.
+  # TODO: correct to handle names properly (currently makes a new line in the following names : Mrs. Jones, Jane L. Smith)
+  # Full stop if it's a character + period or a period and quotation followed
+  # by a newline or a capitalized word.
   # Note the chracter + period is to avoid ellipses as being considered full stops.
   clines = context.splitlines()
   sents = []
   cursent_comps = []
   for l in clines:
-    l = l.strip()
-    cursent_comps.append(l)
-    if (len(l) > 1 and re.match("^\w(\.|\?|!|!\?)$", l[-2:])) or \
-        (len(l) > 2 and re.match("^(\.|\?|!)''$", l[-3:])) or \
-        (len(l) > 1 and re.match("^(\.|\?|!)(\"|')$", l[-2:])):
-      sents.append(" ".join(cursent_comps))
-      cursent_comps = []
+    while l.strip() != "":
+      l = l.strip()
+      matched = False
+      for pat in FULL_STOP_PATTERNS:
+        res = re.search(pat, l)
+        if res:
+          matched = True
+          sent_boundary = res.span(3)[0]
+          cursent_comps.append(l[:sent_boundary])
+          sents.append(" ".join(cursent_comps))
+          cursent_comps = []
+          l = l[sent_boundary:]
+      if not matched:
+        cursent_comps.append(l)
+        l = ""
   if len(cursent_comps) > 0:
     sents.append(" ".join(cursent_comps))
   return sents
@@ -77,10 +94,12 @@ def expand_token(token, sent_end=False):
   # Identifies the ending substring of input that is punctuation and returns
   # a pair of the prefixing string and the punctuation string.
   # Returns None if there's no ending punctuation.
+  # TODO: make sure punctuation is only grouped if the same type and include dashes (-, --) but make sure -- stays together. 
+  # TODO: consider splitting hyphonated words.
   def suffix_punct(string):
     for i in range(len(string)):
       letter = string[len(string) - i - 1]
-      sent_punct = ["!", ",", "?", ";", "'", "\"", "`", "(", ")", "[", "]", "{", "}"]
+      sent_punct = ["!", ",", "?", ";", ":", "'", "\"", "`", "(", ")", "[", "]", "{", "}"]
       if sent_end:
         sent_punct.append(".")
       if letter not in sent_punct:
@@ -131,6 +150,8 @@ def expand_sent(sent):
 # Normalizes given file to one sentence per line and writes them to out.
 def normalize_file(filename, out):
   f = file(filename, 'r').read()
+  # Convert to nearest ascii counterparts.
+  f = unidecode(f.decode("utf-8"))
   contexts = f.split(CONTEXT_DELIM)
   
   # Remove project gutenberg header.
@@ -158,12 +179,34 @@ def normalize_file(filename, out):
       out.write(expanded) 
       out.write("\n")
 
+# Load file containing books to ignore.
+# Assume the first entry in each line is the index in the format 
+#   /ebooks/[index]
+def load_ignorefile(filepath, delim=" "):
+  if not filepath:
+    return []
+  lines = [l for l in file(filepath, 'r').read().splitlines() if l.strip() != '']
+  ids = [l.split(" ")[0] for l in lines]
+  indices = [int(idstr[8:]) for idstr in ids]
+  return indices
+
+FILE_RE_SCHEMA = "^<index>(-\d)?\.txt(\.utf-8)?$"
+
+# Checks if the given filename is in the ignore list.
+def in_ignorelist(ignorelist, filename):
+  patterns = [FILE_RE_SCHEMA.replace("<index>", str(i)) for i in ignorelist]
+  for p in patterns:
+    if re.match(p, filename):
+      return True
+  return False
 
 #
 # Main body.
 #
 
 args = parse_arguments()
+
+ignorelist = load_ignorefile(args.ignorefile)
 
 # Extract transcriptions.
 if args.sourcetype == 'file':
@@ -175,11 +218,13 @@ else:
   numfile = 0
   for dirname, subdirlist, filelist in os.walk(args.sourcepath):
     for f in filelist:
-      # Only extract if it's a raw file.
-      if re.match(RAW_FILENAME_RE, f):
+      # Only extract if it's not in the ignore list.
+      if not in_ignorelist(ignorelist, f):
         print "Extracting file {}".format(numfile)
         numfile += 1
         out = file(os.path.join(args.targetpath, f), 'w')
         normalize_file(os.path.join(dirname, f), out)
         out.close()
+      else:
+        print "{} in ignore list".format(f)
 
