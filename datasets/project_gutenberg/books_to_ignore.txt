@@ -1,0 +1,20 @@
+/ebooks/6130  The Iliad                                   -- poem
+/ebooks/16328 Beowulf                                     -- poem
+/ebooks/1322  Leaves of Grass                             -- poems
+/ebooks/1934  Songs of Innocence, and Songs of Experience -- poems
+/ebooks/100   The Complete Works of William Shakespeare   -- poems/plays
+/ebooks/1112  The Tragedy of Romeo and Juliet             -- poem/play
+               
+/ebooks/3825  Pygmalion                                   -- play
+               
+/ebooks/10    The King James Version of the Bible         -- archaic writing style
+/ebooks/1251  Le Morte d'Arthur: Volume 1                 -- archaic writing style
+               
+/ebooks/27827 The Kama Sutra                              -- instructional book
+/ebooks/56617 The Art of Theatrical Make-up               -- instructional book
+/ebooks/56613 History of English Literature               -- instructional book
+               
+/ebooks/33283 Calculus Made Easy                          -- textbook
+               
+/ebooks/5739  Korean-English Dictionary                   -- dictionary
+
