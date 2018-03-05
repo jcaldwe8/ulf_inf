@@ -138,12 +138,15 @@ Questions:
 "... (what|which) N?" -- "CNN began broadcasting in what year?"
 
 "... [^(is|was|are|were|'s|'re)] (<wh-word>)(<end?>)[?\?]" -- "You did this how?", "They went home in which way?"; 
-                                                       *"This is how did it", *"That 's what I meant"
+                                                       *"This is how I did it", *"That 's what I meant"
+
+Seems "<prep> <wh>" or "<wh> <verb>" or "<wh>$" is okay.
 
 **imperatives**
 "name ... [^\?]" -- "Name 11 famouse martyrs ."
 "Define ...[^\?]" -- "Define the Pheonix Club."  
 
+TODO: ignore relative clauses "The man who went home is a friend of mine."
 
 
 
