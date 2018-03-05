@@ -28,11 +28,10 @@ from unidecode import unidecode
 #
 
 CONTEXT_DELIM = "\r\n\r\n"
+NORMED_CONTEXT_DELIM = "\n\n"
 
-# TODO: handle utf-8 characters (either by first importing it to ascii, or by handling the characters directly.  Importing to ascii will probably be easier...)
-
-HEADER_DELIM_RE = "^\*\*\* START OF THIS PROJECT GUTENBERG EBOOK .+ \*\*\*$"
-FOOTER_DELIM_RE = "^\*\*\* END OF THIS PROJECT GUTENBERG EBOOK .+ \*\*\*$"
+HEADER_DELIM_RE = "^\*\*\*( |)START( |\n)+OF( |\n)+(THIS|THE)( |\n)+PROJECT( |\n)+GUTENBERG( |\n)+EBOOK( |\n)+.+( |)\*\*\*$"
+FOOTER_DELIM_RE = "^\*\*\*( |)END( |\n)+OF( |\n)+(THIS|THE)( |\n)+PROJECT( |\n)+GUTENBERG( |\n)+EBOOK( |\n)+.+( |)\*\*\*$"
 
 #
 # Helper functions.
@@ -53,8 +52,9 @@ def parse_arguments():
 # TODO: turn these splitting functions into libraries since both Project Gutenberg and Discourse Graphbank use these functions.  These will likely be useful elsewhere as well.
 
 # Each pattern must have three groups, where the third group is the sentence boundary.  full_stop_split makes these assumptions when using these patterns.
+# TODO: use an abbreviation list to handle these... so we can get stuff like "et al.", "e.g.", etc.
 FULL_STOP_PATTERNS = [
-    "(\w)(\.|\?|!)+($| [A-Z'\"`])",
+    "((?!Mr|Mrs|Ms|Miss|Dr|PhD|mr|mrs|ms|miss|dr|Phd|phd|Sr|Jr|sr|jr)\w\w)(\.|\?|!)+($| [A-Z'\"`])",
     "(\.|\?|!)+(\"|')+($| [A-Z'\"`])"
     ]
 
@@ -149,15 +149,21 @@ def expand_sent(sent):
 
 # Normalizes given file to one sentence per line and writes them to out.
 def normalize_file(filename, out):
-  f = file(filename, 'r').read()
+  print "filename: {}".format(filename)
+  f = file(filename, 'rt').read()
   # Convert to nearest ascii counterparts.
   f = unidecode(f.decode("utf-8"))
-  contexts = f.split(CONTEXT_DELIM)
   
+  # Normalize newlines.
+  f = f.replace("\r\n", "\n")
+  f = f.replace("\r", "\n")
+  contexts = f.split(NORMED_CONTEXT_DELIM)
+  print "len(contexts): {}".format(len(contexts))
+
   # Remove project gutenberg header.
   begin = 0
   for i in xrange(len(contexts)):
-    if re.match(HEADER_DELIM_RE, contexts[i]):
+    if re.match(HEADER_DELIM_RE, contexts[i].strip()):
       begin = i + 1
       break
   contexts = contexts[begin:]
@@ -165,7 +171,7 @@ def normalize_file(filename, out):
   # Remove project gutenberg footer.
   end = len(contexts)
   for i in xrange(len(contexts)):
-    if re.match(FOOTER_DELIM_RE, contexts[-1 - i]):
+    if re.match(FOOTER_DELIM_RE, contexts[-1 - i].strip()):
       end = -2 - i
       break
   contexts = contexts[:end]
