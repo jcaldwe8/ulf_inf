@@ -1,0 +1,12 @@
+; Gene Kim 3/5/2018
+; Custom abbreviations of forms that weren't in the oxford abbreviation list.
+
+Mr.	Mister
+Mrs.	Mistress
+Ms.	Miss
+Miss.	Miss
+Dr.	Doctor
+Phd.	Doctor
+Ph.D.	Doctor
+PhD.	Doctor
+
