@@ -94,13 +94,15 @@ def is_request(l):
   return None
 
 def is_question(l):
-  # TODO
-  return False
+  for p, schema in QUESTION_SCHEMA_RE:
+    if re.match(p, l):
+      return schema
+  return None
 
 def is_implicative(l):
   # TODO: generalize for various capitalizations
   # TODO: handle multi-token impl forms correctly.
-  tokens = l.split(" ")
+  tokens = l.lower().split(" ")
   for impl_form in IMPL_FORMS:
     if impl_form in tokens:
       return impl_form
@@ -162,6 +164,11 @@ args = parse_arguments()
 WILL_FORMS = ["will", "would", "wo", "'d"]
 CAN_FORMS = ["can", "could", "ca"]
 WISH_FORMS = ["wish", "wished", "wishing"]
+WH_Q_WORDS = ["what", "when", "where", "which", "who", "whom", "why", "how"]
+AUX_VERBS = ["do", "does", "did", "has", "have", "is", "am", "are", "was", 
+    "were", "be", "being", "been", "may", "must", "might", "should", "could", 
+    "would", "shall", "will", "can", "need", "dare", "ca", "wo"]
+PREPOSITIONS = ["with", "at", "from", "into", "during", "including", "until", "against", "among","throughout", "despite", "towards", "upon", "concerning", "of", "to", "in", "for", "on", "by", "about", "like", "through", "over", "before","between", "after", "since", "without", "under", "within", "along", "following", "across", "behind", "beyond", "plus", "except", "but", "up", "out", "around", "down", "off", "above", "near"]
 
 REQUEST_MODALS = WILL_FORMS + CAN_FORMS
 PERMISSION_MODALS = CAN_FORMS + ["may"]
@@ -174,6 +181,10 @@ UPPEN_PPART = [m.token for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], fea
 UPPEN_PRES = list(set([li.lemma for m in \
     filter_morph_data(UPPEN_MORPHS, poses=["V"], features=[]) \
     for li in m.lemmas]))
+
+UPPEN_VERBS = [m for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=[])]
+UPPEN_VERB_FORMS = list(set([m.token for m in UPPEN_VERBS] + \
+    [li.lemma for m in UPPEN_VERBS for li in m.lemmas]))
 
 CF_PATTERNS = [
     # Basic
@@ -233,6 +244,14 @@ REQUEST_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
       "<pres>"      : UPPEN_PRES
       })
 
+QUESTION_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
+    {
+      "<aux>"   : AUX_VERBS + capitalize(AUX_VERBS),
+      "<wh>"    : WH_Q_WORDS + capitalize(WH_Q_WORDS),
+      "<verb>"  : UPPEN_VERB_FORMS,
+      "<pred>"  : PREPOSITIONS + capitalize(PREPOSITIONS)
+      })
+
 #
 # Declare schema patterns for each phenomenon.
 #
@@ -269,6 +288,21 @@ REQUEST_SCHEMAS = [
     "<begin?>(must|Must) you<mid?>(<pres>)<end?>"
     ]
 
+# TODO: Test with UIUC QC dataset to check coverage.
+# TODO: Test with other datasets for false positive rate.
+QUESTION_SCHEMAS = [
+    # Sentences starting with WH-words.
+    "^(<wh>)<end?>$",
+    # Preposition followed by WH-word (can happen anywhere).
+    "^<begin?>(<prep>) (<wh>)<end?>$",
+    # Verb followed by a WH-word. NB: Too many false positives...
+    #"^<begin?>(<verb>) (<wh>)<end?>$",
+    # Ending in WH-word "You did this how/where?"
+    "^<begin?>(<wh>)$",
+    # Starting with an auxiliary "Shall we go"
+    "^(<aux>)<end?>$"
+    ]
+
 #
 # Generate regular expressions from schemas.
 #
@@ -280,6 +314,15 @@ CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_SCHEMA_DEFS, use_defaults=True)
     schema in CF_SCHEMAS]
 REQUEST_SCHEMA_RE = [(re.compile(gen_regex(schema, REQUEST_SCHEMA_DEFS, use_defaults=True)), schema) for \
     schema in REQUEST_SCHEMAS]
+
+QUESTION_SCHEMA_RE = [(re.compile(gen_regex(schema, QUESTION_SCHEMA_DEFS, use_defaults=True)), schema) for \
+    schema in QUESTION_SCHEMAS]
+
+# Get all forms of implicatives from the uppen morphological dataset.
+UPPEN_VERBS = [m for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=[])]
+STRATOS_UPPEN = [m for m in UPPEN_VERBS if any([li.lemma in STRATOS_IMPL for li in m.lemmas])]
+#IMPL_FORMS = list(set([m.token for m in STRATOS_UPPEN] + \
+#    [li.lemma for m in STRATOS_UPPEN for li in m.lemmas]))
 
 IMPL_FORMS = load_stratos_impl_forms()
 
