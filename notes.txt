@@ -1,4 +1,45 @@
 
+IDEA FOR FUTURE INFERENCE TASK:
+  inference from aspect ('perf'/'prog')
+    "I have run" -> "I ran"
+    (i.pro (pres (perf run.v))) -> (i.pro (past run.v))
+    "I am running" -> (in future) "I ran"
+    "I am building a house" -/-> (in future) "I built a house"
+    
+    Maybe this isn't so interesting since many previous systems have already done this... and doesn't necessarily need a logical representation.
+
+ISSUE WITH imp.lisp:
+  begin.v:
+  (all_pred p (all x (x begin.v (ka p)) -> (x p))) -- only true for certain akstionsarts (e.g. "John begins to build a house" -/-> "John builds a house")
+
+Rules missing in imp.lisp/weak-imp.lisp
+  proceed (+,-)
+  "John proceeded to get back up"
+  (all_pred p (all x (x proceed.v (ka p)) -> (x p)))
+  "John didn't proceed to get back up"
+  (all_pred p (all x (not (x (proceed.v (ka p)))) -> (not (x p))))
+
+  in fact (+,?)
+  "In fact, he went home" -> "he went home"
+
+  upset (+,+)
+  "John is upset that he lost" -> "he lost"
+  "John is not upset that he lost" -> "he lost"
+
+  make (+,*)
+  "John made the dog bark" -> "The dog barked"
+  (x make y p) -> (y p)
+  "John didn't make the dog bark" means either the dog barked for other reasons, or didn't bark at all.
+  (not (x make y p)) -/-> (not (y p)) 
+
+  mind (+,+)
+  "John minds that his apartment is in the city" -> "His apartment is in the city"
+  "John doesn't mind that his apartment is in the city" -> "His apartment is in the city"
+
+  add (+,?)
+  "John added that he's a criminal" -> "he's a criminal"
+
+
 Inferences of interest:
 
 - counterfactuals
