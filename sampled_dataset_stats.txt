@@ -1,0 +1,52 @@
+dgtest: defaultdict(<type 'int'>, {'ignored': 1421, 'implicative': 2032, 'request': 2, 'counterfactual': 43, 'interesting': 2049})
+swtest: defaultdict(<type 'int'>, {'ignored': 67193, 'implicative': 52326, 'request': 381, 'counterfactual': 1826, 'interesting': 52491})
+switchboard: defaultdict(<type 'int'>, {'ignored': 67132, 'implicative': 52326, 'request': 761, 'counterfactual': 1826, 'interesting': 52552})
+msdtest: defaultdict(<type 'int'>, {'ignored': 6011, 'implicative': 2206, 'request': 17, 'counterfactual': 8, 'interesting': 2215})
+dgtest2: defaultdict(<type 'int'>, {'ignored': 1423, 'implicative': 2032, 'request': 2, 'counterfactual': 57, 'interesting': 2047})
+dgtest3: defaultdict(<type 'int'>, {'ignored': 1414, 'implicative': 2032, 'request': 2, 'counterfactual': 95, 'interesting': 2056})
+dgtest4: defaultdict(<type 'int'>, {'ignored': 1173, 'implicative': 1956, 'request': 2, 'counterfactual': 95, 'interesting': 1979})
+dgtest5: defaultdict(<type 'int'>, {'ignored': 2138, 'implicative': 4123, 'request': 4, 'counterfactual': 205, 'interesting': 4166}) # doubled due to bad dataset management.
+dgtest6: defaultdict(<type 'int'>, {'ignored': 794, 'interesting': 2358, 'implicative': 2188, 'question': 747, 'request': 2, 'counterfactual': 110})
+dgtest7: defaultdict(<type 'int'>, {'ignored': 916, 'interesting': 2236, 'implicative': 2188, 'question': 136, 'request': 2, 'counterfactual': 110})
+dgtest8: defaultdict(<type 'int'>, {'ignored': 933, 'interesting': 2219, 'implicative': 2188, 'question': 31, 'request': 2, 'counterfactual': 110})
+
+# Run immediately after uiuctest1 and pgtest5
+# Additional questions are generally good and the question matches are a superset of dgtest8
+# implicative matches for dgtest8 is a superset of dgtest9 -- basically all
+# different forms of "have".  Implicative "have" can be investigated similarly,
+# but we left it out since almost all cases of "have" is not implicative and
+# would simply muddy our dataset. 
+dgtest9: defaultdict(<type 'int'>, {'ignored': 1122, 'interesting': 2030, 'implicative': 1987, 'question': 47, 'request': 2, 'counterfactual': 110})
+
+# discourse graphbank request experimentation.
+rqtest1: defaultdict(<type 'int'>, {'ignored': 2138, 'implicative': 4123, 'request': 4, 'counterfactual': 205, 'interesting': 4166}) # doubled due to bad dataset management.
+rqtest2: defaultdict(<type 'int'>, {'interesting': 2187, 'implicative': 2167, 'request': 2, 'counterfactual': 110, 'ignored': 965})
+
+# discourse treebank implicatives experimentation.
+# uppen
+imptest1: defaultdict(<type 'int'>, {'interesting': 2207, 'implicative': 2187, 'request': 2, 'counterfactual': 110, 'ignored': 945})
+# elemma
+imptest2: defaultdict(<type 'int'>, {'interesting': 2208, 'implicative': 2188, 'request': 2, 'counterfactual': 110, 'ignored': 944})
+
+# Project Gutenberg
+pgtest1: defaultdict(<type 'int'>, {'ignored': 175064, 'request': 2818, 'implicative': 265171, 'question': 18676, 'counterfactual': 30918, 'interesting': 276826})
+# Added ? matching.
+pgtest2: defaultdict(<type 'int'>, {'ignored': 172950, 'request': 2823, 'implicative': 232717, 'question': 54205, 'counterfactual': 30807, 'interesting': 263015})
+# Tried ? matching anywhere and sentence connectives
+pgtest3: defaultdict(<type 'int'>, {'ignored': 188124, 'request': 2823, 'implicative': 232717, 'question': 18602, 'counterfactual': 30807, 'interesting': 247841})
+# Tried to relax ? matching again..., but forgot to handle cases where ? is next to a punctuaion without a space (e.g. ?")
+pgtest4: defaultdict(<type 'int'>, {'ignored': 180797, 'request': 2823, 'implicative': 232717, 'question': 35079, 'counterfactual': 30807, 'interesting': 255168})
+# Corrected ? matching.
+pgtest5: defaultdict(<type 'int'>, {'ignored': 172481, 'request': 2823, 'implicative': 232717, 'question': 55212, 'counterfactual': 30807, 'interesting': 263484})
+
+
+
+# Switchboard
+swtest: defaultdict(<type 'int'>, {'ignored': 67193, 'implicative': 52326, 'request': 381, 'counterfactual': 1826, 'interesting': 52491})
+swtest2: defaultdict(<type 'int'>, {'ignored': 70854, 'request': 403, 'implicative': 40762, 'question': 330, 'counterfactual': 4884, 'interesting': 48830})
+
+
+# UIUC Question Classification
+# ignored UIUC sentences are commands (e.g. "Name a golf course in Myrtle Beach", "Define cosmology") which are not really conversational in the way that we're interested.
+uiuctest1: defaultdict(<type 'int'>, {'ignored': 201, 'interesting': 15251, 'implicative': 3711, 'question': 15205, 'request': 385, 'counterfactual': 95})
+
