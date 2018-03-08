@@ -53,7 +53,13 @@ def parse_arguments():
   parser.add_argument('-stype', '--source_type', choices=['file', 'dir'], required=True)
   parser.add_argument('-spath', '--source_path', type=str, required=True)
   parser.add_argument('-tpath', '--target_path', type=str, required=True)
-  
+  parser.add_argument('-ipath', '--ignored_path', type=str)
+
+  feature_parser = parser.add_mutually_exclusive_group(required=False)
+  feature_parser.add_argument('-youknow', '--default_youknow', dest='ignore_youknow', action='store_false')
+  feature_parser.add_argument('-iyouknow', '--ignore_youknow', dest='ignore_youknow', action='store_true')
+  parser.set_defaults(ignore_youknow=False)
+
   args = parser.parse_args()
   return args
 
@@ -119,10 +125,20 @@ def merge_dicts(d1, d2):
   d.update(d2)
   return d
 
-def filter_file(filename, out):
+# Returns true if there's an occurrence of "know" not in "you know".
+def is_raw_know(string):
+  tokens = string.lower().split(" ")
+  for i in range(len(tokens)):
+    if tokens[i] == "know" and (i == 0 or tokens[i - 1] != "you"):
+      return True
+  return False
+
+
+def filter_file(filename, out, iyouknow):
   filtered = defaultdict(list)
   filter_counts = defaultdict(int)
   lines = file(filename, 'r').read().splitlines()
+  ignored = []
 
   for l in lines:
     if is_interesting(l):
@@ -137,15 +153,20 @@ def filter_file(filename, out):
         filtered['question'].append(l)
         out.write(str(is_question(l)) + "[question]")
       if is_implicative(l):
-        filtered['implicative'].append(l)
-        out.write(str(is_implicative(l)) + "[implicative]")
+        impl_match = str(is_implicative(l))
+        if not iyouknow or impl_match != "know" or is_raw_know(l):
+          # Only add if iyouknow is False or the match is not "know" or at
+          # least one match of "know" is not preceded by "you"
+          filtered['implicative'].append(l)
+          out.write(impl_match + "[implicative]")
       out.write(" --- ")
       out.write(l)
       out.write("\n")
     else:
       filter_counts['ignored'] += 1
+      ignored.append(l)
 
-  return (filtered, filter_counts)
+  return (filtered, filter_counts, ignored)
 
 def listdict_to_countdict(ld):
   return { k : len(v) for k, v in ld.iteritems() }
@@ -169,6 +190,17 @@ AUX_VERBS = ["do", "does", "did", "has", "have", "is", "am", "are", "was",
     "were", "be", "being", "been", "may", "must", "might", "should", "could", 
     "would", "shall", "will", "can", "need", "dare", "ca", "wo"]
 PREPOSITIONS = ["with", "at", "from", "into", "during", "including", "until", "against", "among","throughout", "despite", "towards", "upon", "concerning", "of", "to", "in", "for", "on", "by", "about", "like", "through", "over", "before","between", "after", "since", "without", "under", "within", "along", "following", "across", "behind", "beyond", "plus", "except", "but", "up", "out", "around", "down", "off", "above", "near"]
+
+# Non-subordinating sentence connecting words.
+NSUB_SCONN_WORDS = ["and", "or"]
+SCONN_PUNCT = [";", ":", "\"", "``", "'", "''"]
+
+# Discourse markers that precede a statement.
+DISCOURSE_PREFIX = ["well", "okay", "ok", "you know", "yknow", "y'know", "'know", 
+    "of course", "course", "so", "right", "anyway", "like", "fine", "now", 
+    "i mean", "good", "oh", "as i say", "as i said", "great", "mind you", 
+    "for a start", "i see", "yes", "no", "yeah", "definitely", "wow", "wonderful", 
+    "absolutely"]
 
 REQUEST_MODALS = WILL_FORMS + CAN_FORMS
 PERMISSION_MODALS = CAN_FORMS + ["may"]
@@ -249,7 +281,11 @@ QUESTION_SCHEMA_DEFS = merge_dicts(GENERAL_SCHEMA_DEFS,
       "<aux>"   : AUX_VERBS + capitalize(AUX_VERBS),
       "<wh>"    : WH_Q_WORDS + capitalize(WH_Q_WORDS),
       "<verb>"  : UPPEN_VERB_FORMS,
-      "<pred>"  : PREPOSITIONS + capitalize(PREPOSITIONS)
+      "<pred>"  : PREPOSITIONS + capitalize(PREPOSITIONS),
+      # Connectors of sentences.
+      "<sentconn>" : NSUB_SCONN_WORDS + capitalize(NSUB_SCONN_WORDS) + SCONN_PUNCT,
+      # Discourse phenomena that precede the sentence.
+      "<discpre>" : DISCOURSE_PREFIX + capitalize(DISCOURSE_PREFIX)
       })
 
 #
@@ -291,16 +327,25 @@ REQUEST_SCHEMAS = [
 # TODO: Test with UIUC QC dataset to check coverage.
 # TODO: Test with other datasets for false positive rate.
 QUESTION_SCHEMAS = [
+    # 1. All the patterns based on the beginnings of sentences need to allow
+    #    happening after connectives, semicolons, colons, quotes.
+    # 2. Same as 1, but followed by the connective.
     # Sentences starting with WH-words.
-    "^(<wh>)<end?>$",
+    "(^|<sentconn>|<discpre>)(<wh>)<end?>$",
     # Preposition followed by WH-word (can happen anywhere).
     "^<begin?>(<prep>) (<wh>)<end?>$",
     # Verb followed by a WH-word. NB: Too many false positives...
     #"^<begin?>(<verb>) (<wh>)<end?>$",
     # Ending in WH-word "You did this how/where?"
-    "^<begin?>(<wh>)$",
-    # Starting with an auxiliary "Shall we go"
-    "^(<aux>)<end?>$"
+    "^<begin?>(<wh>)($|<sentconn>)",
+    # Starting with an auxiliary e.g. "Shall we go"
+    "(^|<sentconn>|<discpre>)(<aux>)<end?>$",
+    # Sentences containing a question mark -- very strong signal for
+    # well-formatted datasts and not likely to falsely match on datasets
+    # without good punctuation.
+    #"^<begin?>\?<end?>$",
+    "^.*\?.*$"
+    #"(^<begin?>\?|\?<end?>$|^.*\?.*$)"
     ]
 
 #
@@ -329,24 +374,31 @@ IMPL_FORMS = load_stratos_impl_forms()
 # Extract transcriptions.
 if args.source_type == 'file':
   out = file(args.target_path, 'w')
-  filter_file(args.source_path, out)
+  filter_file(args.source_path, out, args.ignore_youknow)
   out.close()  
 
 else:
   numfile = 0
   filter_counts = defaultdict(int)
+  all_ignored = []
   for dirname, subdirlist, filelist in os.walk(args.source_path):
     for f in filelist:
       # Only extract if it's an annotation file.
       print "Extracting file {}".format(numfile)
       numfile += 1
       out = file(os.path.join(args.target_path, f), 'w')
-      linemap, countmap = filter_file(os.path.join(dirname, f), out)
+      linemap, countmap, ignored = filter_file(os.path.join(dirname, f), out, args.ignore_youknow)
       out.close()
 
       countdict_update(filter_counts, countmap)
       countdict_update(filter_counts, listdict_to_countdict(linemap))
+      all_ignored.extend(ignored)
+  if args.ignored_path:
+    out = file(args.ignored_path, 'w')
+    for l in all_ignored:
+      out.write(l)
+      out.write("\n")
+    out.close()
   print filter_counts
-
 
 
