@@ -1,0 +1,5 @@
+Datasets considered but not here:
+  COCA -- must pay to get full access, which is problematic for us as well as for openness of research.
+  SPAADIA -- reservation dataset is too restricted to be useful
+  Ubuntu Dialogue Corpus -- good, large dataset, but the types of dialogue doesn't lead to the sorts of phenomena we're interested in.  The questions are mostly query questions. Also the technical jargon means that we need to work hardder to handle the special names and such.  
+
