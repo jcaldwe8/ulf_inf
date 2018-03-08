@@ -1,10 +1,36 @@
+Now
+* Sample from project gutenberg, discourse treebank, and switchboard and UIUC QA (write code for it)
+* Make sure patterns are reasonable for each set
+  Take a sample of 50 for each phenomenon in each dataset and see what proportion actually falls into the category we're interested in.
+* Once the dataset balance has been decided on, build dataset and split each sample into development and actual test data (dev should be maybe 10%?) this way we can build the inference engine without knowing the test data.
+* Generalizing sampling from switchboard so that the sample matching simplifies 
+  the sentnece (remove repeated words and disfluencies) but keeps the original
+  sentence in the stored values so that those can be correctly fixed manually. -- just allow the system to match as necessary while avoiding using it for actual correction.
+* Get sample of patterns from each
+Tomorrow
+* Address Len's critique of the guidelines and make a complete version
+
+3/6/2018 Completed
+* removed "have" since it seems to allow similar inferences to implicatives through the auxiliary, but not base verb form.
+* added clause that ignores "you know" from matching "know" if a flag is set.
+3/7/2018 Completed
+* Expanded contractions in switchboard (and punctuation expansion, but I don't think switchboard has that)
+* Added casing-based swtichboard sentence delimiting -- they are a bit long, but more coherent.
+* Added flexible ? matching for questions since it's a low false-positive feature
+* Checked question sample over UIUC -- we get full coverage except for imperatives "Name a famous martyr", "Describe cosmology"
+  A bit worried because this dataset contains knowledge base questions: "What
+  is the state nickname of Mississippi?" which don't have much interesting
+  going on in the dialogue such as "What are they doing?" or "Do you take me
+  for a dunce?" which have some conversational complexities.
+
+
 
 Short-term
+* Clean question patterns (where did ..., what did ... what N are/<past v>, etc.) and grep "?" from dataset to see where the patterns fail.
 * Get regex schemas working for all patterns.
 * Look at elemma and uppen impl lists and make sure there aren't any major inconsistencies.
 * Regularize suffixes and punctuation in other datasets (before testing on new patterns since they assume this regularization)
 * Test request patterns on more datasets
-* Filter "you know [^that]" from the switchboard corpus
 * Sentence boundary on switchboard is really bad (maybe we can see where the turn taking happens -- if the other person just responds with Uh-huh, or yeah, or something similar (maybe less than 3 tokens) we assume the current speaker is on the same sentence?
 * Merge uppen_morph handling with other resources into a more integrated codebase.
 * Getting LOTS of false positives on switchboard requests
@@ -18,6 +44,7 @@ Short-term
 * Record stats of samples for datasets
 * Add multiword coverage to Uppen Morph data.
 * Figure out the relationship between impl-list.txt, imp.lisp, and weak-imp.lisp in stratos-data.
+* Look into Jon's Children's book list for Project Gutenberg
 
 
 Long-term
@@ -25,3 +52,5 @@ Long-term
 can all sit in the same location (so we don't need to update the gitignore
 every time we add a dataset).
 
+* Fix sentence boundary identification for Project Gutenberg by adding more
+* robust abbreviation identification (XXX.).
