@@ -60,6 +60,14 @@ def parse_arguments():
   feature_parser.add_argument('-iyouknow', '--ignore_youknow', dest='ignore_youknow', action='store_true')
   parser.set_defaults(ignore_youknow=False)
 
+  # If switchboard match is true, then the matching phase is performed after
+  # disfluency reductions.  However, the reported sentence is the original so
+  # that these reductions can be done manually and more accurately.
+  sw_parser = parser.add_mutually_exclusive_group(required=False)
+  sw_parser.add_argument('-swmatch', '--switchboard_match', dest='switchboard_match', action='store_true')
+  sw_parser.add_argument('-dfmatch', '--default_match', dest='switchboard_match', action='store_false')
+  parser.set_defaults(switchboard_match=False)
+
   args = parser.parse_args()
   return args
 
@@ -133,27 +141,60 @@ def is_raw_know(string):
       return True
   return False
 
+# This doesn't include ones like: so, like, well, etc. since these have
+# fluent meaning.
+DISFLUENCY_RE = [re.compile(p) for p in ["^uh$", "^\w+-$", "^-\w+$", "^um$", "^erm$"]]
 
-def filter_file(filename, out, iyouknow):
+# Reduces disfluencies from normalized sentence using a few simple rules:
+#   1. Remove anything from a set of disfluencies : uh, -\w+, \w+-, 
+#   2. Collapse repeated phrases up to length 3.
+def reduce_disfluencies(l):
+  tokens = l.split(" ")
+  # Remove from list.
+  filtered_tokens = [t for t in tokens if not any([re.match(p, t.lower()) for p in DISFLUENCY_RE])]
+  # Collapse repeated phrases.
+  final_tokens = filtered_tokens
+  start = 0
+  while start < len(final_tokens):
+    diff = len(final_tokens) - start
+    for width in range(diff, 0, -1):
+      segment = [t.lower() for t in final_tokens[start:start + width]]
+      reps = 0
+      while segment == [t.lower() for t in final_tokens[start + (width * (reps + 1)):start + (width * (reps + 2))]]:
+          reps += 1
+      for i in range(reps * width):
+        del final_tokens[start + width]
+      if reps > 0:
+        start += width - 1
+        break
+    start += 1
+  return " ".join(final_tokens)
+
+
+# Main function for sampling from files using patterns.
+def filter_file(filename, out, iyouknow, swmatch):
   filtered = defaultdict(list)
   filter_counts = defaultdict(int)
   lines = file(filename, 'r').read().splitlines()
   ignored = []
 
   for l in lines:
-    if is_interesting(l):
+    matchl = l
+    if swmatch:
+      matchl = reduce_disfluencies(l)
+    if is_interesting(matchl):
       filter_counts['interesting'] += 1
-      if is_counterfactual(l):
+      if is_counterfactual(matchl):
         filtered['counterfactual'].append(l)
-        out.write(str(is_counterfactual(l)) + "[counterfactual]")
-      if is_request(l):
+        out.write(str(is_counterfactual(matchl)) + "[counterfactual]")
+      if is_request(matchl):
         filtered['request'].append(l)
-        out.write(str(is_request(l)) + "[request]")
-      if is_question(l):
+        out.write(str(is_request(matchl)) + "[request]")
+      if is_question(matchl):
         filtered['question'].append(l)
-        out.write(str(is_question(l)) + "[question]")
-      if is_implicative(l):
-        impl_match = str(is_implicative(l))
+        out.write(str(is_question(matchl)) + "[question]")
+      if is_implicative(matchl):
+        impl_match = str(is_implicative(matchl))
         if not iyouknow or impl_match != "know" or is_raw_know(l):
           # Only add if iyouknow is False or the match is not "know" or at
           # least one match of "know" is not preceded by "you"
@@ -374,7 +415,7 @@ IMPL_FORMS = load_stratos_impl_forms()
 # Extract transcriptions.
 if args.source_type == 'file':
   out = file(args.target_path, 'w')
-  filter_file(args.source_path, out, args.ignore_youknow)
+  filter_file(args.source_path, out, args.ignore_youknow, args.switchboard_match)
   out.close()  
 
 else:
@@ -384,10 +425,22 @@ else:
   for dirname, subdirlist, filelist in os.walk(args.source_path):
     for f in filelist:
       # Only extract if it's an annotation file.
-      print "Extracting file {}".format(numfile)
+      print "Extracting file num {}: {}".format(numfile, f)
+
+      # TODO: remove
+      # Disfluency test.
+      #out = file(os.path.join(args.target_path, f), 'w')
+      #reduced = [reduce_disfluencies(l) for l in file(os.path.join(dirname, f), 'r').read().splitlines()] 
+      #for r in reduced:
+      #  out.write(r)
+      #  out.write("\n")
+      #out.close()
+
+
       numfile += 1
       out = file(os.path.join(args.target_path, f), 'w')
-      linemap, countmap, ignored = filter_file(os.path.join(dirname, f), out, args.ignore_youknow)
+      linemap, countmap, ignored = \
+          filter_file(os.path.join(dirname, f), out, args.ignore_youknow, args.switchboard_match)
       out.close()
 
       countdict_update(filter_counts, countmap)
