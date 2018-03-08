@@ -1,7 +1,10 @@
-; Version of list Feb. 8, 2018.  Corrections made from previous version:
+; Version of list Mar. 6, 2018.  Corrections made from previous version:
+; 2/8/2018
 ; purplex -> perplex
 ; saction -> sanction
-; - redundant words
+; removed redundant words
+; 3/6/2018
+; removed 'have' since we can't think of a good implicative inference [ maybe the perfect aspect which implies past, but that's not useful for us... ]
 ; TODO: + british variants to spelling
 abhor
 accept
@@ -112,7 +115,6 @@ happen
 harangue
 hasten
 hate
-have
 help
 hesitate
 horrify
