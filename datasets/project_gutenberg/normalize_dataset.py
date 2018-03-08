@@ -54,8 +54,8 @@ def parse_arguments():
 # Each pattern must have three groups, where the third group is the sentence boundary.  full_stop_split makes these assumptions when using these patterns.
 # TODO: use an abbreviation list to handle these... so we can get stuff like "et al.", "e.g.", etc.
 FULL_STOP_PATTERNS = [
-    "((?!Mr|Mrs|Ms|Miss|Dr|PhD|mr|mrs|ms|miss|dr|Phd|phd|Sr|Jr|sr|jr)\w\w)(\.|\?|!)+($| [A-Z'\"`])",
-    "(\.|\?|!)+(\"|')+($| [A-Z'\"`])"
+    "((?!Mr|Mrs|Ms|Miss|Dr|PhD|mr|mrs|ms|miss|dr|Phd|phd|Sr|Jr|sr|jr)\w\w)(\.|\?|!)+(| [A-Z'\"`])",
+    "(\.|\?|!)+(\"|')+(| [A-Z'\"`])"
     ]
 
 # Split context by inferred full stops.
