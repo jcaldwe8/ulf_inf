@@ -7,5 +7,7 @@ wget_dataset.py
   books without text file formats tend to be specialized documents (e.g.
   scientific documents, dictionaries, etc.) which we are not interested in.
 
-
+normalize_dataset.py
+  Script to normalize the books into the desired format: licenses removed, one
+  line per sentence, punctuation separated by space, expanded contractions.
 
