@@ -2,6 +2,7 @@ Now
 * Sample from project gutenberg, discourse treebank, and switchboard and UIUC QA (write code for it)
 * Make sure patterns are reasonable for each set
   Take a sample of 50 for each phenomenon in each dataset and see what proportion actually falls into the category we're interested in.
+* Write up initial distinction between inference types (entailment, presupposition, implicature, etc.) since they seem to have different conditions on failure
 * Once the dataset balance has been decided on, build dataset and split each sample into development and actual test data (dev should be maybe 10%?) this way we can build the inference engine without knowing the test data.
 * Generalizing sampling from switchboard so that the sample matching simplifies 
   the sentnece (remove repeated words and disfluencies) but keeps the original
@@ -22,26 +23,20 @@ Tomorrow
   is the state nickname of Mississippi?" which don't have much interesting
   going on in the dialogue such as "What are they doing?" or "Do you take me
   for a dunce?" which have some conversational complexities.
+* Matching processing in switchboard first removes disfluencies and repeated
+  phrases so that they don't get in the way of the pattern matches.
+  -- we can use this script to give a preliminary disfluency reduction that can be corrected.
+  This removes erroneous request patterns where repeated phrases look like inverted structure: "I can I can go home" -> "... can I ..."
+  This also captures many more questions that were missed because of utterances that start with a disfluency
+
+
 
 
 
 Short-term
-* Clean question patterns (where did ..., what did ... what N are/<past v>, etc.) and grep "?" from dataset to see where the patterns fail.
-* Get regex schemas working for all patterns.
 * Look at elemma and uppen impl lists and make sure there aren't any major inconsistencies.
-* Regularize suffixes and punctuation in other datasets (before testing on new patterns since they assume this regularization)
-* Test request patterns on more datasets
-* Sentence boundary on switchboard is really bad (maybe we can see where the turn taking happens -- if the other person just responds with Uh-huh, or yeah, or something similar (maybe less than 3 tokens) we assume the current speaker is on the same sentence?
 * Merge uppen_morph handling with other resources into a more integrated codebase.
 * Getting LOTS of false positives on switchboard requests
-* Add patterns for questions
-* Download the gutenburg project data
-  - need filter for weird texts (e.g. the bible), or old texts (e.g. beowulf)
-    or maybe none... not sure yet...
-    Maybe based on translation time (modern translations of old texts may be fine)
-  - Determine how to get sentence boundaries (maybe use NLTK or Stanford since
-    this is more structured text).
-* Record stats of samples for datasets
 * Add multiword coverage to Uppen Morph data.
 * Figure out the relationship between impl-list.txt, imp.lisp, and weak-imp.lisp in stratos-data.
 * Look into Jon's Children's book list for Project Gutenberg
