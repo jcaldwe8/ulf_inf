@@ -17,6 +17,8 @@ datasets/project_gutenberg/top100-*/
 datasets/discourse_graphbank/normalized_discourse_graphbank
 datasets/switchboard/switchboard_ldc
 datasets/switchboard/switchboard_ms
+datasets/switchboard/sw_*_ldc
+datasets/switchboard/sw_*_ms
 datasets/monroe_spoken_dialogue/normalized_data
 datasets/uiuc_qc/normalized_train
 datasets/project_gutenberg/normalized_top100-*/
