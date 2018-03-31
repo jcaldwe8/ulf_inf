@@ -1,0 +1,37 @@
+; Implicatives
+
+verb: accept
+constructions: 
+  x V that w
+  x is V-ing that w?
+NB: see aaron's work to get all reasonable constructions.
+inferences:
+  x V that w -> w
+  x is V-ing that w -> w
+
+verb: acknowledge
+constructions:
+  x V that w
+  x is V-ing that w
+  x V p-ing
+  x is V-ing p-ing?
+inferences:
+  x V that w -> w
+  x is V-ing that w -> w
+  x V p-ing -> (x p-ed)
+  x is V-ing p-ing ?
+
+
+; Constructions => possible implications
+; We can enumerate these.  Then when an implicative is looked up, we can list
+; the possible constructions for the verb (via megaattitude).  Have the annotator
+; select the appropriate constrution, which will then list the possbile
+; inferences for the construction.  Then they select that and write down the
+; associated inferred sentence.
+;
+; How to handle negative polarity?  Have separate rules for them that mark it as such... maybe 'not' or 'negp'.
+
+x accept that w => w
+
+someone accept(s/ed) that something happened => something happened
+

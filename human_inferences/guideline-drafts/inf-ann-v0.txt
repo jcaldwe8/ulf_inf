@@ -1,0 +1,134 @@
+
+Preliminary ideas for generating human inferences:
+
+TODO: decide whether this should be done before or after ULF annotations
+  BEFORE: less influence on annotator thought process, more natural inferenece
+  AFTER:  eliminates ambiguities, both for the annotator, and for evaluating the system.  Also, less annotation (if we decide to annotate the inferred sentences) or less work (if we decide to automatically generate the text from system inferred ULFs.
+
+
+The purpose of these guidelines is to have people generate inferences at
+surface form level but with restricted/guidance to only consider specific types
+of inference.  By providing examples of inference rules we can expect to limit
+superfluous syntactic variations.  These variations can be handled in
+principle, but just adds to the rules that need to be written.  e.g. "What is
+the official animal of Canada?" -> "Something is the official animal of
+Canada."; "Canada has an official animal".  These inferences are effectively
+the same information, so we'd like the humans to choose one canonically to
+simplify what we need to get our system to accomplish for this experiment.
+
+The general structure is to provide some information regarding the types of
+inferences we're interested in for the given sentence.  Then asking the
+annotator to provide some classification of the provided inference to make sure
+they clearly distinguish the different available inferences.  We allow open
+class annotation, where the annotator doesn't think it falls into any given
+classes.  This we can do preliminarily a couple iterations to make sure the
+classes cover most expected cases.
+
+1) Implicatives
+  a. use word lookup to highlight the word identified
+  b. provide all infernce rule descriptions and examples for this for reference
+      Ex. regret
+      "John regrets that he treated Mary without respect"
+      x regret (that y) -> y
+      x not regret (that y) -> y
+      "John regrets having treated Mary without respect"
+      x regret (ka y) -> (x y)
+      x not regret (ka y) -> (x y)
+  c. ask the annotator to write sentences that reflect the consequent of these
+     rules applied to the provided sentence, as appropriate -- mark which rule
+     is being represented.
+  d. ask for any other inferences of this type, but not included in the rules
+     in a different entry (to check if our rules seem to cover all the inferences
+     that our subjects can think of).
+  e. record annotations in including: original sentence, rule-result-annotator triples
+
+2) Counterfactuals
+  a. Provide list of expected counterfactual forms
+    - If [past S] [futr S] -- If I were/was rich, I would own a boat
+    - Has/Were [inverted past S] [futr S] -- Were I rich, I would own a boat
+    - [futr S] If [past S] -- I would own a board if I were rich
+    - [futr S] Has/Were [inverted past S] -- I would own a boat, were I rich.
+    - I wish [past S] -- I wish I owned a boat
+  b. Provide examples of inference and non-inferential sentences.
+    - "If I was rich, I would own a boat" -> "I am not rich"
+    - "If I was rich, I would have owned a boat" -> "I was not rich"
+    - "If you were feeling sick, you must take medicine" -/-> "You are feeling sick"
+    - "I wish I were rich" -> "I am not rich"
+    - "I wish for him to get better" -/-> "He will not get better"
+    - "I wish he was getting better" -> "He is not getting better"
+  c. Use the grep patterns used for sampling to make a noisy guess at which
+     form it could be and only show inference info for those (to reduce
+     annotator burden)
+  d. For the sentence, ask for counterfactuality inferences, if any.
+  e. store original sentence along with inference-annotator pairs (also store
+     if there are none)
+
+3) Requests
+  a. Enumerate inference types
+    * implicit request as a directly conversion of original question 
+        can you ... 
+          -> I expect/want you to ...
+    * inferred request not directly mapped from question
+        "Is x here?" 
+          -> "I expect you to get x if they are nearby"
+    * indirect intention inference
+        "Is x here?" 
+          -> "I probably want to speak to x"
+    * situational inference
+        "Is x here?" 
+          -> "The speaker is probably on the phone or at an entrance"
+        "Could I get the check?"/"Could you get me the check?" 
+          -> "The speaker is probably a patron at a sit-down restaurant"
+          -> "The speaker thinks the hearer works at the restaurant")
+    * Negative requests (request is negative to the surface question)
+        "Can't you be friendly?" 
+          -> "I want you to be friendly"
+          -> "I don't see a reason for you to not be friendly"
+
+  b. Use grep patterns to reduce displayed information.
+  c. For the sentence ask the annotator to select the inference classification
+     and provide resulting sentence/ULF.  Allow them to mark that there is no
+     appropriate category, or multiple if ambiguous.
+
+
+4) Questions
+  a. Question inference types
+    * General question inference (inferences based on the fact that a question was asked)
+      `Questioner expects that the addressee probably knows the answer and will supply it`
+      "Where did John go?"
+        -> "The addressee probably knows where John is and will supply it"
+      "When are you getting married?"
+        -> "The addressee probably knows the answer and will supply it"
+     
+    * Question-form based presuppositional inferences. (inferences based on the type of question)
+      "Who did you meet yesterday?"
+        -> "The addressee met someone yesterday"
+      "What is Betsy Ross famous for?"
+        -> "Betsy Ross is famous for something"
+      "When did Beethoven die?"
+        -> "Beethoven died"
+      "How many people did Randy Craft kill?"
+        -> "Randy Craft kill multiple people"
+      "What is the official animal of Canada?"
+        -> "Something is the official animal of Canada"
+      "What is the abbreviation for micro"
+        -> "There is an abbreviation for micro"
+      "When are you getting married?"
+        -> "The addressee will get married in the near future" 
+      "What is your dog's name?"
+        -> "Your dog has a name"
+      TODO: enumerate each question type that I can think of...
+
+    * Situational presuppositional inferences (inferences that can be made without using the question structure)
+      "What is your dog's name?"
+        -> "The addressee is in possession of a dog"
+      "What CBS soap opera was interrupted by the bulletin of John F. Kennedy 's assassination ?"
+        -> "There was a bulletin of John F. Kennedy's assassination"
+        -> "John F. Kennedy was assassinated"
+
+  b. Use grep patterns to reduce displayed information.
+  c. Ask the annotator to generate such inferences along with the category they fall into.  
+
+
+
+

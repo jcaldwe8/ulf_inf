@@ -1,0 +1,179 @@
+; Len's comments in brackets.
+
+The purpose of these guidelines is to have people generate inferences at
+surface form level but with restricted/guidance to only consider specific types
+of inference.  By providing examples of inference rules we can expect to limit
+superfluous syntactic variations.  These variations can be handled in
+principle, but just adds to the rules that need to be written.  e.g. "What is
+the official animal of Canada?" -> "Something is the official animal of
+Canada."; "Canada has an official animal".  These inferences are effectively
+the same information, so we'd like the humans to choose one canonically to
+simplify what we need to get our system to accomplish for this experiment.
+
+The general structure is to provide some information regarding the types of
+inferences we're interested in for the given sentence.  Then asking the
+annotator to provide some classification of the provided inference to make sure
+they clearly distinguish the different available inferences.  We allow open
+class annotation, where the annotator doesn't think it falls into any given
+classes.  This we can do preliminarily a couple iterations to make sure the
+classes cover most expected cases.
+
+1) Implicatives
+  a. use word lookup to highlight the word identified
+     [Oh, the annotator will be provided with this]
+     {GK: Yes.  And I'm still deciding whether to give the annotator just a
+     single case to deal with for a given sentence or highlight all possible
+     cases.}
+  b. provide all inference rule descriptions and examples for this for reference
+     [You don't mean separate examples for every implicative? Or do you? (c) seems
+     to imply yes]
+     {GK: Probably not an example for the exact implicative, but probably a few
+     examples for each implicative type (grouped by semantic structure and
+     available inferences) so that for all (or at least most) implicatives
+     there are some concrete examples of the sorts of inferences we're
+     interested in.  For example for the implicatives 'rejoice', 'reveal',
+     'understand', and others all have (+,+) polarity inference and have the
+     inference structure 'x <verb> (that y) -> y' so they would all be provided
+     the first set of examples for 'regret' shown below.  It should be clear to the
+     annotators then that "John understands that he treated Mary without
+     respect" has some of the same inferences available to it as "John regrets
+     that he treated Mary without respect"}
+      Ex. regret
+      "John regrets that he treated Mary without respect"
+      x regret (that y) -> y
+      x not regret (that y) -> y
+      "John regrets having treated Mary without respect"
+      x regret (ka y) -> (x y)       [maybe x regret y-ing -> (x y-ed)  {GK: Yes, because we can't say *"John regrets to run"}
+      x not regret (ka y) -> (x y)   [ likewise ]
+         [Provide other-tense examples too -- "did not regret", "has not regretted",
+          "will not regret" (which has a weaker implication)]
+         {GK: Yes. I've been going through the implicative inference lists from
+         Stratos to handle various tenses and determining exactly what the
+         inferences are.  Right now I'm working with almost fully explicit ULF
+            e.g. ((w_wff),(t_tense),(x)) : (x ((t regret.v) (that w))) -> w
+         but I'll also need to think about what the nicest presentation will be
+         for the annotators.}
+  c. ask the annotator to write sentences that reflect the consequent of these
+     rules applied to the provided sentence, as appropriate -- mark which rule
+     is being represented.
+  d. ask for any other inferences of this type, but not included in the rules
+     in a different entry (to check if our rules seem to cover all the inferences
+     that our subjects can think of).
+  e. record annotations in including: original sentence, rule-result-annotator triples
+
+2) Counterfactuals
+  a. Provide list of expected counterfactual forms
+    - If [past S] [futr S] -- If I were/was rich, I would own a boat
+    - Has/Were [inverted past S] [futr S] -- Were I rich, I would own a boat
+    - [futr S] If [past S] -- I would own a board if I were rich
+    - [futr S] Has/Were [inverted past S] -- I would own a boat, were I rich.
+    - I wish [past S] -- I wish I owned a boat
+  b. Provide examples of inference and non-inferential sentences.
+    - "If I was rich, I would own a boat" -> "I am not rich"
+                                         [also -> I don't own a boat]
+    - "If I was rich, I would have owned a boat" -> "I was not rich"
+                                         [also -> I didn't own a boat]
+    - "If you were feeling sick, you must take medicine" -/-> "You are feeling sick"
+       [This looks like poor English to me; should "were" be "are"?]
+    - "I wish I were rich" -> "I am not rich"
+    - "I wish for him to get better" -/-> "He will not get better"
+                                  [also -> He is not well (hard to get?)
+                                        -> He may get better
+                                        -> He may not get better
+                                        -> I hope that he will get better (paraphr.)]
+                                  [Also, all this is really inferencing from what
+                                  the speaker seems to believe (perhaps wrongly),
+                                  i.e., sincere, well-informed speakers]
+    - "I wish he was getting better" -> "He is not getting better"
+  c. Use the grep patterns used for sampling to make a noisy guess at which
+     form it could be and only show inference info for those (to reduce
+     annotator burden)
+  d. For the sentence, ask for counterfactuality inferences, if any.
+  e. store original sentence along with inference-annotator pairs (also store
+     if there are none)
+
+3) Requests
+  a. Enumerate inference types
+    * implicit request as a directly conversion of original question
+        can you ...
+          -> I expect/want you to ...
+    * inferred request not directly mapped from question
+        "Is x here?"
+          -> "I expect you to get x if they are nearby"
+          [risky? but interesting to try]
+          {GK: I agree}
+    * indirect intention inference
+        "Is x here?"
+          -> "I probably want to speak to x"
+        [likewise]
+    * situational inference
+        "Is x here?"
+          -> "The speaker is probably on the phone or at an entrance"
+        "Could I get the check?"/"Could you get me the check?"
+          -> "The speaker is probably a patron at a sit-down restaurant"
+          -> "The speaker thinks the hearer works at the restaurant")
+    * Negative requests (request is negative to the surface question)
+        "Can't you be friendly?"
+          -> "I want you to be friendly"
+          -> "I don't see a reason for you to not be friendly"
+        [Depends of "friendly to WHOM" -- it it's the addresee, the 
+        implication is also "You are not being friendly"; if it's future
+        directed, then this need not be implied; "When I meet the mayor,
+        I'm going to be very business-like." Reply: "Can't you be friendly?"]
+
+  b. Use grep patterns to reduce displayed information.
+  c. For the sentence ask the annotator to select the inference classification
+     and provide resulting sentence/ULF.  Allow them to mark that there is no
+     appropriate category, or multiple if ambiguous.
+
+
+4) Questions
+  a. Question inference types
+    * General question inference (inferences based on the fact that a question was asked)
+      `Questioner expects that the addressee probably knows the answer and will supply it`
+      "Where did John go?"
+        -> "The addressee probably knows where John is and will supply it"
+      "When are you getting married?"
+        -> "The addressee probably knows the answer and will supply it"
+
+    * Question-form based presuppositional inferences. (inferences based on the type of question)
+      "Who did you meet yesterday?"
+        -> "The addressee met someone yesterday"
+      "What is Betsy Ross famous for?"
+        -> "Betsy Ross is famous for something"
+      "When did Beethoven die?"
+        -> "Beethoven died"
+      "How many people did Randy Craft kill?"
+        -> "Randy Craft kill multiple people"
+      "What is the official animal of Canada?"
+        -> "Something is the official animal of Canada"
+      "What is the abbreviation for micro"
+        -> "There is an abbreviation for micro"
+      "When are you getting married?"
+        -> "The addressee will get married in the near future"
+      "What is your dog's name?"
+        -> "Your dog has a name"
+      TODO: enumerate each question type that I can think of...
+         [Very common: PP[wh] questions, like "In what city does John live?",
+         or, "What city does John live in?"; also wh-determiners: "Whose
+         party are you going to?"]
+
+    * Situational presuppositional inferences (inferences that can be made without using the question structure)
+      "What is your dog's name?"
+        -> "The addressee is in possession of a dog"
+          [I would more vaguely say, "The addressee has a dog"; e.g., cf.,
+           "What is your doctor's name?"]
+      "What CBS soap opera was interrupted by the bulletin of John F. Kennedy 's assassination ?"
+        -> "There was a bulletin of John F. Kennedy's assassination"
+        -> "John F. Kennedy was assassinated"
+
+  b. Use grep patterns to reduce displayed information.
+  c. Ask the annotator to generate such inferences along with the category they fall into.
+
+
+GK(3/29/2018): Should run the sampled sentences first with the annotators.
+Then they should be pretty comfortable with identifying the sorts of inferences
+we care about even without prompting.  We then have them annotate some
+sentences that were not sampled to verify that there are not many inferences we
+care about in the ignored sentences.
+

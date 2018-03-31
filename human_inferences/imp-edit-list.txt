@@ -1,0 +1,35 @@
+For all the comments below, see comments in the file for details.
+
+'scold' and associated entries seem problematic -- at least for the type of
+inference marked in the original list.  Left them unmodified for now.
+Looking at it again a couple days later it seems okay, but much worse than the
+prepositional forms.
+
+'confess' modified to include tense and progressive aspect versions of the original axioms.
+
+'allow' modified to include tense and prog -- also changed auxiliary 'can' appropriately.  There are some extensive comments on issues that need to be handled regarding tense/negation scoping.  These comments generalize to other sentence level scoping (adv-s, adv-f, etc.) that can interact.
+
+'shock' modified to include tense and prog.  Deleted passive construction rules because that should be generative from the base rules.
+
+'neglect' modified ot include tense and prog.  Deleted passive construction rules.
+
+'ascertain' added tense and prog
+
+'attempt' added tense (prog seems to give a different implication)
+
+'begin' added prog to the consequent, which is universal for all aktionsart.  The non-progressive consequent is only true for process or semelfactive aktionsarts.
+
+passive mappings (TODO):
+   [x verb y p -> y can p]        "X allows Y to P" -> "Y can P"
+=> [y (pasv verb) p -> y can p]   "Y is allowed to P" -> "Y can P"
+   [w verb x -> w]                "That W shocks X" -> "W"
+=> [x (pasv x) w -> w]            "X is shocked that W" -> "W"
+   
+
+other mappings?:
+  adjectival form of verb
+   "That W shocks X" -> "W"
+   "W is shocking"   -> "W"
+
+
+

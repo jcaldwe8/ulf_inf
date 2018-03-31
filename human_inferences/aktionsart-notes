@@ -1,0 +1,22 @@
+We should handle aktionsart at some point:
+
+"x was running" -> "x ran"
+"x was building a house" -/-> "x built a house"
+"x was sneezing" -> "x sneezed"
+
+"x is runnning" -> "x runs"
+
+; Something like the following....
+(all_process_v p.v
+  (all_tense t
+    (all x
+      (x ((t prog) p.v))
+      (x (t p.v)))))
+
+Then we can incorporate some aktionsart ontology, say VerbNet, to identify the appropriate matching antecedents.
+
+TODO: how to include polarity, e.g. "x was not running" -> "x did not run"
+(assuming same contextual time), but "x was not running" -/-> "x did not run"
+(for a different contextual time).
+
+
