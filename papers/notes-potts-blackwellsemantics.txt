@@ -1,0 +1,98 @@
+Presupposition (S2), conversational implicature (S3), conventional implicature (S4)
+
+Areas that don't deal with 'truth-conditional' content.  This is not a fully
+appropriate name because presupposition and implicature can be evaluated for
+truth so it is often alternatively called *at-issue* or *proffered* content.
+
+NB: 'truth-conditional' content is equivalent to what Frege calls 'sense' and 
+what Grice calls 'what is said'.
+
+Section 2: Presupposition
+
+*pragmatic* presupposition: purely speaker actions
+  Conditions for speaker interaction including language-use (e.g. both speaking
+  the same language), turn-taking norms, contextual plans and goals.  Can't be
+  traced to specific words or phrases.
+
+
+*semantic* presupposition: conventional aspects of words and constructions
+  Encoded in specific words or constructions called *triggers*.  Can lead to
+  unintentional presuppositions.
+
+*utterance presupposition* used by Karttunen 1974, Soames 1982 to capture the
+mix of semantic and pragmatic properties.  That is, semantic in the sense that
+some statements presuppose information without the speaker's intent via
+triggers, but pragmatic in the sense that presuppositions must be evaluated in
+the context of the utterance (including the common ground of the discourse
+participants).
+
+Some argue that all presuppositions are pragmatic [led by Stalnaker] and should
+be analyzed that way.  Dynamic semantics approaches (i.e. Discourse
+Representation structures) provide a semantics approach to handling some of
+these phenomena.  Keenan 1971 argues both are real -- seems non-committal 
+Related TODO: look over these papers to get the major picture from each
+approach.
+
+Sample of presuppositions and triggers:
+  i.    Aspectual predicates "continue" and "stop" (Simons 2001; Abusch 2002; Abrusan 2011)
+          Jane didn't quit laughing (Simons 2001)
+            -> Jane was laughing immediately prior to the reference time of sentence
+          NB: from paper, this is a *non-detachable* presupposition.  That is,
+          the presupposed information is not detachable from the content of the
+          utterance since any synonyms/rewording of the same content leads to
+          the same presupposition, e.g.
+            Jane didn't cease langhing,
+            Jane did not discontinue her laughter
+          Same seems to be true for all change of state predicates (e.g. leave,
+          exit, realize, etc.)
+
+  ii.   Attitude predicates "know", "realize", "regret" (Kiparsky & Kiparsky 1970; Karttunen 1973, 1974; Heim 1992; Abusch & Rooth 2004; Beaver 2001, 2010)
+          Bill doesn't know that baldness is hereditary (Karttunen 1973)
+            -> Baldness is hereditary
+          Fred no longer resents Zelda's infidelity (Karttunen 1973)
+            -> Zelda has been unfaithful
+
+  iii.  Definite determiners and demonstratives (Strawson 1950; Frege 1982/1970; Russell 1905 ...)
+          The king of France is wise (Strawson 1950 -- I think the example is originally from Russell)
+            -> There is a single salient king of France
+          He went home
+            -> There's a single salient male referent
+
+          NB: If the presupposition does not hold the original sentence is
+          false or fail to say a true or false statement depending on the
+          analysis.
+
+  iv.   Indefinite determiners (Karttunen 1976; Kamp 1981; Prince 1981; Heim 1982,1983; Elbourne 2005)
+          (Karttunen 1976)
+          I owned a car. It was a Mustang.
+          I needed a car. *It was a Mustag.
+
+          Given a specific reading of the indefinite, it implies the existences
+          of a specific instance satisfying the sentence.  For a non-specific
+          reading no referent is added.
+
+  v.    Pronouns (Karttunen 1976; Kamp 1981; Prince 1981; Heim ...)
+  vi.   Proper names (Prince 1981)
+  vii.  Quantifier domains (Cooper 1983; Gawron 1996; Abusch & Rooth 2004; Roberts 1995,2004)
+  viii. Sortal restrictions (Thomason 1972)
+  ix.   Additive particles like "too", "also", "either" (Karttunen 1974; Heim 1992; ...)
+  x.    Adjunct clauses headed by prepositions like "before", "after" (Heinamaki 1974; ...)
+  xi.   Appositives (Potts 2002; Schlenker 2009,2010)
+  xii.  Clefts (Soames 1982; Delin 1992,1995; Prince 1986)
+  xiii. Discourse paricles like "even", "only" (von Fintel 1999; Buring & Hartmann 2001; ...)
+  xiv.  Implicative verbs like "manage" and "fail" (Karttunen 1971; Karttunen & Peters 1979)
+  xv.   Intonational contours, including topic and focus accents and verum focus (Jackendogg 1972 ...)
+  xvi.  Evidentials (McCready 2005; McCready & Asher 2006; Sauerland & Schenner 2007)
+  xvii. Manner adverbs like "quickly" (Abbott 2000)
+
+  Presuppositions in (ix)-(xvii) can be false without making the at-issue
+  content meaningless.  For example, "Kim managed to pass" (xiv) presupposes
+  that Kim was expected not to pass.  Even if this presupposition is false, the
+  at-issue content that Kim passed still holds.  Presuppositions (i)-(viii) on
+  the other hand have a closer link between the presupposed and at-issue
+  content.  For example "The student is here" (iii) becomes meaningless if
+  there is not a single salient student.
+
+
+
+
