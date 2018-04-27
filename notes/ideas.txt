@@ -1,0 +1,8 @@
+With the introduction of Aaron White's clause-taking verbs, the implicative
+matching is likely to become very-very sparse.  That is a lot of the clause
+taking verbs in that list have non-clause variants/senses which are more
+common.  To handle this perhaps we can have two different sampling methods for
+implicatives?
+  1. Sample just with token match with a less-ambiguous subset
+  2. Use a dependency parser or noisy frame-matching method to only sample uses
+     that have the clause arguments.

@@ -1,0 +1,124 @@
+Notable Deadlines:
+  LACompLing  May 15
+  EMNLP       May 22
+  ACS         May 25
+  CoNLL       June 11
+
+Over Spring Break:
+  - Started cleaning up implicative rules from Stratos to fit ULF inference
+    (tense and progressive).  Perfective seemed problematic since it requires
+    explicitly relating to the original utterance time, which ULF doesn't have
+    a good way to do.  Let me know if you have time to look over some that I've
+    come up with so far.  These would be the basis for both the human inference
+    guidelines and the inference system.
+
+By Friday:
+  - Get through more of the implicative rules (maybe all?).  There are a lot,
+    but I'm not sure how many types.
+  - Setup website for inference annotation.
+
+Next week:
+  - Get preliminary human inference website up and start debugging design
+    issues.
+
+Issues to discuss:
+  - How to handle verb class dependent inferences? e.g.
+    "John began running" => "John has run"
+    "John began building a house" =/=> "John has built a house"
+    What's I'm doing now:
+      "John began running" -> "John was running" (immediately following reference time)
+      "John began building a house" -> "John was building a house" (immediately following ref time)
+    Similar for other aspectual verbs: continue, stop, ...
+
+    Probably ignore: would enable new inferences, but not interesting since
+    this has been done by many systems before.  We can discuss in the paper
+    that this feature could be added easily -- and should be in a full system.
+
+    Lookup: Phil Kohan?
+
+  - How to handle perfective inferences when there are already modals involved?
+    x allows y to p -> y (can.aux-v p)
+    x allowed y to p -> y ((past can.aux-v) p), probably y ((pres can.aux-v) p)
+    x will allow y to p -> y (will.aux-s (can.aux-v p))? OR 'y will have
+      permission to p' BUT isn't this just a paraphrase of 'y will be allowed to
+      p' which the passive construction.
+
+    x had allowed y to p -> y ((past can.aux-v) p), but isn't this different from the simple past construction of allow?
+    x had allowed y to p -> y had can p? OR 'y had been allowed to p' OR 'y had permission to p' OR 'y (past can.aux-v) p'?  
+
+    NEW INFERENCE:
+    x allowed y to p -> y probably did p
+
+    *Probabilistic so that any counterfactual statements can diffuse it. E.g.
+      (1) x allowed y to p 
+      (2) -> y probably did p
+      (3) but y ended up needing to do q instead 
+      (4) -> y did not p
+
+
+  - It seems we'll need to address the fact that these inferences only work if
+    the fully scoped interpretations match across inferences and whatever
+    system using these inferences will need to handle it (e.g. de re vs de dicto readings)
+    
+      "x did not allow y to p"
+        -> "y could not p"
+      Does the negation or the past tense outscope?  If past outscopes then
+      it's a de re reading, similar to at the some salient reference past time
+      "x did not allow y to p".  If the negation outscopes then the de dicto
+      reading is similar to "x never allowed y to p".
+
+    AFTER DISCUSSION:
+      This is a discourse phenomenon that relates more largely to timeframes
+      and temporal adverbials.  The actual time frame of a statement cannot be
+      fully analyzed without the discourse context, which would allow these
+      inferences to be treated properly in accordance with each other.  Notice
+      that there are other issues such as present tense during story
+      recounting: "The other day I had the weirdest thing happen.  So I go to
+      the store, buy some food, ...".  Similarly using past tense for past
+      perfect after frame setting: "LRRH had left the house early in the
+      morning.  She then went to the woods, walked past the ...".
+
+
+
+   - How to mark inferences that are true immediately after a reference time?
+      e.g. "John began running" -> "John was running" immediately after time referenced in antecedent.
+           "I was allowed to p" -> "I can p" immediately after 'allowing'
+     Contrast with:
+      "John knew that I was a man" -> "I was a man" coextensive times
+     Also with:
+      "I neglected to water the plant" -> "I didn't water the plant" coextensive
+
+     RELATED: what's the difference between "The officer ascertained that John (is/was) sober"?
+      They seem to mean the same thing but 'is' is respective to the
+      'ascertaining' time and 'was' is respective to utterance time, but that
+      doesn't seem like a satisfactory analysis because there's nothing that
+      seems to cause this switch...  I guess there's an ambiguity in the reference time:
+        "The officer ascertained that John was sober that night"
+        "The officer ascertained that John is sober *(tonight)" -- requires
+        that 'John is sober' extends to utterance time even though the
+        'ascertaining' was in the past (i.e. 'ascertaining' event was recent
+        enough that the soberness of John hasn't changed)
+
+    AFTER DISCUSSION:
+      This issue seems to fall under a few categories:
+        1. Negation maximally scopes over the reference time.
+           Relatedly, telicity and negation interacts such that negated
+           expressions didn't happen, but if the expression can be broken down
+           into an atelic subcomponent that can be true: "I didn't finish building
+           the house, but I did work on it".
+        2. Statives of course have coextensive inferences, whereas change of
+           state verbs of course have inferences that are true immediately after
+           the statement reference time.
+      BUT, how do we mark these in the inference information?
+
+
+  MORE GENERAL:
+    There's the issue that all statements express the speaker beliefs rather
+    than true world state.  The assumption that they speak of the world state
+    can be assumed without too much issue in discourses where the speakers are
+    speaking sincerely and carefully (e.g. joint problem solving domain).  The
+    machinery necessary for making more subtle inferences about statements
+    being about speaker beliefs can be added on top of these inferences as
+    necessary.
+
+

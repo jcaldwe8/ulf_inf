@@ -1,0 +1,11 @@
+Note from Len via email on 3/26/2018:
+
+BTW, I think that subordinate wh-clauses, e.g., "John knows who called" contain
+a reification operator 'ans-to' ("answer to"). The exception is 'whether',
+which I believe is the composite (ans-to (? <decl-sent>)), where '?' shifts a
+sentence meaning to a question meaning. Roughly, question meanings can be
+viewed as characteristic functions over propositions and possible worlds (or
+episodes/situations) , yielding '1' for any proposition in any world where the
+proposition truly answers the question. 'If' has two meaninga, one as
+conditional connective, the other equivalent to 'whether'. ("I have no idea if
+he's at home".)
