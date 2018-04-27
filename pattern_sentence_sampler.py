@@ -178,27 +178,31 @@ def filter_file(filename, out, iyouknow, swmatch):
   lines = file(filename, 'r').read().splitlines()
   ignored = []
 
+  linenum = 0
   for l in lines:
+    numberedl = (linenum, l)
+    if linenum % 1000 == 0:
+      print linenum
     matchl = l
     if swmatch:
       matchl = reduce_disfluencies(l)
     if is_interesting(matchl):
       filter_counts['interesting'] += 1
       if is_counterfactual(matchl):
-        filtered['counterfactual'].append(l)
+        filtered['counterfactual'].append(numberedl)
         out.write(str(is_counterfactual(matchl)) + "[counterfactual]")
       if is_request(matchl):
-        filtered['request'].append(l)
+        filtered['request'].append(numberedl)
         out.write(str(is_request(matchl)) + "[request]")
       if is_question(matchl):
-        filtered['question'].append(l)
+        filtered['question'].append(numberedl)
         out.write(str(is_question(matchl)) + "[question]")
       if is_implicative(matchl):
         impl_match = str(is_implicative(matchl))
         if not iyouknow or impl_match != "know" or is_raw_know(l):
           # Only add if iyouknow is False or the match is not "know" or at
           # least one match of "know" is not preceded by "you"
-          filtered['implicative'].append(l)
+          filtered['implicative'].append(numberedl)
           out.write(impl_match + "[implicative]")
       out.write(" --- ")
       out.write(l)
@@ -206,6 +210,7 @@ def filter_file(filename, out, iyouknow, swmatch):
     else:
       filter_counts['ignored'] += 1
       ignored.append(l)
+    linenum += 1
 
   return (filtered, filter_counts, ignored)
 
@@ -412,11 +417,39 @@ STRATOS_UPPEN = [m for m in UPPEN_VERBS if any([li.lemma in STRATOS_IMPL for li 
 
 IMPL_FORMS = load_stratos_impl_forms()
 
+# TODO: change the normalization scripts to include an index which this script can use to record which ones were sampled by index.
+
 # Extract transcriptions.
 if args.source_type == 'file':
   out = file(args.target_path, 'w')
-  filter_file(args.source_path, out, args.ignore_youknow, args.switchboard_match)
+  linemap, countmap, ignored = \
+      filter_file(args.source_path, out, args.ignore_youknow, args.switchboard_match)
   out.close()  
+
+
+  # TODO: factor code below to be more general
+  #numsfortypes = {inftype: sorted(list(set([i for i, l in numvals]))) for inftype, numvals in linemap.iteritems()} 
+  #typespernum = defaultdict(list)
+  #for inftype, nums in numsfortypes.iteritems():
+  #  for n in nums:
+  #    typespernum[n].append(inftype)
+
+  #for curtype, nums in numsfortypes.iteritems():
+  #  onlycurnums = [n for n, types in typespernum.iteritems() if curtype in types and len(types) == 1]
+  #  
+  #  out = file("sampled_tatoeba_only_{}.nums".format(curtype), 'w')
+  #  out.write("\n".join([str(e) for e in sorted(onlycurnums)]))
+  #  out.close()
+  #  out = file("sampled_tatoeba_all_{}.nums".format(curtype), 'w')
+  #  out.write("\n".join([str(e) for e in sorted(nums)]))
+  #  out.close()
+
+
+  filter_counts = defaultdict(int)
+  countdict_update(filter_counts, countmap)
+  countdict_update(filter_counts, listdict_to_countdict(linemap))
+  print filter_counts
+
 
 else:
   numfile = 0
