@@ -90,23 +90,27 @@ def expand_token(token, sent_end=False):
 
   if re.match("^.+('s|'d|'m)$", token):
     # One letter contractions.
-    return expand_token(token[:-2]) + [token[-2:]]
+    return expand_token(token[:-2], sent_end) + [token[-2:]]
   elif re.match("^.+(n't|'ve|'ll|'re)$", token):
     # Two letter contractions.
-    return expand_token(token[:-3]) + [token[-3:]]
-  elif re.match("^\S+(''|\")$", token):
-    # Quotes
-    return expand_token(token[:-2]) + [token[-2:]]
+    return expand_token(token[:-3], sent_end) + [token[-3:]]
+  elif re.match("^\S+('')$", token):
+    # Expanded Double Quotes
+    return expand_token(token[:-2], sent_end) + [token[-2:]]
+  elif re.match("^\S+(\")$", token):
+    # Collapsed Double Quotes
+    return expand_token(token[:-1], sent_end) + [token[-1:]]
   elif re.match("^\S+'$", token):
-    return expand_token(token[:-1]) + [token[-1:]]
+    # Single Quotes
+    return expand_token(token[:-1], sent_end) + [token[-1:]]
   elif suffix_punct(token):
     # Ending punctuation.
     pre, suf = suffix_punct(token)
-    return expand_token(pre) + [suf]
+    return expand_token(pre, sent_end) + [suf]
   elif prefix_punct(token):
     # Starting punctuation.
     pre, suf = prefix_punct(token)
-    return [pre] + expand_token(suf)
+    return [pre] + expand_token(suf, sent_end)
   else:
     return [token]
 
