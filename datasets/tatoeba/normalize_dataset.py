@@ -1,12 +1,11 @@
 """
 Python 2.7 script
 
-Script to extract just the raw dataset from the Discourse Graphbank corpus and
+Script to extract just the raw dataset from the Tatoeba corpus and
 normalize the dataset into a simple format.
 
-Each sentence (with automatically inferred full stops) is written in one line.
-The original dataset generally contains 1-5 sentences per context. 
-
+Based on the version used for Discouse Graphbank.  This is a simplification
+since Tatoeba doesn't require sentence delimiting.
 
 Example call:
   python normalize_dataset.py -spath "data" -stype "dir" -tpath "normalized_dataset"
@@ -24,7 +23,7 @@ from itertools import groupby
 # Constants.
 #
 
-CONTEXT_DELIM = "\n\n"
+CONTEXT_DELIM = "\n"
 RAW_FILENAME_RE = re.compile("^\d+$")
 
 
@@ -42,25 +41,6 @@ def parse_arguments():
   
   args = parser.parse_args()
   return args
-
-# Split context by inferred full stops.
-def full_stop_split(context):
-  # Full stop if it's a character + period or a period and quotation followed by a newline.
-  # Note the chracter + period is to avoid ellipses as being considered full stops.
-  clines = context.splitlines()
-  sents = []
-  cursent_comps = []
-  for l in clines:
-    l = l.strip()
-    cursent_comps.append(l)
-    if (len(l) > 1 and re.match("^\w(\.|\?|!|!\?)$", l[-2:])) or \
-        (len(l) > 2 and re.match("^(\.|\?|!)''$", l[-3:])) or \
-        (len(l) > 1 and re.match("^(\.|\?|!)(\"|')$", l[-2:])):
-      sents.append(" ".join(cursent_comps))
-      cursent_comps = []
-  if len(cursent_comps) > 0:
-    sents.append(" ".join(cursent_comps))
-  return sents
 
 # Space-separate punctuation and contractions in given token.
 # Call recursively because the phenomena can be stacked.
@@ -96,13 +76,13 @@ def expand_token(token, sent_end=False):
     return expand_token(token[:-3], sent_end) + [token[-3:]]
   elif re.match("^\S+('')$", token):
     # Expanded Double Quotes
-    return expand_token(token[:-2], sent_end) + [token[-2:]]
+    return expand_token(token[:-2], True) + [token[-2:]]
   elif re.match("^\S+(\")$", token):
     # Collapsed Double Quotes
-    return expand_token(token[:-1], sent_end) + [token[-1:]]
+    return expand_token(token[:-1], True) + [token[-1:]]
   elif re.match("^\S+'$", token):
     # Single Quotes
-    return expand_token(token[:-1], sent_end) + [token[-1:]]
+    return expand_token(token[:-1], True) + [token[-1:]]
   elif suffix_punct(token):
     # Ending punctuation.
     pre, suf = suffix_punct(token)
@@ -126,15 +106,15 @@ def expand_sent(sent):
 # Normalizes given file to one sentence per line and writes them to out.
 def normalize_file(filename, out):
   
-  f = file(filename, 'r').read()
-  contexts = f.split(CONTEXT_DELIM)
-
-  for c in contexts:
-    for sent in full_stop_split(c):
-      # This is done after full_stop_split because the newlines are good signals for full stops.
-      flattened = sent.replace("\n", " ").strip()
-      expanded = expand_sent(flattened)
-      out.write(expanded) 
+  lines = file(filename, 'r').read().splitlines()
+  i = 0
+  for l in lines:
+    if i % 1000 == 0:
+      print "Completed {} lines".format(i)
+    i += 1
+    if l.strip() != "":
+      expanded = expand_sent(l)
+      out.write(expanded)
       out.write("\n")
 
 
