@@ -1,5 +1,0 @@
-The data is kinda strange.  Similar to discourse graphbank the texts are split
-into context and further into the discourse components.  It's probably easier
-to remove the bracketing from WSJ and then do some sort of fuzzy matching with
-the dataset.  Or take a look at the manual to find a way to get the text.
-Perhaps util/ has some tool that can be used to extract the text.
