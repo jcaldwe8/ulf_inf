@@ -1,0 +1,25 @@
+- Still working on first version of inference annotation interface.
+- It's coming along, but not quite complete
+  * Got skeleton of the website up -- but still need to implement the actual interface for annotation
+  * Figured out how to get it up on AWS so that we should be able to include
+    stuff like syntax highlighting, maybe even automatic POS annotations.
+
+This week:
+- finish first draft of interface by Friday at the latest (should have it by tomorrow night...).
+- prototype a bit
+- clean up the guidelines (they'll be very rough).
+
+- Regarding the Thesis Proposal, I'm worried that I won't have time to prepare
+  the propsal thoroughly considering the rate of the current research project
+  progress. I'd really like to include that to show the two side of my thesis:
+    (1) the annotation for ulf generation
+    (2) using ULF for inference
+  
+  Without petitioning I'd have to complete it by May 8th.
+  Scott busy most of that week, so complete by May 2/3rd.  
+  Need to send out proposal 2 weeks before so I'd have to complete
+  the proposal by April 18th, which is only 3 weeks from now.
+
+  Maybe I should apply for an extension and do it either over the summer or
+  in the fall?
+
