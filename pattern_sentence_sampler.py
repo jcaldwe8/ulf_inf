@@ -10,6 +10,7 @@ Script to extract sentences of interest for the inference experiment:
 """
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -54,6 +55,7 @@ def parse_arguments():
   parser.add_argument('-spath', '--source_path', type=str, required=True)
   parser.add_argument('-tpath', '--target_path', type=str, required=True)
   parser.add_argument('-ipath', '--ignored_path', type=str)
+  parser.add_argument('-infopath', '--info_json_path', type=str)
 
   feature_parser = parser.add_mutually_exclusive_group(required=False)
   feature_parser.add_argument('-youknow', '--default_youknow', dest='ignore_youknow', action='store_false')
@@ -172,55 +174,98 @@ def reduce_disfluencies(l):
 
 
 # Main function for sampling from files using patterns.
+#
+# Inputs;
+#  filename - file to sample from (newline separated list of sentences)
+#  out - file handle at which to write the sampling summary
+#  iyouknow - boolean flag whether to ignore "you know"
+#  swmatch - boolean flag whether this is the switchboard corpus (it needs
+#            special handling
+# Returns the following triple:
+#  1. filtered: a map from sampled phenomenon to a list of numbered lines
+#  2. filter_counts: a map from sampled phenomenon to a count
+#  3. ignored: a list of numbered lines that weren't sampled for anything
+#  4. info_list: A json-like list describing the full sampling results.
+#                Subsumes the info in the other return val info, but less
+#                efficient to manipulate.
+# Writes sampling info to out for quick review of sampling results.
 def filter_file(filename, out, iyouknow, swmatch):
   filtered = defaultdict(list)
   filter_counts = defaultdict(int)
   lines = file(filename, 'r').read().splitlines()
   ignored = []
+  info_list = []
 
   linenum = 0
   for l in lines:
-    numberedl = (linenum, l)
+    numberedl = (linenum, l) # number lines.
     if linenum % 1000 == 0:
       print linenum
     matchl = l
+
+    # If switchboard, need to handle disfluencies.
     if swmatch:
       matchl = reduce_disfluencies(l)
+
+    config_info = {"iyouknow": iyouknow, "swmatch": swmatch}
+    line_info = {"filepath": filename, "line": l, "matchl": matchl, 
+        "linenum": linenum, "sampled": [], "config_info": config_info}
+
+    # Perform pattern-matching for phenomena.
     if is_interesting(matchl):
       filter_counts['interesting'] += 1
       if is_counterfactual(matchl):
         filtered['counterfactual'].append(numberedl)
-        out.write(str(is_counterfactual(matchl)) + "[counterfactual]")
+        cfpat = str(is_counterfactual(matchl))
+        out.write(cfpat + "[counterfactual]")
+        line_info["sampled"].append("counterfactual")
+        line_info["counterfactual_pattern"] = cfpat
       if is_request(matchl):
         filtered['request'].append(numberedl)
-        out.write(str(is_request(matchl)) + "[request]")
+        reqpat = str(is_request(matchl))
+        out.write(reqpat + "[request]")
+        line_info["sampled"].append("request")
+        line_info["request_pattern"] = reqpat
       if is_question(matchl):
         filtered['question'].append(numberedl)
-        out.write(str(is_question(matchl)) + "[question]")
+        qpat = str(is_question(matchl))
+        out.write(qpat + "[question]")
+        line_info["sampled"].append("question")
+        line_info["question_pattern"] = qpat
       if is_implicative(matchl):
-        impl_match = str(is_implicative(matchl))
-        if not iyouknow or impl_match != "know" or is_raw_know(l):
+        implpat = str(is_implicative(matchl))
+        if not iyouknow or implpat != "know" or is_raw_know(l):
           # Only add if iyouknow is False or the match is not "know" or at
           # least one match of "know" is not preceded by "you"
           filtered['implicative'].append(numberedl)
-          out.write(impl_match + "[implicative]")
+          out.write(implpat + "[implicative]")
+          line_info["sampled"].append("implicative")
+          line_info["implicative_pattern"] = implpat
       out.write(" --- ")
       out.write(l)
       out.write("\n")
     else:
       filter_counts['ignored'] += 1
-      ignored.append(l)
+      ignored.append(numberedl)
+
+    info_list.append(line_info)
     linenum += 1
 
-  return (filtered, filter_counts, ignored)
+  return (filtered, filter_counts, ignored, info_list)
 
+# Convert a dictionary of lists of members for each category to a dictionary of
+# just counts for each category.
 def listdict_to_countdict(ld):
   return { k : len(v) for k, v in ld.iteritems() }
 
+# Update the counts in cd1 with those in cd2.  cd1 is modified in this
+# function.
 def countdict_update(cd1, cd2):
   for k, v in cd2.iteritems():
     cd1[k] +=  v
   return cd1
+
+
 
 args = parse_arguments()
 
@@ -417,17 +462,15 @@ STRATOS_UPPEN = [m for m in UPPEN_VERBS if any([li.lemma in STRATOS_IMPL for li 
 
 IMPL_FORMS = load_stratos_impl_forms()
 
-# TODO: change the normalization scripts to include an index which this script can use to record which ones were sampled by index.
-
 # Extract transcriptions.
 if args.source_type == 'file':
   out = file(args.target_path, 'w')
-  linemap, countmap, ignored = \
+  linemap, countmap, ignored, lineinfo = \
       filter_file(args.source_path, out, args.ignore_youknow, args.switchboard_match)
   out.close()  
 
 
-  # TODO: factor code below to be more general
+  ## TODO: make the code below use the json file that's written.
   #numsfortypes = {inftype: sorted(list(set([i for i, l in numvals]))) for inftype, numvals in linemap.iteritems()} 
   #typespernum = defaultdict(list)
   #for inftype, nums in numsfortypes.iteritems():
@@ -435,6 +478,8 @@ if args.source_type == 'file':
   #    typespernum[n].append(inftype)
 
   #for curtype, nums in numsfortypes.iteritems():
+  #  # No overlap in phenomena with others here (i.e. counterfactual, but not a
+  #  # question, request, or implicatve).
   #  onlycurnums = [n for n, types in typespernum.iteritems() if curtype in types and len(types) == 1]
   #  
   #  out = file("sampled_tatoeba_only_{}.nums".format(curtype), 'w')
@@ -450,11 +495,19 @@ if args.source_type == 'file':
   countdict_update(filter_counts, listdict_to_countdict(linemap))
   print filter_counts
 
+  if args.info_json_path.strip() != "":
+    print "Writing sampling summary to json file..."
+    out = file(args.info_json_path, 'w')
+    out.write(json.dumps(lineinfo))
+    out.close()
+    print "Done!"
+
 
 else:
   numfile = 0
   filter_counts = defaultdict(int)
   all_ignored = []
+  full_lineinfo = []
   for dirname, subdirlist, filelist in os.walk(args.source_path):
     for f in filelist:
       # Only extract if it's an annotation file.
@@ -472,9 +525,12 @@ else:
 
       numfile += 1
       out = file(os.path.join(args.target_path, f), 'w')
-      linemap, countmap, ignored = \
+      linemap, countmap, ignored, lineinfo = \
           filter_file(os.path.join(dirname, f), out, args.ignore_youknow, args.switchboard_match)
       out.close()
+  
+      if args.info_json_path.strip() != "":
+        full_lineinfo.extend(lineinfo)
 
       countdict_update(filter_counts, countmap)
       countdict_update(filter_counts, listdict_to_countdict(linemap))
@@ -487,4 +543,10 @@ else:
     out.close()
   print filter_counts
 
+  if args.info_json_path.strip() != "":
+    print "Writing sampling summary to json file..."
+    out = file(args.info_json_path, 'w')
+    out.write(json.dumps(full_lineinfo))
+    out.close()
+    print "Done!"
 
