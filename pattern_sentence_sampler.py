@@ -96,14 +96,12 @@ def write_line(curid, curtmaps, lout, mout):
     mout.write(prefix + " ".join(cleaned_mtokens) + suffix)
 
 def is_counterfactual(l):
-  #for p in CF_RE:
   for p, schema in CF_SCHEMA_RE:
     if re.match(p, l):
       return schema
   return None
 
 def is_request(l):
-  #for p in REQUEST_RE:
   for p, schema in REQUEST_SCHEMA_RE:
     if re.match(p, l):
       return schema
@@ -309,36 +307,6 @@ UPPEN_VERBS = [m for m in filter_morph_data(UPPEN_MORPHS, poses=["V"], features=
 UPPEN_VERB_FORMS = list(set([m.token for m in UPPEN_VERBS] + \
     [li.lemma for m in UPPEN_VERBS for li in m.lemmas]))
 
-CF_PATTERNS = [
-    # Basic
-    # TODO: add past verb and past participles.
-    ".*(if|If) .*(was|were|had).*",
-    ".*(if|If) .*(was|were|had).* (would|wouldn't|will|won't|'d) .*",
-    # Inverted
-    # TODO: add past verb and past participles.
-    ".*(would|wouldn't|will|won't|'d).* (if|If) .*",
-    # Implicit 'if'.
-    "(Were|Had|were|had) .*",
-    ".*(would|wouldn't|will|won't|'d) .* (were|had) .*",
-    # 'wish'
-    ".*(wish|Wish).*" # can add past verb/past participle to limit to counterfactuals.
-    ]
-
-
-
-REQUEST_PATTERNS = [
-    # Basic.
-    # TODO: Add variants with question marks that can be more general in the body. (for dataset with question marks we might as well take advantage of it)
-    "(.+ |)(Would|would|Will|will|Can|can|Could|could) you .*",
-    "(.+ |)(I|We|we|You|you) need you .+",
-    ".* may I .*",
-    "Could I .*",
-    # Negative requests (aka "false requests")
-    "(.+ |)(won't|wouldn't|can't|couldn't|Won't|Wouldn't|Can't|Couldn't) .+\?",
-    "(.+ |)(wouldn't|couldn't|won't|can't|Wouldn't|Couldn't|Won't|Can't) you(| .+)",
-    "(.+ |)(must|Must) you(| .+)"
-    ]
-
 #
 # Define schema mappings.
 #
@@ -443,9 +411,6 @@ QUESTION_SCHEMAS = [
 # Generate regular expressions from schemas.
 #
 
-CF_RE = [re.compile(p) for p in CF_PATTERNS]
-REQUEST_RE = [re.compile(p) for p in REQUEST_PATTERNS]
-
 CF_SCHEMA_RE = [(re.compile(gen_regex(schema, CF_SCHEMA_DEFS, use_defaults=True)), schema) for \
     schema in CF_SCHEMAS]
 REQUEST_SCHEMA_RE = [(re.compile(gen_regex(schema, REQUEST_SCHEMA_DEFS, use_defaults=True)), schema) for \
@@ -537,7 +502,7 @@ else:
       all_ignored.extend(ignored)
   if args.ignored_path:
     out = file(args.ignored_path, 'w')
-    for l in all_ignored:
+    for linenum, l in all_ignored:
       out.write(l)
       out.write("\n")
     out.close()
@@ -546,7 +511,7 @@ else:
   if args.info_json_path.strip() != "":
     print "Writing sampling summary to json file..."
     out = file(args.info_json_path, 'w')
-    out.write(json.dumps(full_lineinfo))
+    out.write(json.dumps(full_lineinfo, ensure_ascii=False))
     out.close()
     print "Done!"
 
