@@ -383,8 +383,11 @@ REQUEST_SCHEMAS = [
     "<begin?>(must|Must) you<mid?>(<pres>)<end?>"
     ]
 
-# TODO: Test with UIUC QC dataset to check coverage.
-# TODO: Test with other datasets for false positive rate.
+# Tested coverage with UIUC: only ones ignored are commands, e.g. 
+#   Name a Salt Lake City newpaper.
+# Cursory look over the sampled and ignored questions on other datasets show
+# limited questions missed with not too many non-questions.  Many non-questions
+# end up being interesting sentences with wh-words.
 QUESTION_SCHEMAS = [
     # 1. All the patterns based on the beginnings of sentences need to allow
     #    happening after connectives, semicolons, colons, quotes.
