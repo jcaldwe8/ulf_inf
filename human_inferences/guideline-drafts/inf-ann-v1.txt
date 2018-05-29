@@ -106,50 +106,7 @@ classes cover most expected cases.
 
 
 4) Questions
-  a. Question inference types
-    * General question inference (inferences based on the fact that a question was asked)
-      `Questioner expects that the addressee probably knows the answer and will supply it`
-      "Where did John go?"
-        -> "The addressee probably knows where John is and will supply it"
-      "When are you getting married?"
-        -> "The addressee probably knows the answer and will supply it"
-
-    * Question-form based presuppositional inferences. (inferences based on the type of question)
-      "Who did you meet yesterday?"
-        -> "The addressee met someone yesterday"
-      "What is Betsy Ross famous for?"
-        -> "Betsy Ross is famous for something"
-      "When did Beethoven die?"
-        -> "Beethoven died"
-      "How many people did Randy Craft kill?"
-        -> "Randy Craft killed multiple people"
-      "What is the official animal of Canada?"
-        -> "Something is the official animal of Canada"
-      "What is the abbreviation for micro"
-        -> "There is an abbreviation for micro"
-      "When are you getting married?"
-        -> "The addressee will get married in the near future"
-      "What is your dog's name?"
-        -> "Your dog has a name"
-      "Why did you go home?"
-        -> "You went home"
-      TODO: enumerate each question type that I can think of...
-         [Very common: PP[wh] questions, like "In what city does John live?",
-         or, "What city does John live in?"; also wh-determiners: "Whose
-         party are you going to?"]
-
-    * Situational presuppositional inferences (inferences that can be made without using the question structure)
-      "What is your dog's name?"
-        -> "The addressee is in possession of a dog"
-          [I would more vaguely say, "The addressee has a dog"; e.g., cf.,
-           "What is your doctor's name?"]
-      "What CBS soap opera was interrupted by the bulletin of John F. Kennedy 's assassination ?"
-        -> "There was a bulletin of John F. Kennedy's assassination"
-        -> "John F. Kennedy was assassinated"
-
-  b. Use grep patterns to reduce displayed information.
-  c. Ask the annotator to generate such inferences along with the category they fall into.
-
+  [See separate doc 'question-guidelines-v1.txt' for details]
 
 GK(3/29/2018): Should run the sampled sentences first with the annotators.
 Then they should be pretty comfortable with identifying the sorts of inferences
