@@ -1,0 +1,95 @@
+
+Counterfactuals
+
+  ==Expected forms==
+
+  These expected forms allow us to get a handle on the different sentences that
+  could be affected and then make statements about them.  We could make finer
+  distinctions at the annotation level to help with the inference procedure,
+  but we'll keep it simple for now.  This structure guides the annotators, but
+  the annotators will still need to write out the inference they mean.
+
+  *Basic if-then*
+  [antecedent S1] [consequent S2] 
+    Examples:
+      If I were/was rich, I would own a boat
+      If I had gone home, I would have gotten a good night's sleep
+      Were I rich, I would own a boat
+      Had I gone home, I would have gotten a good night's sleep
+      If I leave on time, I will be there by 5
+      If I get sick I will go to the hospital (? -> I am not sick -- it seems that change of state in any if implies that the state is not currently fulfilled) 
+      If you are feeling sick, you must take medicine
+  
+  *Inverted if-then*
+  [consequent S1] [antecedent S2]
+    Examples:
+      I would own a boat if I were rich
+      I would own a boat, were I rich
+      He will be here if he saw the note
+      I would have gotten a good night's sleep had I gone home
+
+  *Wish*
+  I wish [S]
+    Examples:
+      I wish I owned a boat
+      I wish John would help
+      I wish for him to get better
+      I wish he was getting better
+
+  Additional Marking [maybe skip this part]
+    [antecedent S1] - past/present/subjunctive, perf/no perf
+    [consequent S2] - will/would, perf/no perf
+      {I use will/would instead since it's sometimes ambiguous what the tense is because of fake tense.  But isn't this true for the antecedent too?}
+    [S] - past/pres, perf/no perf
+  
+  Antecendents on if-then clauses start with 'if' or are subject-auxiliary
+  inverted (like some questions).  They tend not to have a future marking
+  (will/would).  Consequents are often marked with 'will'/'would' or another
+  modal 'must'/'might'.  Besides, the antecedent and consequent identification
+  in conditional statements from the meaning interpretation.
+
+  Assume that all the tense and aspect is stripped from the sentences for
+  writing the inferences below.  So pres, past, will, perf are all stripped.
+  Leave embedded negations.
+
+  Possible Inferences
+    (not (past S))
+    (not (pres S))
+    (not (will S))
+    Other derivations
+      e.g. I wish for him to get better -> He is not well (hard to get?)
+                                        -> He may get better
+                                        -> He may not get better
+                                        -> I hope that he will get better (paraphr.)]
+           Same for paraphrase "I wish he gets better".
+
+    ; only include below if it seems necessary.  These don't seem to be
+    ; inferred in any of these constructions.  Rather a negation or uncertainty
+    ; is inferred.  This makes sentences since conditionals are uninformative if
+    ; we know the condition holds (i.e. we can just state the consequent).
+    (past S)
+    (pres S)
+    (will S)
+
+  
+  Provide examples of inference and non-inferential sentences.
+    - "If I was rich, I would own a boat" -> "I am not rich"
+                                         [also -> I don't own a boat]
+    - "If I was rich, I would have owned a boat" -> "I was not rich"
+                                         [also -> I didn't own a boat]
+    - "If you were/are feeling sick, you must take medicine" -/-> "You are feeling sick"
+       [This looks like poor English to me; should "were" be "are"?]
+    - "I wish I were rich" -> "I am not rich"
+    - "I wish for him to get better" -/-> "He will not get better"
+                                  [also -> He is not well (hard to get?)
+                                        -> He may get better
+                                        -> He may not get better
+                                        -> I hope that he will get better (paraphr.)]
+                                  [Also, all this is really inferencing from what
+                                  the speaker seems to believe (perhaps wrongly),
+                                  i.e., sincere, well-informed speakers]
+    - "I wish he was getting better" -> "He is not getting better"
+  
+  For the sentence, ask for structural (particularly counterfactual) inferences, if any.  Ask to explicitly mark that there are none.
+  Finally, store original sentence along with inference-annotator pairs (also store if there are none)
+
