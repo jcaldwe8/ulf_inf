@@ -54,8 +54,10 @@ Counterfactuals
 
   Possible Inferences
     (not (past S))
-    (not (pres S))
-    (not (will S))
+    (not (pres S)) 
+      I wish he wouldn't keep saying that
+      "He keeps saying that" - (not (he.pro (would.aux-v not (keep.v (ka (say.v that.pro))))))
+    ;;(not (will S))
     Other derivations
       e.g. I wish for him to get better -> He is not well (hard to get?)
                                         -> He may get better
