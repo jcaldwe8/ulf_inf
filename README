@@ -7,3 +7,178 @@ Preliminary sampled datasets are in /localdisk/ulf_inf/sampled_datasets in
 m09.cs.rochester.edu because the redundant datasets are taking too much space 
 for the shared filesystem.
 
+
+
+Description of Preprocessing and Sampling Method
+
+``````````````````````
+Preprocessing:
+``````````````````````
+  Each dataset has its own sentence delimiting function fit to the original
+  format of the dataset.  Each sentence is preprocessed into space separated
+  tokens where punctuation and common contractions are separated into separate
+  tokens (e.g. can't -> ca n't; ... end." -> end . ").  There are some
+  remaining issues regarding separating punctuation from each other, but this
+  is not a problem for us since punctuation being grouped together doesn't
+  change whether we can correctly match the phenomena we care about.  This
+  preprocessing method is meant to allow the patterns to use lexical resources
+  in a straight-forward manner.  
+
+  can't -> ca n't
+  end." -> end . "
+  ..., ``Start of quote ... -> ... , `` Start of quote ...
+  John's -> John 's
+
+
+``````````````````````
+Lexical Resources:
+``````````````````````
+  Implicatives use the stratos implicatives list with "have" removed.
+  Tensed verb forms are generated from a word derivation dataset from
+  University of Pennsylvania. 
+
+  Manually curated lists:
+
+  WILL_FORMS = ["will", "would", "wo", "'d"]
+  CAN_FORMS = ["can", "could", "ca"]
+  WISH_FORMS = ["wish", "wished", "wishing"]
+  WH_Q_WORDS = ["what", "when", "where", "which", "who", "whom", "why", "how"]
+  AUX_VERBS = ["do", "does", "did", "has", "have", "is", "am", "are", "was", 
+      "were", "be", "being", "been", "may", "must", "might", "should", "could", 
+      "would", "shall", "will", "can", "need", "dare", "ca", "wo"]
+  PREPOSITIONS = ["with", "at", "from", "into", "during", "including", "until", "against", "among","throughout", "despite", "towards", "upon", "concerning", "of", "to", "in", "for", "on", "by", "about", "like", "through", "over", "before","between", "after", "since", "without", "under", "within", "along", "following", "across", "behind", "beyond", "plus", "except", "but", "up", "out", "around", "down", "off", "above", "near"]
+  
+  # Non-subordinating sentence connecting words.
+  NSUB_SCONN_WORDS = ["and", "or"]
+  SCONN_PUNCT = [";", ":", "\"", "``", "'", "''"]
+
+  # Discourse markers that precede a statement.
+  DISCOURSE_PREFIX = ["well", "okay", "ok", "you know", "yknow", "y'know", "'know", 
+      "of course", "course", "so", "right", "anyway", "like", "fine", "now", 
+      "i mean", "good", "oh", "as i say", "as i said", "great", "mind you", 
+      "for a start", "i see", "yes", "no", "yeah", "definitely", "wow", "wonderful", 
+      "absolutely"]
+  
+  REQUEST_MODALS = WILL_FORMS + CAN_FORMS
+  PERMISSION_MODALS = CAN_FORMS + ["may"]
+
+``````````````````````
+Macro Definitions:
+``````````````````````
+  My regular expression schemas use macro definitions for simplification.
+  Any macro defined by a list is converted alternatives :
+    ["x", "y"] -> "x|y"
+  Note that the alternatives don't include parentheses so they can be combined.
+  Example: 
+    Using the macros defined as
+      "<def1>" : ["x", "y"]
+      "<def2>" : ["a", "b"]
+    The regex schema "(<def1>|<def2>)" becomes
+      "(x|y|a|b)"
+
+  NB: see previous section, Lexical Resources, for details of what WILL_FORMS,
+      REQUEST_MODALS,etc. contain
+
+  GENERAL_SCHEMA_DEFS = {
+    "<begin?>"    : "(.*\S+ |)",  # beginning of sentence or separated from following word.
+    "<end?>"      : "(| \S+.*)",  # end of sentence or separated from preceding word.
+    "<mid?>"      : "( .+ | )",   # one space separation or spaces with something in the middle.
+    "<mid>"       : "( .+ )",     # something in between
+    "<1stpron>"   : ["i", "we"] + capitalize(["i", "we"])
+      }
+  
+  CF_SCHEMA_DEFS = merge_dictionaries(GENERAL_SCHEMA_DEFS,
+      {
+        # Move begin, end, mid to defaults.
+        "<futr>"      : WILL_FORMS + capitalize(WILL_FORMS),
+        "<wish>"      : WISH_FORMS + capitalize(WISH_FORMS),
+        "<pres>"      : PRESENT_TENSE_LIST,
+        "<past>"      : PAST_TENSE_LIST,
+        "<ppart>"     : PAST_PARTICIPLE_LIST
+        })
+  
+  REQUEST_SCHEMA_DEFS = merge_dictionaries(GENERAL_SCHEMA_DEFS,
+      {
+        "<reqmodal>"  : REQUEST_MODALS + capitalize(REQUEST_MODALS), 
+        "<permmodal>" : PERMISSION_MODALS + capitalize(PERMISSION_MODALS),
+        "<pres>"      : PRESENT_TENSE_LIST
+        })
+  
+  QUESTION_SCHEMA_DEFS = merge_dictionaries(GENERAL_SCHEMA_DEFS,
+      {
+        "<aux>"   : AUX_VERBS + capitalize(AUX_VERBS),
+        "<wh>"    : WH_Q_WORDS + capitalize(WH_Q_WORDS),
+        "<verb>"  : ALL_VERB_FORM_LIST,
+        "<pred>"  : PREPOSITIONS + capitalize(PREPOSITIONS),
+        # Connectors of sentences.
+        "<sentconn>" : NSUB_SCONN_WORDS + capitalize(NSUB_SCONN_WORDS) + SCONN_PUNCT,
+        # Discourse phenomena that precede the sentence.
+        "<discpre>" : DISCOURSE_PREFIX + capitalize(DISCOURSE_PREFIX)
+        })
+ 
+``````````````````````
+Sampling Patterns:
+``````````````````````
+  NB: See previous section, Macro Definitions, for details of what each macro
+      means (macros are surrounded by angle brackets, e.g. <begin?>, <past>, etc) 
+
+  Implicative sampling simply looks for a token in the sentence that matches
+  with some form of an implicative verb from the stratos implicatives list.
+
+  CF_SCHEMAS = [
+      # Basic : "If I was rich I would/will own a boat"
+      "<begin?>(if|If)<mid>(was|were|had|<past>|<ppart>)<mid?>(<futr>) .+",
+
+      # Inverted "I would/will own a board if I was rich"
+      "<begin?>(<futr>)<mid>if<mid>(was|were|had|<past>|<ppart>) .+",
+      
+      # Implicit 'if'. "Were I rich, I would own a boat"
+      "(Were|Had|were|had)<mid>(<futr>) .+", 
+      "<begin?>(<futr>)<mid>(were|had) .+",
+      
+      # 'wish'
+      ".+ (<wish>) .+", 
+      
+      # More general patterns to allow negative examples.
+      "<begin?>(if|If) .*", # most general explicit 'if'
+      "(were|had|Were|Had)<end?>" # general implicit 'if'
+      ]
+  
+  REQUEST_SCHEMAS = [
+      # Basic.
+      # Can/Will you ...
+      "<begin?>(<reqmodal>) you<mid?>(<pres>)<end?>",
+      
+      # I need you ... TODO: see if we should add "to" after "you"
+      "<begin?>(<1stpron>) need you<mid?>(<pres>)<end?>",
+      
+      # Can/May I ... V[pres] ...
+      "<begin?>(<permmodal>) I<mid?>(<pres>)<end?>",
+      
+      # Negative requests (aka "false requests") "Can't you do this for me?"
+      "<begin?>(<reqmodal>) (n't|not) you<mid?>(<pres>)<end?>",
+      "<begin?>(must|Must) you<mid?>(<pres>)<end?>"
+      ]
+  
+  QUESTION_SCHEMAS = [
+      # Sentences starting with WH-words. "what ..." or "and what ..."
+      "(^|<sentconn>|<discpre>)(<wh>)<end?>$",
+      
+      # Preposition followed by WH-word (can happen anywhere). "... in what ..."
+      "^<begin?>(<prep>) (<wh>)<end?>$", 
+      
+      # Ending in WH-word "You did this how/where?"
+      "^<begin?>(<wh>)($|<sentconn>)",
+      
+      # Starting with an auxiliary e.g. "Shall we go"
+      "(^|<sentconn>|<discpre>)(<aux>)<end?>$",
+      
+      # Sentences containing a question mark
+      # For datasets with question marks, this is a strong indicator.
+      "^.*\?.*$"
+      ]
+
+
+
+
+
