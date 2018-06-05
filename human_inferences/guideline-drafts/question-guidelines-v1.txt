@@ -58,18 +58,14 @@ Questions
         "The addressee will get married in the near future" -> "The addressee will get married"
         "Beethoven died at some time" -> "Beethoven died"
         "The addressee met someone yesterday" -> "The addressee met someone"
-      
-        Note some prepositions don't work because they're predicate modifiers.
+        
+        Note some prepositions don't work because they're arguments.
         *"Betsy Ross is famous for something" -> "Betsy Ross is famous"
 
-      TODO: enumerate each question type that I can think of...
-         [Very common: PP[wh] questions, like "In what city does John live?",
-         or, "What city does John live in?"; also wh-determiners: "Whose
-         party are you going to?"]
       Notice that yes-no questions don't lead to these sorts of inferences:
         "Are dogs animals" -> "Dogs may be animals"? -> "Somethings are not animals" 
         "Would a square peg fit?" -> "Something doesn't fit" 
-      The only inferences seem to be trivial...
+      The only inferences seem to be trivial unless a presupposition exists in some part of the question.
 
 
     * Situational presuppositional inferences (inferences that can be made without using the question structure)
@@ -82,22 +78,17 @@ Questions
         -> "John F. Kennedy was assassinated"
       "Whose party are you going to?"
         -> "Someone is hosting a party"
+      "Did you fail the test?"
+        -> "You took the test"
+      "Did you see the Taj Mahal while visiting India?"
+        -> "You visited India"
 
     * Negative Questions -- indicates information about the speaker beliefs regarding the answer to the question.
       "Didn't you go home?"
-        -> "The speaker thought that the addressee went home"
+        -> "The speaker thinks that the addressee went home"
       "Wouldn't you help your friend?"
         -> "The speaker thinks that the addressee would help their friend"
 
-
-    NB: some inferences come from other factors within the question, such as implicatives, e.g.
-      "Have you stopped smoking?" -> "You used to smoke"
-                                  -> "You may or may not still smoke"
-    These will be handled by the factors themselves (e.g. this one comes from the fact that
-    "You stopped smoking" and "You didn't stop smoking" both implies that
-    "You used to smoke".  We only concern ourselves with stuff that has to do
-    with questions or information that is necessary for the question to make
-    sense and is not captured elsewhere.
 
   b. Use grep patterns to reduce displayed information.
   c. Ask the annotator to generate such inferences along with the category they fall into.
