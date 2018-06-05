@@ -1,0 +1,45 @@
+3) Requests
+  a. Enumerate inference types
+    * implicit request as a direct conversion of original question
+        can you ...
+          -> I expect/want you to ...
+    
+    * situational inference
+        "Is x here?"
+          -> "The speaker is probably on the phone or at an entrance"
+        "Could I get the check?"/"Could you get me the check?"
+          -> "The speaker is probably a patron at a sit-down restaurant"
+          -> "The speaker thinks the hearer works at the restaurant"
+    
+    * Negative requests (request is negative to the surface question) This is
+      similar to a basic request but with the presupposition that the addressee
+      currently isn't or doesn't plan to complete the request (at least in the
+      speaker's view).  Thus the request is weaker, 'want' or 'think you should'
+      rather than 'expect'.
+
+        "Can't you be friendly?"
+          -> "I (want you|think you should) to be friendly"
+          -> "I don't see a reason for you to not be friendly"
+          -> "You are not being or don't plan to be friendly"
+        [Depends of "friendly to WHOM" -- it it's the addresee, the 
+        implication is also "You are not being friendly"; if it's future
+        directed, then this need not be implied; "When I meet the mayor,
+        I'm going to be very business-like." Reply: "Can't you be friendly?"]
+
+  b. Use grep patterns to reduce displayed information.
+  c. For the sentence ask the annotator to select the inference classification
+     and provide resulting sentence/ULF.  Allow them to mark that there is no
+     appropriate category, or multiple if ambiguous.
+
+
+    
+Possible Question Types for Future Experiments
+    * inferred request not directly mapped from question
+        "Is x here?"
+          -> "I expect you to get x if they are nearby"
+          [risky? but interesting to try]
+          {GK: I agree}
+    * indirect intention inference
+        "Is x here?"
+          -> "I probably want to speak to x"
+        [likewise]
