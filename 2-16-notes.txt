@@ -1,8 +1,0 @@
-Notes for what I did:
-  - Organized data, added basic documentation, put data in a repo (things were
-    getting scattered...)
-  - Wrote scripts for getting morphological data.
-  - Reformatted scripts for better generalizability.  
-  - Verified coverage of the morphological data (from U-Penn) over the
-    implicatives we care about.
-
