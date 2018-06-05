@@ -1,0 +1,230 @@
+
+;; 6/5/2018 -- GK: see [annotator-dir]/inf_ann/data/structure_inferences.json
+;;                 for the version used in the annotator.
+
+;; All forms with '(whether w)' has same whether possibilities
+;; All plain 'w' gets the 'w' possibilities
+;; All x + (to p) have the same possibilities (x p)
+;; All x + y + (to p) has the same (y p) possibilities
+;; All (about.p y) possibilities have same possibilities (similar to 'whether w')
+
+
+NP_to_VPeventive-active
+someone <verb> PAST someone to do something
+(x ((past v.v) y (to p)))
+  -> someone expected someone to do something
+     someone did something
+     someone probably did something
+
+to_VPeventive-passive
+someone be PAST <verb> PASTPART to do something
+(x ((past (pasv v.v)) (to p)))
+  -> someone did something
+     someone could do something
+     someone was expected to do something
+
+to_VPeventive-active
+someone <verb> PAST to do something
+(x ((past v.v) (to p)))
+  -> someone did something
+     someone had done something
+
+about_NP-passive
+someone be PAST <verb> PASTPART about something
+(x ((past (pasv v.v)) (about.p y)))
+  -> someone knew about something (e.g. communicative verbs 'I was told about something' -> 'I knew about something')
+     someone knows about something 
+
+about_NP-active
+someone <verb> PAST about something
+(x ((past v.v) (about.p y)))
+   -> someone knows about something (see note above 'she talks about something' -> 'she knows about something')
+      someone knew about something
+
+to_NP_that_S_future-active
+someone <verb> PAST to someone that something would happen
+(x ((past v.v) (adv-a (to.p y)) (that w)))
+    -> something would happen (w)
+       x expected that something would happen (x expect (that w))
+       someone1 thinks something would happen (x think (that w))
+
+about_whether_S-passive
+someone be PAST <verb> PASTPART about whether something happen PAST
+(x ((past (pasv v.v)) (adv-a (about.p (whether w)))))
+    -> someone knew whether something happened
+
+about_whether_S-active
+someone <verb> PAST about whether something happen PAST
+(x ((past v.v)) (adv-a (about.p (whether w))))
+    -> someone knew whether something happened
+
+NP_that_S-active
+someone <verb> PAST someone that something happen PAST
+(x ((past v.v.) y (that w)))
+    -> w
+
+to_NP_whether_S-active
+someone <verb> PAST to someone whether something happen PAST
+
+
+S-passive
+someone be PAST <verb> PASTPART something happen PAST
+
+
+S-active
+someone <verb> PAST something happen PAST
+
+
+that_S-passive
+someone be PAST <verb> PASTPART that something happen PAST
+
+
+that_S-active
+someone <verb> PAST that something happen PAST
+
+
+NP_VP-active
+someone <verb> PAST someone do something
+
+
+null-passive
+someone be PAST <verb> PASTPART
+
+
+null-active
+someone <verb> PAST
+
+
+to_NP_whether_S_future-active
+someone <verb> PAST to someone whether something happen
+
+
+Slift-active
+something happen PAST , I <verb> PRES
+
+
+NP_whichNP_S-active
+someone <verb> PAST someone which thing happen PAST
+
+
+for_NP_to_VP-active
+someone <verb> PAST for something to happen
+
+
+that_S_future-passive
+someone be PAST <verb> PASTPART that something would happen
+
+
+that_S_future-active
+someone <verb> PAST that something would happen
+
+
+NP_to_VPstative-active
+someone <verb> PAST someone to have something
+
+
+whichNP_to_VP-passive
+someone be PAST <verb> PASTPART which thing to do
+
+
+whichNP_to_VP-active
+someone <verb> PAST which thing to do
+
+
+to_VPstative-passive
+someone be PAST <verb> PASTPART to have something
+
+
+to_VPstative-active
+someone <verb> PAST to have something
+
+
+whether_S-passive
+someone be PAST <verb> PASTPART whether something happen PAST
+
+
+whether_S-active
+someone <verb> PAST whether something happen PAST
+
+
+to_NP_that_S-active
+someone <verb> PAST to someone that something happen PAST
+
+
+NP_whether_S-active
+someone <verb> PAST someone whether something happen PAST
+
+
+NP_to_NP-active
+someone <verb> PAST something to someone
+
+
+that_S_notense-passive
+someone be PAST <verb> PASTPART that something happen
+
+
+that_S_notense-active
+someone <verb> PAST that something happen
+
+
+to_NP_that_S_notense-active
+someone <verb> PAST to someone that something happen
+
+
+whether_to_VP-passive
+someone be PAST <verb> PASTPART whether to do something
+
+
+whether_to_VP-active
+someone <verb> PAST whether to do something
+
+
+so-passive
+someone be PAST <verb> PASTPART so
+
+
+so-active
+someone <verb> PAST so
+
+
+whether_S_future-passive
+someone be PAST <verb> PASTPART whether something would happen
+
+
+whether_S_future-active
+someone <verb> PAST whether something would happen
+
+
+NP_that_S_future-active
+someone <verb> PAST someone that something would happen
+
+
+NP_whether_S_future-active
+someone <verb> PAST someone whether something would happen
+
+
+NP-active
+someone <verb> PAST something
+
+
+NP_VPing-active
+someone <verb> PAST someone do PRESPART something
+
+
+whichNP_S-passive
+someone be PAST <verb> PASTPART which thing happen PAST
+
+
+whichNP_S-active
+someone <verb> PAST which thing happen PAST
+
+
+VPing-active
+someone <verb> PAST do PRESPART something
+
+
+NP_that_S_notense-active
+someone <verb> PAST someone that something happen
+
+
+
