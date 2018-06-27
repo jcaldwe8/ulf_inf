@@ -1,4 +1,59 @@
+- Write bash python script for all the sampling so that I can easily run it after making appropraite changes.
+  - include prior normalization step as an option
+
+
+To talk about during meeting:
+  - Copy down the problematic issues I found from Stratos inference rules.
+  - Some of the inferences require something like "immediately following" or
+    "during the same interval as the event in utterance".  Do you have any good
+    ideas of how to handle this?  I suppose we could add that into the ULF
+    inference, but that seems like it would get overly complicated and messy
+    really quick.
+  - Some of the tricky cases while mapping inference rules
+  - If I get a chance to think about it, how to handle possible presupposition
+    diffusion.  Relatedly, that factives such as 'know' tend to express the
+    speaker's beliefs, not necessarily world-truth.  Can also be attribution:
+    "The police knows the bomb was homemade" -- the speaker doesn't have the
+    evidence, but believes the police does.  Similar to "The police report says
+    the bomb was homemade."  Also, "she knows that her actions are irresponsible"
+    is reporting another person's state.
+
+Over spring break:
+  - Read through naming & necessity.  It's so long I'll need to digest it a bit more 
+    before I have a coherent opinion about it. 
+  - Started cleaning up implicative rules from Stratos to fit ULF inference
+    (tense and progressive).  Perfective seemed problematic since it requires
+    explicitly relating to the original utterance time, which ULF doesn't have
+    a good way to do.
+    
+
+By Friday:
+  - Set up website for inference annotation (with the implicative annotation
+    instructions integrated).
+By next week:
+  - Do some preliminary inference annotation and debug issues
+  - Setup ULF annotation website (still haven't done it from last semester...)
+
+
 Now
+* fix 'confess'
+* Finish mapping implication rules
+* Add complete berate non-complementizer constructions
+* Flesh out passive construction mappings
+* Look at other TODOs
+* Setup website for doing inference annotations
+* Figure out exact inference rule format.  May need to relax some of the ULF
+  constraints for simplify the tense/aspect positions so we don't need to make
+  overly complex rules.  For example, if we have a variable of a VP type, have
+  a simple way to make it tensed (rather than having to take it apart and find
+  the head verb lexeme.
+
+* Fix project gutenberg sentence bound for mrs.
+* Make a more complete version of the human inference guidelines
+* Add in Tatoeba to all these datasets
+* Write instructions for cleaning up dialogue data (precursor to ULF annotation)
+
+
 * Sample from project gutenberg, discourse treebank, and switchboard and UIUC QA (write code for it)
 * Make sure patterns are reasonable for each set
   Take a sample of 50 for each phenomenon in each dataset and see what proportion actually falls into the category we're interested in.
@@ -28,7 +83,7 @@ Tomorrow
   -- we can use this script to give a preliminary disfluency reduction that can be corrected.
   This removes erroneous request patterns where repeated phrases look like inverted structure: "I can I can go home" -> "... can I ..."
   This also captures many more questions that were missed because of utterances that start with a disfluency
-
+* Corrected sentence boundary detection in Project Gutenberg
 
 
 
@@ -49,3 +104,13 @@ every time we add a dataset).
 
 * Fix sentence boundary identification for Project Gutenberg by adding more
 * robust abbreviation identification (XXX.).
+
+* Maybe look into modified factives.  Even under intensional modification
+  factives (or at least some of them) seem to preserve some presuppositions,
+  particulary factive presuppositions.  For example,
+    "The police officer almost ascertained that I was drunk" -> "I was drunk"
+    "I almost knew that you were the mystery person." -> "You were the mystery person."
+    "She was probably amused that I got pranked." -> "I got pranked."
+
+
+
