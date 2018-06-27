@@ -1,0 +1,29 @@
+
+See pilot_cf_request_inf/ for the inference code written by Len that we will
+build off of.
+
+
+
+
+
+Steps to complete:
+
+* Compile a list of distinct inference forms we're likely to encounter (look
+  through a sample of sentences separate from the one being built right now).
+    Gene needs to generate a sample of sentences that are verified to not
+    overlap with the dataset.
+
+* Write ULF regularization code (Gene has something that already does some of this...).
+* Write general inference framework and design the necessary representations
+  (Gene will spearhead this)
+* Enable the use of the implicative inference rules under resources/stratos/
+  for ULFs (they're written for EL right now).  This will require
+  reinterpreting the rules within a ULF context and then applying them to
+  ULFs (most likely through TTT patterns).
+* Write TTT rules, or axioms that can be 
+
+
+Rules should be general enough that they would work for general discourse
+settings.  If they are domain-specific, it should be noted and grouped
+separately so our experiments can reflect that.
+
