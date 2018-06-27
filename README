@@ -22,11 +22,12 @@ Description of Preprocessing and Sampling Method
   preprocessing method is meant to allow the patterns to use lexical resources
   in a straight-forward manner.  
 
-  `can't -> ca n't`
-  `end." -> end . "`
-  `..., \`\`Start of quote ... -> ... , \`\` Start of quote ...`
-  `John's -> John 's`
-
+```
+  can't -> ca n't
+  end." -> end . "
+  ..., \`\`Start of quote ... -> ... , \`\` Start of quote ...
+  John's -> John 's
+```
 
 ### Lexical Resources:
   Implicatives use the stratos implicatives list with "have" removed.
