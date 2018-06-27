@@ -11,9 +11,7 @@ for the shared filesystem.
 
 Description of Preprocessing and Sampling Method
 
-``````````````````````
-Preprocessing:
-``````````````````````
+### Preprocessing:
   Each dataset has its own sentence delimiting function fit to the original
   format of the dataset.  Each sentence is preprocessed into space separated
   tokens where punctuation and common contractions are separated into separate
@@ -24,21 +22,20 @@ Preprocessing:
   preprocessing method is meant to allow the patterns to use lexical resources
   in a straight-forward manner.  
 
-  can't -> ca n't
-  end." -> end . "
-  ..., ``Start of quote ... -> ... , `` Start of quote ...
-  John's -> John 's
+  `can't -> ca n't`
+  `end." -> end . "`
+  `..., \`\`Start of quote ... -> ... , \`\` Start of quote ...`
+  `John's -> John 's`
 
 
-``````````````````````
-Lexical Resources:
-``````````````````````
+### Lexical Resources:
   Implicatives use the stratos implicatives list with "have" removed.
   Tensed verb forms are generated from a word derivation dataset from
   University of Pennsylvania. 
 
   Manually curated lists:
 
+```
   WILL_FORMS = ["will", "would", "wo", "'d"]
   CAN_FORMS = ["can", "could", "ca"]
   WISH_FORMS = ["wish", "wished", "wishing"]
@@ -61,13 +58,13 @@ Lexical Resources:
   
   REQUEST_MODALS = WILL_FORMS + CAN_FORMS
   PERMISSION_MODALS = CAN_FORMS + ["may"]
+```
 
-``````````````````````
-Macro Definitions:
-``````````````````````
+### Macro Definitions:
   My regular expression schemas use macro definitions for simplification.
-  Any macro defined by a list is converted alternatives :
-    ["x", "y"] -> "x|y"
+  Any macro defined by a list is converted alternatives :  
+    `["x", "y"] -> "x|y"`
+  
   Note that the alternatives don't include parentheses so they can be combined.
   Example: 
     Using the macros defined as
@@ -79,6 +76,7 @@ Macro Definitions:
   NB: see previous section, Lexical Resources, for details of what WILL_FORMS,
       REQUEST_MODALS,etc. contain
 
+```
   GENERAL_SCHEMA_DEFS = {
     "<begin?>"    : "(.*\S+ |)",  # beginning of sentence or separated from following word.
     "<end?>"      : "(| \S+.*)",  # end of sentence or separated from preceding word.
@@ -115,16 +113,16 @@ Macro Definitions:
         # Discourse phenomena that precede the sentence.
         "<discpre>" : DISCOURSE_PREFIX + capitalize(DISCOURSE_PREFIX)
         })
- 
-``````````````````````
-Sampling Patterns:
-``````````````````````
+``` 
+
+### Sampling Patterns:
   NB: See previous section, Macro Definitions, for details of what each macro
-      means (macros are surrounded by angle brackets, e.g. <begin?>, <past>, etc) 
+      means (macros are surrounded by angle brackets, e.g. `<begin?>`, `<past>`, etc) 
 
   Implicative sampling simply looks for a token in the sentence that matches
   with some form of an implicative verb from the stratos implicatives list.
 
+```
   CF_SCHEMAS = [
       # Basic : "If I was rich I would/will own a boat"
       "<begin?>(if|If)<mid>(was|were|had|<past>|<ppart>)<mid?>(<futr>) .+",
@@ -177,7 +175,7 @@ Sampling Patterns:
       # For datasets with question marks, this is a strong indicator.
       "^.*\?.*$"
       ]
-
+```
 
 
 
