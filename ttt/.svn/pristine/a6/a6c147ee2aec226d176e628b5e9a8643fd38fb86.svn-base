@@ -1,0 +1,74 @@
+10-10-2012
+o modified template-to-tree to allow the symbol / to appear on the rhs of constructive templates
+
+9-10-2012
+o fixed bug involving restricted sequences with negated arguments but no positive arguments
+
+9-4-2012
+o made convergence checks in apply-rules and apply-rule more robust
+o added trace options to apply-rules and apply-rule
+o added rule-order options to apply-rules
+
+8-31-2012
+o fixed bug where ^* wasn't returning bindings properly
+
+8-21-2012
+o TTT now recognizes ** as a literal.
+
+8-17-2012
+o Fixed bug in apply-rules when :shallow is t
+  Added :shallow to apply-rule
+
+8-9-2012
+o Added pattern memoization to build-pattern. 
+o fixed a bug with predicate handling
+	
+8-2-2012
+o New, more efficient version in revised.   
+
+3-27-2012 
+o Fixed bugs: 
+  (apply-rule '(^@ _* (/ X Y)) '(X)) was failing
+  (^@ (* (cons x @)) nil) was failing
+	
+1-12-2012
+o Began cleaning up match.lisp.
+o Fixed bug in match-!.  
+o Removed nobind from all match helpers except match-^@-h.
+o See 'EDITING NOTES: "match.lisp" in readme for more information.
+
+
+1-14-2012 
+o Discovered open issue regarding sub-pattern bindings in iterated vertical paths.
+o Fixed a couple of bugs with bindings in vertical paths.   Further testing needed.
+o Continued cleaning up match.lisp.   The vertical path functions are still nasty.
+o Added comments to several match functions.  
+
+1-18-2012
+o Copied over from working directory, but managed to kill changelog after the 14th. 
+  Mostly commenting, re-arranging, and bug-fixes. Several things added to tail of
+  readme, but not yet edited.
+o added parse-cfg to examples.
+	
+
+1-10-2012
+o Moved lispify-file to util.lisp.
+o Added comments to readme.  Likely bug uncovered.  See sections 
+  "TRANSDUCTION OPERATOR BINDINGS" and 'EDITING NOTES: "transduce.lisp"'.
+o Cleaned up transduce.lisp (comments and indentation).
+o Cleaned up tree-rep.lisp (comments and indendation, removed defunct code).
+
+
+1-8-2012
+o Added examples to documentation about function applications within template 
+  construction.
+o Fixed a minor bug in the syntax description.
+o Revised join-with-dash! to not directly use bindings.
+o Added deep-substitute to util.lisp.  
+o Revised subst-new! to use deep-substitute instead of the more expensive 
+  apply-rule. 
+o Added subst-new! to construct.lisp.
+o Added section "EVALUABLE FUNCTIONS APPEARING IN RHS TEMPLATES" to readme.
+o Cleaned up construct.lisp (comments and indentation).
+o Removed trailing gibberish from the readme.
+

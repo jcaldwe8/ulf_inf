@@ -1,0 +1,106 @@
+pattern operators have syntax: 
+
+<operator><optional sticky dot><optional iterative range><name extension>
+
+pattern operators which do not require arguments should begin with an underscore: eg. _!, _?, _+, _*
+pattern operators which do require arguments should not begin with an underscore: eg. !,?,+,*,{},<>,^@,^*,^,^n
+predicates should always end with a question mark - they will not be bound.  to get their bindings, use (! PRED?)
+the period, left bracket, and right bracket symbols are not allowed in pattern operator names or predicate names
+
+note: these constraints are satisfied by the existing system, but no efficient hacks have been implemented to take advantage of them;  
+      name-extensions are typically numeric, although alphabetic are also supported
+
+iterative ranges, when specified, do not remain in the bound symbol. 
+the opational sticky dot, when present, does remain in the bound symbol. 
+
+Eg.   _!. and _! are different variables.   _![2] and _! are not. (ie. _![2] binds as _!).
+
+construction operators should all end with the exclamation mark. 
+construction operators which do not require arugments should begin with an underscore: (no examples yet)
+construction operators which require arugments should not begin with an underscore: eg. (join-with-dash! varsym1 varsym2)
+
+       
+
+pattern operators: 
+!  - exact match
+unconstrained:   
+_!     matches exactly one subtree or atom
+_![n]  matches a sequence of exactly n subtrees or atoms; the subtrees and atoms may be arbitrary
+constrained:  
+(! X1 X2 ... Xn ~ Y1 ... Ym)  matches a sequence of subtrees which matches at least one of the Xi and does not match any of the Yj
+(![n] X1 X2 ... Xn ~ Y1 ... Ym)  this is equivalent to a sequence of n copies of the previous match
+(![n] X1 X2 ... Xn ~ Y1 ... Ym)  matches exactly the same sequences as (<> (! X1 X2 ... Xn ~ Y1 ... Ym) ... n_times ... (! X1 X2 ... Xn ~ Y1 ... Ym)) 
+
+
+?
+unconstrained: 
+_?   matches the empty sequence or any sequence of length one
+constrained: 
+(? X1 X2 ... Xn ~ Y1 ... Ym) equivalent to (! _? X1 X2 ... Xn ~ Y1 ... Ym)
+(?[n] X1 X2 ... Xn ~ Y1 ... Ym) matches the empty sequence or a sequence of up to length n of any of the Xi (repititions allowed)
+
+
++
+unconstrained: 
+_+  matches any non-empty sequence
+constrained: 
+(+ X1 X2 ... Xn ~ Y1 ... Ym) matches any sequence which can be partitioned to match a sequence of one or more of the Xi (repitions allowed) and none of the Yj
+(+[n] X1 X2 ... Xn ~ Y1 ... Ym) as above, but at least n matches to the Xi arguments must occur for the match to be successful
+
+*
+unconstrained: 
+_* matches any sequence
+constrained: 
+(* X1 X2 ... Xn ~ Y1 ... Ym) is equivalent to (! _? (+ X1 X2 ... Xm ~ Y1 ... Ym)) a sequence of zero or more of the Xi and none of the Yj
+(*[N-M] X1 ... Xn ~ Y1 ... Ym)   matches a sequence of at least N but at most M of the Xi and none of the Yj
+
+
+
+Note:  The restricted pattern operators '*', '+', '?', and '!' may be deployed without positive arguments but with negative arguments. 
+(! ~ X1 ... Xn)    - match any single tree which does not match any of the Xi
+(? ~ X1 ... Xn)    - match the empty sequence or any single tree which does not match any of the Xi
+(* ~ X1 ... Xn)    - match the empty sequence or any sequence of expressions none of which match any of the Xi
+(+ ~ X1 ... Xn)    - match any nonempty sequence of expressions none of which match any of the Xi
+
+
+
+<>  
+(<> X1 ... Xm) - matches the freestanding sequence: X1 ... Xm
+ note: this is useful in context of repitition.   (* (<> A A)) - matches a sequence of an even number of A's, for example. 
+
+{}
+({} X1 ... Xm) - matches any freestanding sequence which is a permutation of the Xi
+
+^ 
+(^ X1 ... Xm ~ Y1 ... Yn) - matches any node which has a child (or contiguous sequence of children) which match at least one of the Xi and where the root does not match any of the Ym
+
+^[n] 
+(^[n] X1 ... Xm ~ Y1 ... Yn) - matches any node which has a child (or contiguous sequence of children) at depth n which match at least one of the Xi and where the root does not match any of the Ym
+
+^*
+(^* X1 ... Xm ~ Y1 ... Yn) - matches any node which has a child (or contiguous sequence of children) any depth (including zero) which match at least one of the Xi and where the root does not match any of the Ym
+
+^@  
+(^@ X1 X2 ... Xm) -        (^@ X1 X2 ... Xn) for a constituent of form X1, with a child of form
+            X2, which in turn has a child of form X3, and so on. In other
+            words, we are describing a *vertical* path of descent ending
+            in something of form Xn. Optionally each Xi (or any choices
+            it provides) may contain a top-level pattern constituent "@",
+            which is interpreted as a point of attachment for the next
+            expression in the sequence. This is useful only when some of
+            the Xi involve repetition operators (see below); w/o repetition
+            operators, something like (^@ (A @ D) (B @) C) is just another
+            way of writing (A (B C) D).
+
+
+
+
+
+
+
+
+
+
+
+
+

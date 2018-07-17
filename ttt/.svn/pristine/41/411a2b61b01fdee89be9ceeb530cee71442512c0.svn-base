@@ -1,0 +1,57 @@
+(defparameter *sample-lf*
+  '(all x 
+    (all y 
+     (all a (a action-type.n) 
+      (all e ((x ask-of.v y a) ** e)
+	   ((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)))))
+  "If E is an episode of X asking Y to perform an action A, then it is true in 
+   episode E that X wants it to be true that there exists after E some episode 
+   E1 which is characterized by Y doing action A.")
+
+;;(a action-type.n)
+;;((x ask-of.v y a) ** e)
+;;((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)
+;; Suppose ask-of.v < action-type.n in sort-predicates.
+(defparameter *sample-lf-as-ttt-rule*
+  '(/ ((_!x ask-of.v _!y _!a) ** _!e)
+    (/ (_!a action-type.n)
+     ((_!x want-tbt.v (that (some e1 (e1 after _!e) ((_!y do.v _!a) ** e1)))) @ _!e))))
+
+;; (print (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0)))
+;;  => (/ (MARRY.V ACTION-TYPE.N)
+;;        ((JANE.N WANT-TBT.V
+;;          (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0)) 
+
+;; (print 
+;;   (apply-rule 
+;;     (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0))
+;;     '(marry.v action-type.n)))
+;;  => ((JANE.N WANT-TBT.V
+;;       (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0) 
+
+
+(defparameter *sample-lf-1*
+  ;; This one is questionable. 
+  '(all x (x phys-obj.n) 
+    (all y (y phys-ent.n) 
+     (all e ((x at-loc.p y) ** e) 
+      (((loc-of.f x) within-or-adjacent-to.p (loc-of.f y)) ** e))))
+  "For all physical objects X, all physical entities Y, and all episodes E 
+   characterized by X being at location Y, the location of X is 
+   within-or-adjacent-to the location of Y characterizes the episode.")
+
+(defparameter *sample-lf-1-as-ttt-rule*
+  ;; at-loc.p < {phys-obj.n, phys-ent.n}
+  '(/ ((_!x at-loc.p _!y) ** _!e)
+      (/ (_!y phys-ent.n)
+         (/ (_!x phys-obj.n)
+	    (((loc-of.f _!x) within-or-adjacent-to.p (loc-of.f _!y)) ** _!e)))))
+  
+;;(all _!v1. (? _!v1restrictor)
+;;     (all _!v2. (? _!v2restrictor) 
+;;	  ...
+;;	  (all _!vn (? _!vnrestrictor)
+;;	       conclusion)))
+;;
+;;
+;; Sort the restrictor formulas (conjuncts), build into a curried TTT rule.
