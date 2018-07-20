@@ -284,29 +284,32 @@
   (infer-polarities         ; complete polarity coverage
     (align-ulf-polarity    ; align text polarity to ulf
       ulf
-      (run-natlog           ; get text token polarity
-        (list (ulf-to-string ulf))))))
+      (first (run-natlog           ; get text token polarity
+        (list (ulf-to-string ulf)))))))
 
-;; Returns the polarity for the given segment of the ulf.
-;; NB: 'segment' must be referentially equivalent to the segment within the
-;;     'fullulf'.  This is necessary to ensure correctness when there are
-;;     equivalent subsegments in different contexts, e.g.
+;; Returns the polarity for the given segment of the ulf and its parent.
+;; NB: 'segment' and 'parent' must be referentially equivalent to the
+;;      corresponding segments within the 'fullulf'.  This is necessary to 
+;;      ensure correctness when there are equivalent subsegments in different 
+;;      contexts, e.g.
 ;;       I am a person, but Spot is not a person.
 ;;     The first occurrence is in a positive context (we can substitute in
 ;;     'living thing' for it), while the second occurrence is in a negative
 ;;     context (same substitution is not possible).
 ;; e.g.
-;;  segment: cat.n
-;;  fullulf: ((all.d cat.n) ((pres have.v) (k (plur tail.n))))
-;;  return: '-
+;;  segment:  'cat.n
+;;  parent:   '(all.d cat.n)
+;;  fullulf:  '((all.d cat.n) ((pres have.v) (k (plur tail.n))))
+;;  return:   '-
 ;;
-(defun get-segment-polarity (segment fullulf)
+;; If 'segment' is the root, please supply nil as 'parent'.
+(defun get-segment-polarity (segment parent fullulf)
   (labels
     (
      ;; Searches rawulf and polulf for segment that matches in rawulf and 
      ;; returns the corresponding polarity in polulf.  If no match is found,
      ;; returns nil.
-     (find-segment (rawulf polulf)
+     (find-segment (rawulf parulf polulf)
        (let* ((curpol (second polulf))
               (nopolulf (first polulf)))
          ;; Check that the parallel versions are coherent.
@@ -315,12 +318,15 @@
                    (equal (length rawulf) (length nopolulf))))
          (cond
            ;; Found a match!
-           ((eq segment rawulf) curpol)
+           ((and (eq segment rawulf)
+                 (eq parent parulf)) curpol)
            ;; Base case.
            ((atom rawulf) nil)
            ;; Recursive case.
-           (t (reduce #'(lambda (acc new) (if acc acc
-                                            (apply #'find-segment new)))
+           (t (reduce #'(lambda (acc new) 
+                          (if acc acc
+                            (apply #'find-segment 
+                                   (list (first new) rawulf (second new)))))
                       (mapcar #'list rawulf nopolulf) ; zip raw and polar
                       :initial-value nil)))))
      ) ; end of labels defs
@@ -328,12 +334,30 @@
   ;; 1. Get polarity alignment of the ULF, 'pulf'
   ;; 2. Parallel search of 'fullulf' and 'pulf' for 'segment' and get polarity
   (find-segment fullulf
+                nil
                 (annotate-polarity fullulf))))
 
 
 (setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N))))
 (setq ulfpart2 'CAT.N)
-(setq ulfpart3 (list 'all.d (list 'plur ulfpart2)))
+(setq ulfpart2-par (list 'plur ulfpart2))
+(setq ulfpart3 (list 'all.d ulfpart2-par))
 (setq compulf (list ulfpart3 ulfpart1))
 (setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N)))))
+; Expected output from these.
+; (get-segment-polarity ulfpart1 compulf compulf)
+; +
+; (get-segment-polarity ulfpart1 compulf diffulf)
+; NIL
+; (get-segment-polarity ulfpart1 diffulf compulf)
+; NIL
+; (get-segment-polarity ulfpart1 diffulf diffulf)
+; NIL
+; (get-segment-polarity ulfpart2 ulfpart2-par compulf)
+; -
+; (get-segment-polarity ulfpart2 ulfpart2-par diffulf)
+; NIL
+; (get-segment-polarity ulfpart2 nil compulf)
+; NIL
+
 
