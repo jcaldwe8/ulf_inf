@@ -89,14 +89,18 @@
     (cl-strings:join postform :separator " ")))
 
 
-;; run-natlog takes a sentence string and obtains polarity annotations at the
-;; token level via the Stanford CoreNLP NatLog system.  The returned value is a
-;; list of pairs, where each pair is the token string followed by the polarity,
-;; e.g. 
-;;  Input: "all cats have tails"
-;;  Output: '(("all" +) ("cats" -) ("have" +) ("tails" +))
+;; run-natlog takes a list of sentence strings and obtains polarity annotations
+;; at the token level via the Stanford CoreNLP NatLog system.  The returned
+;; value is a list of pairs, where each pair is the token string followed by
+;; the polarity, e.g. 
+;;  Input: '("all cats have tails" 
+;;           ...)
+;;  Output: '((("all" +) ("cats" -) ("have" +) ("tails" +)) 
+;;            ...)
+;; NB: The input strings MUST NOT contain any newlines.  Newlines will cause
+;;     the sentence to be treated as separate sentences.
 ;; TODO: memoize
-(defun run-natlog (str)
+(defun run-natlog (strlst)
   ;; 1. Write string to temporary file.
   ;; 2. Run shell script.
   ;; 3. Read in tokenized string and annotations.
@@ -104,9 +108,10 @@
   (let* ((tempfile-raw ".natlog_raw.temp")
          (tempfile-ann ".natlog_ann.temp")
          (raw-fh (open tempfile-raw :direction :output))
-         ann-fh natlog-str natlog-ann)
+         ann-fh natlog-stranns)
     ;; 1. Write string to temporary file.
-    (write-string str raw-fh)
+    (dolist (str strlst)
+      (write-line str raw-fh))
     (close raw-fh)
     ;; 2. Run shell script
     ;; TODO: suppress shell output (or make a flag for it).
@@ -115,8 +120,12 @@
                                tempfile-raw tempfile-ann))
     ;; 3. Read in tokenized string and annotations
     (setq ann-fh (open tempfile-ann))
-    (setq natlog-str (read-line ann-fh))
-    (setq natlog-ann (read-line ann-fh))
+    (setq natlog-stranns 
+          (mapcar #'(lambda (x) (list (read-line ann-fh)
+                                      (read-line ann-fh)))
+                  strlst))
+    ;(setq natlog-str (read-line ann-fh))
+    ;(setq natlog-ann (read-line ann-fh))
     (close ann-fh)
     ;; Delete files.
     (delete-file tempfile-raw)
@@ -124,13 +133,19 @@
     ;; 4. Reformat into desired format.
     ;; Words (as tokenized by NatLog) are paired with the corresponding
     ;; polarity, where the polarity is represented as one of [+,-,o].
-    (mapcar #'list 
-            (cl-strings:split (cl-strings:clean natlog-str))
-            (mapcar #'(lambda (natlog-pol)
-                        (cond ((equal natlog-pol "down") '-)
-                              ((equal natlog-pol "up") '+)
-                              ((equal natlog-pol "flat") 'o)))
-                    (cl-strings:split (cl-strings:clean natlog-ann))))))
+    (mapcar 
+      #'(lambda (strann)
+          (let ((natlog-str (first strann))
+                (natlog-ann (second strann)))
+            (mapcar #'list 
+                    (cl-strings:split (cl-strings:clean natlog-str))
+                    (mapcar #'(lambda (natlog-pol)
+                                (cond ((equal natlog-pol "down") '-)
+                                      ((equal natlog-pol "up") '+)
+                                      ((equal natlog-pol "flat") 'o)))
+                            (cl-strings:split 
+                              (cl-strings:clean natlog-ann))))))
+      natlog-stranns)))
 
 ;; Aligns the atomic elements in 'ulf' with the polarity annotations from 'pol'.
 ;; The alignment produces a polarity annotated ULF formula with full semantic,
@@ -187,12 +202,12 @@
 ;; NB: since we're assuming the transparent operators aren't interacting, we
 ;; can merge them with their children in terms of polarity (e.g. (plur (cat.n
 ;; +)) -> ((plur +) (cat.n +))).
-;(setq ulf1 '(|Mary| ((PRES KNOW.V) (THAT (|John| ((PAST GO.V) (K HOME.N)))))))
-;(setq nlog1 (run-natlog (ulf-to-string ulf1)))
+(setq ulf1 '(|Mary| ((PRES KNOW.V) (THAT (|John| ((PAST GO.V) (K HOME.N)))))))
+;(setq nlog1 (run-natlog (list (ulf-to-string ulf1))))
 ;(setq aligned1 (align-ulf-polarity ulf1 nlog1))
 ;
-;(setq ulf2 '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N)))))
-;(setq nlog2 (run-natlog (ulf-to-string ulf2)))
+(setq ulf2 '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N)))))
+;(setq nlog2 (run-natlog (list (ulf-to-string ulf2))))
 ;(setq aligned2 (align-ulf-polarity ulf2 nlog2))
 
 ;; Infers polarities for a complete ULF given polarity annotations of tokens
@@ -255,7 +270,7 @@
     (align-ulf-polarity    ; align text polarity to ulf
       ulf
       (run-natlog           ; get text token polarity
-        (ulf-to-string ulf)))))
+        (list (ulf-to-string ulf))))))
 
 ;; Returns the polarity for the given segment of the ulf.
 ;; NB: 'segment' must be referentially equivalent to the segment within the

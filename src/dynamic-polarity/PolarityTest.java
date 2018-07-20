@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
@@ -67,23 +68,38 @@ public class PolarityTest {
         System.out.println("Reading sentence from " + args[0]);
         System.out.println("Writing annotations to " + args[1]);
         BufferedReader br = new BufferedReader(new FileReader(args[0]));
-        String line = br.readLine();  // Assumes a single line.
+        String line = br.readLine();
+        List<String> lines = new ArrayList<String>();
+        while (line != null && !line.trim().equals("")) {
+          lines.add(line); 
+          line = br.readLine();  // Assumes a single line.
+        }
         br.close();
 
-        List<CoreLabel> tokens = annotate(line);
-        String[] tokenWords = new String[tokens.size()];
-        Polarity[] polarities = new Polarity[tokens.size()];
-        for (int i = 0; i < tokens.size(); ++i) {
-          tokenWords[i] = tokens.get(i).word();
-          polarities[i] = tokens.get(i).get(NaturalLogicAnnotations.PolarityAnnotation.class);
+        // Annotate...
+        List<String> wordResults = new ArrayList<String>();
+        List<String> polarityResults = new ArrayList<String>();
+        for (String curline : lines) {
+          List<CoreLabel> tokens = annotate(curline);
+          String[] tokenWords = new String[tokens.size()];
+          Polarity[] polarities = new Polarity[tokens.size()];
+          for (int i = 0; i < tokens.size(); ++i) {
+            tokenWords[i] = tokens.get(i).word();
+            polarities[i] = tokens.get(i).get(NaturalLogicAnnotations.PolarityAnnotation.class);
+          }
+          String wordResult = StringUtils.join(Arrays.stream(tokenWords).collect(Collectors.toList()), " ");
+          String polarityResult = StringUtils.join(Arrays.stream(polarities).map(Polarity::toString).collect(Collectors.toList()), " ");
+          wordResults.add(wordResult);
+          polarityResults.add(polarityResult);
         }
-        String wordResult = StringUtils.join(Arrays.stream(tokenWords).collect(Collectors.toList()), " ");
-        String polarityResult = StringUtils.join(Arrays.stream(polarities).map(Polarity::toString).collect(Collectors.toList()), " ");
-        
+
         BufferedWriter bw = new BufferedWriter(new FileWriter(args[1]));
-        bw.write(wordResult);
-        bw.newLine();
-        bw.write(polarityResult);
+        for (int i = 0; i < wordResults.size(); i++) {
+          bw.write(wordResults.get(i));
+          bw.newLine();
+          bw.write(polarityResults.get(i));
+          bw.newLine();
+        }
         bw.close();
       
       } catch (Exception e) {
