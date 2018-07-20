@@ -1,6 +1,6 @@
 .*.swp
 *.pyc
-.class
+*.class
 
 # Ignore corpus files that are decompressed.
 datasets/Coconut_corpus/coconut-corpus
