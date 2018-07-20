@@ -162,6 +162,10 @@
                               (cl-strings:clean natlog-ann))))))
       natlog-stranns)))
 
+;; Run NatLog on a list of ULFs.
+(defun run-natlog-ulfs (ulfs)
+  (run-natlog (mapcar #'ulf-to-string ulfs)))
+
 ;; Aligns the atomic elements in 'ulf' with the polarity annotations from 'pol'.
 ;; The alignment produces a polarity annotated ULF formula with full semantic,
 ;; but partial symbolic coverage. e.g.,
