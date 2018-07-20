@@ -8,13 +8,12 @@
 ; we use to call the java program and shows what dependencies are needed.
 
 
-
+;; Memoization parameters.
+(defparameter *run-natlog-memo* (make-hash-table :test #'equal))
 
 ;; Polarity markings we will use.
 (defparameter *polarities*
   '(+ - o))
-
-
 
 ;; Takes a symbol and returns whether the symbol has a .-delimited suffix.
 (defun has-suffix? (s)
@@ -99,37 +98,53 @@
 ;;            ...)
 ;; NB: The input strings MUST NOT contain any newlines.  Newlines will cause
 ;;     the sentence to be treated as separate sentences.
-;; TODO: memoize
-(defun run-natlog (strlst)
-  ;; 1. Write string to temporary file.
+(defun run-natlog (strlst &key (memoize t))
+  ;; 1. Write strings for processing to temporary file.
   ;; 2. Run shell script.
   ;; 3. Read in tokenized string and annotations.
   ;; 4. Reformat into desired format.
   (let* ((tempfile-raw ".natlog_raw.temp")
          (tempfile-ann ".natlog_ann.temp")
-         (raw-fh (open tempfile-raw :direction :output))
-         ann-fh natlog-stranns)
+         raw-fh ann-fh natlog-stranns newstrs)
+    
     ;; 1. Write string to temporary file.
-    (dolist (str strlst)
-      (write-line str raw-fh))
-    (close raw-fh)
-    ;; 2. Run shell script
-    ;; TODO: suppress shell output (or make a flag for it).
-    (run-shell-command (format nil 
-                               "./run_natlog.sh ~a ~a" 
-                               tempfile-raw tempfile-ann))
-    ;; 3. Read in tokenized string and annotations
-    (setq ann-fh (open tempfile-ann))
-    (setq natlog-stranns 
-          (mapcar #'(lambda (x) (list (read-line ann-fh)
-                                      (read-line ann-fh)))
-                  strlst))
-    ;(setq natlog-str (read-line ann-fh))
-    ;(setq natlog-ann (read-line ann-fh))
-    (close ann-fh)
-    ;; Delete files.
-    (delete-file tempfile-raw)
-    (delete-file tempfile-ann)
+    (setq newstrs (if memoize 
+                    (remove-if #'(lambda (s) (gethash s *run-natlog-memo*)) 
+                               strlst)
+                    strlst))
+    (when newstrs
+      (progn
+        (setq raw-fh (open tempfile-raw :direction :output))
+        (dolist (str newstrs)
+          (write-line str raw-fh))
+        (close raw-fh)
+        ;; 2. Run shell script
+        ;; TODO: suppress shell output (or make a flag for it).
+        (run-shell-command (format nil 
+                                   "./run_natlog.sh ~a ~a" 
+                                   tempfile-raw tempfile-ann))
+        ;; 3. Read in tokenized string and annotations
+        (setq ann-fh (open tempfile-ann))
+        (setq natlog-stranns 
+              (mapcar #'(lambda (x) (list (read-line ann-fh)
+                                          (read-line ann-fh)))
+                      strlst))
+        (close ann-fh)
+        ;; Delete files.
+        (delete-file tempfile-raw)
+        (delete-file tempfile-ann)))
+    
+    ;; 3b. Save new memos and lookup previous memos to combine with new output.
+    (if memoize
+      (dolist (nl-strann natlog-stranns)
+        (let ((nl-str (first nl-strann))
+              (nl-ann (second nl-strann)))
+          (setf (gethash nl-str *run-natlog-memo*) nl-ann))))
+    (if memoize
+      (setq natlog-stranns
+            (mapcar #'(lambda (s) (list s (gethash s *run-natlog-memo*)))
+                    strlst)))
+
     ;; 4. Reformat into desired format.
     ;; Words (as tokenized by NatLog) are paired with the corresponding
     ;; polarity, where the polarity is represented as one of [+,-,o].
