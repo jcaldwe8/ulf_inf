@@ -1,0 +1,2 @@
+(load (compile-file "tttpkg" :verbose nil :print nil))
+(load "all.local")

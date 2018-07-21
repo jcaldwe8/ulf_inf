@@ -1,0 +1,118 @@
+Quick Summary of TTT features 
+-----------------------------
+o Please contact Adam Purtee (apurtee@cs.rochester.edu) with questions/bugs. 
+
+
+To load TTT, do: 
+(load "/p/nl/tools/ttt/src/ttt")
+
+To re-compile TTT, do: 
+(load "/p/nl/tools/ttt/src/compile")    ;; TTT is pre-compiled with Allegro 8.2
+
+To match a single pattern expression against a single tree expression, do: 
+(match-expr pattern-expression tree-expression)
+
+To compile a pattern expression, do: 
+(build-pattern expression)
+
+To convert a tree expression to a nodal tree, do: 
+(build-tree expression)
+
+To match pattern and tree objects, just call match: 
+(let ((p1 (build-pattern patt-expr))
+      (t1 (build-tree tree-expr)))
+  (match p1 t1 t))   ;; t is initial bindings
+
+To apply a rule to a tree-expression until converged, do: 
+(apply-rule rule-expr tree-expr)
+
+To apply a list of rules, do: 
+(apply-rules rule-expr-list  tree-expr)
+
+Both apply-rules and apply-rule have the keyword arguments:
+
+:shallow   - when t, only apply rules to the root of tree-expr (default nil)
+:max-n     - when supplied, limit the rule application to n iterations. 
+             E.g, to apply a rule at most once, do 
+             (apply-rule rule-expr tree-expr :max-n 1)
+             or
+             (apply-rules (list rule-expr) tree-expr :max-n 1)
+
+:trace     - when t, displays debugging info to stdout
+             otherwise, when non-nil write debugging info to a specified file, 
+	     appending to the file if it already exists
+              
+             trace format is a tuple of lines per transduction:
+              <rule expression>
+              <tree before transduction>
+              <tree after transduction>
+              <blank line>
+             
+             apply-rule does not include the rule expression in the trace 
+	     output, since the rule is determined at function call time.
+
+
+apply-rules additionally supports the keyword argument :rule-order, with values
+chosen among:
+
+:slow-forward   - apply each rule until that rule no longer
+                  applies, possibly repeating the entire sequence
+:earliest-first - always apply the first rule in the list that 
+                  is applicable, repeat until no rules are applicable
+                  the rule list may be processed multiple times
+:fast-forward   - apply each rule at most once, in order, repeating
+                  the list until convergence
+
+
+	   
+To define a predicate which is a named TTT pattern, do: 
+(mk-pred-ttt pred-name patt-expr)
+<See pred-defs.lisp for examples>
+
+To define a predicate which is not a TTT pattern, simply name 
+the predicate with ending symbol "?" and define it to accept 
+a single tree expression as input.
+Example: 
+(defun binary? (tree)
+  (if (atom tree)  ;; a leaf is a binary tree
+      t
+      (and (= (length tree) 2) ;; two children
+	   (binary? (nth 0 tree))
+	   (binary? (nth 1 tree)))))
+(match-expr 'binary? '(X Y))
+ => T
+(match-expr 'binary? '(X Y Z))
+ => nil
+(match-expr '(H binary? K) (H (X (Y Z)) K))
+ => T
+
+
+
+
+Notes:   
+o ttt-search.cl can be used at the command line to search a treebank 
+  for trees matching a pattern (see file for details)
+
+o ttt-apply-ruleset can be used at the command line to apply a set
+  of rules to a treebank (see file for details)
+
+o For details on syntax, see file "syntax.txt"
+
+o Constraints on bindings are not implemented in this version, but if anyone needs 
+  them I will add support, but the external syntax may require a typical "nil" for
+  constraints much as they require the typical "t" for initial bindings. 
+
+
+expresions.lisp      - parsing of pattern expressions and tree expressions
+patterns.lisp        - definitions of pattern objects
+keys.lisp            - representation and manipulation of keys 
+operators.lisp       - operator and variable parsing (from symbols)
+bindings.lisp        - handling of bindings
+sticky.lisp          - handling of sticky variables 
+trees.lisp           - definition of tree objects
+patterns.lisp        - definition of pattern classes 
+predicates.lisp      - predicate handling
+pred-defs.lisp       - definitions of caption-repair predicates
+other files          - remaining files implement each match operator.
+
+

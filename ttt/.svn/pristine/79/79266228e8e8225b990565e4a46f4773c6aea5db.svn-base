@@ -1,0 +1,298 @@
+;; NEEDS INDEXING
+;; NEEDS CONJUNCT-ORDERING
+;; NEEDS RETE STYLE RULE PROPAGATION
+;; NEEDS PROBABILITY
+
+;; Don't really need to have ttt-rules separate
+;; Something is a 'rule' if it is a ttt-rule
+
+(defclass knowledge-base ()
+  ((el-rules :accessor el-rules :initform nil)
+   (rules-ht :accessor rules-ht :initform (make-hash-table :test #'equal))
+   (ttt-rules :accessor ttt-rules :initform nil)
+   (partial-inferences :accessor partial-inferences :initform nil)
+   (facts :accessor facts :initform nil))
+  (:documentation
+   "Class for manipulation of Epispodic Logic rules and facts. 
+    A rule is any wff which is not a ground literal. 
+    A fact is any ground literal. 
+   
+    Adding rules or facts should trigger forward inferences, 
+    and add new conclusions to the knowledge base.
+   
+    The conclusions should have some indication of their provenance, 
+    to handle non-monotonic cases (fact/rule deletion)."))
+(defun s (r)
+  "Add rule r to *kb* if it only involves the quantifier 'all' 
+   at each level, except possibly the conclusion."
+  ;; I found  a bug in TTT (+ ~ OR) isn't handled properly.
+  ;; a workaround is to use the pattern (+ _! ~ OR)
+
+  ;; add special handling for OR 
+  ;;  (ALL _!VAR (_!R1 OR _!R2) _!C)
+
+  ;;  (ALL _!VAR _!R1 _!C)
+  ;;  (ALL _!VAR _!R2 _!C)
+  
+  ;; maybe add special handleing at fact level insetad, 
+  ;; that we if we learn the disjunction, we can still make
+  ;; the conclusion.   
+
+  
+  (if (match-expr '(^@ (+ (all _! (? ((+ _! ~ OR))) @)) (! _! ~ (all _+)))  r)
+      (add-rule *kb* r)
+      (format t "unable to handle EL rule:~%~s~%" r)))
+     
+(defparameter *max-normal-conclusion-height* 7)
+(defmethod inspect-kb ((kb knowledge-base) &key show-partial show-rules show-facts show-ttt)
+  "Print all the rules added to the knowlege-base.
+   If show-partial is non-nil, then also show partial rules."
+  (if (and (not show-rules) (not show-partial) (not show-ttt))
+      (setf show-rules t show-partial t show-ttt t))
+  (when show-rules
+    (format t "~s EL-RULES:~%" (length (el-rules kb)))
+    (dolist (rule (el-rules kb))
+      (format t "~s~%" rule)))
+  (when show-ttt
+    (format t "~s TTT-RULES:~%" (length (ttt-rules kb)))
+    (dolist (rule (ttt-rules kb))
+      (format t "~s~%" rule)))
+  (when show-partial
+    (format t "~s PARTIAL INFERENCES:~%" (length (partial-inferences kb)))
+    (dolist (p (partial-inferences kb))
+      (format t "~s~%" p)))
+  (when show-facts
+    (format t "~s FACTS:~%" (length (facts kb)))
+    (dolist (fact (facts kb))
+      (format t "~s~%" fact)))
+  t)
+
+
+(defmethod add-rule ((kb knowledge-base) rule)
+  "Adds a rule to a knowledge-base.
+   Forward inferences are triggered."
+
+
+
+  ;; add the rule to the kb
+  ;; check if anything satisfying the most-constrained-conjunct of the rule
+  ;; exists in the set of facts
+
+  ;; before or after converting to TTT?
+
+  ;; if all quantifiers are 'all' then order is free
+
+  (if (member rule (el-rules kb) :test #'equal)
+      (progn
+	(format t "warning: attempted to add a rule to the kb which was already there:~%~s~%" rule)
+	nil)
+      (progn
+	(push rule (el-rules kb))e
+	(push (convert-el-to-ttt rule) (ttt-rules kb))
+	;; add the rule to the ht
+
+	(setf (gethash (convert-el-to-ttt rule) (rules-ht kb))
+	      (convert-el-to-ttt-rule)
+	(propagate-inferences kb)
+	t)))
+
+
+(defmethod propagate-inferences ((kb knowledge-base) &key fact rule)
+  "Perform forward inference updating the kb as appropriate. 
+   If the kb is up to date except for a single fact or rule, then 
+   begin propagation with that."
+
+  (cond ((and fact rule) 
+	 (format t "warning: propagate-inferneces expects zero or one of fact or rule to be non-nil. aborting.~%")
+	 (return-from propagate-inferences nil))
+
+	(fact
+	 ;; look for all rules that apply to this fact
+	 
+	 (let (converged
+	       applicable)
+	   
+	   (dolist (k (get-fact-keys fact))
+	     (dolist (rule (gethash k (rules-ht *kb*)))
+	       (push rule applicable)))
+	   
+
+	   
+
+	   (loop while applicable do
+		(let* ((rule (pop applicable))
+		       (result (apply-rule rule fact)))
+		  (when (not (equal result fact))
+		    (cond 
+		      ((and (listp result)
+			    (eq (car result) '/))
+			 ;; partial inference
+			 (when (not (member result (gethash (get-rule-key result) (rules-ht *kb*)) :test #'equal))
+			   ;; (push this partial rule onto the hashtable for relative key)
+			   (push result (gethash (get-rule-key result) (rules-ht *kb*)))
+			   (propagate-inferences *kb* :rule result)
+			   
+		      
+		       
+	
+	(rule
+	 ;; look for all facts that this rule applies to
+	 
+	 )
+
+	(t ;; otherwise, this may be the first time
+	 (let (converged)
+	   (loop while (not converged) do
+		(setf converged t)
+		(dolist (r (append (ttt-rules kb) (partial-inferences kb)))
+		  (dolist (f (facts kb))
+		    (let ((result (apply-rule r f)))
+		      (when (not (equal result f))
+			(cond 
+			  ((and (listp result)
+				(eq (car result) '/))
+			   (when
+			       (not (or (member result (partial-inferences kb) :test #'equal)
+					(member result (ttt-rules kb) :test #'equal)))
+			     (setf converged nil)
+			     (format t "partial inference: ~s~%" result)
+			     (push result (partial-inferences kb))))
+			  ((not (member result (facts kb) :test #'equal))
+			   (setf converged nil)
+			   (format t "completed inference: ~s~%" result)
+			   (push result (facts kb)))
+			  (t nil))))))))))
+  t)
+
+
+
+(defun convert-el-to-ttt (el-rule)
+  "Only works when all quantifiers are 'all'."
+  (apply-rules 
+   '(
+     (/ (ALL (!VAR _!0) (!RESTRICTOR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       (/ !RESTRICTOR !WFF)))
+     (/ (ALL (!VAR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       !WFF)))
+   el-rule))
+
+    
+(defmethod add-fact ((kb knowledge-base) fact)
+    "Adds a fact to a knowledge-base."
+    (if (member fact (facts kb) :test #'equal)
+	(progn
+	  (format t "warning: attempted to add a fact to the kb which was already there:~%~s~%" fact)
+	  (push fact (facts kb))
+	  (propagate-inferences kb)
+	  t)
+	nil))
+
+
+(defparameter *kb* (make-instance 'knowledge-base))
+
+
+
+
+(defun sort-predicates (predicate-list)
+  "Sorts the list of predicates into order from most constrained to least."
+  (format t "WARNING: sort-predicates is stub.~%")
+  predicate-list)
+
+
+
+
+(defun get-predicates (rule)
+  "Return a list of all unique predicates appearing in an EL rule."
+  ;; We lose information about valence, here. 
+  (cond 
+    ((atom rule)
+     (if (find #\. (string rule))
+	 (list rule)))
+    ((listp rule)
+     (remove-duplicates (reduce #'append (mapcar #'get-predicates rule))))
+    (t (format t "warning: rule is not an atom or a list [~s]~%" rule)
+       nil)))
+
+(defun get-rule-key (ttt-rule)
+  ;; ((_+) ** _!E)
+  ;; (_+)
+  ;; ((_+) OR (_+))
+  (let ((result (get-predicates (nth 1 ttt-rule))))
+    (when (not (= (length result) 1))
+      (format t "unexpected key result: ~s~%" result)
+      (return-from get-rule-key nil))
+    (car result)))
+
+(defun get-fact-keys (fact)
+  (get-predicates fact))
+
+     
+
+(defparameter *sample-lf*
+  '(all x 
+    (all y 
+     (all a (a action-type.n) 
+      (all e ((x ask-of.v y a) ** e)
+	   ((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)))))
+  "If E is an episode of X asking Y to perform an action A, then it is true in 
+   episode E that X wants it to be true that there exists after E some episode 
+   E1 which is characterized by Y doing action A.")
+
+;;(a action-type.n)
+;;((x ask-of.v y a) ** e)
+;;((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)
+;; Suppose ask-of.v < action-type.n in sort-predicates.
+(defparameter *sample-lf-as-ttt-rule*
+  '(/ ((_!x ask-of.v _!y _!a) ** _!e)
+    (/ (_!a action-type.n)
+     ((_!x want-tbt.v (that (some e1 (e1 after _!e) ((_!y do.v _!a) ** e1)))) @ _!e))))
+
+;; (print (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0)))
+;;  => (/ (MARRY.V ACTION-TYPE.N)
+;;        ((JANE.N WANT-TBT.V
+;;          (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0)) 
+
+;; (print 
+;;   (apply-rule 
+;;     (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0))
+;;     '(marry.v action-type.n)))
+;;  => ((JANE.N WANT-TBT.V
+;;       (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0) 
+
+
+
+
+(defparameter *sample-lf-1*
+  ;; This one is questionable. 
+  '(all x (x phys-obj.n) 
+    (all y (y phys-ent.n) 
+     (all e ((x at-loc.p y) ** e) 
+      (((loc-of.f x) within-or-adjacent-to.p (loc-of.f y)) ** e))))
+  "For all physical objects X, all physical entities Y, and all episodes E 
+   characterized by X being at location Y, the location of X is 
+   within-or-adjacent-to the location of Y characterizes the episode.")
+
+(defparameter *sample-lf-1-as-ttt-rule*
+  ;; at-loc.p < {phys-obj.n, phys-ent.n}
+  '(/ ((_!x at-loc.p _!y) ** _!e)
+      (/ (_!y phys-ent.n)
+         (/ (_!x phys-obj.n)
+	    (((loc-of.f _!x) within-or-adjacent-to.p (loc-of.f _!y)) ** _!e)))))
+  
+
+
+;;(all _!v1. (? _!v1restrictor)
+;;     (all _!v2. (? _!v2restrictor) 
+;;	  ...
+;;	  (all _!vn (? _!vnrestrictor)
+;;	       conclusion)))
+;;
+;;
+;; Sort the restrictor formulas (conjuncts), build into a curried TTT rule.
+

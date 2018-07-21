@@ -1,0 +1,382 @@
+;; Purpose:  Provide simple forward inferences using the axioms produced by 
+;;           lexical axiomization group.
+;; Author:   Adam Purtee <apurtee@cs.rochester.edu>
+;; Date:     10-30-2012
+;;
+;; Unfinished functions:
+;;   get-rule-keys 
+
+;; See README in this directory for information on usage and design.
+;; Design inspired by Len's third Lisp assignment for CS244/444, Fall 2012.
+
+
+
+;; USES THE FOLLOWING FROM "parsing-lfs.lisp"
+;; valid-rule? 
+;; valid-fact?
+;; convert-el-to-ttt
+;; predicate-sym?
+;; var-sym?
+;; disjunctive-fact?
+;; conjunctive-fact?
+;; negative-fact?
+(defparameter *verbose* 3)
+(defclass knowledge-base ()
+  (;; the record of the EL forms added to the kb by the user
+   (el-forms :accessor el-forms :initform nil)
+
+   ;; results of converting EL rules to TTT rules, and 
+   ;; partial instantiations of rules
+   (rules :accessor rules :initform (make-hash-table :test #'equal))
+
+   ;; ground literal facts
+   (facts :accessor facts :initform (make-hash-table :test #'equal)))
+
+  (:documentation
+   "Class for forward inference in Episodic Logic. 
+
+    Adding rules or facts should trigger forward inferences, 
+    and add new conclusions (or partial rules) to the knowledge base.
+
+    Facts are ground literals. 
+    Rules are anything involving variables."))
+   
+     
+(defmethod inspect-kb ((kb knowledge-base) &key el-forms facts rules)
+  "Print all the rules added to the knowlege-base.
+   If show-partial is non-nil, then also show partial rules."
+  (if (and (not rules) (not facts) (not el-forms))
+      (setf rules t facts t el-forms t))
+  (when el-forms
+    (format t "EL-FORMS:~%")
+    (dolist (rule (el-forms kb))
+      (format t "~s~%" rule)))
+  (when rules
+    (format t "RULES:~%" )
+    (let ((printed (make-hash-table :test #'equal)))
+      (maphash 
+       (lambda (k v) 
+	 (dolist (rule v)
+	   (when (not (gethash rule printed))
+	     (format t "~s~%" rule)
+	     (setf (gethash rule printed) t))))
+       (rules kb))))
+  (when facts
+    (format t "FACTS:~%" )
+    (let ((printed (make-hash-table :test #'equal)))
+      (maphash
+       (lambda (k v)
+	 (dolist (fact v)
+	   (when (not (gethash fact printed))
+	     (format t "~s~%" fact)
+	     (setf (gethash fact printed) t))))
+       (facts kb))))
+  t)
+
+(defun display (&key el-forms facts rules)
+  "Simple wrapper for inspect-kb to use default *kb*."
+  (inspect-kb *kb* :el-forms el-forms :facts facts :rules rules))
+
+(defmethod add-to-kb ((kb knowledge-base) el-form)
+  "Adds a rule or fact to a knowledge-base, triggering forward inferences
+   as appropriate.  This is a high-level function intended to be part of
+   the user-level interface, capable of directly handling el-forms and
+   converting rules to ttt rules, dispatching to add-rule, or 
+   dispatching to add-fact.
+
+   Returns nil if any errors occurred, and t otherwise.
+   Possible errors are: 
+    el-form is a rule or fact that is already in the kb
+    el-form is a rule or fact that is inconsistent with 
+      some other rule or fact in the kb
+    el-form is neither a supported rule type or supported fact type"
+
+  (if (member el-form (el-forms kb) :test #'equal)
+      (format t "[add-to-kb] Can't add the EL form to the kb because it is ~
+                 already present:~%~s~%" el-form)
+      (let ((ttt-form (convert-el-to-ttt el-form)))
+	;; convert-el-to-ttt should only return something different from form 
+	;; when form is an el-rule of supported type (currently, nested all 
+	;; quantifiers) if convert-el-to-ttt returns form, then form is either 
+	;; a ground literal or unsupported
+	(cond 
+	  ((valid-rule? ttt-form)
+	   (when (store-rule kb ttt-form)
+	     (push el-form (el-forms kb))
+	     (activate-rule kb ttt-form))
+	   t)
+	  ((valid-fact? ttt-form)
+	   (when (store-fact kb ttt-form)
+	     (push el-form (el-forms kb))
+	     (activate-fact kb ttt-form))
+	   t)
+	  (t
+	   (format t "[add-to-kb] ignoring form which is neither rule or fact:~
+                     ~%~s~%" el-form))))))
+
+(defun store (el-form)
+  "Simple wrapper for add-to-kb to use default *kb*."
+  (add-to-kb *kb* el-form))
+
+
+(defmethod store-fact ((kb knowledge-base) fact)
+ "Adds a new ground literal to the knowledge base, returns t if successful
+   and nil otherwise (e.g, in the case that fact is malformed, already 
+   present in the kb, or is inconsistent with another fact in the kb.
+   DOES NOT PERFORM FORWARD INFERENCE"
+ (if (not (valid-fact? fact))
+     (format t "[store-fact] argument not a valid fact: ~s~%" fact)
+     (let ((keys (get-fact-keys fact)))
+       ;; only have to check under one key to see if this fact is new
+       (if (member fact (gethash (car keys) (facts kb)) :test #'equal)
+	   (if (> *verbose*  1)
+	       (format t "[store-fact] Fact already present in kb: ~s~%" fact))
+	   (if (fact-in-kb? kb (negate-fact fact))
+	       (if (> *verbose* 1)
+		   (format t "[store-fact] Negation of fact already present in ~
+                             kb: ~s~%"  fact))
+	       (progn
+		 (if (> *verbose* 1)
+ 		     (format t "[store-fact] Adding new fact to kb: ~s~%" fact))
+		 (dolist (key keys)
+		   (push fact (gethash key (facts kb))))
+		 t))))))
+
+(defmethod activate-fact ((kb knowledge-base) fact)
+  "Performs forward inference from fact, assuming that kb is consistent
+   and up to date (i.e., all forward inferences are complete) except for
+   those which require fact.   Also assumes that fact is already in kb.
+
+   Returns T if kb is modified. 
+   Returns NIL if kb is not modified (no inferences made) or in the case
+   of an error."
+ 
+  (unless (valid-fact? fact)
+    (return-from activate-fact 
+      (format t "[activate-fact] argument not a valid fact:~%~s~%" fact)))
+  (let ((rules) kbmodified)
+    (dolist (key (get-fact-keys fact))
+      (setf rules (append rules (gethash key (rules kb)))))
+    (loop while rules do
+	 (let* ((rule (pop rules))
+		(phi (apply-rule rule fact)))
+	   (if (not (equal fact phi))
+	       (cond 
+		 ((valid-rule? phi)
+		  (when (store-rule kb phi)
+		    (setf kbmodified t)
+		    (if (> *verbose* 0)
+			(format t "new partial rule inferred:~%~s~%" phi))
+		    (if (activate-rule kb phi)
+			(progn 
+			  (setf rules nil)
+			  ;; A RETE style optimization could be made here
+			  (dolist (key (get-fact-keys fact))
+			    (setf rules (append rules (gethash key (rules kb)))))))))
+		((valid-fact? phi)
+		 (when (store-fact kb phi)
+		   (setf kbmodified t)
+		   (if (> *verbose* 0)
+		       (format t "new fact inferred:~%~s~%" phi))
+		   (if (activate-fact kb phi)
+		       (progn
+			 (setf rules nil)
+			 ;; A RETE style optimization could be made here
+			 (dolist (key (get-fact-keys fact))
+			   (setf rules (append rules (gethash key (rules kb)))))))))
+		(t (return-from activate-fact 
+		     (format t "[activate-fact] Rule consequent neither ~
+                                fact nor rule:~%~s~%" phi)))))))
+    kbmodified))
+  
+
+
+(defmethod store-rule ((kb knowledge-base) rule)
+  "Adds a new TTT rule to the knowledge base, returns t if successful
+   and nil otherwise (e.g, in the case that rule is malformed or already 
+   present in the kb.
+   DOES NOT PERFORM FORWARD INFERENCE."
+  (if (valid-rule? rule)
+      (if (rule-in-kb? kb rule)
+	  (if (> *verbose* 1)
+	      (format t "[store-rule] Rule already present in kb:~%~s~%" rule))
+	  (progn
+	    (if (> *verbose* 1)
+		(format t "[store-rule] Adding new rule to kb:~%~s~%" rule))
+	    (dolist (key (get-rule-keys rule))
+	      (push rule (gethash key (rules kb))))
+	    t))
+      (format t "[store-rule] argument not a valid rule:~%~s~%" rule)))
+
+
+
+(defmethod activate-rule ((kb knowledge-base) rule)
+  "Performs forward inference from rule, assuming that kb is consistent
+   and up to date (i.e., all forward inferences are complete) except for
+   those which require the rule.   Also assumes that rule is already in kb.
+  
+   Returns T if kb is modified. 
+   Returns NIL if kb is not modified (no inferences made) or in the case
+   of an error."
+  (if (valid-rule? rule)
+      (let ((facts) kbmodified)
+	(dolist (key (get-rule-keys rule))
+	  (setf facts (append facts (gethash key (facts kb)))))
+	(loop while facts do
+	     (let ((fact (pop facts)))
+	       (let ((phi (apply-rule rule fact)))
+		 (if (not (equal phi fact))
+		     (cond 
+		       ((valid-rule? phi)
+			(when (store-rule kb phi)   
+			  (setf kbmodified t)
+			  (if (> *verbose* 0)
+			      (format t "new partial rule inferred: ~s~%" phi))
+			  (when (activate-rule kb phi) 
+			    ;; activate-rule returns t only if kb modified
+			    ;; A RETE style optimization could be made here
+			    (setf facts nil)
+			    (dolist (key (get-rule-keys rule))
+			      (setf facts (append facts (gethash key (facts kb))))))))
+		       ((valid-fact? phi)
+			(when (store-fact kb phi)
+			  (setf kbmodified t)
+			  (if (> *verbose* 0)
+			      (format t "new fact inferred: ~s~%" phi))
+			  (when (activate-fact kb phi)
+			    ;; activate-rule returns t only if kb modified
+			    ;; A RETE style optimization could be made here
+			    (setf facts nil)
+			    (dolist (key (get-rule-keys rule))
+			      (setf facts (append facts (gethash key (facts kb))))))))
+		       (t
+			(return-from activate-rule 
+			  (format t "[activate-rule] consequent is neither fact nor rule: ~
+                                     ~s~%" phi))))))))
+	kbmodified)
+	(format t "[activate-rule] argument is not a valid rule: ~s~%" rule)))
+	
+
+(defmethod rule-in-kb? ((kb knowledge-base) rule)
+  (if (get-rule-keys rule)
+      (dolist (key (get-rule-keys rule))
+	(if (member rule (gethash key (rules kb)))
+	    (return-from rule-in-kb? t)))
+      (progn
+	(format t "[rule-in-kb?] rule without any keys:~%~s~%" rule)
+	(if (member rule (gethash nil (rules kb)))
+	    (return-from rule-in-kb? t))))
+  nil)
+
+(defmethod fact-in-kb? ((kb knowledge-base) fact)
+  (if (get-fact-keys fact)
+      (dolist (key (get-fact-keys fact))
+	(if (member fact (gethash key (facts kb)))
+	    (return-from fact-in-kb? t)))
+      (progn
+	(format t "[fact-in-kb?] fact without any keys:~%~s~%" fact)
+	(if (member fact (gethash nil (facts kb)))
+	    (return-from fact-in-kb? t))))
+  nil)
+
+
+(defun get-fact-keys (fact)
+  "ASSUMPTION: fact is a valid fact (i.e., has no free variables and is not 
+   a universally quantified formula)
+   Returns a list of the keys, of lenght 1 or 2.
+   See README for detailed discussion of key usage and calcuation."
+  (if (valid-fact? fact)
+      (cond 
+	((disjunctive-wff? fact)
+	 ;; fact == (fact0 OR fact1)
+	 (union (get-fact-keys (nth 0 fact))
+		(get-fact-keys (nth 2 fact)) 
+		:test #'equal))
+	((conjunctive-wff? fact)
+	 ;; fact == (fact0 AND fact1)
+	 (format t "[get-fact-keys] conjunctive facts are unexpected, but OK:~
+                    ~%~s~%" fact)
+	 (union (get-fact-keys (nth 0 fact))
+		(get-fact-keys (nth 0 fact))
+		:test #'equal))
+	((negative-wff? fact)
+	 ;; fact == (not fact0)
+	 ;; warning: will return bad key if fact is doubly negated
+	 (mapcar (lambda (k) (cons 'not k)) (get-fact-keys (nth 1 fact))))
+	(t ;; simple predicate
+	 (case (length fact)
+	   ((0)
+	    (format t "[get-fact-keys] argument was emtpy: ~%~s~%" fact))
+	   ((1)
+	    (if (predicate-sym? (car fact))
+		(list fact)
+		(format t "[get-fact-keys] bad monadic predicate: ~%~s~%" fact)))
+	   ((2)
+	    (if (predicate-sym? (nth 1 fact))
+		(if (not (var-sym? (car fact)))
+		    (list fact (list (nth 1 fact)))
+		    (list (list (nth 1 fact))))
+		(format t "[get-fact-keys] bad predicate: ~%~s~%" fact)))
+	   (otherwise
+	    (if (predicate-sym? (nth 1 fact))
+		(if (not (var-sym? (nth 2 fact)))
+		    (list (list (nth 2 fact) (nth 1 fact)) (list (nth 1 fact)))
+		    (list (list (nth 1 fact))))
+		(format t "[get-fact-keys] bad predicate: ~%~s~%" fact))))))
+      (format t "[get-fact-keys] argument is not a fact:~%~s~%" fact)))
+
+(defun get-rule-keys (rule)
+  "ASSUMPTION: rule is a valid rule, in curried TTT form
+   Returns a list of keys, typically of length 1."
+  (if (valid-rule? rule)
+      (cond
+	((disjunctive-wff? (nth 1 rule))
+	 (format t "[get-rule-keys] warning: rule has a disjunctive restrictor:~
+                   ~%~s~%" rule)
+	 (union (get-rule-keys (list '/ (nth 0 (nth 1 rule)) 'blank))
+		(get-rule-keys (list '/ (nth 2 (nth 1 rule)) 'blank))
+		:test #'equal))
+	((conjunctive-wff? (nth 1 rule))
+	 (format t "[get-rule-keys] warning: rule has a conjunctive restrictor:~
+                   ~%~s~%" rule)
+	 (union (get-rule-keys (list '/ (nth 0 (nth 1 rule)) 'blank))
+		(get-rule-keys (list '/ (nth 2 (nth 1 rule)) 'blank))
+		:test #'equal))
+	((negative-wff? (nth 1 rule))
+	 (mapcar (lambda (k) (cons 'not k)) 
+		 (get-rule-keys (list '/ (nth 1 (nth 1 rule)) 'blank))))
+	(t
+	 (case (length (nth 1 rule))
+	   ((0)
+	    (format t "[get-rule-keys] empty restrictor:~%~s~%" rule))
+	   ((1)
+	    (if (predicate-sym? (nth 0 (nth 1 rule)))
+		(list (nth 1 rule))
+		(format t "[get-rule-keys] bad predicate in restrictor:~%~s~%" rule)))
+	   ((2)
+	    (if (predicate-sym? (nth 1 (nth 1 rule)))
+		(if (var-sym? (nth 0 (nth 1 rule)))
+		    (list (list (nth 1 (nth 1 rule))))
+		    (list (list (nth 0 (nth 1 rule)) (nth 1 (nth 1 rule)))))
+		(format t "[get-rule-keys] bad predicate in restrictor:~%~s~%" rule)))
+	   (otherwise
+	    (if (predicate-sym? (nth 1 (nth 1 rule)))
+		(if (var-sym? (nth 2 (nth 1 rule)))
+		    (list (list (nth 1 (nth 1 rule))))
+		    (list (list (nth 2 (nth 1 rule)) (nth 1 (nth 1 rule)))))
+		(format t "[get-rule-keys] bad predicate in restrictor:~%~s~%" rule))))))
+      (format t "[get-rule-key] argument is not a valid rule:~%~s~%" rule)))
+
+
+(defparameter *kb* (make-instance 'knowledge-base))
+
+
+;; No longer useful or necessary.
+;;(defun s (r)
+;;  "Add rule r to *kb* if it only involves the quantifier 'all' 
+;;   at each level, except possibly the conclusion."
+;;  (if (match-expr '(^@ (+ (all _! (? ((+ _! ~ OR))) @)) (! _! ~ (all _+)))  r)
+;;      (add-to-kb *kb* r)
+;;      (format t "unable to handle EL rule:~%~s~%" r)))
+
+

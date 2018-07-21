@@ -136,7 +136,7 @@
 ;             negative, and neutral. 
 ; accept = (+,o) 
 ; (see confess)
-(s '(all_wff w 
+(s '(all_wff w
      (all x ((x accept.v (that w)) => w))))
 
 ; acknowledge = (+,o) 
@@ -971,7 +971,7 @@
 
 ; used-to = (+,o)
 ; "John used to work for the government." 
-(s '(all_pred p 
+(s '(all_pred p
      (all x ((x used-to.v (ka p)) => (past (x p))))))
 
 ; verify = (+,o)
