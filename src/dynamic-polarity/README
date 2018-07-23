@@ -17,6 +17,9 @@ large overhead for unmemoized calls so calling it with a big batch ahead of time
 for all the sentences that will be used is faster.
   'run-natlog-ulfs' is the corresponding is the variant for ULFs.
 
+Before using the system the first time, you'll need to run get-jars.sh.  This
+will download the necessary jar files for the system.
+
 Dependencies:
   quicklisp - see https://www.quicklisp.org for download instructions
   Java 8
