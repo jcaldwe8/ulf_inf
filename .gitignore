@@ -2,6 +2,7 @@
 *.pyc
 *.class
 *.jar
+*.fasl
 
 # Hidden temp files.
 .*.temp
