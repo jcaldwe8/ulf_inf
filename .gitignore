@@ -1,5 +1,12 @@
 .*.swp
 *.pyc
+*.class
+*.jar
+*.fasl
+
+# Hidden temp files.
+.*.temp
+.*.tmp
 
 # Ignore corpus files that are decompressed.
 datasets/Coconut_corpus/coconut-corpus

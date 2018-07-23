@@ -60,7 +60,7 @@
 		(general 'general-patt)
 		(otherwise 
 		 (error 
-		  "problem in build-patt, unrecognized expression~%"))))
+		  (format nil "problem in build-patt, unrecognized expression: ~s:~s~%" (patt-expr-get-op expression) expression)))))
 	     (pattern (make-instance pattern-type)))
 	(if (> *ttt-debug-level* 0)
 	    (format t "building pattern: ~s (type= ~s)~%" expression pattern-type))
