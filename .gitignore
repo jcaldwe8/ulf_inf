@@ -3,6 +3,10 @@
 *.class
 *.jar
 
+# Hidden temp files.
+.*.temp
+.*.tmp
+
 # Ignore corpus files that are decompressed.
 datasets/Coconut_corpus/coconut-corpus
 datasets/monroe_plan_corpus/MonroePlanCorpus-1.0
