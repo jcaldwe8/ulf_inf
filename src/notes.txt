@@ -1,0 +1,24 @@
+
+
+High-level inference steps:
+
+Input: ULF, u1
+
+1. Preliminary canonicalization and normalization rules on u1 without macro 
+   expansion or word reordering.
+    > make currying standards consistent
+    > eliminate redundant formulas
+    > canonicalize aliased operators (e.g. not -> not.adv-s)
+2. Perform inferences that happen pre-macro expansion and word-reordering.
+   This includes many presuppositional and structure-based inferences, e.g.
+     "Can you do x?" -> "I want you to do x"
+   Store these inferences as preinf_1, preinf_2, ..., preinf_n
+3. Expand macros and fully normalize.
+4. Perform post-expansion inferences.
+  Store inferences as postinf_1, postinf_2, ..., postinf_m
+
+Further perform inferences on strictly entail inferences (which should be
+marked) through the same process.
+
+
+
