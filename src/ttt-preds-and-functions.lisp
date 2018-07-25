@@ -827,7 +827,11 @@
    (cond
      ((eq 'perf verb) (add-vp-tense comps 'past))
      ((eq 'were.v verb) (cons '(pres be.v) comps))
-     ((eq 'perf (caar comps)) (cons `(past ,verb) (cdar comps)))
+     ;; Look for 'perf after the auxiliary.
+     ((and (listp (car comps)) 
+           (not (null (car comps))) 
+           (eq 'perf (caar comps))) 
+      (cons `(past ,verb) (cdar comps)))
      (t (cons `(pres ,verb) comps)))))
 
 ;       (if (equal tensed-verb '(pres perf-cf)) 
