@@ -725,45 +725,6 @@
 (defun atom? (x) (atom x))
 ;````````````````````````
 
-(defun verb-cf? (verb)
-;`````````````````````
-; were-cf.v, were-cf.aux-s, could-cf.aux-s, could-cf.v, had-cf.v, had-cf.aux-s
-; are some of the counterfactual verbs (plus would-cf.aux-s, was-cf.v, was-cf.aux-s,
-; and in principle any verb could be used counterfactually ("If I won million
-; dollars, I would ..."). In all cases, the '-cf' is the give-away. The code
-; allows zero or one digit after the -cf, followed by a dot or nothing (where
-; the dot may have more characters after it). The digit may be needed for WSD.
-;
- (if (not (symbolp verb)) (return-from verb-cf? nil))
- (let ((chars (member #\- (coerce (string verb) 'list))))
-      (if (and chars (member (second chars) '(#\C #\c))
-                     (member (third chars) '(#\F #\f))
-                     (or (member (fourth chars) '(#\. nil))
-                         (and (member (fourth chars) 
-                               '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9))
-                              (member (fifth chars) '(#\. nil)))))
-          verb nil)))
-
-(defun verb-cf?-old (verb)
-;`````````````````````
-; were-cf.v, were-cf.aux-s, could-cf.aux-s, could-cf.v, had-cf.v, had-cf.aux-s
-; are some of the counterfactual verbs (plus would-cf.aux-s, was-cf.v, was-cf.aux-s,
-; and in principle any verb could be used counterfactually ("If I won million
-; dollars, I would ..."). In all cases, the '-cf' is the give-away. The code
-; allows zero or one digit after the -cf, followed by a dot or nothing (where
-; the dot may have more characters after it). The digit may be needed for WSD.
-;
- (if (not (symbolp verb)) (return-from verb-cf? nil))
- (let ((chars (member #\- (coerce (string verb) 'list))))
-      (if (and chars (member (second chars) '(#\C #\c))
-                     (member (third chars) '(#\F #\f))
-                     (or (member (fourth chars) '(#\. nil))
-                         (and (member (fourth chars) 
-                               '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9))
-                              (member (fifth chars) '(#\. nil)))))
-          verb nil)))
-
-
 (defun add-vp-tense (vp tense)
 ;````````````````````````````
 ; Adds the given tense marker to the given verb phrase.
@@ -833,91 +794,6 @@
            (eq 'perf (caar comps))) 
       (cons `(past ,verb) (cdar comps)))
      (t (cons `(pres ,verb) comps)))))
-
-;       (if (equal tensed-verb '(pres perf-cf)) 
-;           (cons '(past do.aux-s) comps)
-;           (case verb
-;                 (were-cf.v (cons `(,tense be.v) comps))
-;                 (prog-cf (cons `(,tense prog) comps))
-;                 (-cf (cons `(,tense futr) comps))
-;                 (could-cf.aux-v (cons `(,tense can.aux-v) comps))
-;                 (could-cf.aux-s (cons `(,tense can.aux-s) comps))
-;                 (would-cf.aux-v (cons `(,tense will.aux-v) comps))
-;                 (would-cf.aux-s (cons `(,tense will.aux-s) comps))
-;                 (had-cf.v (cons `(,tense have.v) comps))
-;                 (perf-cf (cons `(,tense perf) comps))
-;                 (t (cons `(pres ,(remove-cf! verb)) comps))))
-;                ;***       ^^^^^^^^^^^^^^^^^^^^^^^^ THIS GIVES THINGS LIKE
-;                ;            (PRES RAN.V), RATHER THAN (PRES RUN.V);
-;                ;          IT SHOULD BE FIXED, BUT CF-USE OF MAIN VERBS
-;                ;          OTHER THAN "WERE" AND "HAD" ARE FAIRLY RARE.
-; )); end of non-cf-version!
-
-(defun non-cf-version!-old (tensed-verb+comps); tested
-;`````````````````````````````````
-; NB: 'comps' can be a sequence, 
-;     e.g., ((pres could-cf.aux-v) just.adv-v (leave.v (the.d room.n)))   
-; NB: Assume that in ULFs for passive counterfactuals, like "I wish he were fired", 
-;     we use (-cf (pasv ...)); that's because the "be" preceding a passive is
-;     rendered only as a tense  -- but we're taking counterfactual verbs not
-;     to have tense to begin with! So where did the tenses below come from?
-;     They came from the embedding context; e.g., compare 
-;        "I wish I were rich" => "I AM not rich"
-;        "(In those days) I wished I were rich" => I WAS not rich.
-;     But passive counterfactuals like "I wish he were fired" don't have a
-;     natural past version. We would say "I wished he would be fired",
-;     rather than "I wished he were fired"; at least, that's assumed below.
-; CASES:
-; ((pres were-cf.v) comps) -> ((pres be.v) comps) e.g., were happy -> is happy
-; ((past were-cf.v) comps) -> ((past be.v) comps) e.g., were happy -> was happy
-; ((pres prog-cf) comps) -> ((pres prog) comps)  e.g., were singing -> is singing
-; ((past prog-cf) comps) -> ((past prog) comps)  e.g., were singing -> was singing
-; ((pres -cf) comps) -> ((pres futr) comps)     e.g., were fired -> will be fired
-; ((past -cf) comps) -> ((past futr) comps)     e.g., were fired -> would be fired
-; ((pres could-cf.aux-v) comps) -> ((pres can.aux-v) comps); sim'ly ...aux-s, would
-; ((past could-cf.aux-v) comps) -> ((past can.aux-v) comps); sim'ly ...aux-s, would
-; ((pres had-cf.v) comps) -> ((pres have.v) comps)   had a car -> have a car
-; ((past had-cf.v) comps) -> ((past have.v) comps)   had a car -> had a car
-; ((pres perf-cf) comps) -> ((past do.aux-s) comps)  had known -> did know (actual)
-; ((past perf-cf) comps) -> ((past perf) comps)    had known -> had known (actual)
-; METHOD: 
-;   Deal with the special case ((pres perf-cf) comps) first;
-;      E.g., "If I had known this, I would have ..." => "I did not know this"
-;   Do the rest case-by-case, keying on the operand of the tense operator.
-;
- (if (or (atom tensed-verb+comps) (not (listp (first tensed-verb+comps))))
-     (return-from non-cf-version! tensed-verb+comps))
- (let* ((tensed-verb (first tensed-verb+comps)) 
-        (comps (cdr tensed-verb+comps))
-        (tense (first tensed-verb)) 
-        (verb (second tensed-verb)))
-       (if (equal tensed-verb '(pres perf-cf)) 
-           (cons '(past do.aux-s) comps)
-           (case verb
-                 (were-cf.v (cons `(,tense be.v) comps))
-                 (prog-cf (cons `(,tense prog) comps))
-                 (-cf (cons `(,tense futr) comps))
-                 (could-cf.aux-v (cons `(,tense can.aux-v) comps))
-                 (could-cf.aux-s (cons `(,tense can.aux-s) comps))
-                 (would-cf.aux-v (cons `(,tense will.aux-v) comps))
-                 (would-cf.aux-s (cons `(,tense will.aux-s) comps))
-                 (had-cf.v (cons `(,tense have.v) comps))
-                 (perf-cf (cons `(,tense perf) comps))
-                 (t (cons `(pres ,(remove-cf! verb)) comps))))
-                ;***       ^^^^^^^^^^^^^^^^^^^^^^^^ THIS GIVES THINGS LIKE
-                ;            (PRES RAN.V), RATHER THAN (PRES RUN.V);
-                ;          IT SHOULD BE FIXED, BUT CF-USE OF MAIN VERBS
-                ;          OTHER THAN "WERE" AND "HAD" ARE FAIRLY RARE.
- )); end of non-cf-version!
-
-(defun remove-cf! (verb-cf); tested
-;``````````````````````````
-; e.g., (remove-cf! 'walk-cf.v) --> WALK.V
- (if (not (symbolp verb-cf)) (return-from remove-cf! verb-cf))
- (let ((atoms (split-into-atoms verb-cf)))
-      (fuse-into-atom
-        (ttt:apply-rule '(/ (_* - (! C |c|) (! F |f|) _*1) (_* _*1)) atoms))))
-          
 
 (defun negate-vp! (ulf-vp) ; tested
 ;`````````````````````````

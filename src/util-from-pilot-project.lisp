@@ -72,23 +72,11 @@
  )); end of unhide-ttt-ops
 
 
-
-(defun leftmost-rule-result (rule tree)
+(defun all-rule-result (rule tree)
 ;`````````````````````````````````````
 ; TTT operator ^* doesn't always work, so this is intended for finding 
-; a subtree of 'tree' to which 'rule' applies (yielding something different
-; from 'tree' itself and from nil), and returning the result
- (let (result)
-      (setq result (ttt:apply-rule rule tree :shallow t :max-n 1))
-      (cond ((and result (not (equal result tree))) result)
-            ((and tree (listp tree))
-             (setq result (leftmost-rule-result rule (car tree)))
-             (if (and result (not (equal result (car tree))))
-                 result (leftmost-rule-result rule (cdr tree))))
-            (t tree)); **hmm, will tree necessarily be nil here? (OK if so)
- )); end of leftmost-rule-result
-
-(defun all-rule-result (rule tree)
+; alls subtrees of 'tree' to which 'rule' applies (yielding something different
+; from 'tree' itself and from nil), and returning the results
   (let (result recurd)
     (setq result (ttt:apply-rule rule tree :shallow t :max-n 1))
     (cond
