@@ -798,7 +798,7 @@
 (defun negate-vp! (ulf-vp) ; tested
 ;`````````````````````````
 ; e.g., ((past leave.v) abruptly.adv-a (the.d house.n)) -->
-;       ((past do.aux-s) not.adv-s abruptly.adv-a (the.d house.n))
+;       ((past do.aux-s) not.adv-s (leave.v abruptly.adv-a (the.d house.n)))
 ; e.g., ((past be.v) seemingly.adv-s happy.a) -->
 ;       ((past be.v) not.aux-s seemingly.adv-s happy.a)
 ; e.g., ((past do.aux-v) abruptly.adv-a (leave.v (the.d house.n))) -->
