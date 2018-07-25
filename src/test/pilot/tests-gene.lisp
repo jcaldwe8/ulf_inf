@@ -5,6 +5,8 @@
 ; > SUCCESSFUL.
 ;==========================================================================
 
+;; TODO: Update formulas here and turn into lisp-unit tests.
+
 (defun f (x) (format t "~s~%" x) '_____________); for full value-printout
 
 ; 16549 You will wish you had never seen it.
@@ -16,9 +18,9 @@
 
 
 (defparameter *if-1*
- '(((adv-s (if.ps (i.pro (were-cf.v (= you.pro)))))
+ '(((adv-s (if.ps (i.pro ((cf were.v) (= you.pro)))))
     (I.pro ((pres would.aux-s) (be.v (able.v (to succeed.a)))))) \.))
-(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual-if* *if-1*)) 
+(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual* *if-1*)) 
 ; (I.PRO ((PRES BE.V) NOT.ADV-S (= YOU.PRO)))
 
 (defparameter *if-2*
@@ -26,7 +28,7 @@
          (adv-a (from.p (that.d bridge.n))))))))) \,
     (it.pro ((pres would.aux-s) (be.v (almost.adv-a (impossible.a 
          (adv-a (to.p (rescue.v you.pro))))))))) \.))
-(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual-if* *if-2*))
+(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual* *if-2*))
 ; (YOU.PRO
 ;  ((PRES BE.V) NOT.ADV-S
 ;   (TO (FALL.V (ADV-A (FROM.P (THAT.D BRIDGE.N)))))))
@@ -35,13 +37,13 @@
  '(((adv-s (If.ps (I.pro (had-cf.v (k money.n))))) \,
     (I.pro ((pres would.aux-s) (pay.v (sub what.pro (I.pro 
                                         ((pres owe.v) you.pro *h))))))) \.))
-(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual-if* *if-3*))
+(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual* *if-3*))
 ; (I.PRO ((PRES DO.AUX-S) NOT.ADV-S (HAVE.V (K MONEY.N))))
 
 (defparameter *if-4*
  '(((adv-s (If.ps (only.adv-s (I.pro (perf-cf (take.v 
                                  (your.d advice.n))))))) {ref1}.s) \.))
-(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual-if* *if-4*))
+(f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual* *if-4*))
 ; DOESN'T WORK, BECAUSE OF THE "ONLY"
 
 (f (ttt:apply-rule *infer-falsehood-from-positive-counterfactual* *if-4*))

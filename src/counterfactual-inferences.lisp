@@ -4,48 +4,6 @@
 ;;; project.  The functions have been refactored for better overall project
 ;;; organization.
 
-(defparameter *infer-falsehood-from-positive-counterfactual-if*
-;``````````````````````````````````````````````````````````````
-; e.g., "If I {were rich, had a hammer, could fly ..." => I'm not rich, etc.
-; e.g., "I wish I {were rich, could fly, had a hammer} ..." => 
-;       I'm {not rich, can not fly, do not have a hammer};
-; e.g., "I wish I {had answered, had been awake, had been sleeping}" =>
-;       (perf-cf answer.v) (perf-cf (be.v awake.a)) (perf-cf (prog sleep.v))
-;       I {did not answer, was not awake, was not sleeping}
-;
- '(/ (^* ((! if.cc if.md if.ps)
-           (_!   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
-           ;subj    ```````` poss. nonneg. adv (as sibling of subj & VP
-           ((cf (!2 verbaux?))
-            (?1 atom? ~ not.adv-s not never.adv-f never.adv-s)
-               ;``````````````` poss. nonneg. adv (sibling of head verb)
-            _!1)) _*))
-            ;```````````````**should really be (!3 pred?)
-     (_! (negate-vp! (non-cf-version! ((cf !2) ? ?1 _!1))))))
-
-
-(defparameter *infer-falsehood-from-positive-counterfactual-wish*
-;````````````````````````````````````````````````````````````````
-; e.g., "I wish I {were rich, could fly, had a hammer} ..." => 
-;       I'm {not rich, can not fly, do not have a hammer};
-; e.g., "I wish I {had answered, had been awake, had been sleeping}" =>
-;       (perf-cf answer.v) (perf-cf (be.v awake.a)) (perf-cf (prog sleep.v))
-;       I {did not answer, was not awake, was not sleeping}
-;
- '(/ (^* (((! pres past) wish.v) 
-          ((!1 tht that) 
-           (_!   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
-           ;subj    ```````` poss. nonneg. adv (as sibling of subj & VP
-           ((!2 verb-cf?) 
-            (?1 atom? ~ not.adv-s not never.adv-f never.adv-s)
-               ;``````````````` poss. nonneg. adv (sibling of head verb)
-            _!1))))) 
-            ;```````````````**should really be (!3 pred?)
-     (_! (negate-vp! (non-cf-version! ((! !2) ? ?1 _!1))))))
-                ; (tense+verb/aux) + complement jointly determine non-cf form
-
-
-
 (defparameter *infer-falsehood-from-positive-counterfactual*
 ;``````````````````````````````````````````````````````````
 ; For a top-level counterfactual, e.g., "If I were rich ..." or "I wish
