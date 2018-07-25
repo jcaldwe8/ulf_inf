@@ -47,8 +47,9 @@
      (let ((result (run-subset-rules ,ulf))
            (ulf ,ulf)
            (expected ,expected))
-        (assert-equal (first result) ulf 
-                      (first result) ulf)
+        (if expected
+          (assert-equal (first result) ulf 
+                        (first result) ulf))
         (list-assert-equal (cdr result) expected))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,7 +125,8 @@
   (:cf :if-then)
   '((if.ps (I.pro ((cf were.v) rich.a)))
          (i.pro ((cf will.aux-s) (travel.v (to.p-arg |Rome|)))))
-  '((i.pro ((pres be.v) not.adv-s rich.a))))
+  '((i.pro ((pres be.v) not.adv-s rich.a))
+    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (travel.v (to.p-arg |Rome|)))))))
 
 (define-len-pilot-subset-test
   test-subset-if2
@@ -132,7 +134,12 @@
   (:cf :if-then)
   '((if.ps (she.pro ((cf have.v) (a.d hammer.n))))
            (she.pro ((cf will.aux-s) (swing.v it.pro))))
-  '((she.pro ((pres do.aux-s) not.adv-s (have.v (a.d hammer.n))))))
+  '((she.pro ((pres do.aux-s) not.adv-s (have.v (a.d hammer.n))))
+    ; NB: Should we keep this inference?  It's a donkey sentence, so maybe not.
+    ;     For donkey sentences, the indexical is not meaningful without the
+    ;     previous clause.
+    ;(she.pro ((pres will.aux-s) not.adv-s (swing.v it.pro)))))
+  ))
 
 (define-len-pilot-subset-test
   test-subset-if3
@@ -140,7 +147,9 @@
   (:cf :if-then)
   '((if.ps (she.pro ((cf perf) (have.v (a.d hammer.n)))))
            (she.pro ((cf will.aux-s) (swing.v it.pro))))
-  '((she.pro ((past do.aux-s) not.adv-s (have.v (a.d hammer.n))))))
+  '((she.pro ((past do.aux-s) not.adv-s (have.v (a.d hammer.n))))
+   ;(she.pro ((pres will.aux-s) not.adv-s (swing.v it.pro)))))
+   ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Tatoeba Sampled Tests
@@ -165,8 +174,9 @@
            (it.pro ((cf will.aux-s) (be.v 
             (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
   '((you.pro
-     ((pres be.v) not.adv-s
-      (to (fall.v (adv-a (from.p (that.d bridge.n))))))))) ; pretty close to correct
+     (probably.adv-s
+       ((pres will.aux-s) not.adv-s
+        (fall.v (adv-a (from.p (that.d bridge.n)))))))))
 
 (define-len-pilot-subset-test
   test-subset-if-18636
@@ -175,7 +185,9 @@
   '((If.ps (I.pro ((cf have.v) (k money.n))))
            (I.pro ((cf will.aux-s) 
                    (pay.v (sub what.pro (I.pro ((pres owe.v) you.pro *h)))))))
-  '((i.pro ((pres do.aux-s) not.adv-s (have.v (k money.n))))))
+  '((i.pro ((pres do.aux-s) not.adv-s (have.v (k money.n))))
+    (i.pro ((pres will.aux-s) not.adv-s 
+            (pay.v (sub what.pro (I.pro ((pres owe.v) you.pro *h))))))))
 
 (define-len-pilot-subset-test
   test-subset-if-16988
@@ -213,7 +225,7 @@
   (:cf :if-inv)
   '((((cf Were.v) I.pro rich.a))
     (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
-  '((i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))
+  '((i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))
     (i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
@@ -223,7 +235,7 @@
   '(({if}.ps (I.pro ((cf Were.v) rich.a))) 
            (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
   '((i.pro ((pres be.v) not.adv-s rich.a))
-    (i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))))
+    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))))
 
 ;;; Requests.
 
