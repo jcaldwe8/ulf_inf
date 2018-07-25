@@ -22,13 +22,16 @@
 
 ;; Helper function to assert equality between lists, one by one.
 ;; TODO: make the exact assert function an argument for generalizability.
-(defun list-assert-equal (result expect)
-  (assert-equal (length result) (length expect) 
-                (length result) (length expect)
-                result expect)
-  (mapcar #'(lambda (x) (assert-equal (first x) (second x)
-                                      (first x) (second x)))
-          (mapcar #'list result expect)))
+(defun list-assert-equal (actual expect)
+  (assert-equal (length expect) (length actual) 
+                (length expect) (length actual) 
+                expect actual)
+  (mapcar #'(lambda (x) 
+              (let ((expect (first x))
+                    (actual (second x)))
+                (assert-equal expect actual 
+                              expect actual)))
+          (mapcar #'list expect actual)))
 
 ;; Macro to reduce the size of the test declarations.
 ;; Arguments
