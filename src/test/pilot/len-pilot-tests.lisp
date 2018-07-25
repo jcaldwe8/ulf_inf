@@ -69,7 +69,7 @@
   ; NB: This should have a question mark, but we should be robust to this error
   ;     since the inversion makes it clear.
   '((pres would.aux-v) you.pro please.adv-s speak_up.v) 
-  '((i.pro ((pres want.v) (that (you.pro speak_up.v))))
+  '((i.pro ((pres want.v) you.pro (to speak_up.v)))
     (i.pro ((pres expect.v) (that (you.pro speak_up.v))))))
   
 (define-len-pilot-subset-test
@@ -77,7 +77,7 @@
   "Can somebody help me?"
   (:rq)
   '(((pres can.aux-v) somebody.pro (help.v me.pro)) ?)
-  '((i.pro ((pres want.v) (that (somebody.pro (help.v me.pro)))))
+  '((i.pro ((pres want.v) somebody.pro (to (help.v me.pro))))
     (i.pro ((pres expect.v) (that (somebody.pro (help.v me.pro)))))))
 
 (define-len-pilot-subset-test
@@ -88,8 +88,9 @@
       ((pres will.aux-s) you.pro (close.v (the.d door.n)
        (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
   '((i.pro ((pres want.v)
-       (that (you.pro (close.v (the.d door.n)
-             (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))
+             you.pro 
+             (to (close.v (the.d door.n))
+                 (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))
     (i.pro ((pres expect.v)
        (that (you.pro (close.v (the.d door.n)
               (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))))
@@ -100,7 +101,7 @@
   (:rq)
   '((((pres could.aux-v) you.pro (turn_on.v (the.d light.n)))
      please.adv-s) ?)
-  '((i.pro ((pres want.v) (that (you.pro (turn_on.v (the.d light.n))))))
+  '((i.pro ((pres want.v) you.pro (to (turn_on.v (the.d light.n)))))
     (i.pro ((pres expect.v) (that (you.pro (turn_on.v (the.d light.n))))))))
 
 (define-len-pilot-subset-test
@@ -244,7 +245,7 @@
   '(((pres Could.aux-v) you.pro ((dial.v {ref1}.pro) (adv-a (for.p me.pro)))) ?)
   '((i.pro
       ((pres want.v)
-       (that (you.pro ((dial.v {ref1}.pro) (adv-a (for.p me.pro)))))))
+       you.pro (to ((dial.v {ref1}.pro) (adv-a (for.p me.pro))))))
     (i.pro
       ((pres expect.v)
        (that (you.pro ((dial.v {ref1}.pro) (adv-a (for.p me.pro)))))))))
@@ -254,7 +255,7 @@
   "Could you please repeat that?"
   (:rq)
   '(((pres Could.aux-v) you.pro please.adv-s (repeat.v that.pro)) ?)
-  '((i.pro ((pres want.v) (that (you.pro (repeat.v that.pro)))))
+  '((i.pro ((pres want.v) you.pro (to (repeat.v that.pro))))
     (i.pro ((pres expect.v) (that (you.pro (repeat.v that.pro)))))))
 
 ;;; Wish constructions.
