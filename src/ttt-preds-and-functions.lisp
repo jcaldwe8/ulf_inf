@@ -744,7 +744,112 @@
                               (member (fifth chars) '(#\. nil)))))
           verb nil)))
 
+(defun verb-cf?-old (verb)
+;`````````````````````
+; were-cf.v, were-cf.aux-s, could-cf.aux-s, could-cf.v, had-cf.v, had-cf.aux-s
+; are some of the counterfactual verbs (plus would-cf.aux-s, was-cf.v, was-cf.aux-s,
+; and in principle any verb could be used counterfactually ("If I won million
+; dollars, I would ..."). In all cases, the '-cf' is the give-away. The code
+; allows zero or one digit after the -cf, followed by a dot or nothing (where
+; the dot may have more characters after it). The digit may be needed for WSD.
+;
+ (if (not (symbolp verb)) (return-from verb-cf? nil))
+ (let ((chars (member #\- (coerce (string verb) 'list))))
+      (if (and chars (member (second chars) '(#\C #\c))
+                     (member (third chars) '(#\F #\f))
+                     (or (member (fourth chars) '(#\. nil))
+                         (and (member (fourth chars) 
+                               '(#\0 #\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9))
+                              (member (fifth chars) '(#\. nil)))))
+          verb nil)))
+
+
+(defun add-vp-tense (vp tense)
+;````````````````````````````
+; Adds the given tense marker to the given verb phrase.
+;
+; run.v past -> (past run.v)
+; (run.v (k home.n)) past -> ((past run.v) (k home.n))
+  (cond 
+    ((atom vp) (list tense vp))
+    (t (cons (list tense (car vp)) (cdr vp)))))
+
 (defun non-cf-version! (tensed-verb+comps); tested
+;`````````````````````````````````
+; NB: 'comps' can be a sequence, 
+;     e.g., ((cf can.aux-v) just.adv-v (leave.v (the.d room.n)))   
+; NB: Assume that in ULFs for passive counterfactuals, like "I wish he were fired", 
+;     we use (cf (pasv ...)); that's because the "be" preceding a passive is
+;     rendered only as a tense  -- but we're taking counterfactual verbs not
+;     to have tense to begin with! So where did the tenses below come from?
+;     They came from the embedding context; e.g., compare 
+;        "I wish I were rich" => "I AM not rich"
+;        "(In those days) I wished I were rich" => I WAS not rich.
+;     But passive counterfactuals like "I wish he were fired" don't have a
+;     natural past version. We would say "I wished he would be fired",
+;     rather than "I wished he were fired"; at least, that's assumed below.
+; CASES:
+; ((cf were.v) comps) -> ((pres be.v) comps) e.g., were happy -> is happy
+; ((cf prog) comps) -> ((pres prog) comps)  e.g., were singing -> is singing
+; ((cf (pasv <verb>)) comps) -> ((pres futr) comps)     e.g., were fired -> will be fired
+; ((cf can.aux-v) comps) -> ((pres can.aux-v) comps); sim'ly ...aux-s, would
+; ((cf have.v) comps) -> ((pres have.v) comps)   had a car -> have a car
+;
+; PAST TENSE CASES:
+; ((cf perf) (be.v comps)) -> ((past be.v) comps) e.g., had been happy -> was happy
+; ((cf perf) (prog comps)) -> ((past prog) comps)  e.g., had been singing -> was singing
+; ((cf can.aux-v) (perf comps)) -> ((past can.aux-v) comps);  could have run -> could run
+;                                                             sim'ly ...aux-s, would
+; ((cf perf) (have.v comps)) -> ((past have.v) comps)   had had a car -> had a car
+; ((cf perf) comps) -> ((past do.aux-s) comps)  had known -> did know (actual)
+;
+; IMPLICIT PAST TENSE CASES (not yet handled -- needs more information to disambiguate):
+; ((cf were.v) comps) -> ((past be.v) comps) e.g., were happy -> was happy
+; ((cf prog) comps) -> ((past prog) comps)  e.g., were singing -> was singing
+; ((cf (pasv <verb>)) comps) -> ((past futr) comps)     e.g., were fired -> would be fired
+; ((cf can.aux-v) comps) -> ((past can.aux-v) comps); sim'ly ...aux-s, would
+; ((cf had.v) comps) -> ((past have.v) comps)   had a car -> had a car
+; ((cf perf) comps) -> ((past perf) comps)    had known -> had known (actual)
+; METHOD: 
+;   Deal with the special case ((pres perf-cf) comps) first;
+;      E.g., "If I had known this, I would have ..." => "I did not know this"
+;   Do the rest case-by-case, keying on the operand of the tense operator.
+;
+ (if *debug-ulf-inf*
+   (format t "In non-cf-version!~%Argument: ~s~%" tensed-verb+comps))
+ (if (or (atom tensed-verb+comps) (not (listp (first tensed-verb+comps)))
+         (not (equal 'cf (caar tensed-verb+comps))))
+     (return-from non-cf-version! tensed-verb+comps))
+ (let* ((tensed-verb (first tensed-verb+comps)) 
+        (comps (cdr tensed-verb+comps))
+        (tense (first tensed-verb)) 
+        (verb (second tensed-verb)))
+   (cond
+     ((eq 'perf verb) (add-vp-tense comps 'past))
+     ((eq 'were.v verb) (cons '(pres be.v) comps))
+     ((eq 'perf (caar comps)) (cons `(past ,verb) (cdar comps)))
+     (t (cons `(pres ,verb) comps)))))
+
+;       (if (equal tensed-verb '(pres perf-cf)) 
+;           (cons '(past do.aux-s) comps)
+;           (case verb
+;                 (were-cf.v (cons `(,tense be.v) comps))
+;                 (prog-cf (cons `(,tense prog) comps))
+;                 (-cf (cons `(,tense futr) comps))
+;                 (could-cf.aux-v (cons `(,tense can.aux-v) comps))
+;                 (could-cf.aux-s (cons `(,tense can.aux-s) comps))
+;                 (would-cf.aux-v (cons `(,tense will.aux-v) comps))
+;                 (would-cf.aux-s (cons `(,tense will.aux-s) comps))
+;                 (had-cf.v (cons `(,tense have.v) comps))
+;                 (perf-cf (cons `(,tense perf) comps))
+;                 (t (cons `(pres ,(remove-cf! verb)) comps))))
+;                ;***       ^^^^^^^^^^^^^^^^^^^^^^^^ THIS GIVES THINGS LIKE
+;                ;            (PRES RAN.V), RATHER THAN (PRES RUN.V);
+;                ;          IT SHOULD BE FIXED, BUT CF-USE OF MAIN VERBS
+;                ;          OTHER THAN "WERE" AND "HAD" ARE FAIRLY RARE.
+; )); end of non-cf-version!
+
+(defun non-cf-version!-old (tensed-verb+comps); tested
 ;`````````````````````````````````
 ; NB: 'comps' can be a sequence, 
 ;     e.g., ((pres could-cf.aux-v) just.adv-v (leave.v (the.d room.n)))   
@@ -838,6 +943,8 @@
 ; recognized her" => ??"He did not perhaps recognize her" (which correctly
 ; implies "It is not possible that he recognized her".
 ; 
+ (if *debug-ulf-inf*
+   (format t "In negate-vp!~%Argument: ~s~%" ulf-vp))
  (if (atom ulf-vp) 
      (return-from negate-vp! `(non.adv-a ,ulf-vp))); unexpected
  (let (tensed-verb comps tense verb)
@@ -860,8 +967,28 @@
 ; verb is auxiliary if it contains substring '.aux'
  (if (not (symbolp verb)) (return-from aux? nil))
  (let ((atoms (split-into-atoms verb)))
-      (ttt:match-expr '(_* \. (! A \a) (! U \u) (! X \x _*)) atoms)))
+      (ttt:match-expr '(_* \. (! A \a) (! U \u) (! X \x) _*) atoms)))
 
+(defparameter *aux-like-operators*
+  '(perf prog))
+
+(defun aux-like? (verb) 
+;`````````````````````
+; verb is auxiliary like if it satisfies aux? or is a member of aux-like
+; operators. 
+  (or (aux? verb) (if (member verb *aux-like-operators*) t)))
+
+(defun verb? (verb); tested
+;````````````````
+; symbol is a verb if it ends with '.v'
+ (if (not (symbolp verb)) (return-from verb? nil))
+ (let ((atoms (split-into-atoms verb)))
+      (ttt:match-expr '(_* \. (! V \v)) atoms)))
+
+(defun verbaux? (sym)
+;```````````````````
+; function for matching verbs or auxiliaries
+  (or (verb? sym) (aux-like? sym)))
 
 
 

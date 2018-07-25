@@ -16,12 +16,12 @@
  '(/ (^* ((! if.cc if.md if.ps)
            (_!   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
            ;subj    ```````` poss. nonneg. adv (as sibling of subj & VP
-           ((!2 verb-cf?)
+           ((cf (!2 verbaux?))
             (?1 atom? ~ not.adv-s not never.adv-f never.adv-s)
                ;``````````````` poss. nonneg. adv (sibling of head verb)
             _!1)) _*))
             ;```````````````**should really be (!3 pred?)
-     (_! (negate-vp! (non-cf-version! ((pres !2) ? ?1 _!1))))))
+     (_! (negate-vp! (non-cf-version! ((cf !2) ? ?1 _!1))))))
 
 
 (defparameter *infer-falsehood-from-positive-counterfactual-wish*
@@ -59,21 +59,21 @@
 ;
  '(/ ((! ~ adv-s)   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
       ;subj         ```````` poss. nonneg. adv (as sibling of subj & VP
-       ((!2 verb-cf?)
+       ((cf (!2 verbaux?))
         (?1 atom? ~ not.adv-s not never.adv-f never.adv-s)
            ;``````````````` poss. nonneg. adv (sibling of head verb)
         _!1))
-     (! (negate-vp! (non-cf-version! ((pres !2) ? ?1 _!1))))))
+     (! (negate-vp! (non-cf-version! ((cf !2) ? ?1 _!1))))))
 
 
 (defparameter *infer-falsehood-from-inverted-positive-counterfactual*
 ;```````````````````````````````````````````````````````````````````
 ; E.g., "Had I known your telephone number ..."
- '(/ ((!2 verb-cf?) _!
+ '(/ ((cf (!2 verbaux?)) _!
          (? atom? ~ not.adv-s not never.adv-f never.adv-s)
            ;``````````````` poss. nonneg. adv (sibling of head verb)
          _!1)
-     (_! (negate-vp! (non-cf-version! ((pres !2) ? _!1))))))
+     (_! (negate-vp! (non-cf-version! ((cf !2) ? _!1))))))
 
 
 (defparameter *infer-fact-from-negative-counterfactual*
@@ -82,23 +82,23 @@
 ;
  '(/ ((! ~ adv-s)   (? not.adv-s not never.adv-f never.adv-s)
       ;subj          ```````` poss. neg. adv (as sibling of subj & VP
-       ((! verb-cf?)
+       ((cf (! verbaux?))
         (!1 not.adv-s not never.adv-f never.adv-s)
            ;``````` neg. adv (sibling of head verb)
            ;        NB: same variable '?' as above (double-neg ~= neg)
         _!1))
-     (! (non-cf-version! ((pres !) _!1)))))
+     (! (non-cf-version! ((cf !) _!1)))))
 
 
 (defparameter *infer-fact-from-inverted-negative-counterfactual*
 ;```````````````````````````````````````````````````````````````
 ; E.g. "Had I not met her, ..."
 ;
- '(/ ((! verb-cf?) _!
+ '(/ ((cf (! verbaux?)) _!
          (!1 not.adv-s not never.adv-f never.adv-s)
            ;``````````````` neg. adv (sibling of head verb)
          _!1)
-      (_! (non-cf-version! ((pres !) _!1)))))
+      (_! (non-cf-version! ((cf !) _!1)))))
 
 
 
@@ -111,20 +111,20 @@
 
 (defun infer-falsehood-from-positive-counterfactual (ulf)
 ;```````````````````````````````````````````````````````
- (leftmost-rule-result *infer-falsehood-from-positive-counterfactual* ulf))
+ (all-rule-result *infer-falsehood-from-positive-counterfactual* ulf))
 
 
 (defun infer-falsehood-from-inverted-positive-counterfactual (ulf)
 ;````````````````````````````````````````````````````````````````
- (leftmost-rule-result *infer-falsehood-from-inverted-positive-counterfactual* ulf))
+ (all-rule-result *infer-falsehood-from-inverted-positive-counterfactual* ulf))
 
 
 (defun infer-fact-from-negative-counterfactual (ulf)
 ;```````````````````````````````````````````````````
- (leftmost-rule-result *infer-fact-from-negative-counterfactual* ulf))
+ (all-rule-result *infer-fact-from-negative-counterfactual* ulf))
 
 
 (defun infer-fact-from-inverted-negative-counterfactual (ulf)
 ;```````````````````````````````````````````````````````````
- (leftmost-rule-result *infer-fact-from-inverted-negative-counterfactual* ulf))
+ (all-rule-result *infer-fact-from-inverted-negative-counterfactual* ulf))
 

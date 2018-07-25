@@ -18,8 +18,7 @@
 ;; Run the selected subset of rules on the given ULF and return a list of:
 ;; (ulf result1 result2 ...)
 (defun run-subset-rules (ulf)
-  (mapcar #'unhide-ttt-ops
-          (car (results-from-applying-rules *rule-names* (list ulf) t))))
+  (car (results-from-applying-rules *rule-names* (list ulf) t)))
 
 ;; Helper function to assert equality between lists, one by one.
 ;; TODO: make the exact assert function an argument for generalizability.
@@ -190,9 +189,10 @@
   (:cf :if-inv)
   '(((cf perf) I.pro (know.v (your.d (telephone.n number.n))))
      (I.pro ((cf will.aux-s) (perf (call.v you.pro))))) 
-  '((i.pro
-    ((past do.aux-s) not.adv-s
-     (know.v (your.d (telephone.n number.n)))))))
+  '((i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))
+    (i.pro
+      ((past do.aux-s) not.adv-s
+                       (know.v (your.d (telephone.n number.n)))))))
   
 (define-len-pilot-subset-test
   test-subset-inv-16968-v2
@@ -201,7 +201,8 @@
   '(({if}.ps (I.pro ((cf perf) (know.v (your.d (telephone.n number.n))))))
             (I.pro ((cf will.aux-s) (perf (call.v you.pro)))))
   '((i.pro ((past do.aux-s) not.adv-s
-     (know.v (your.d (telephone.n number.n)))))))
+     (know.v (your.d (telephone.n number.n)))))
+    (i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))))
 
 (define-len-pilot-subset-test
   test-subset-inv-18529
@@ -209,7 +210,8 @@
   (:cf :if-inv)
   '((((cf Were.v) I.pro rich.a))
     (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
-  '((i.pro ((pres be.v) not.adv-s rich.a))))
+  '((i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))
+    (i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
   test-subset-inv-18529-v2
@@ -217,7 +219,8 @@
   (:cf :if-inv)
   '(({if}.ps (I.pro ((cf Were.v) rich.a))) 
            (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
-  '((i.pro ((pres be.v) not.adv-s rich.a))))
+  '((i.pro ((pres be.v) not.adv-s rich.a))
+    (i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))))
 
 ;;; Requests.
 

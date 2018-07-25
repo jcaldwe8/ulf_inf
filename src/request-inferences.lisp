@@ -65,11 +65,11 @@
 
 (defun infer-want-from-request (ulf)
 ;``````````````````````````````````
- (leftmost-rule-result *infer-want-from-request* ulf))
+ (all-rule-result *infer-want-from-request* ulf))
 
 
 (defun infer-expect-from-request (ulf)
 ;`````````````````````````````````````
- (leftmost-rule-result *infer-expect-from-request* ulf))
+ (all-rule-result *infer-expect-from-request* ulf))
 
 

@@ -88,6 +88,23 @@
             (t tree)); **hmm, will tree necessarily be nil here? (OK if so)
  )); end of leftmost-rule-result
 
+(defun all-rule-result (rule tree)
+  (let (result recurd)
+    (setq result (ttt:apply-rule rule tree :shallow t :max-n 1))
+    (cond
+      ((atom tree) (if (and result (not (equal result tree)))
+                     (list result) 
+                     nil))
+      (t 
+        (setq recurd 
+              (concatenate 'list 
+                           (all-rule-result rule (car tree))
+                           (all-rule-result rule (cdr tree))))
+        (if (and result (not (equal result tree)))
+          (cons result recurd)
+          recurd))))) ; end of all-rule-result
+
+
 
 (defun results-from-applying-rules (rule-names ulfs filter-out-failures)
 ;``````````````````````````````````````````````````````````````````````
@@ -95,6 +112,9 @@
 ; results (possibly nil) for each fact, in the format (fact result1 ... resultk)
 ; If 'filter-out-failures' is non-nil, facts that didn't produce inferences
 ; are omitted from the results.
+;
+; Each rule must take a single ULF argument and return a list of unique results
+; from applying the rule.
 ;
 ; We first hide (square-bracket) any ttt-op symbols in the ulfs. Note that
 ; rules that look for '?', '!', '+', '*', '{}', etc. (which they don't at 
@@ -111,10 +131,12 @@
       (setq ulfs[] (mapcar #'hide-ttt-ops ulfs))
       (dolist (ulf ulfs[])
           (setq result 
-             (mapcar #'(lambda (f) (apply f (list ulf))) rule-names))
-          (if result (push (cons ulf (remove nil result)) results)
-              (if (not filter-out-failures) (push (list ulf) results))))
-      (reverse results))
+             (apply #'append 
+                    (mapcar #'(lambda (f) (funcall f ulf)) rule-names)))
+          (if result 
+            (push (cons ulf (remove nil result)) results)
+            (if (not filter-out-failures) (push (list ulf) results))))
+      (mapcar #'unhide-ttt-ops (reverse results)))
  ); end of results-from-applying-rules
           
           

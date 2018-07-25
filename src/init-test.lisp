@@ -7,6 +7,7 @@
 (use-package :lisp-unit)
 (setq *print-failures* t)
 ;(setq *print-summary* t)
+(setq *debug-ulf-inf* nil)
 
 ;; Load normal system code.
 (load "init")
