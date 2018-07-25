@@ -21,7 +21,7 @@
    '(/ ((pres (! aux-indicating-request?))
         (!1 you.pro someone.pro somebody.pro)
         (? please.adv-s) _+)  ; will have to presubst for ?, !
-       (I.pro ((pres want.v) (that (!1 _+))))))
+       (I.pro ((pres want.v) !1 (to _+)))))
   ; We'll want to potentially chain from the last part, if it enables
   ; further attitudinal, state change/cessation/inception/continuation
   ; or other inferences.
@@ -36,7 +36,6 @@
         (!1 you.pro someone.pro somebody.pro)
         (? please.adv-s) _+) 
        (I.pro ((pres expect.v) (that (!1 _+))))))
-
   ; We'll want to potentially chain from the last part, if it enables
   ; further attitudinal, state change/cessation/inception/continuation
   ; or other inferences.

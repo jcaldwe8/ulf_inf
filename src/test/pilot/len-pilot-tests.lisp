@@ -89,8 +89,8 @@
        (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
   '((i.pro ((pres want.v)
              you.pro 
-             (to (close.v (the.d door.n))
-                 (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))
+             (to (close.v (the.d door.n)
+                  (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
     (i.pro ((pres expect.v)
        (that (you.pro (close.v (the.d door.n)
               (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))))
