@@ -64,7 +64,9 @@
 (define-len-pilot-subset-test 
   test-subset-request1
   "Would you please speak up"
-  '((pres would.aux-v) you.pro please.adv-s speak_up.v)
+  ; NB: This should have a question mark, but we should be robust to this error
+  ;     since the inversion makes it clear.
+  '((pres would.aux-v) you.pro please.adv-s speak_up.v) 
   '((i.pro ((pres want.v) (that (you.pro speak_up.v))))
     (i.pro ((pres expect.v) (that (you.pro speak_up.v))))))
   
@@ -99,34 +101,34 @@
 (define-len-pilot-subset-test
   test-subset-wish1
   "I wish he would finish it"
-  '(i.pro ((pres wish.v) (tht (he.pro (would-cf.aux-s (finish.v it.pro))))))
+  '(i.pro ((pres wish.v) (tht (he.pro ((cf will.aux-s) (finish.v it.pro))))))
   '((he.pro ((pres will.aux-s) not.adv-s (finish.v it.pro)))))
 
 (define-len-pilot-subset-test
   test-subset-wish2
   "I wish he would leave"
-  '(i.pro ((pres wish.v) (tht (he.pro (would-cf.aux-v leave.v)))))
-  '((he.pro ((pres will.aux-v) not.adv-s leave.v))))
+  '(i.pro ((pres wish.v) (tht (he.pro ((cf will.aux-s) leave.v)))))
+  '((he.pro ((pres will.aux-s) not.adv-s leave.v))))
 
 (define-len-pilot-subset-test
   test-subset-if1
   "If I were rich I would travel to Rome"
-  '(if.c (I.pro (were-cf.v rich.a))
-         (i.pro ((pres would.aux-v) (travel.v (to-arg.p |Rome|)))))
+  '((if.ps (I.pro ((cf were.v) rich.a)))
+         (i.pro ((cf will.aux-s) (travel.v (to-arg.p |Rome|)))))
   '((i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
   test-subset-if2
   "If she had a hammer she would swing it"
-  '(if.c (she.pro (had-cf.v (a.d hammer.n)))
-         (she.pro ((pres would.aux-v (swing.v it.pro)))))
+  '((if.ps (she.pro ((cf have.v) (a.d hammer.n))))
+           (she.pro ((cf will.aux-s) (swing.v it.pro))))
   '((she.pro ((pres do.aux-s) not.adv-s (have.v (a.d hammer.n))))))
 
 (define-len-pilot-subset-test
   test-subset-if3
   "If she had had a hammer she would swing it"
-  '(if.c (she.pro (perf-cf (have.v (a.d hammer.n))))
-         (she.pro ((past would.aux-v) ((perf swing.v) it.pro))))
+  '((if.ps (she.pro ((cf perf) (have.v (a.d hammer.n)))))
+           (she.pro ((cf will.aux-s) (swing.v it.pro))))
   '((she.pro ((past do.aux-s) not.adv-s (have.v (a.d hammer.n))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -138,16 +140,17 @@
 (define-len-pilot-subset-test
   test-subset-if-17577
   "If I were you I would be able to succeed."
-  '(((adv-s (If.ps (I.pro (were-cf.v you.pro))))
-    (I.pro ((pres would.aux-s) (be.v (able.v (to succeed.a)))))) \.)
+  '((If.ps (I.pro ((cf were.v) you.pro)))
+            (I.pro ((cf will.aux-s) (be.v (able.a (to succeed.v))))))
   '((i.pro ((pres be.v) not.adv-s you.pro))))
 
 (define-len-pilot-subset-test
   test-subset-if-17955
   "If you were to fall from that bridge, it would be almost impossible to rescue you."
-  '(((adv-s (If.ps (you.pro (were-cf.v (to (fall.v (adv-a (from.p 
-      (that.d bridge.n))))))))) \, (it.pro ((pres would.aux-s) (be.v 
-        (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro))))))))) \.)
+  '((If.ps (you.pro ((cf were.v) 
+                     (to (fall.v (adv-a (from.p (that.d bridge.n)))))))) 
+           (it.pro ((cf will.aux-s) (be.v 
+            (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
   '((you.pro
      ((pres be.v) not.adv-s
       (to (fall.v (adv-a (from.p (that.d bridge.n))))))))) ; pretty close to correct
@@ -155,15 +158,15 @@
 (define-len-pilot-subset-test
   test-subset-if-18636
   "If I had money, I would pay what I owe you."
-  '(((adv-s (If.ps (I.pro (had-cf.v (k money.n))))) \,
-    (I.pro ((pres would.aux-s) (pay.v (sub what.pro (I.pro 
-                              ((pres owe.v) you.pro *h))))))) \.)
+  '((If.ps (I.pro ((cf have.v) (k money.n))))
+           (I.pro ((cf will.aux-s) 
+                   (pay.v (sub what.pro (I.pro ((pres owe.v) you.pro *h)))))))
   '((i.pro ((pres do.aux-s) not.adv-s (have.v (k money.n))))))
 
 (define-len-pilot-subset-test
   test-subset-if-16988
   "If only I had taken your advice."
-  '(((adv-s (If.ps (only.adv-s (I.pro (perf-cf (take.v (your.d advice.n))))))) {ref1}.s) \.)
+  '((If.ps (only.adv-s (I.pro ((cf perf) (take.v (your.d advice.n)))))) {ref1}.s)
   '((i.pro ((past do.aux-s) not.adv-s (take.v (your.d advice.n))))))
 
 ;;; Inverted if-then constructions.
@@ -171,8 +174,8 @@
 (define-len-pilot-subset-test
   test-subset-inv-16968
   "Had I known your telephone number, I would have called you"
-  '(((adv-s (perf-cf I.pro (know.v (your.d (telephone.n number.n))))) \,
-    (I.pro ((past would.aux-s) (perf (call.v you.pro))))) \.)
+  '(((cf perf) I.pro (know.v (your.d (telephone.n number.n))))
+     (I.pro ((cf will.aux-s) (perf (call.v you.pro))))) 
   '((i.pro
     ((past do.aux-s) not.adv-s
      (know.v (your.d (telephone.n number.n)))))))
@@ -180,24 +183,23 @@
 (define-len-pilot-subset-test
   test-subset-inv-16968-v2
   "Had I known your telephone number, I would have called you."
-  '(({if}.c (I.pro (perf-cf (know.v (your.d (telephone.n number.n)))))
-            (I.pro ((past would.aux-s) (perf (call.v you.pro))))) \.)
-  '((i.pro
-    ((past do.aux-s) not.adv-s
+  '(({if}.ps (I.pro ((cf perf) (know.v (your.d (telephone.n number.n))))))
+            (I.pro ((cf will.aux-s) (perf (call.v you.pro)))))
+  '((i.pro ((past do.aux-s) not.adv-s
      (know.v (your.d (telephone.n number.n)))))))
 
 (define-len-pilot-subset-test
   test-subset-inv-18529
   "Were I rich, I would help the poor."
-  '(((adv-s (Were-cf.v I.pro rich.a)) \,
-    (I.pro ((pres would.aux-s) (help.v (the.d (poor.a {ref1}.n)))))) \.)
+  '((((cf Were.v) I.pro rich.a))
+    (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
   '((i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
   test-subset-inv-18529-v2
   "I were rich I would help the poor."
-  '(({if}.c (I.pro (Were-cf.v rich.a)) 
-           (I.pro ((pres would.aux-s) (help.v (the.d (poor.a {ref1}.n)))))) \.)
+  '(({if}.ps (I.pro ((cf Were.v) rich.a))) 
+           (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
   '((i.pro ((pres be.v) not.adv-s rich.a))))
 
 ;;; Requests.
@@ -225,33 +227,33 @@
 (define-len-pilot-subset-test
   test-subset-wish-1393
   "I wish I could go to Japan."
-  '((I.pro ((pres wish.v)
-          (tht (I.pro ((pres could.aux-v)
-                        (go.v (adv-a (to.p |Japan|)))))))) \.)
+  '(I.pro ((pres wish.v)
+          (tht (I.pro ((pres could.aux-v) ; NB: the incorrect annotation
+                        (go.v (adv-a (to.p |Japan|))))))))
   '())
 
 (define-len-pilot-subset-test
   test-subset-wish-1393-v2
   "I wish I could go to Japan."
-  '((I.pro ((pres wish.v)
-           (tht (I.pro (could-cf.aux-v 
-                        (go.v (adv-a (to.p |Japan|)))))))) \.)
+  '(I.pro ((pres wish.v)
+           (tht (I.pro ((cf can.aux-v) 
+                        (go.v (adv-a (to.p |Japan|))))))))
   '((i.pro ((pres can.aux-v) not.adv-s (go.v (adv-a (to.p |Japan|)))))))
 
 (define-len-pilot-subset-test
   test-subset-wish-2470
   "I wish she would stop playing that stupid music."
-  '((I.pro ((pres wish.v)
+  '(I.pro ((pres wish.v)
           (tht (she.pro ((pres would.aux-s) ; NB: the incorrect annotation
-                          (stop.v (ka (play.v (that.d (stupid.a music.n)))))))))) \.)
+                          (stop.v (ka (play.v (that.d (stupid.a music.n))))))))))
   '())
 
 (define-len-pilot-subset-test
   test-subset-wish-2470-v2
   "I wish she would stop playing that stupid music."
-  '((I.pro ((pres wish.v)
-          (tht (she.pro (would-cf.aux-s
-                          (stop.v (ka (play.v (that.d (stupid.a music.n)))))))))) \.)
+  '(I.pro ((pres wish.v)
+          (tht (she.pro ((cf will.aux-s)
+                          (stop.v (ka (play.v (that.d (stupid.a music.n))))))))))
   '((she.pro
       ((pres will.aux-s) not.adv-s
                          (stop.v (ka (play.v (that.d (stupid.a music.n)))))))))
