@@ -3,6 +3,7 @@
 *.class
 *.jar
 *.fasl
+*.nfs*
 
 # Hidden temp files.
 .*.temp
