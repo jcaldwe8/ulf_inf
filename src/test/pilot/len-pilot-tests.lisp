@@ -123,7 +123,7 @@
   "If I were rich I would travel to Rome"
   (:cf :if-then)
   '((if.ps (I.pro ((cf were.v) rich.a)))
-         (i.pro ((cf will.aux-s) (travel.v (to-arg.p |Rome|)))))
+         (i.pro ((cf will.aux-s) (travel.v (to.p-arg |Rome|)))))
   '((i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
