@@ -3,8 +3,6 @@
 
 ;; TODO (GK 7-25-2018): change to "want you to close the door" (much more natural)
 ;;                      sim. for other 'want' examples
-;; TODO (GK 7-25-2018): change -cf to (cf ..), similarly update other anntation
-;;                      guideline changes.
 
 ;; Define applicable rule subset for request and counterfactuals that we want
 ;; to test.

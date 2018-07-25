@@ -1,11 +1,9 @@
-1a. Update tests in len-pilot-tests.lisp to the current ULF guidelines.
-1b. Review test cases in len-pilot-tests.lisp for correctness/completeness.
-2. Look at Len's code to send info on TTT mapping rules (!).
-3. Make a version of len-pilot-tests.lisp that uses the actual inference
+1. Look at Len's code to send info on TTT mapping rules (!).
+2. Make a version of len-pilot-tests.lisp that uses the actual inference
    pipeline rather than the hardcoded ruleset.
-4. Port the rest of the tests in test/pilot
-5. Update inference pipeline according to needs of tests
-6. Extend tests with undergrad tests (ask them to add it after showing how to
+3. Port the rest of the tests in test/pilot
+4. Update inference pipeline according to needs of tests
+5. Extend tests with undergrad tests (ask them to add it after showing how to
    do it).
-7. Add tests from sampling/discussion.
+6. Add tests from sampling/discussion.
 
