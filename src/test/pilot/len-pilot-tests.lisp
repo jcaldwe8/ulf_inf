@@ -18,7 +18,8 @@
 ;; Run the selected subset of rules on the given ULF and return a list of:
 ;; (ulf result1 result2 ...)
 (defun run-subset-rules (ulf)
-  (car (results-from-applying-rules *rule-names* (list ulf) t)))
+  (mapcar #'unhide-ttt-ops
+          (car (results-from-applying-rules *rule-names* (list ulf) t))))
 
 ;; Helper function to assert equality between lists, one by one.
 ;; TODO: make the exact assert function an argument for generalizability.
@@ -81,7 +82,7 @@
       ((pres will.aux-s) you.pro (close.v (the.d door.n)
        (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
   '((i.pro ((pres want.v)
-       (tht (you.pro (close.v (the.d door.n)
+       (that (you.pro (close.v (the.d door.n)
              (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))
     (i.pro ((pres expect.v)
        (that (you.pro (close.v (the.d door.n)
@@ -235,17 +236,15 @@
   '((I.pro ((pres wish.v)
            (tht (I.pro (could-cf.aux-v 
                         (go.v (adv-a (to.p |Japan|)))))))) \.)
-  '((i.pro ((pres can.aux-v) not.adv-s (go.v (adv-a (to.p |japan|)))))))
+  '((i.pro ((pres can.aux-v) not.adv-s (go.v (adv-a (to.p |Japan|)))))))
 
 (define-len-pilot-subset-test
   test-subset-wish-2470
   "I wish she would stop playing that stupid music."
   '((I.pro ((pres wish.v)
-          (tht (she.pro ((pres would.aux-s)
+          (tht (she.pro ((pres would.aux-s) ; NB: the incorrect annotation
                           (stop.v (ka (play.v (that.d (stupid.a music.n)))))))))) \.)
-  '((she.pro
-      ((pres will.aux-s) not.adv-s
-                         (stop.v (ka (play.v (that.d (stupid.a music.n)))))))))
+  '())
 
 (define-len-pilot-subset-test
   test-subset-wish-2470-v2
