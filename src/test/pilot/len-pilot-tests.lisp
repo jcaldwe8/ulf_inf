@@ -1,9 +1,6 @@
 ;;; Gene Kim 7-24-2018
 ;;; Ported from formulas defined by Len to test the pilot inference system.
 
-;; TODO (GK 7-25-2018): change to "want you to close the door" (much more natural)
-;;                      sim. for other 'want' examples
-
 ;; Define applicable rule subset for request and counterfactuals that we want
 ;; to test.
 (defparameter *rule-names* 
