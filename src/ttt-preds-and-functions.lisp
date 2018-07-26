@@ -870,6 +870,8 @@
 ; function for matching verbs or auxiliaries
   (or (verb? sym) (aux-like? sym)))
 
-
+(defparameter *tense-symbols* '(past pres))
+(defun tense? (sym)
+  (if (member sym *tense-symbols*) t))
 
 

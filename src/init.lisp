@@ -1,4 +1,6 @@
 
+(setq *debug-ulf-inf* nil)
+
 ;; Dependencies.
 (load "../ttt/src/load")
 
@@ -10,4 +12,7 @@
 ;; Pheomenon-specific code.
 (load "counterfactual-inferences.lisp")
 (load "request-inferences.lisp")
+
+;; Examples.
+(load "example/ttt-function-examples.lisp")
 
