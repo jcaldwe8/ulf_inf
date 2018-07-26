@@ -59,10 +59,6 @@
       (_! (non-cf-version! ((cf !) _!1)))))
 
 
-
-
-
-
 ; Now the functionalized rules themselves (applying the TTT rules at
 ; multiple depths):
 
@@ -85,4 +81,15 @@
 (defun infer-fact-from-inverted-negative-counterfactual (ulf)
 ;```````````````````````````````````````````````````````````
  (all-rule-result *infer-fact-from-inverted-negative-counterfactual* ulf))
+
+
+;; Define functions for full pipeline.
+(defun premacro-counterfactual-inferences (ulf)
+  (cdar (results-from-applying-rules
+          (list #'infer-falsehood-from-positive-counterfactual
+                #'infer-falsehood-from-inverted-positive-counterfactual
+                #'infer-fact-from-negative-counterfactual
+                #'infer-fact-from-inverted-negative-counterfactual)
+         (list ulf) t)))
+
 

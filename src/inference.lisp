@@ -9,8 +9,6 @@
 (defun fully-normalize (ulf) ulf)
 ;; TODO: remove these once we load in real inference functions from
 ;; elsewhere.
-(defun premacro-request-inferences (ulf) nil)
-(defun premacro-counterfactual-inferences (ulf) nil)
 (defun premacro-question-inferences (ulf) nil)
 (defun premacro-implicative-inferences (ulf) nil)
 (defun it-cleft-inferences (ulf) nil)
@@ -34,7 +32,7 @@
      :initform nil)
    (polarity-context
      :initarg :inf-rule 
-     :initform '+) ; default to positive polarity
+     :initform nil)
    (src-local-ulf
      :initarg :src-local-ulf
      :initform (error "Must supply a src-local-ulf"))

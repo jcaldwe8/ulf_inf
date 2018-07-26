@@ -41,10 +41,6 @@
   ; or other inferences.
 
 
-
-
-
-
 ; Now the functionalized rules themselves (applying the TTT rules at
 ; multiple depths):
 
@@ -57,4 +53,11 @@
 ;`````````````````````````````````````
  (all-rule-result *infer-expect-from-request* ulf))
 
+
+;; Define functions for full pipeline.
+(defun premacro-request-inferences (ulf)
+  (cdar (results-from-applying-rules
+          (list #'infer-want-from-request
+                #'infer-expect-from-request)
+          (list ulf) t)))
 
