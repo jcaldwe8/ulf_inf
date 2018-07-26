@@ -13,7 +13,10 @@
 (defun premacro-counterfactual-inferences (ulf) nil)
 (defun premacro-question-inferences (ulf) nil)
 (defun premacro-implicative-inferences (ulf) nil)
-(defun it-cleft-inference (ulf) nil)
+(defun it-cleft-inferences (ulf) nil)
+(defun natural-logic-entailments (ulfs) nil) 
+(defun implicative-entailments (ulf) nil)
+
 
 ;; Define class for inference results.
 (defclass inf-result ()
@@ -59,7 +62,7 @@
 ;;  1. macro expansions or
 ;;  2. word reordering.
 (defun initial-ulf-normalization (ulf)
-  (reduce #'(lambda (acc new) (funcall acc new)) 
+  (reduce #'(lambda (acc new) (funcall new acc)) 
           *initial-ulf-normalization-fns* 
           :initial-value ulf))
 
@@ -69,14 +72,25 @@
         #'premacro-counterfactual-inferences
         #'premacro-question-inferences
         #'premacro-implicative-inferences
-        #'it-cleft-inference))
+        #'it-cleft-inferences))
 ;; Obtains inferences from ULFs before macros are applied.
 ;; These include inferences that rely on the question inversions or cleft
 ;; constructions.
 (defun premacro-inferences (ulf)
-  (apply #'concatenate 'string
+  (apply #'append
          (mapcar #'(lambda (inf-fn) (funcall inf-fn ulf))
                  *premacro-inference-fns*)))
+
+;; Functions that perform inferences on post-macro expanded ULFs.
+(defparameter *postmacro-inference-fns*
+  (list #'natural-logic-entailments
+        #'implicative-entailments))
+;; Obtains inferences from ULFs after macros are applied.
+(defun postmacro-inferences (ulf)
+  (apply #'append
+         (mapcar #'(lambda (inf-fn) (funcall inf-fn ulf))
+                 *postmacro-inference-fns*)))
+
 
 ;; Performs all possible inferences on the given ulf.
 ;; Returns a list of inferences.
@@ -92,9 +106,9 @@
     (setq postinfs (postmacro-inferences ulf2))
     ;; Recursively infer where applicable.
     (setq recableinfs (remove-if-not #'recursable-inference?
-                                     (concatenate 'list preinfs postinfs)))
-    (setq recinfs (concatenate 'list
-                               (mapcar #'infer-all recableinfs)))
+                                     (append preinfs postinfs)))
+    (setq recinfs (apply #'append
+                         (mapcar #'infer-all recableinfs)))
     ;; Return all inferences in a list.
-    (concatenate 'list preinfs postinfs recinfs)))
+    (append preinfs postinfs recinfs)))
 
