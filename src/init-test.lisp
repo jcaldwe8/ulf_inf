@@ -12,6 +12,8 @@
 (load "init")
 
 ;; Load testing code.
+(load "test/test-util.lisp")
+(load "example/lisp-unit-example.lisp")
 (load "test/pilot/len-pilot-tests.lisp")
 ; NB: these files run tests automatically, so comment out for now.
 ;(load "test/pilot/tests-gene.lisp")

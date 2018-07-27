@@ -1,31 +1,43 @@
 This directory contains the source code for the ULF Inference Project.
 
-The current directory/file organization is as follows:
+*Directory/File Organization*
+  init.lisp
+    Initialization script for running the inference code.
+  
+  init-test.lisp
+    Initialization script for testing the inference code.
+    NB: This must be loaded in a fresh REPL.  Loading the testing library results
+        in a name conflict if done after loading init.lisp.
+  
+  inference.lisp
+    Core inference functionlity.
+  
+  *-inferences.lisp
+    Code for inferences of each phenomenon.
+  
+  ttt-*.lisp
+    Any TTT related code.
+  
+  util-*.lisp
+    Utility functions that may be useful in mulitple files.
+  
+  test/
+    All test functions are contained in here, with more subdirectories for 
+    conceptually grouped sets of tests.
+  
+  example/
+    Example scripts.
 
-init.lisp
-  Initialization script for running the inference code.
+  dynamic-polarity/
+    Code for getting dynamic polarity marking of ULF formulas.
 
-init-test.lisp
-  Initialization script for testing the inference code.
-  NB: This must be loaded in a fresh REPL.  Loading the testing library results
-      in a name conflict if done after loading init.lisp.
 
-inference.lisp
-  Core inference functionlity.
+*Testing*
 
-*-inferences.lisp
-  Code for inferences of each phenomenon.
-
-ttt-*.lisp
-  Any TTT related code.
-
-util-*.lisp
-  Utility functions that may be useful in mulitple files.
-
-test/
-  All test functions are contained in here, with more subdirectories for 
-  conceptually grouped sets of tests.
-
-dynamic-polarity/
-  Code for getting dynamic polarity marking of ULF formulas.
-
+Testing is done with lisp-unit, a simple unit testing framework. Please see the
+following for documentation on using lisp-unit
+(https://github.com/OdonataResearchLLC/lisp-unit/wiki) 
+If you have quicklisp installed, init-test.lisp will load it up for you.  The 
+interface for defining tests is pretty simple.  You can take a look at 
+test/pilot/len-pilot-tests.lisp for examples of it, though I used a couple of
+macros to reduce redundancy, so it might be hard to understand. 
