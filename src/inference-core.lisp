@@ -68,10 +68,10 @@
            (setq infres
                  (make-instance 
                    'inf-result
-                   :result-formula result
+                   :result-formula (unhide-ttt-ops result)
                    :inf-rule rule
-                   :src-local-ulf tree
-                   :src-parent-ulf parent
+                   :src-local-ulf (unhide-ttt-ops tree)
+                   :src-parent-ulf (unhide-ttt-ops parent)
                    :src-full-ulf root)))
          (cond
            ;; [Base cases]
@@ -97,7 +97,7 @@
      ) ; end of labels definitions.
 
     ;; Main body.
-    (rec-helper tttrule roottree nil roottree)))
+    (rec-helper tttrule (hide-ttt-ops roottree) nil roottree)))
                            
 
 
