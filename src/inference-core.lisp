@@ -21,28 +21,36 @@
 (defclass inf-result ()
   ((result-formula
      :initarg :result-formula
-     :initform (error "Must supply a result formula."))
+     :initform (error "Must supply a result formula.")
+     :accessor result-formula)
    (inf-scopes ; Scopes at which the inference is valid.
      :initarg :inf-scopes
-     :initform '(local))
+     :initform '(local)
+     :accessor inf-scopes)
    (is-entailment ; whether this inference result is an entailment.
      :initarg :is-entailment
-     :initform nil) ; default to non-entailment.
+     :initform nil
+     :accessor is-entailment) ; default to non-entailment.
    (inf-rule
      :initarg :inf-rule
-     :initform nil)
+     :initform nil
+     :accessor inf-rule)
    (polarity-context
      :initarg :polarity-context
-     :initform nil)
+     :initform nil
+     :accessor polarity-context)
    (src-local-ulf
      :initarg :src-local-ulf
-     :initform (error "Must supply a src-local-ulf"))
+     :initform (error "Must supply a src-local-ulf")
+     :accessor src-local-ulf)
    (src-parent-ulf
      :initarg :src-parent-ulf
-     :initform (error "Must supply a src-parent-ulf"))
+     :initform (error "Must supply a src-parent-ulf")
+     :accessor src-parent-ulf)
    (src-full-ulf
      :initarg :src-full-ulf
-     :initform (error "Must supply a src-full-ulf"))))
+     :initform (error "Must supply a src-full-ulf")
+     :accessor src-full-ulf)))
 
 ;; This is a version of 'all-rule-result' from util-from-pilot-project.lisp
 ;; that returns a list of inf-result classes rather than simply the inferred

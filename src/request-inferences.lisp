@@ -58,17 +58,9 @@
 ; 'inf-result instances.
 
 (defun infer-want-from-request-raw (ulf)
-;``````````````````````````````````
- (mapcar #'(lambda (x) (slot-value x 'result-formula))
-         (infer-want-from-request ulf)))
- ;(all-rule-result *infer-want-from-request* ulf))
-
-
+ (mapcar #'result-formula (infer-want-from-request ulf)))
 (defun infer-expect-from-request-raw (ulf)
-;`````````````````````````````````````
- (mapcar #'(lambda (x) (slot-value x 'result-formula))
-         (infer-expect-from-request ulf)))
- ;(all-rule-result *infer-expect-from-request* ulf))
+ (mapcar #'result-formula (infer-expect-from-request ulf)))
 
 
 ;; Define functions for full pipeline.
