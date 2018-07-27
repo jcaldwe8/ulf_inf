@@ -1,9 +1,10 @@
-1. Look at Len's code to send info on TTT mapping rules (!).
-2. Make a version of len-pilot-tests.lisp that uses the actual inference
-   pipeline rather than the hardcoded ruleset.
-3. Port the rest of the tests in test/pilot
-4. Update inference pipeline according to needs of tests
-5. Extend tests with undergrad tests (ask them to add it after showing how to
+1. Port the rest of the tests in test/pilot
+2. Update inference pipeline according to needs of tests
+  2a. The consequent of if-then statements are not necessarily counterfactuals, sometimes they only make sense given the antecedent.
+  2b. Future less likely instances have "probably will not" inferences
+  2c. (past will.aux-s) --[normalizes to]--> (past do.aux-s).  
+      "Having worked too hard, John would not go to the party" -> "John did not go to the party".
+3. Extend tests with undergrad tests (ask them to add it after showing how to
    do it).
-6. Add tests from sampling/discussion.
+4. Add tests from sampling/discussion.
 
