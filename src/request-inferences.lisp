@@ -41,20 +41,32 @@
   ; or other inferences.
 
 
-
-
-
-
 ; Now the functionalized rules themselves (applying the TTT rules at
 ; multiple depths):
 
 (defun infer-want-from-request (ulf)
 ;``````````````````````````````````
- (all-rule-result *infer-want-from-request* ulf))
+ (all-ttt-rule-inf-result *infer-want-from-request* ulf))
 
 
 (defun infer-expect-from-request (ulf)
 ;`````````````````````````````````````
- (all-rule-result *infer-expect-from-request* ulf))
+ (all-ttt-rule-inf-result *infer-expect-from-request* ulf))
 
+; [raw variants]
+; The *-raw variants of the rules return lists of formulas instead of
+; 'inf-result instances.
+
+(defun infer-want-from-request-raw (ulf)
+ (mapcar #'result-formula (infer-want-from-request ulf)))
+(defun infer-expect-from-request-raw (ulf)
+ (mapcar #'result-formula (infer-expect-from-request ulf)))
+
+
+;; Define functions for full pipeline.
+(defun premacro-request-inferences (ulf)
+  (cdar (results-from-applying-rules
+          (list #'infer-want-from-request
+                #'infer-expect-from-request)
+          (list ulf) t)))
 
