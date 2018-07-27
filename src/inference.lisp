@@ -1,47 +1,8 @@
 ;;; Gene Kim 7-23-2018
 ;;;
 ;;; Code for high-level inference management.
-
-;; TODO: remove these once we load in the actual macro version.
-(defun trivial-normalization (ulf) ulf)
-(defun normalize-aliases (ulf) ulf)
-(defun expand-macros (ulf) ulf)
-(defun fully-normalize (ulf) ulf)
-;; TODO: remove these once we load in real inference functions from
-;; elsewhere.
-(defun premacro-question-inferences (ulf) nil)
-(defun premacro-implicative-inferences (ulf) nil)
-(defun it-cleft-inferences (ulf) nil)
-(defun natural-logic-entailments (ulfs) nil) 
-(defun implicative-entailments (ulf) nil)
-
-
-;; Define class for inference results.
-(defclass inf-result ()
-  ((result-formula
-     :initarg :result-formula
-     :initform (error "Must supply a result formula."))
-   (inf-scopes ; Scopes at which the inference is valid.
-     :initarg :inf-scopes
-     :initform '(local))
-   (is-entailment ; whether this inference result is an entailment.
-     :initarg :is-entailment
-     :initform nil) ; default to non-entailment.
-   (inf-rule
-     :initarg :inf-rule
-     :initform nil)
-   (polarity-context
-     :initarg :inf-rule 
-     :initform nil)
-   (src-local-ulf
-     :initarg :src-local-ulf
-     :initform (error "Must supply a src-local-ulf"))
-   (src-parent-ulf
-     :initarg :src-parent-ulf
-     :initform (error "Must supply a src-parent-ulf"))
-   (src-full-ulf
-     :initarg :src-full-ulf
-     :initform (error "Must supply a src-full-ulf"))))
+;;; This is loaded last because it refers to functions defined in all the other
+;;; components.
 
 
 ;; Returns t if inf-result allows recursing inferences from this result.

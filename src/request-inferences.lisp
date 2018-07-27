@@ -46,12 +46,29 @@
 
 (defun infer-want-from-request (ulf)
 ;``````````````````````````````````
- (all-rule-result *infer-want-from-request* ulf))
+ (all-ttt-rule-inf-result *infer-want-from-request* ulf))
 
 
 (defun infer-expect-from-request (ulf)
 ;`````````````````````````````````````
- (all-rule-result *infer-expect-from-request* ulf))
+ (all-ttt-rule-inf-result *infer-expect-from-request* ulf))
+
+; [raw variants]
+; The *-raw variants of the rules return lists of formulas instead of
+; 'inf-result instances.
+
+(defun infer-want-from-request-raw (ulf)
+;``````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula))
+         (infer-want-from-request ulf)))
+ ;(all-rule-result *infer-want-from-request* ulf))
+
+
+(defun infer-expect-from-request-raw (ulf)
+;`````````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula))
+         (infer-expect-from-request ulf)))
+ ;(all-rule-result *infer-expect-from-request* ulf))
 
 
 ;; Define functions for full pipeline.

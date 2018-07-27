@@ -4,11 +4,11 @@
 ;; Define applicable rule subset for request and counterfactuals that we want
 ;; to test.
 (defparameter *rule-names* 
- '(infer-want-from-request infer-expect-from-request 
-   infer-falsehood-from-positive-counterfactual 
-   infer-falsehood-from-inverted-positive-counterfactual
-   infer-fact-from-negative-counterfactual
-   infer-fact-from-inverted-negative-counterfactual
+ '(infer-want-from-request-raw infer-expect-from-request-raw 
+   infer-falsehood-from-positive-counterfactual-raw
+   infer-falsehood-from-inverted-positive-counterfactual-raw
+   infer-fact-from-negative-counterfactual-raw
+   infer-fact-from-inverted-negative-counterfactual-raw
  ))
 ;; Run the selected subset of rules on the given ULF and return a list of:
 ;; (ulf result1 result2 ...)

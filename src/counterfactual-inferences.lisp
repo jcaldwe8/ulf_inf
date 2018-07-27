@@ -60,27 +60,57 @@
 
 
 ; Now the functionalized rules themselves (applying the TTT rules at
-; multiple depths):
-
+; multiple depths).  These functions all return lists of 'inf-result'
+; instances.
 
 (defun infer-falsehood-from-positive-counterfactual (ulf)
 ;```````````````````````````````````````````````````````
- (all-rule-result *infer-falsehood-from-positive-counterfactual* ulf))
+ (all-ttt-rule-inf-result *infer-falsehood-from-positive-counterfactual* ulf))
 
 
 (defun infer-falsehood-from-inverted-positive-counterfactual (ulf)
 ;````````````````````````````````````````````````````````````````
- (all-rule-result *infer-falsehood-from-inverted-positive-counterfactual* ulf))
+ (all-ttt-rule-inf-result *infer-falsehood-from-inverted-positive-counterfactual* ulf))
 
 
 (defun infer-fact-from-negative-counterfactual (ulf)
 ;```````````````````````````````````````````````````
- (all-rule-result *infer-fact-from-negative-counterfactual* ulf))
+ (all-ttt-rule-inf-result *infer-fact-from-negative-counterfactual* ulf))
 
 
 (defun infer-fact-from-inverted-negative-counterfactual (ulf)
 ;```````````````````````````````````````````````````````````
- (all-rule-result *infer-fact-from-inverted-negative-counterfactual* ulf))
+ (all-ttt-rule-inf-result *infer-fact-from-inverted-negative-counterfactual* ulf))
+
+; [raw variants]
+; The *-raw variants of the rules return lists of formulas instead of
+; 'inf-result instances.
+; 
+(defun infer-falsehood-from-positive-counterfactual-raw (ulf)
+;```````````````````````````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula)) 
+         (infer-falsehood-from-positive-counterfactual ulf)))
+ ;(all-rule-result *infer-falsehood-from-positive-counterfactual* ulf))
+
+(defun infer-falsehood-from-inverted-positive-counterfactual-raw (ulf)
+;````````````````````````````````````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula))
+         (infer-falsehood-from-inverted-positive-counterfactual ulf)))
+ ;(all-rule-result *infer-falsehood-from-inverted-positive-counterfactual* ulf))
+
+
+(defun infer-fact-from-negative-counterfactual-raw (ulf)
+;```````````````````````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula))
+         (infer-fact-from-negative-counterfactual ulf)))
+ ;(all-rule-result *infer-fact-from-negative-counterfactual* ulf))
+
+
+(defun infer-fact-from-inverted-negative-counterfactual-raw (ulf)
+;```````````````````````````````````````````````````````````
+ (mapcar #'(lambda (x) (slot-value x 'result-formula))
+         (infer-fact-from-inverted-negative-counterfactual ulf)))
+ ;(all-rule-result *infer-fact-from-inverted-negative-counterfactual* ulf))
 
 
 ;; Define functions for full pipeline.
