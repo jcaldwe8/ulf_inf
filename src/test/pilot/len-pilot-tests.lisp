@@ -59,7 +59,7 @@
   `(define-test ,name
      ,(format nil "Subset rule test on the sentence '~a'" sentence) 
      (:tag :infer-all :len-pilot ,@tags)
-     (let ((actual (infer-all ,ulf))
+     (let ((actual (mapcar #'result-formula (infer-all ,ulf)))
            (expected ,expected))
         (list-assert-equal actual expected))))
 
