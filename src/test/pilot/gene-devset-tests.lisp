@@ -61,9 +61,9 @@
   "Had I not met her, I would be in Rome."
   (:ifinv :cf)
   '((((cf perf) i.pro not.adv-s (meet.v her.pro)) 
-     (I.pro ((pres would.aux-s) (be.v (in.p |Rome|))))))
-  '((i.pro ((past meet.v) her.pro))
-    (i.pro ((pres be.v) not.adv-s (in.p |Rome|)))))
+     (I.pro ((cf will.aux-s) (be.v (in.p |Rome|))))))
+  '((i.pro ((pres be.v) not.adv-s (in.p |Rome|)))
+    (i.pro ((past meet.v) her.pro))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Pipeline tests.
@@ -82,7 +82,7 @@
   "Had I not met her, I would be in Rome."
   (:ifinv :cf)
   '((((cf perf) i.pro not.adv-s (meet.v her.pro)) 
-     (I.pro ((pres would.aux-s) (be.v (in.p |Rome|))))))
-  '((i.pro ((past meet.v) her.pro))
-    (i.pro ((pres be.v) not.adv-s (in.p |Rome|)))))
+     (I.pro ((cf will.aux-s) (be.v (in.p |Rome|))))))
+  '((i.pro ((pres be.v) not.adv-s (in.p |Rome|)))
+    (i.pro ((past meet.v) her.pro))))
 
