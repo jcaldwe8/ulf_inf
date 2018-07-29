@@ -54,7 +54,7 @@
   (:wish :cf)
   '(you.pro ((pres will.aux-s) 
              (wish.v (tht (you.pro ((cf perf) never.adv-f (see.v it.pro)))))))
-  '((you.pro ((past do.aux-s) (see.v it.pro)))))
+  '((you.pro ((past see.v) it.pro))))
 
 (define-pilot-gene-devset-subset-test
   test-devset-subset-if-inv-neg
@@ -75,7 +75,7 @@
   (:wish :cf)
   '(you.pro ((pres will.aux-s) 
              (wish.v (tht (you.pro ((cf perf) never.adv-f (see.v it.pro)))))))
-  '((you.pro ((past do.aux-s) (see.v it.pro)))))
+  '((you.pro ((past see.v) it.pro))))
 
 (define-pilot-gene-devset-infer-all-test
   test-devset-infer-all-if-inv-neg

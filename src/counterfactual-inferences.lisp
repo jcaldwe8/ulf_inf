@@ -13,48 +13,50 @@
 ; (if (only ...) ...); It'll also cover "John thinks that if he were rich ...",
 ; etc., if we search through the ulf.
 ;
- '(/ ((! ~ adv-s)   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
+ '(/ ((!1 ~ adv-s)   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
       ;subj         ```````` poss. nonneg. adv (as sibling of subj & VP
        ((cf (!2 verbaux?))
         (?1 atom? ~ not.adv-s not never.adv-f never.adv-s)
            ;``````````````` poss. nonneg. adv (sibling of head verb)
         _!1))
-     (! (negate-vp! (non-cf-version! ((cf !2) ? ?1 _!1))))))
+     (!1 (negate-vp! (non-cf-version! ((cf !2) ? ?1 _!1))))))
 
 
 (defparameter *infer-falsehood-from-inverted-positive-counterfactual*
 ;```````````````````````````````````````````````````````````````````
 ; E.g., "Had I known your telephone number ..."
- '(/ ((cf (!2 verbaux?)) _!
-         (? atom? ~ not.adv-s not never.adv-f never.adv-s)
-           ;``````````````` poss. nonneg. adv (sibling of head verb)
+ '(/ ((cf (!2 verbaux?)) 
+        (!3 ~ not.adv-s not never.adv-f never.adv-s)
+          ;``````````````` subj (TODO: change this to match any NP)
+        (? atom? ~ not.adv-s not never.adv-f never.adv-s)
+          ;``````````````` poss. nonneg. adv (sibling of head verb)
          _!1)
-     (_! (negate-vp! (non-cf-version! ((cf !2) ? _!1))))))
+     (!3 (negate-vp! (non-cf-version! ((cf !2) ? _!1))))))
 
 
 (defparameter *infer-fact-from-negative-counterfactual*
 ;``````````````````````````````````````````````````````
 ; E.g., "You will wish you had never seen it"
 ;
- '(/ ((! ~ adv-s)   (? not.adv-s not never.adv-f never.adv-s)
+ '(/ ((!1 ~ adv-s)   (? not.adv-s not never.adv-f never.adv-s)
       ;subj          ```````` poss. neg. adv (as sibling of subj & VP
        ((cf (! verbaux?))
-        (!1 not.adv-s not never.adv-f never.adv-s)
+        (!2 not.adv-s not never.adv-f never.adv-s)
            ;``````` neg. adv (sibling of head verb)
            ;        NB: same variable '?' as above (double-neg ~= neg)
         _!1))
-     (! (non-cf-version! ((cf !) _!1)))))
+     (!1 (non-cf-version! ((cf !) _!1)))))
 
 
 (defparameter *infer-fact-from-inverted-negative-counterfactual*
 ;```````````````````````````````````````````````````````````````
 ; E.g. "Had I not met her, ..."
 ;
- '(/ ((cf (! verbaux?)) _!
-         (!1 not.adv-s not never.adv-f never.adv-s)
+ '(/ ((cf (!1 verbaux?)) _!
+         (!2 not.adv-s not never.adv-f never.adv-s)
            ;``````````````` neg. adv (sibling of head verb)
          _!1)
-      (_! (non-cf-version! ((cf !) _!1)))))
+      (_! (non-cf-version! ((cf !1) _!1)))))
 
 
 ; Now the functionalized rules themselves (applying the TTT rules at
