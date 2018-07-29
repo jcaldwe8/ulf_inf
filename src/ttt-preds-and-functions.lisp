@@ -764,6 +764,9 @@
 ; ((cf perf) (have.v comps)) -> ((past have.v) comps)   had had a car -> had a car
 ; ((cf perf) comps) -> ((past do.aux-s) comps)  had known -> did know (actual)
 ;
+; STATIVE WOULD: 
+; ((cf will.aux-s) (be.v x)) -> ((pres be.v) x) ; would be in Rome -> am in Rome
+;
 ; IMPLICIT PAST TENSE CASES (not yet handled -- needs more information to disambiguate):
 ; ((cf were.v) comps) -> ((past be.v) comps) e.g., were happy -> was happy
 ; ((cf prog) comps) -> ((past prog) comps)  e.g., were singing -> was singing
@@ -786,14 +789,27 @@
         (tense (first tensed-verb)) 
         (verb (second tensed-verb)))
    (cond
-     ((eq 'perf verb) (add-vp-tense (car comps) 'past))
-     ((eq 'were.v verb) (cons '(pres be.v) comps))
+     ((eq 'perf verb) ; past counterfactual
+      (add-vp-tense (car comps) 'past))
+     ((eq 'were.v verb) ; subjunctive 'were'
+      (cons '(pres be.v) comps))
+     ((and (eq 'will.aux-s verb) (eq 'be.v (caar comps))) ; stative would
+      (add-vp-tense (car comps) 'pres))
      ;; Look for 'perf after the auxiliary.
      ((and (listp (car comps)) 
            (not (null (car comps))) 
            (eq 'perf (caar comps))) 
       (cons `(past ,verb) (cdar comps)))
      (t (cons `(pres ,verb) comps)))))
+
+; TODO: this needs to be dealt with somewhere.  Maybe include a negate-cfvp!
+; which negates VPs that are known to be in a CF context?  This way we can make the inference
+; "give me" -> "will give me" (e.g. If you give me $5...).
+; TELICITY BASED INFERENCE:
+; "If you gave me five dollars" -/-> "You do not give me five dollars"
+; Actually, it infers -> "You probably will not give me five dollars"
+; ((cf give.v) me.pro y) -> (probably.adv-s ((pres will.aux-s) not.adv-s (give.v me.pro y)))
+;
 
 (defun negate-vp! (ulf-vp) ; tested
 ;`````````````````````````
