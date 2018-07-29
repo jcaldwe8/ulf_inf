@@ -793,7 +793,8 @@
       (add-vp-tense (car comps) 'past))
      ((eq 'were.v verb) ; subjunctive 'were'
       (cons '(pres be.v) comps))
-     ((and (eq 'will.aux-s verb) (eq 'be.v (caar comps))) ; stative would
+     ((and (eq 'will.aux-s verb) (listp (car comps)) 
+           (not (null (car comps))) (eq 'be.v (caar comps))) ; stative would
       (add-vp-tense (car comps) 'pres))
      ;; Look for 'perf after the auxiliary.
      ((and (listp (car comps)) 
