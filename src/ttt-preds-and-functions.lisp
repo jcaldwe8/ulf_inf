@@ -735,6 +735,19 @@
     ((atom vp) (list tense vp))
     (t (cons (list tense (car vp)) (cdr vp)))))
 
+
+(defparameter *stative-verbs*
+  '(be.v have.v prog))
+
+(defun stative-head-verb? (verb)
+;````````````````````````
+; Returns true if 'verb' as a head verb would make the VP stative.
+; e.g. be.v -> t
+;      make.v -> nil
+; be.v, have.v, progressives, and auxiliaries all make stative VPs.
+  (or (if (member verb *stative-verbs*) t)
+      (aux? verb)))
+
 (defun non-cf-version! (tensed-verb+comps); tested
 ;`````````````````````````````````
 ; NB: 'comps' can be a sequence, 
@@ -749,14 +762,24 @@
 ;     But passive counterfactuals like "I wish he were fired" don't have a
 ;     natural past version. We would say "I wished he would be fired",
 ;     rather than "I wished he were fired"; at least, that's assumed below.
-; CASES:
+; PRESENT TENSE CASES:
+; ;; Statives get a present tense reading.
+; ;; For now, statives are: be.v, have.v, prog, *.aux
 ; ((cf were.v) comps) -> ((pres be.v) comps) e.g., were happy -> is happy
 ; ((cf prog) comps) -> ((pres prog) comps)  e.g., were singing -> is singing
-; ((cf (pasv <verb>)) comps) -> ((pres futr) comps)     e.g., were fired -> will be fired
-; ((cf can.aux-v) comps) -> ((pres can.aux-v) comps); sim'ly ...aux-s, would
 ; ((cf have.v) comps) -> ((pres have.v) comps)   had a car -> have a car
+; ((cf can.aux-v) comps) -> ((pres can.aux-v) comps); sim'ly ...aux-s, would
+; 
+; ;; Telic verb phrases get a future reading.
+; ;; Everything not classified as stative is assumed telic.
+; ;; TODO: add temporal adverbial modiification of telicity (If I gave you money yesterday)
+; ;; TODO: test passives
+; ((cf (pasv <verb>)) comps) -> ((pres futr) comps)     e.g., were fired -> will be fired
+; (cf ran) -> ((pres will.aux-s) run)   e.g., ran -> will run
+; ((cf give.v) me.pro (k money.n)) -> ((pres will.aux-s) (give.v me.pro (k money.n))) 
 ;
 ; PAST TENSE CASES:
+; ;; Everything is stative in the past tense.
 ; ((cf perf) (be.v comps)) -> ((past be.v) comps) e.g., had been happy -> was happy
 ; ((cf perf) (prog comps)) -> ((past prog) comps)  e.g., had been singing -> was singing
 ; ((cf can.aux-v) (perf comps)) -> ((past can.aux-v) comps);  could have run -> could run
@@ -789,19 +812,33 @@
         (tense (first tensed-verb)) 
         (verb (second tensed-verb)))
    (cond
-     ((eq 'perf verb) ; past counterfactual
+     ; past counterfactual
+     ((eq 'perf verb)
       (add-vp-tense (car comps) 'past))
-     ((eq 'were.v verb) ; subjunctive 'were'
+     ; subjunctive 'were'
+     ((eq 'were.v verb) 
       (cons '(pres be.v) comps))
-     ((and (eq 'will.aux-s verb) (listp (car comps)) 
-           (not (null (car comps))) (eq 'be.v (caar comps))) ; stative would
-      (add-vp-tense (car comps) 'pres))
-     ;; Look for 'perf after the auxiliary.
+     ;; Look for 'perf' after the auxiliary.
+     ;; 'If I could have gone home' -> 'I could (was able to) go home"
      ((and (listp (car comps)) 
            (not (null (car comps))) 
            (eq 'perf (caar comps))) 
       (cons `(past ,verb) (cdar comps)))
-     (t (cons `(pres ,verb) comps)))))
+     ; stative would
+     ; would be in Rome -> am in Rome
+     ((and (eq 'will.aux-s verb) (listp (car comps)) 
+           (not (null (car comps))) (stative-head-verb? (caar comps)))
+      (add-vp-tense (car comps) 'pres))
+     ; telic would
+     ; would go home -> will go home
+     ((eq 'will.aux-s verb)
+      (cons `(pres ,verb) comps))
+     ; basic stative 
+     ((stative-head-verb? verb)
+      (cons `(pres ,verb) comps))
+     ; basic telic
+     ; If I gave $5 -> I will give $5
+     (t (list '(pres will.aux-s) (cons verb comps))))))
 
 ; TODO: this needs to be dealt with somewhere.  Maybe include a negate-cfvp!
 ; which negates VPs that are known to be in a CF context?  This way we can make the inference
@@ -825,7 +862,7 @@
 ; e.g., ((pres can.aux-v) clearly.adv-a (see.v it.pro)) -->
 ;       ((pres can.aux-v) not.adv-s clearly.adv-a (see.v it.pro))
 ; e.g., ((pres futr) ((pasv fire.v (by-arg.p |Mary|)))) -->
-;       ((pres futr) not.adv-s ((pasv fire.v (by-arg.p |Mary|))))
+;       (probably.adv-s ((pres futr) not.adv-s ((pasv fire.v (by-arg.p |Mary|)))))
 ; e.g., ((past perf) certainly.adv-s (recognize.v her.pro)) -->
 ;       ((past perf) not.adv-s certainly.adv-s (recognize.v her.pro))
 ; e.g., ((pres perf) frequently.adv-f (meet.v her.pro)) -->
@@ -839,24 +876,28 @@
 ; is not certain that he had recognized her". Similarly, "He perhaps
 ; recognized her" => ??"He did not perhaps recognize her" (which correctly
 ; implies "It is not possible that he recognized her".
+;
+; Negations of future tense will get a 'probably.adv-s' in addition to more
+; explicitly reflect the modality of future tense.
 ; 
  (if *debug-ulf-inf*
    (format t "In negate-vp!~%Argument: ~s~%" ulf-vp))
  (if (atom ulf-vp) 
      (return-from negate-vp! `(non.adv-a ,ulf-vp))); unexpected
- (let (tensed-verb comps tense verb)
+ (let (tensed-verb comps tense verb res)
       (if (member (first ulf-vp) '(pres past)) ; no complements?
           (setq tensed-verb ulf-vp comps nil)
           (setq tensed-verb (first ulf-vp) comps (cdr ulf-vp)))
           ; This makes the 2 cases (almost) uniformly processable
       (setq tense (first tensed-verb))
       (setq verb (second tensed-verb))
+      ;; add 'do.aux-s' if verb is not 'be.v' or an auxiliary.
       (if (or (aux? verb) (eq verb 'be.v))
-          (cons tensed-verb (cons 'not.adv-s comps))
-          (cons `(,tense do.aux-s)
-                 (cons 'not.adv-s 
-                       (if comps (list (cons verb comps))
-                                 (cons verb comps)))))
+        (cons tensed-verb (cons 'not.adv-s comps))
+        (cons `(,tense do.aux-s)
+              (cons 'not.adv-s 
+                    (if comps (list (cons verb comps))
+                      (cons verb comps)))))
  )); end of negate-vp!
 
 (defun aux? (verb); tested

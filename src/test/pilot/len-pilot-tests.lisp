@@ -111,7 +111,7 @@
   '((if.ps (I.pro ((cf were.v) rich.a)))
          (i.pro ((cf will.aux-s) (travel.v (to.p-arg |Rome|)))))
   '((i.pro ((pres be.v) not.adv-s rich.a))
-    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (travel.v (to.p-arg |Rome|)))))))
+    (i.pro ((pres will.aux-s) not.adv-s (travel.v (to.p-arg |Rome|))))))
 
 (define-len-pilot-subset-test
   test-subset-if2
@@ -147,7 +147,7 @@
   "If I were you I would be able to succeed."
   (:cf :if-then)
   '((If.ps (I.pro ((cf were.v) you.pro)))
-            (I.pro ((cf will.aux-s) (be.v (able.a (to succeed.v))))))
+           (I.pro ((cf will.aux-s) (be.v (able.a (to succeed.v))))))
   '((i.pro ((pres be.v) not.adv-s you.pro))))
 
 (define-len-pilot-subset-test
@@ -159,9 +159,8 @@
            (it.pro ((cf will.aux-s) (be.v 
             (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
   '((you.pro
-     (probably.adv-s
        ((pres will.aux-s) not.adv-s
-        (fall.v (adv-a (from.p (that.d bridge.n)))))))))
+        (fall.v (adv-a (from.p (that.d bridge.n))))))))
 
 (define-len-pilot-subset-test
   test-subset-if-18636
@@ -210,7 +209,7 @@
   (:cf :if-inv)
   '((((cf Were.v) I.pro rich.a))
     (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
-  '((i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))
+  '((i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))
     (i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-subset-test
@@ -220,7 +219,7 @@
   '(({if}.ps (I.pro ((cf Were.v) rich.a))) 
            (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
   '((i.pro ((pres be.v) not.adv-s rich.a))
-    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))))
+    (i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))))
 
 ;;; Requests.
 
@@ -359,7 +358,7 @@
   '((if.ps (I.pro ((cf were.v) rich.a)))
          (i.pro ((cf will.aux-s) (travel.v (to.p-arg |Rome|)))))
   '((i.pro ((pres be.v) not.adv-s rich.a))
-    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (travel.v (to.p-arg |Rome|)))))))
+    (i.pro ((pres will.aux-s) not.adv-s (travel.v (to.p-arg |Rome|))))))
 
 (define-len-pilot-infer-all-test
   test-infer-all-if2
@@ -407,9 +406,8 @@
            (it.pro ((cf will.aux-s) (be.v 
             (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
   '((you.pro
-     (probably.adv-s
        ((pres will.aux-s) not.adv-s
-        (fall.v (adv-a (from.p (that.d bridge.n)))))))))
+        (fall.v (adv-a (from.p (that.d bridge.n))))))))
 
 (define-len-pilot-infer-all-test
   test-infer-all-if-18636
@@ -458,7 +456,7 @@
   (:cf :if-inv)
   '((((cf Were.v) I.pro rich.a))
     (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
-  '((i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))
+  '((i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))
     (i.pro ((pres be.v) not.adv-s rich.a))))
 
 (define-len-pilot-infer-all-test
@@ -468,7 +466,7 @@
   '(({if}.ps (I.pro ((cf Were.v) rich.a))) 
            (I.pro ((cf will.aux-s) (help.v (the.d (poor.a {ref1}.n))))))
   '((i.pro ((pres be.v) not.adv-s rich.a))
-    (i.pro (probably.adv-s ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n))))))))
+    (i.pro ((pres will.aux-s) not.adv-s (help.v (the.d (poor.a {ref1}.n)))))))
 
 ;;; Requests.
 
