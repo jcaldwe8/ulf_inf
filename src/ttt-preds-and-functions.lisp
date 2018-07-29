@@ -786,7 +786,7 @@
         (tense (first tensed-verb)) 
         (verb (second tensed-verb)))
    (cond
-     ((eq 'perf verb) (add-vp-tense comps 'past))
+     ((eq 'perf verb) (add-vp-tense (car comps) 'past))
      ((eq 'were.v verb) (cons '(pres be.v) comps))
      ;; Look for 'perf after the auxiliary.
      ((and (listp (car comps)) 
