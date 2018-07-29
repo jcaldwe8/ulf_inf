@@ -9,11 +9,9 @@
 ; For a top-level counterfactual, e.g., "If I were rich ..." or "I wish
 ; I were rich".
 ;
-; A simplification of *infer-falsehood-from-positive-counterfactual-if*,
-; and *infer-falsehood-from-positive-counterfactual-wish*, not looking
-; for the "if" or "wish", to allow e.g., for (if (only ...) ...);
-; It'll also cover "John thinks that if he were rich ...", etc.,
-; if we search through the ulf.
+; Does not look for "if" or "wish" explicitly to allow e.g., for 
+; (if (only ...) ...); It'll also cover "John thinks that if he were rich ...",
+; etc., if we search through the ulf.
 ;
  '(/ ((! ~ adv-s)   (? atom? ~ not.adv-s not never.adv-f never.adv-s)
       ;subj         ```````` poss. nonneg. adv (as sibling of subj & VP
