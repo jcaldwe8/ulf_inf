@@ -168,8 +168,3 @@
       noweretoif
       (run-wereto-preproc noweretoif))))
 
-;; For development, TODO: move these to actual unit tests.
-(setq gotosleep '((go.v (adv-a (to.p (k sleep.n))))))
-(setq notgotosleep '(not.adv-s (go.v (adv-a (to.p (k sleep.n))))))
-(setq notbeaperson '(not.adv-s (be.v (= (a.d person.n)))))
-(setq beaperson '((be.v (= (a.d person.n)))))
