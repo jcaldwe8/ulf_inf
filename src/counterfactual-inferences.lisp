@@ -117,7 +117,7 @@
 ; If I were not to go to sleep -> If I did not go to sleep
 ; If I were to not be a person -> If I were not a person
 ;
-  '(/ (if.ps (_!1 ((cf were.v) 
+  '(/ (if.ps (_!1 ((cf (!3 were.v be.v))
                    _? ; possible negation 
                    (to _+2))))
       (if.ps (_!1 _? (remove-were-to! (_+2))))))
@@ -126,7 +126,7 @@
 ;``````````````````````````````````````
 ; Were I to go to sleep -> If I were to go to sleep
 ; Were I ever to go sleep -> If I were ever to go to sleep
-  '(/ ((cf were.v) _! _? (to _+2))
+  '(/ ((cf (!3 were.v be.v)) _! _? (to _+2))
       (if.ps (_! _? (to _+2)))))
 
 ;; Counterfactual-specific preprocessing.
