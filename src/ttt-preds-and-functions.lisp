@@ -928,6 +928,33 @@
 ; function for matching verbs or auxiliaries
   (or (verb? sym) (aux-like? sym)))
 
-
+(defun remove-were-to! (were-to-embvp)
+;``````````````````````````````````
+; Takes a VP embedded within were-to and maps it to a semantically equivalent
+; VP without 'were to', assuming that this VP is in an if antecendent context.
+;
+; Examples (this function acts over the bracketed portions):
+; If I were to [go to sleep] -> If I [went to sleep]
+; If I were ever to [go to sleep] -> If I ever [went to sleep]
+; If I were to [not go to sleep] -> If I [did not go to sleep]
+; If I were to [not be a person] -> If I [were not a person]
+;
+  (if (atom were-to-embvp) (return-from remove-were-to! nil))
+  (if (< 2 (length were-to-embvp)) (return-from remove-were-to! nil))
+  (let* ((neg (if (= 2 (length were-to-embvp)) (first were-to-embvp)))
+         (vp (car (last were-to-embvp)))
+         (verb (car vp)))
+      ;; add 'do.aux-s' if verb is not 'be.v' or an auxiliary,
+      ;; add negative as necessary.
+      (cond
+        ;; Don't add do.aux-s but add neg.
+        ((and (or (aux? verb) (eq verb 'be.v)) (not (null neg)))
+         (cons `(cf ,verb) (cons 'not.adv-s (cdr vp))))
+        ;; Add do.aux-s and neg.
+        ((not (null neg))
+         (cons '(cf do.aux-s) `(not.adv-s ,vp)))
+        ;; No neg.
+        (t
+         (cons `(cf ,verb) (cdr vp))))))
 
 

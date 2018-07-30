@@ -99,6 +99,42 @@
  (mapcar #'result-formula
          (infer-fact-from-inverted-negative-counterfactual ulf)))
 
+
+;; For development, TODO: move these to actual unit tests.
+(setq gotosleep '((go.v (adv-a (to.p (k sleep.n))))))
+(setq notgotosleep '(not.adv-s (go.v (adv-a (to.p (k sleep.n))))))
+(setq notbeaperson '(not.adv-s (be.v (= (a.d person.n)))))
+(setq beaperson '((be.v (= (a.d person.n)))))
+
+(setq ifgotosleep '((If.ps (I.pro ((cf were.v) (to (go.v (adv-a (to.p (k sleep.n)))))))) (I.pro ((cf will.aux-s) dream.v))))
+(setq ifnotgotosleep '((If.ps (I.pro ((cf were.v) (to not.adv-s (go.v (adv-a (to.p (k sleep.n)))))))) (I.pro ((cf will.aux-s) (be.v asleep.a))) ))
+
+(defparameter *preprocess-if-were-to*
+;````````````````````````````````````
+; If I were to go to sleep -> If I went to sleep
+; If I were ever to go to sleep -> If I ever went to sleep
+; If I were to not go to sleep -> If I did not go to sleep
+; If I were not to go to sleep -> If I did not go to sleep
+; If I were to not be a person -> If I were not a person
+;
+  '(/ (if.ps (_!1 ((cf were.v) 
+                   _? ; possible negation 
+                   (to _+2))))
+      (if.ps (_!1 _? (remove-were-to! (_+2))))))
+
+(defparameter *uninvert-if-were-to-inv*
+;``````````````````````````````````````
+; Were I to go to sleep -> If I were to go to sleep
+; Were I ever to go sleep -> If I were ever to go to sleep
+  '(/ ((cf were.v) _! _? (to _+2))
+      (if.ps (_! _? (to _+2)))))
+
+;; Counterfactual-specific preprocessing.
+;; 1. If x were to y, ... -> If x y, ...
+(defun counterfactual-preprocess (ulf)
+  (ttt:apply-rule *preprocess-if-were-to*
+                  (ttt:apply-rule *uninvert-if-were-to-inv* ulf)))
+
 ;; Define functions for full pipeline.
 (defun premacro-counterfactual-inferences (ulf)
   (cdar (results-from-applying-rules
@@ -106,6 +142,6 @@
                 #'infer-falsehood-from-inverted-positive-counterfactual
                 #'infer-fact-from-negative-counterfactual
                 #'infer-fact-from-inverted-negative-counterfactual)
-         (list ulf) t)))
+         (list (counterfactual-preprocess ulf)) t)))
 
 
