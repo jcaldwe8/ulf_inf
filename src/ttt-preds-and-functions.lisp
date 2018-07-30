@@ -931,9 +931,16 @@
 (defun remove-were-to! (were-to-embvp)
 ;``````````````````````````````````
 ; Takes a VP embedded within were-to and maps it to a semantically equivalent
-; VP without 'were to', assuming that this VP is in an if antecendent context.
+; VP without 'were to', assuming that this VP is in an if-antecendent context.
+; Assumes that the input is the cdr of infinitive VP.
+;   e.g. 
+;     Full sentence: '((If.ps (I.pro ((cf were.v) (to not.adv-s (go.v (to.p-arg (k sleep.n))))))) ...)
+;     Input: '(not.adv-s (go.v (to.p-arg (k sleep.n))))
+;     Output: '((cf do.aux-s) not.adv-s (go.v (to.p-arg (k sleep.n))))
 ;
-; Examples (this function acts over the bracketed portions):
+; For clearly bad inputs, nil is returned.  Otherwise the behavior is undefined.
+;
+; Further examples (this function acts over the bracketed portions):
 ; If I were to [go to sleep] -> If I [went to sleep]
 ; If I were ever to [go to sleep] -> If I ever [went to sleep]
 ; If I were to [not go to sleep] -> If I [did not go to sleep]
