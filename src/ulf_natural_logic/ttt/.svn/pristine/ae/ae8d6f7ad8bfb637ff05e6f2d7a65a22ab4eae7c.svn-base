@@ -1,0 +1,420 @@
+;; NEEDS PROPER HANDLING OF POLARITY
+;; NEEDS CONJUNCT-ORDERING
+;; NEEDS RETE STYLE RULE PROPAGATION
+;; NEEDS PROBABILITY
+;; NEED TO GO FROM EL MEETS LRRH TO FULL EL SUPPORT
+
+(defclass knowledge-base ()
+  (;; el-forms is the record of the raw stuff added to the kb
+   (el-forms :accessor el-forms :initform nil)
+
+   ;; results of converting EL input to TTT rules
+   ;; (gethash 'key  ttt-rules) => list of rules by key
+   (ttt-rules :accessor ttt-rules :initform (make-hash-table :test #'equal))
+   ;; el-forms which are not converted to TTT transductions, 
+   ;; and completed forward inferences
+   (facts :accessor facts :initform (make-hash-table :test #'equal)))
+  (:documentation
+   "Class for manipulation of Epispodic Logic rules and facts. 
+ 
+    Adding rules or facts should trigger forward inferences, 
+    and add new conclusions (or partial rule) to the knowledge base.
+
+    A fact is simply an EL WFF which does not have a conversion 
+    as a TTT transduction rule. 
+
+    The conclusions should have some indication of their provenance, 
+    to handle non-monotonic cases (fact/rule deletion), but this has
+    not been included yet."))
+
+     
+(defmethod inspect-kb ((kb knowledge-base) &key show-rules show-facts show-ttt)
+  "Print all the rules added to the knowlege-base.
+   If show-partial is non-nil, then also show partial rules."
+  (if (and (not show-rules) (not show-facts) (not show-ttt))
+      (setf show-rules t  show-ttt t show-facts t))
+  (when show-rules
+    (format t "EL-FORMS:~%")
+    (dolist (rule (el-forms kb))
+      (format t "~s~%" rule)))
+  (when show-ttt
+    (format t "TTT-RULES:~%" )
+    (let ((printed (make-hash-table :test #'equal)))
+      (maphash 
+       (lambda (k v) 
+	 (dolist (rule v)
+	   (when (not (gethash rule printed))
+	     (format t "~s~%" rule)
+	     (setf (gethash rule printed) t))))
+       (ttt-rules kb))))
+  (when show-facts
+    (format t "FACTS:~%" )
+    (let ((printed (make-hash-table :test #'equal)))
+      (maphash
+       (lambda (k v)
+	 (dolist (fact v)
+	   (when (not (gethash fact printed))
+	     (format t "~s~%" fact)
+	     (setf (gethash fact printed) t))))
+       (facts kb))))
+  t)
+
+
+(defmethod add-to-kb ((kb knowledge-base) form)
+  "Adds a rule or fact to a knowledge-base.
+   Forward inferences are triggered.
+
+   Returns nil if any errors occurred, and t otherwise."
+
+  ;; add the rule to the kb
+  ;; check if anything satisfying the most-constrained-conjunct of the rule
+  ;; exists in the set of facts
+
+  ;; before or after converting to TTT?
+
+  ;; if all quantifiers are 'all' then order is free
+
+  (if (member form (el-forms kb) :test #'equal)
+      (format t "warning: attempted to add an  el-form to the kb which was already there:~%~s~%" form)
+      (let ((ttt-form (convert-el-to-ttt form)))
+	(push form (el-forms kb))
+	(cond 
+	  ((not (equal ttt-form form)) ;; adding an actual rule
+;	   (if (> (length (get-keys ttt-form)) 1)
+;	       (format t "<warning>[add-to-kb] rule has multiple keys:~%~s~%" ttt-form))
+	   (if (= (length (get-keys ttt-form)) 0)
+	       (progn 
+		 (format t "<warning>[add-to-kb] rule has no keys:~%~s~%" ttt-form)
+		 (push ttt-form (gethash nil (ttt-rules kb)))))
+	   (dolist (k (get-keys ttt-form))
+	     (push ttt-form (gethash k (ttt-rules kb))))
+	   (propagate-inferences kb :rule ttt-form))
+	  (t ;; adding a simple fact
+	   (if (= (length (get-keys form)) 0)
+	       (progn 
+		 (format t "<warning>[add-to-kb] fact has no keys:~%~s~%" form)
+		 (push ttt-form (gethash nil (facts kb))))
+	       (mapcar  ;; some redundancy here for big facts with many keys, need a layer of indexing later
+		(lambda (k) (push form (gethash k (facts kb))))
+		(get-keys form)))
+	   (propagate-inferences kb :fact form)))
+	t)))
+;; needs a layer of abstraction on key interface
+
+(defmethod propagate-inferences ((kb knowledge-base) &key fact rule show-inferneces)
+  "Perform forward inference updating the kb as appropriate. 
+   Assume that the kb is up to date, except possibly for consequences of 
+   a newly added fact or rule. 
+   It is assumed that the fact or rule has been already added to kb, 
+   but that forward inference has not been performed."
+
+
+  (cond ((or (and fact rule) (not (or fact rule)))
+	 (format t "warning: propagate-inferences expects exactly one of fact or rule to be non-nil. aborting.~%")
+	 (return-from propagate-inferences nil))
+	(fact
+	 (let (applicable)
+	   (dolist (k (get-keys fact))   
+	     ;;add the list of rules hashed to by key k
+	     (setf applicable 
+		   (append applicable (gethash k (ttt-rules kb)))))
+	   ;; note that each rule sould have exactly one key, so removing duplicates should not be necessary
+;	   (if (not (equal (remove-duplicates applicable) applicable))
+;	       (format t "warning: at least one rule has multiple keys.~%applicable:~s~%" applicable))
+	   (setf applicable (remove-duplicates applicable))
+	   
+	   (loop while applicable do
+		(let* ((rule (pop applicable)) 
+		       (result (apply-rule rule fact)))
+		  (when (not (equal result fact))  ;; rule applied to fact
+		    (cond 
+		      ((and (listp result)
+			    (eq (car result) '/))
+		       ;; rule application to fact yielded a TTT rule, so it was a partial inference
+		       (when (not (rule-in-kb? kb result))
+			 ;; (push this partial rule onto the hashtable for relative key)
+			 (if (= (length (get-keys result)) 0)
+			     (progn
+			       (format t "<warning>[propagate-inferences]  rule has no keys:~%~s~%" result)
+			       (push result (gethash nil (ttt-rules kb)))))
+;			 (if (> (length (get-keys result)) 1)
+;			     (format t "<warning>[propagate-inferences]  rule has multiple keys:~%~s~%" result))
+			 (dolist (k (get-keys result))
+			   (push result (gethash k (ttt-rules kb))))
+			 (format t "partial forward inference:~%~s~%" result)
+			 ;; dfs-style forward inference, more elegant if I re-used add-to-kb here
+			 ;; re-accumulate potentially applicable rules
+			 (setf applicable nil)
+			 (dolist (k (get-keys fact))
+			   (setf applicable 
+				 (append applicable (gethash k (ttt-rules kb)))))))
+		      (t ;; result is not a ttt-rule, so it must be a fact
+		       (when (not (fact-in-kb? kb result))
+			 ;; result is a new fact, so add it to each of the keytables
+			 (if (= (length (get-keys result)) 0)
+			     (format t "<warning>[propagate-inferences] fact has no keys:~%~s~%" result))
+			 (dolist (k (get-keys result))
+			   (push result (gethash k (facts kb))))
+			 ;; dfs-style forward inference
+			 (format t "completed a forward inference:~%~s~%" result)
+			 (propagate-inferences kb :fact result)
+			 ;; re-accumulate potentially applicable rules
+			 (setf applicable nil)
+			 (dolist (k (get-keys fact))
+			   (setf applicable
+				 (append applicable (gethash k (ttt-rules kb)))))))))))))
+	(rule
+	 ;; look for all facts that this rule applies to
+	 (let (applicable)
+	   (if (= (length (get-keys rule)) 0)
+	       (format t "<warning>[propagate-inferences]  rule has no keys:~%~s~%" rule))
+;	   (if (> (length (get-keys rule)) 1)
+;	       (format t "<warning>[propagate-inferences]  rule has multiple keys:~%~s~%" rule))
+
+	   (dolist (k (get-keys rule))
+	     (setf applicable 
+		   (append applicable (gethash k (facts kb)))))
+
+;	   (format t "rule is: ~%~s~%" rule)
+;	   (format t "testing facts: ~%~s~%" applicable)
+
+	   (loop while applicable do
+		(let* ((fact (pop applicable)) 
+		       (result (apply-rule rule fact)))
+;		  (format t "rule: ~%~s~%fact: ~%~s~%" rule fact)
+		  (when (not (equal result fact))  ;; rule applied to fact
+		    (cond 
+		      ((and (listp result)
+			    (eq (car result) '/))
+		       ;; rule application to fact yielded a TTT rule
+;		       (format t "pi: ~%~s~%" result)
+;		       (format t "ikb? ~s~%" (rule-in-kb? kb result))
+		       (when (not (rule-in-kb? kb result))
+			 ;; (push this partial rule onto the hashtable for relative key)
+			 (if (= (length (get-keys result)) 0)
+			     (progn
+			       (format t "<warning>[propagate-inferences]  rule has no keys:~%~s~%" result)
+			       (push result (gethash nil (ttt-rules kb)))))
+;			 (if (> (length (get-keys result)) 1)
+;			     (format t "<warning>[propagate-inferences]  rule has multiple keys:~%~s~%" result))
+
+;			 (format t "keys: ~%~s~%" (get-keys result))
+			 (dolist (k (get-keys result))
+			   (push result (gethash k (ttt-rules kb))))
+			 ;; dfs-style forward inference
+			 (format t "partial forward inference:~%~s~%" result)
+			 (propagate-inferences kb :rule result)
+			 ;; re-accumulate potentially applicable rules
+			 (if (= (length (get-keys rule)) 0)
+			     (format t "<warning>[propagate-inferences]  rule has no keys:~%~s~%" rule))
+;			 (if (> (length (get-keys rule)) 1)
+;			     (format t "<warning>[propagate-inferences]  rule has multiple keys:~%~s~%" rule))
+			 (dolist (k (get-keys rule))
+			   (setf applicable 
+				 (append applicable (gethash k (facts kb)))))))
+		      (t ;; result is not a ttt-rule, so it must be a fact
+		       (when (not (fact-in-kb? kb result))
+			 ;; result is a new fact, so add it to each of the keytables
+			 (if (= (length (get-keys result)) 0)
+			     (progn
+			       (format t "<warning>[propagate-inferences] fact has no keys:~%~s~%" result)
+			       (push result (gethash nil (facts kb)))))
+			 (dolist (k (get-keys result))
+			   (push result (gethash k (facts kb))))
+			 ;; dfs-style forward inference
+			 (format t "completed a forward inference:~%~s~%" result)
+			 (propagate-inferences kb :fact result)
+			 ;; re-accumulate potentially applicable rules
+			 (if (= (length (get-keys rule)) 0)
+			     (format t "<warning>[propagate-inferences]  rule has no keys:~%~s~%" rule))
+;			 (if (> (length (get-keys rule)) 1)
+;			     (format t "<warning>[propagate-inferences]  rule has multiple keys:~%~s~%" rule))
+			 (dolist (k (get-keys rule))
+			   (setf applicable 
+				 (append applicable (gethash k (facts kb))))))))))))))
+  t)
+
+;; it may be worth it to collapse these into form-in-kb? 
+(defmethod rule-in-kb? ((kb knowledge-base) rule)
+  (if (get-keys rule)
+      (dolist (k (get-keys rule))
+	(if (member rule (gethash k (ttt-rules kb)) :test #'equal)
+	    (return-from rule-in-kb? t)))
+      (progn
+	(format t "<warning>[rule-in-kb?]: rule without any keys.~%rule:~s~%" rule)
+	(if (member rule (gethas nil (ttt-rules kb)) :test #'equal)
+	    (return-from rule-in-kb? t))))
+  nil)
+
+(defmethod fact-in-kb? ((kb knowledge-base) fact)
+  (if (get-keys fact)
+      (dolist (k (get-keys fact))
+	(if (member fact (gethash k (facts kb)) :test #'equal)
+	    (return-from fact-in-kb? t)))
+      (progn
+	(format t "<warning>[fact-in-kb?]:  fact without any keys.~%fact:~s~%" fact)
+	(if (member fact (gethash nil (facts kb)) :test #'equal)
+	    (return-from fact-in-kb? t))))
+  nil)
+(defun convert-el-to-ttt (el-rule)
+  "Only works when all quantifiers are 'all'."
+  (apply-rules 
+   '(
+     (/ (ALL (!VAR _!0) (!RESTRICTOR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       (/ !RESTRICTOR !WFF)))
+     (/ (ALL (!VAR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       !WFF)))
+   el-rule))
+
+    
+(defparameter *kb* (make-instance 'knowledge-base))
+
+
+
+
+(defun sort-predicates (predicate-list)
+  "Sorts the list of predicates into order from most constrained to least."
+  (format t "WARNING: sort-predicates is stub.~%")
+  predicate-list)
+
+
+(defun get-keys (form &key check-suffix)
+  "Return a list of keys for form. 
+   If form is a TTT rule, there should be exactly one key. 
+   If form is a fact, then there may be arbitrarily many keys, 
+   though typically only one.
+
+   Examples: 
+   
+   form                                   keys
+   ((john.n accompany.v jane.n) ** e0)    (accompany.v)
+
+   form
+   (/ (_!Y ANIMATE-AGENT.N)
+      (/ ((_!X ACCOMPANY.V _!Y) ** _!E)
+          (SOME Z (Z LOCATION.N) (_!X ((ADV-A (WITH.P _!Y)) GO-TO.V Z)))))
+   keys
+   (animate-agent.n)
+
+   form
+   (/ ((_!X ACCOMPANY.V jane.name) ** _!E)
+       (SOME Z (Z LOCATION.N) (_!X ((ADV-A (WITH.P jane.name)) GO-TO.V Z)))))
+   keys
+   (accompany.v)   OR (accompany.v jane.name)"
+
+
+
+  (if (and (listp form) (eq (car form) '/))
+      (get-predicates (nth 1 form) :check-suffix check-suffix)
+      (get-predicates form :check-suffix check-suffix)))
+
+(defparameter *key-suffixes* 
+  (list ".V"))
+(defun get-predicates (form &key check-suffix)
+  "Return a list of all unique predicates appearing in a form."
+  (cond 
+    ((atom form)
+     (if (if check-suffix
+	     (member (subseq (string form) 
+			     (position #\. (string form))) 
+		     *key-suffixes* :test #'equal)
+	     (find #\. (string form)))
+	 (list form)))
+    ((listp form)
+     (remove-duplicates 
+      (reduce #'append 
+	      (mapcar 
+	       (lambda (x) 
+		 (get-predicates x :check-suffix check-suffix)) form))))
+    (t (format t "warning: rule is not an atom or a list [~s]~%" form)
+       nil)))
+
+
+(defparameter *sample-lf*
+  '(all x 
+    (all y 
+     (all a (a action-type.n) 
+      (all e ((x ask-of.v y a) ** e)
+	   ((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)))))
+  "If E is an episode of X asking Y to perform an action A, then it is true in 
+   episode E that X wants it to be true that there exists after E some episode 
+   E1 which is characterized by Y doing action A.")
+
+;;(a action-type.n)
+;;((x ask-of.v y a) ** e)
+;;((x want-tbt.v (that (some e1 (e1 after e) ((y do.v a) ** e1)))) @ e)
+;; Suppose ask-of.v < action-type.n in sort-predicates.
+(defparameter *sample-lf-as-ttt-rule*
+  '(/ ((_!x ask-of.v _!y _!a) ** _!e)
+    (/ (_!a action-type.n)
+     ((_!x want-tbt.v (that (some e1 (e1 after _!e) ((_!y do.v _!a) ** e1)))) @ _!e))))
+
+;; (print (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0)))
+;;  => (/ (MARRY.V ACTION-TYPE.N)
+;;        ((JANE.N WANT-TBT.V
+;;          (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0)) 
+
+;; (print 
+;;   (apply-rule 
+;;     (apply-rule *sample-lf-as-ttt-rule* '((jane.n ask-of.v jack.n marry.v) ** E0))
+;;     '(marry.v action-type.n)))
+;;  => ((JANE.N WANT-TBT.V
+;;       (THAT (SOME E1 (E1 AFTER E0) ((JACK.N DO.V MARRY.V) ** E1)))) @ E0) 
+
+
+
+
+(defparameter *sample-lf-1*
+  ;; This one is questionable. 
+  '(all x (x phys-obj.n) 
+    (all y (y phys-ent.n) 
+     (all e ((x at-loc.p y) ** e) 
+      (((loc-of.f x) within-or-adjacent-to.p (loc-of.f y)) ** e))))
+  "For all physical objects X, all physical entities Y, and all episodes E 
+   characterized by X being at location Y, the location of X is 
+   within-or-adjacent-to the location of Y characterizes the episode.")
+
+(defparameter *sample-lf-1-as-ttt-rule*
+  ;; at-loc.p < {phys-obj.n, phys-ent.n}
+  '(/ ((_!x at-loc.p _!y) ** _!e)
+      (/ (_!y phys-ent.n)
+         (/ (_!x phys-obj.n)
+	    (((loc-of.f _!x) within-or-adjacent-to.p (loc-of.f _!y)) ** _!e)))))
+  
+
+
+;;(all _!v1. (? _!v1restrictor)
+;;     (all _!v2. (? _!v2restrictor) 
+;;	  ...
+;;	  (all _!vn (? _!vnrestrictor)
+;;	       conclusion)))
+;;
+;;
+;; Sort the restrictor formulas (conjuncts), build into a curried TTT rule.
+
+(defun s (r)
+  "Add rule r to *kb* if it only involves the quantifier 'all' 
+   at each level, except possibly the conclusion."
+  ;; I found  a bug in TTT (+ ~ OR) isn't handled properly.
+  ;; a workaround is to use the pattern (+ _! ~ OR)
+
+  ;; add special handling for OR 
+  ;;  (ALL _!VAR (_!R1 OR _!R2) _!C)
+
+  ;;  (ALL _!VAR _!R1 _!C)
+  ;;  (ALL _!VAR _!R2 _!C)
+  
+  ;; maybe add special handleing at fact level insetad, 
+  ;; that we if we learn the disjunction, we can still make
+  ;; the conclusion.   
+
+  
+  (if (match-expr '(^@ (+ (all _! (? ((+ _! ~ OR))) @)) (! _! ~ (all _+)))  r)
+      (add-to-kb *kb* r)
+      (format t "unable to handle EL rule:~%~s~%" r)))

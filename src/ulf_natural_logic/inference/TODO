@@ -1,0 +1,1 @@
+convert preprocessing to work on polarity marked formulas, then write versions for non-polarity marked versions by preprocessing the formulas to include a dummy polarity before processing and removing afterward.

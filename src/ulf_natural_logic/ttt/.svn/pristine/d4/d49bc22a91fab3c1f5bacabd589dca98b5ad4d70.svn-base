@@ -1,0 +1,125 @@
+(defun ground-literal? (fact)
+  "Predicate to test if fact is a ground literal.
+   For now, functions are not supported and variables
+   are assumed to be any symbol without a 'dot' in the
+   name"
+  
+  (and (consp fact)
+       (not (find-if #'var-sym? fact))))
+(defun pos-literal? (lit)
+  "Doesn't handle functions yet."
+  (and (consp lit)
+       (not (eq (car lit) 'not))
+       (not (member t (mapcar #'listp lit)))))
+(defun predicate-sym? (sym)
+  "ASSUMPTION:  
+   All predicates are symbols with a dot '.' preceeded 
+   and followed by alphabetic characters."
+  (and (symbolp sym)
+       (or (and (= 1 (count-if (lambda (c) (char= c #\.)) 
+			       (coerce (string sym) 'sequence)))
+		(not (member (position #\. (string sym)) (list 0 (1- (length (string sym)))))))
+	   (eq sym '**)
+	   (eq sym '*))))
+
+;; These or similar functions may be needed for proper LF parsing.
+(defun function-sym? (sym)
+  )
+(defun var-sym? (sym)
+  "Sloppily recognizes unrestricted TTT variables."
+  (and (symbolp sym)
+       (char= (char (string sym) 0) #\_)))
+
+(defun ground-term? (sym)
+  (and (symbolp sym)
+       (not (var-sym? sym))))
+(defun valid-rule? (rule)
+  (and (consp rule)
+       (= (length rule) 3)
+       (eq (car rule) '/)
+       (consp (nth 1 rule))))
+
+
+
+(defun valid-fact? (form)
+  "A fact is a ground literal, but I'm adding this to be
+   complimentary to valid-rule?."
+  (and (ground-literal? form)
+       (not (valid-rule? form))
+       (or (not (eq (car form) 'not))
+	   (= (length form) 2))))
+
+(defun negate-fact (fact)
+  (if (not (valid-fact? fact))
+      (format t "[negate-fact] argument is not a valid fact:~%~s~%" fact)
+      (if (eq (car fact) 'not)
+	  (nth 1 fact)
+	  (list 'not fact))))
+
+(defun convert-el-to-ttt (el-rule)
+  "Only works when all quantifiers are 'all'."
+  (apply-rules 
+   '(
+     (/ (ALL (!VAR _!0) (!RESTRICTOR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       (/ !RESTRICTOR !WFF)))
+     (/ (ALL (!VAR _!0) (!WFF _!0))
+      (apply! 
+       subst (apply! car (concatenate-syms! _! !VAR))
+       !VAR
+       !WFF)))
+   el-rule))
+
+(defun sort-predicates (predicate-list)
+  "Sorts the list of predicates into order from most constrained to least."
+  (format t "WARNING: sort-predicates is stub.~%")
+  predicate-list)
+
+
+(defparameter *key-suffixes* 
+  (list ".V"))
+(defun get-predicates (form &key check-suffix)
+  "Return a list of all unique predicates appearing at any level in a form."
+  (cond 
+    ((atom form)
+     (if (if check-suffix
+	     (member (subseq (string form) 
+			     (position #\. (string form))) 
+		     *key-suffixes* :test #'equal)
+	     (find #\. (string form)))
+	 (list form)))
+    ((listp form)
+     (remove-duplicates 
+      (reduce #'append 
+	      (mapcar 
+	       (lambda (x) 
+		 (get-predicates x :check-suffix check-suffix)) form))))
+    (t (format t "warning: rule is not an atom or a list [~s]~%" form)
+       nil)))
+(defun valid-wff? (wff)
+  (valid-fact? wff))
+
+(defun disjunctive-wff? (fact)
+  (and (consp fact)
+       (= (length fact) 3)
+       (valid-wff? (nth 0 fact))
+       (valid-wff? (nth 2 fact))
+       (eq (nth 1 fact) 'OR)))
+(defun conjunctive-wff? (fact)
+  (and (consp fact)
+       (= (length fact) 3)
+       (valid-wff? (nth 0 fact))
+       (valid-wff? (nth 2 fact))
+       (eq (nth 1 fact) 'AND)))
+(defun negative-wff? (fact)
+  (and (consp fact)
+       (= (length fact) 2)
+       (valid-wff? (nth 1 fact))
+       (eq (nth 0 fact) 'NOT)))
+(defun existential-wff? (fact)
+  (and (consp fact)
+       (= (length fact) 4)
+       (eq (nth 0 fact) 'some)))
+
