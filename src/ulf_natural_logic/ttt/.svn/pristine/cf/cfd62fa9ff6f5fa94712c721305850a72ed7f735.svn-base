@@ -1,0 +1,221 @@
+Purpose:  Provide simple forward inferences using the axioms produced by 
+           lexical axiomization group.
+Author:   Adam Purtee <apurtee@cs.rochester.edu>
+Date:     10-30-2012
+
+
+
+
+
+
+
+USAGE ==========================================================================
+(load "ttt-inference") 
+     - loads all functions (obviously)
+     - creates global knowlege base parameter *kb* 
+
+(store el-form)   
+     - adds the Episodic logic form el-form to knowledge base *kb*
+     - *kb* is a global parameter where the knowledge base is stored
+     - store can handle ground facts and rules
+     - rules are converted into curried TTT rules
+     - triggers forward inferences upon adding rules or facts
+     - if global parameter *verbose* is non-nil, forward inferences 
+       are printed as they are discovered
+(display)
+     - displays status of *kb*, according to keyword parameters:
+       :el-forms t   - outputs raw EL forms
+       :rules t      - outputs TTT rules for EL input and partial inferences
+       :facts t      - outputs ground EL forms and completed forward inferneces
+     - when no keyword arguments are specified, all sets are displayed
+
+
+
+
+
+CONSTRAINTS ON AND ASSUMPTIONS ABOUT INPUT ====================================
+Predicates------------------------------------------------------
+Expected predicate sytax is infix.
+Expected that all predicates have a dot suffix (e.g, .n, .v, ...)
+
+Example monadic predicates-----------------------
+(x bird.n)            "x is a bird"
+(x vehicle.n)         "x is a vehicle"
+(tweety.name bird.n)  "tweety is a bird"
+
+Example 2 place predicates-----------------------
+(x see.v y)     "x sees y"
+(x in.p y)      "x is in y"
+(tbbwolf.name see.v lrrh.name)  
+   "the big bad wolf sees little red riding hood"
+
+Example 3 place predicates-----------------------
+(x ask-of.v y z)  "x asks y to perform action z"
+(x give-to.v y z) "x gives z to y"
+
+
+General syntax -----------------------------------------------------------------
+<var> ::= [::any symbol which represents a variable::]
+<const> ::= [::any symbol which does not represent a variable or predicate::]
+<term> ::= <const_sym> | <var_sym>
+<pred_const> ::= [::symbol with a 'dot' extension::]
+             Examples: ride.v, in.p, on.p, give-to.v, large.a, ...
+<predicate> ::= (<pred_const>) | (<term> <pred_const>) | 
+                (<term> <pred_const> <term>) | ... | 
+                (<term> <pred_const> <term> ... <term>)
+                
+<wff> ::=  <predicate> | (NOT <predicate>) | (<predicate> AND <predicate>) 
+           | (<predicate> OR <predicate>)  
+
+Rules  -------------------------------------------------------------------------
+<rule> ::= (all <var> <nuclear scope>) | 
+           (all <var> <restrictor> <nuclear scope>)
+<restrictor> ::= <wff>
+<nuclear scope> ::= <wff>
+
+
+Example rules ------------------------------------------------------------------
+(all x (x person.n) 
+     (all y (y hand-portable.n)
+	  (all e ((x take.v y) ** e) 
+	       ((x carry.v y) * e))))
+(all x 
+     (all y
+	  (all e ((x see.v y) ** e) 
+	       ((x ((adv-a (with-instr.p (ears-of.f x)))
+		    (perceive.v y))) * e))))
+(all x
+     (all y (y vehicle.n)
+	  (all e ((x ride.v y) ** e)
+	       (((x  in.p y) or (x on.p y)) * e) )))
+
+
+Supported fact syntax ----------------------------------------------------------
+A fact is any wff which is not a rule.
+<fact> ::= <wff>
+
+Example facts-------------------------------------------------------------------
+(bob.name person.n)
+(bob.name man.n)
+(jane.name tall.a)
+((bob.name tall.a) OR (bob.name short.a))
+((bob.name person.n) AND (bob.name man.n))
+
+
+
+
+KEYS ===========================================================================
+Keys are ordered lists of predicates, constants, 'not', '**', and '*'.
+
+Facts may have multiple keys.
+Rules may have multiple keys when they have disjunctive restrictors. 
+Rules without disjunctive restrictors have exactly one key.
+
+A predicate's keys are composed of the predicate constant, and 
+the constant appearing as the focal term, if one exists.
+The focal term for a 1 place predicate is the argument.
+The focal term for a 2 place predicate is the second argument.
+The focal term for an n place predicate (n > 2) is the second argument.
+NOTE: 
+  It would be nice if I could parameterize this choice, 
+  in case it is better for the focal term to vary depending on the predicate.
+    
+
+
+Key computations ------------------------------------------------------------
+(keys (predicate)) = {(predicate)}
+(keys (const1 predicate) = {(predicate),(const1 predicate)}
+(keys (const1 predicate const2) = {(predicate),(const2 predicate)}
+(keys (const1 predicate const2 ... constN) = {(predicate),(const2 predicate)}
+(keys (var1 predicate) = {(predicate)}
+(keys (var1 predicate const1) = {(predicate),(const1 predicate)}
+(keys (const1 predicate var1) = {(predicate)}
+(keys (var1 predicate const ... varN) = {(predicate),(const predicate)}
+(keys (not fact)) = (mapcar (lambda (x) (cons 'not x)) (keys fact))
+(keys (fact1 OR fact2)) = union(keys(fact1),keys(fact2))
+(keys (fact1 AND fact2)) = union(keys(fact1),keys(fact2)) 
+NOTE: 
+   We should never have explicit conjunctions in the kb, because a kb 
+   is an implicit conjunction of facts.
+(keys (all x restrictor nuclear_scope)) = (keys restrictor)
+
+;; not sure if this is correct for existential, but all examples of 'some'
+;; so far seem to be of an implicit conunction of two parts
+
+(keys (some y restrictor nuclear_scope?)) = union((keys restrictor) (keys nuclear_scope))
+
+Why use keys? ------------------------------------------------------
+Keys can dramatically improve the efficiency of forward inference, 
+by allowing the system to avoid attempting matches between rules and
+facts which are guaranteed to fail. 
+
+
+
+Activation of Rules ------------------------------------------------------------
+Let R be any rule. We want it to be true that if a fact F is not in the set 
+(lookup-facts-by-keys (keys R)) then we are guaranteed that R does not apply 
+to F.  Equivalently, if R applies to fact F, then F must be in the set 
+(lookup-facts-by-keys (keys R)).   If these conditions hold, then to activate
+a new rule R, we can avoid matching R against every fact in the KB and can
+restrict our match attempts to those in the set (lookup-facts-by-keys (keys R)).
+
+
+Let R be a rule such as (all x (all y (x pred.n y) phi)).
+Then we have to check R against all facts which involve pred.n.
+So that we must store a fact such as (bob.name person.n) under both keys:
+((bob.name person.n) (person.n)). Therefore going from rules to facts we 
+want to be able to access facts under their specific keys and general keys.
+
+Let R be a rule such as (all x (all y (x pred.n bob.name) conclusion)).
+Then we only have to check R against all facts which involve 
+pred.n with bob.name as focal term.  There are no other options. 
+
+In both cases, we only need the most specific key for a rule. 
+
+What about disjunctions?
+Let D be the rule:
+(all x ((x agent.n) or (x solid-object.n)) 
+     (all y (y solid-object.n) 
+	  (all e ((x smash.v y) ** e)
+	       ((x break.v y) * e))))
+then (keys D) = ((agent.n) (solid-object.n))
+because we want to test any fact F that involves something being 
+an agent or a solid-object. 
+
+A similar case could be made for conjunctions; however, it is better to curry 
+the rule and treat it as a restriction and a subsequent implication.
+
+In summary, multiple keys per rule are only required if the rule has a 
+disjunctive restrictor.  One approach would be to split such a rule into one
+rule per disjunct, allowing each new rule to have exactly one key. The drawback
+is that sometimes we may know only a disjunction, without knowing any of the
+particular disjuncts to be true. The alternative would be to retain the rule as
+a single disjunctively restricted rule, and to store the rule under multiple
+keys.  NOTE: This would be another nice thing to be able to parameterize.
+
+
+Activation of Facts ------------------------------------------------------------
+Similarly, if F is any fact, we want to guarantee that if R is any 
+rule not in the set (lookup-rules-by-keys (keys F)), then R does not apply to F.
+Equivalently, if rule R applies to fact F, 
+ then R is in the set (lookup-rules-by-keys (keys F))
+
+Let F be a fact such as (bob.name likes.v alice.name)
+Then we have (keys F) = {(likes.v), (alice.name likes.v)}
+
+A rule R = (all x (x likes.v y) conclusion) may apply to fact F, 
+so we will have to check all rules keyed under likes.v 
+
+However, if we have a rule R2= (all x (x likes.v jack.name) conclusion)
+we are safe to store it under only (jack.name likes.v). 
+Then when we learn a new fact,such as (alice.name likes.v bob.name)
+we can avoid checking it against R2 because R2 is stored ONLY under key 
+(jack.name likes.v)
+
+
+HOPEFUL FUTURE IMPROVEMENTS ====================================================
+  o more robust kb consistency checking
+  o conjunct reordering
+  o fact and rule provenance (likely need nodal representation for this)
+  o probabilities
+  o quantifiers other than 'all'

@@ -1,0 +1,106 @@
+
+====TEST-PRINT====
+Function:
+#<Interpreted Function APPLY-ULF-MACROS>
+Input:
+(+ ((+ ((+ ((+ ((+ NQUAN) (+ ((+ AT_MOST.ADV-A) (+ TWO.A)))))
+            (+ ((+ PLUR) (+ TENOR.N)))))
+        (+ ((+ ((+ PRES) (+ WILL.AUX-S)))
+            (+ ((+ CONTRIBUTE.V)
+                (+ ((+ THEIR.D) (+ ((+ PLUR) (+ FEE.N)))))
+                (+ ((+ ADV-A)
+                    (+ ((+ TO.P) (+ ((+ K) (+ CHARITY.N)))))))))))))
+    (+ \.)))
+only applying relative macroOutput:
+NIL
+
+
+====TEST-PRINT====
+Function:
+#<Interpreted Function APPLY-ULF-MACROS>
+Input:
+(+ ((+ ((+ THERE.PRO)
+        (+ ((+ ((+ PRES) (+ BE.V)))
+            (+ ((+ N+PREDS) (+ ((+ PLUR) (+ TENOR.N)))
+                (+ ((+ WHO.REL)
+                    (+ ((+ ((+ PRES) (+ WILL.AUX-S)))
+                        (+ ((+ CONTRIBUTE.V)
+                            (+ ((+ THEIR.D) (+ ((+ PLUR) (+ FEE.N)))))
+                            (+ ((+ ADV-A)
+                                (+
+                                 ((+ TO.P)
+                                  (+
+                                   ((+ K)
+                                    (+ CHARITY.N)))))))))))))))))))
+    (+ \.)))
+only applying relative macroIn emb-op? fm: (N+PREDS)
+recres: NIL
+
+In emb-op? fm: (N+PREDS)
+recres: NIL
+
+In emb-op? fm: (:L X7 ((X7 PERSON.N) AND.CC (X7 = X6)))
+recres: (X7 ((X7 PERSON.N) AND.CC (X7 = X6)))
+
+In emb-op? fm: (:L X6
+                (+ ((+ ((+ THERE.PRO)
+                        (+ ((+ ((+ PRES) (+ BE.V)))
+                            (+ ((+ N+PREDS)
+                                (+ ((+ PLUR) (+ TENOR.N)))
+                                (+
+                                 ((+
+                                   (THE.D
+                                    (:L
+                                     X7
+                                     ((X7 PERSON.N)
+                                      AND.CC
+                                      (X7 = X6)))))
+                                  (+
+                                   ((+ ((+ PRES) (+ WILL.AUX-S)))
+                                    (+
+                                     ((+ CONTRIBUTE.V)
+                                      (+
+                                       ((+ THEIR.D)
+                                        (+ ((+ PLUR) (+ FEE.N)))))
+                                      (+
+                                       ((+ ADV-A)
+                                        (+
+                                         ((+ TO.P)
+                                          (+
+                                           ((+ K)
+                                            (+
+                                             CHARITY.N)))))))))))))))))))
+                    (+ \.))))
+recres: (X6
+         (+ ((+ ((+ THERE.PRO)
+                 (+ ((+ ((+ PRES) (+ BE.V)))
+                     (+ ((+ N+PREDS) (+ ((+ PLUR) (+ TENOR.N)))
+                         (+ ((+ (THE.D
+                                 (:L
+                                  X7
+                                  ((X7 PERSON.N) AND.CC (X7 = X6)))))
+                             (+ ((+ ((+ PRES) (+ WILL.AUX-S)))
+                                 (+
+                                  ((+ CONTRIBUTE.V)
+                                   (+
+                                    ((+ THEIR.D)
+                                     (+ ((+ PLUR) (+ FEE.N)))))
+                                   (+
+                                    ((+ ADV-A)
+                                     (+
+                                      ((+ TO.P)
+                                       (+
+                                        ((+ K)
+                                         (+
+                                          CHARITY.N)))))))))))))))))))
+             (+ \.))))
+
+In emb-op? fm: (N+PREDS)
+recres: NIL
+
+In emb-op? fm: (:L X7 ((X7 PERSON.N) AND.CC (X7 = X6)))
+recres: (X7 ((X7 PERSON.N) AND.CC (X7 = X6)))
+
+Output:
+NIL
+

@@ -1,0 +1,187 @@
+PROJECT:   Forward inference in Episodic Logic via TTT 
+
+The idea is to convert Episodic logic axioms into TTT rules, and to
+subsequently use TTT for forward inference.
+
+Consider the example rule/axiom: 
+(s
+ '(all x
+   (all y
+    (y animate-agent.n)
+    (all e
+     ((x accompany.v y) ** e)
+     (some z
+	   (z location.n)
+	   (x ((adv-a (with.p y)) go-to.v z)))))))
+
+Which I believe means:
+"for all x
+  and  all animate agents y
+   and all episodes e where x accompanying y characterizes the episode
+  there exists some location z
+  such that x goes to location z with y"
+
+
+
+In the case of an axiom which has multiple minor premises, such as the one above,
+we want to use exactly one as a key and then perform a partial inference.
+Further, we want to use conjuncts as keys in order from most constrained to least 
+constrained. Suppose that accompany.v is more restrictive than animate-agent.n, 
+then we can implement a partial inference as:
+
+
+
+(/ (((_!x accompany.v _!y) ** _!e))
+   ((_y! animate-agent.n) =>
+    (some z
+	    (z location.n)
+	      (_!x ((adv-a (with.p _!y)) go-to.v z)))))
+
+
+
+Should the rule search more deeply for the premises? E.g.,
+
+(/ (((^*1 (_!x accompany.v _!y) ** _!e)))
+   ((^* (_y! animate-agent.n) =>
+    (some z
+	    (z location.n)
+	      (_!x ((adv-a (with.p _!y)) go-to.v z)))))
+;; (The suffix 1 was added to prevent ^* being interpreted as a constructable 
+;;  template variable.)
+
+
+
+
+
+
+
+
+Below, are some _HYPOTHETICAL__ functions which meant to convey my understanding
+of the desired properties and functions of the system to be built. 
+
+
+
+;; Store the knowledge base and rule base separately, this is arbitrary.
+(setq *kb* (make-new-kb))
+=>T
+(setq *rb* (make-new-rb))
+=>T
+
+
+(defun connect-rb-to-kb (rb kb &key show-inferences)
+  ;; We need some way of associating a rule base with a knowledge base. 
+  ;; This would ensure that forward inference fires properly when new
+  ;; rules or new facts are added to the system.
+  
+  ;; At the time that a rb and kb are connected, forward inference would 
+  ;; be performed.   When show-inferences is t, this function would
+  ;; output a verbose description of new facts derived, and partial 
+  ;; rules instantiated.
+
+  ;; Note: Depending on how partial rules are handled, this separation of
+  ;; knowledge base and rule base may be unnecessary.
+  ...)
+(connect-rb-to-kb rb kb)
+=>T
+
+
+(defun add-to-rb (rb rule)
+  ;; add-to-rb will convert rules to TTT expressions (via additional TTT 'meta' rules)
+  ;; if rb is connected to a knowledge base, add-to-rb will perform forward inference,
+  ;; adding new partial rules to rb and new facts to the knowledge base.
+  ;; caution: need to be careful to avoid infinite loops.  
+  ...)
+
+(add-to-rb *rb*
+	   '(all x
+	     (all y
+	      (y animate-agent.n)
+	      (all e
+	       ((x accompany.v y) ** e)
+	       (some z
+		     (z location.n)
+		     (x ((adv-a (with.p y)) go-to.v z)))))))
+=> T
+
+;; The rule above will NOT fire upon being told something is an animate agent,
+;; but will create a new rule after being told that something accompanying
+;; something else characterizes an episode, where the new rule would be used
+;; to complete the inference, possibly immediately, had the kb included
+;; that the relevant other thing was an animate agent.
+;; We can probably keep track of information in RETE style, to improve efficiency.
+
+;; When the RHS of a TTT rule does not contain the material implication symbol '=>',
+;; then the output of such a TTT rule would be instead added to the KB, and displayed
+;; as an actual inference.
+
+
+
+(defun display-rb (rb &key syntax)
+  ;; Simple function to display the current set of rules. 
+  ;; The keyword argument syntax can be used to control
+  ;; whether the rules (or partial rules) are displayed 
+  ;; in Episodic Logic or whether they are displayed as
+  ;; their TTT rule implementations.
+  ;; Perhaps English verbalization could be added later.
+  ...)
+(display-rb *rb* :syntax :el)
+=> ((all x
+	 (all y
+	      (y animate-agent.n)
+	      (all e
+		   ((x accompany.c y) ** e)
+		   (some z
+			 (z location.n)
+			 (x ((adv-a (with.p y)) go-to.v z)))))))
+
+(display-rb *rb* :syntax :ttt)
+=> ((/ (((_!x accompany.v _!y) ** _!e))
+       ((_!y animate-agent.n) =>
+	(some z
+	            (z location.n)
+		          (_!x ((adv-a (with.p _!y)) go-to.v z))))))
+
+
+(defun display-kb (kb)
+  ;; Similar to display-rb, but the only relevant syntax is EL.
+  ;; Perhaps English verbalization could be added later.
+  ...)
+(display-kb *kb*)
+=> NIL
+
+(defun add-to-kb (kb fact &key show-inferences)
+  ;; As is obvious from the name, add-to-kb adds fact to a knowledge base. 
+  ;; Forward inferences should be triggered if relevant rules (or partial rules)
+  ;; are in a connected rulebase. 
+  ;; Display of forward inferences can be controlled by show-inferences, 
+  ;; we may want to separately control the display of completed and partial 
+  ;; inferences, as well as whether the syntax is EL or English.  
+  ...)
+
+(add-to-kb '(john.name animate-agent.n) *kb*)
+=> T
+
+(display-kb *kb*)
+=> ((john.name animate-agent.n))
+
+(add-to-kb '((jane.name accompany.v jack.name) ** E0) :show-inferences t)
+  *new partial-rule created and added to rb*
+   ((jack.name animate-agent.n) =>
+    (some z
+	  (z location.n)
+	  (jane.name ((adv-a (with.p jack.name)) go-to.v z))))
+  ** implemented as:***
+   (/ ((jack.name animate-agent.n))
+      (some z
+	    (z location.n)
+	    (jane.name ((adv-a (with.p jack.name)) go-to.v z))))
+  *no new facts added to kb*
+=> T
+
+(add-to-kb '((jack.name animate-agent.n)) :show-inferences t)
+ *new fact added to kb*
+  (some z 
+	(z location.n)
+	(jane.name ((adv-a (with.p jack.name)) go-to.v z)))
+=> T
+

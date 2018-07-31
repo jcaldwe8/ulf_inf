@@ -1,0 +1,68 @@
+// A list of non-subsective (i.e. intensional) adjectives from 
+// "A Dictionary of Nonsubsective Adjectives"
+// by Nayak et al. 2014
+// http://hci.stanford.edu/cstr/reports/2014-04.pdf
+// 
+// See paper for details and caveats on data.
+
+Word	WordNet-senses
+alleged	
+believed	
+debatable	1,3
+disputed	
+dubious	1,2
+hypothetical	
+impossible	1,2
+improbable	1,2
+plausible
+putative
+questionable
+so-called	
+supposed	2,3,4
+suspicious	2
+theoretical
+uncertain	2,3,4
+unlikely	3
+would-be
+doubtful	1
+apparent	2
+arguable	1
+assumed
+likely
+ostensible
+possible	2
+potential
+predicted
+presumed
+probable
+seeming
+anti-
+fabricated
+fake	2
+fictional	2
+ficticious
+imaginary
+mythical
+phony
+false	1-7,9
+artificial	1,3
+erroneous
+mistaken
+mock
+pseudo-
+simulated
+spurious	1,2,4
+unsuccessful
+counterfeit
+deputy	4
+faulty
+virtual
+erstwhile
+ex-
+expected
+former	2,3,4
+future	1
+historic	1
+onetime
+past	2
+proposed
