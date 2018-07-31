@@ -20,9 +20,9 @@
         (inotbeaperson  '(not.adv-s (be.v (= (a.d person.n)))))
         (beaperson      '((be.v (= (a.d person.n)))))
         (notberunning   '(not.adv-s (prog run.v)))
-        (havenotrun     '(perf not.adv-s run.v)))
+        (havenotrun     '((perf not.adv-s run.v))))
 
-    (assert-equal '((cf go.v) (adv-s (to.p (k sleep.n))))
+    (assert-equal '((cf go.v) (adv-a (to.p (k sleep.n))))
                   (remove-were-to! gotosleep))
     (assert-equal '((cf do.aux-s) not.adv-s (go.v (adv-a (to.p (k sleep.n)))))
                   (remove-were-to! notgotosleep))

@@ -968,25 +968,94 @@
   (if *debug-ulf-inf*
    (format t "In remove-were-to!~%Argument: ~s~%" were-to-embvp))
   (if (atom were-to-embvp) (return-from remove-were-to! nil))
-  (if (< 2 (length were-to-embvp)) (return-from remove-were-to! nil))
-  (let* ((adv (if (= 2 (length were-to-embvp)) (first were-to-embvp)))
-         (vp (car (last were-to-embvp)))
-         (verb (car vp)))
-      ;; add 'do.aux-s' if verb is not 'be.v' or an auxiliary,
+  (labels
+    (
+     ;; Gets the negation operator within in two-layers deep.
+     ;; Does depth-first search until it either gets more than two layers or
+     ;; finds a negation operator.  Once a negation operator has been found,
+     ;; the remaining recursion simply reconstructs the list.
+     ;;
+     ;; Returns (list without negation, negation operator)
+     ;; The second piece is nil if not found.
+     (get-negation (ulf depth)
+       (cond
+         ((> depth 2) (list ulf nil))
+         ((member ulf '(not not.adv-s))
+          (list nil ulf))
+         ((atom ulf)
+          (list ulf nil))
+         (t
+           (let (tmp)
+             (setq tmp
+                   (reduce
+                     #'(lambda (acc new)
+                         (let ((neg (second acc))
+                               (ulf (first acc)))
+                           (if neg
+                             ;; Already found, just construct and continue.
+                             (list (cons new ulf) neg)
+                             ;; See if we can find a neg.
+                             (let* ((recres (get-negation new (+ depth 1)))
+                                    (recneg (second recres))
+                                    (reculf (first recres)))
+                               (if reculf
+                                 (list (cons reculf ulf) recneg)
+                                 (list ulf recneg))))))
+                     ulf
+                     :initial-value (list nil nil)))
+             ;; Reverse the list, since it's built backwards by reduce.
+             (list (reverse (first tmp)) (second tmp)))))
+       ) ; end of get-negation
+
+     ;; Flattens trivial recusive structures.
+     ;; ((...)) -> (...).  
+     (trivial-flatten (ulf)
+       (cond
+         ((atom ulf) ulf)
+         (t 
+           (let ((recres (mapcar #'trivial-flatten ulf)))
+             (if (and (eql 1 (length ulf)) (listp (car ulf)))
+                (car ulf)
+                ulf))))
+       ) ; end of trivial-flatten
+     ) ; end of labels definitions
+
+    ;; Main body.
+    ;; 1. Preprocess out negation.
+    (let* ((getnegres (get-negation were-to-embvp 1))
+           (nn-were-to-embvp (first getnegres))
+           (neg (second getnegres))
+           (adv (if (= 2 (length nn-were-to-embvp)) (first nn-were-to-embvp)))
+           (vp (car (last nn-were-to-embvp)))
+           (verb (car vp)) 
+           advvp negvp preadvvp)
+      ;; GK: maybe just return the input so this is transparent if not used correctly?
+      (if (< 2 (length nn-were-to-embvp)) (return-from remove-were-to! nil))
+
+      (if *debug-ulf-inf*
+        (format t "In remove-were-to!~%Argument: ~s~%nn-were-to-embvp: ~s~%neg: ~s~%adv: ~s~%" were-to-embvp nn-were-to-embvp neg adv))
+
+      ;; add 'do.aux-s' if verb is not 'be.v' or an auxiliary-like thing,
       ;; add adverbial as necessary.
       (cond
-        ;; Don't add do.aux-s but add adv.
-        ((and (or (aux? verb) (eq verb 'be.v)) (not (null adv)))
-         (cons `(cf ,verb) (cons adv (cdr vp))))
-        ;; Add do.aux-s and neg.
-        ((and (not (null adv)) (member adv '(not not.adv-s))) 
-         (cons '(cf do.aux-s) `(,adv ,vp)))
-        ;; Add do.aux-s and adv.
-        ((not (null adv))
-         (list adv (cons `(cf ,verb) (cdr vp))))
-        ;; No adv.
+        ;; Don't add do.aux-s.  Adv and neg go after verb.
+        ((or (aux-like? verb) (eq verb 'be.v))
+         (setq advvp (if (not (null adv)) (cons adv (cdr vp)) (cdr vp)))
+         (setq negvp (if (not (null neg)) (cons neg advvp) advvp))
+         (cons `(cf ,verb) negvp))
+
+        ;; Add do.aux-s.  Adv and neg go after do.aux-s.
+        ((not (null neg))
+         (setq advvp (if (not (null adv)) (cons adv (list vp)) (list vp)))
+         (setq negvp (cons neg advvp))
+         (cons '(cf do.aux-s) negvp))
+
+        ;; No neg, add vp as necessary before everything.
         (t
-         (cons `(cf ,verb) (cdr vp))))))
+          (setq preadvvp (cons `(cf ,verb) (cdr vp)))
+          (if (null adv)
+            preadvvp
+            (list adv preadvvp)))))))
 
 
 
