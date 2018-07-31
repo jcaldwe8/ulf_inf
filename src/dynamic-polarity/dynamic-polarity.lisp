@@ -342,12 +342,13 @@
                 (annotate-polarity fullulf))))
 
 
-(setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N))))
-(setq ulfpart2 'CAT.N)
-(setq ulfpart2-par (list 'plur ulfpart2))
-(setq ulfpart3 (list 'all.d ulfpart2-par))
-(setq compulf (list ulfpart3 ulfpart1))
-(setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N)))))
+(setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N)))) ;VP
+;; E.G. '((PRES KNOW.V) (THAT (|MARY| ((PAST GO_TO.V) (THE.D FAIR.N)))))
+(setq ulfpart2 'CAT.N) ;N
+(setq ulfpart2-par (list 'plur ulfpart2)) ;plur N
+(setq ulfpart3 (list 'all.d ulfpart2-par)) ;det + N
+(setq compulf (list ulfpart3 ulfpart1)) ;Formula
+(setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N))))) ;
 ; Expected output from these.
 ; (get-segment-polarity ulfpart1 compulf compulf)
 ; +
