@@ -12,7 +12,7 @@
            (POLARITY :INITARG :POLARITY :INITFORM '+)
            (RULE :INITARG :RULE)))
 
-(DEFPARAMETER *INFER-FROM-IMPLICATIVES-RULES-WEAK*
+(DEFPARAMETER *INFER-FROM-IMPLICATIVE-RULES-WEAK*
 ;``````````````````````````````````````````````````````````
 ; For implicative rules, e.g. "John knows that Mary went to
 ; the game" => "Mary went to the game".

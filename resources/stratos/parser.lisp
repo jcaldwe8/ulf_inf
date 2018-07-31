@@ -104,7 +104,7 @@
       ((type \:initarg \:type \:initform 'S)
       (polarity \:initarg \:polarity \:initform '+)
       (rule \:initarg \:rule))))  
-    (list (list 'defparameter '*infer-from-implicatives-rules*
+    (list (list 'defparameter '*infer-from-implicative-rules*
       (append '(list) (mapcar (lambda (x)
         (list 'make-instance ''implicative-rule-ttt '\:type (first x) '\:polarity (second x) '\:rule (third x)))
       rules))))))
