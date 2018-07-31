@@ -905,7 +905,22 @@
 ; verb is auxiliary if it contains substring '.aux'
  (if (not (symbolp verb)) (return-from aux? nil))
  (let ((atoms (split-into-atoms verb)))
-      (ttt:match-expr '(_* \. (! A \a) (! U \u) (! X \x) _*) atoms)))
+   (ttt:match-expr '(_* \. (! A \a) (! U \u) (! X \x) _*) atoms)))
+
+(defun adv? (sym)
+;````````````````
+; symbol is an adverb if it contains the substring '.adv'
+  (if (not (symbolp sym)) (return-from adv? nil))
+  (let ((atoms (split-into-atoms sym)))
+    (ttt:match-expr '(_* \. (! A \a) (! D \d) (! V \v) _*) atoms)))
+
+(defun adv-s? (sym)
+;````````````````
+; symbol is an adv-s if it ends with the substring '.adv-s'
+  (if (not (symbolp sym)) (return-from adv-s? nil))
+  (let ((atoms (split-into-atoms sym)))
+    (ttt:match-expr '(_* \. (! A \a) (! D \d) (! V \v) - (! S \s)) atoms)))
+
 
 (defparameter *aux-like-operators*
   '(perf prog))
@@ -946,22 +961,41 @@
 ; If I were to [not go to sleep] -> If I [did not go to sleep]
 ; If I were to [not be a person] -> If I [were not a person]
 ;
+  (if *debug-ulf-inf*
+   (format t "In remove-were-to!~%Argument: ~s~%" were-to-embvp))
   (if (atom were-to-embvp) (return-from remove-were-to! nil))
   (if (< 2 (length were-to-embvp)) (return-from remove-were-to! nil))
-  (let* ((neg (if (= 2 (length were-to-embvp)) (first were-to-embvp)))
+  (let* ((adv (if (= 2 (length were-to-embvp)) (first were-to-embvp)))
          (vp (car (last were-to-embvp)))
          (verb (car vp)))
       ;; add 'do.aux-s' if verb is not 'be.v' or an auxiliary,
-      ;; add negative as necessary.
+      ;; add adverbial as necessary.
       (cond
-        ;; Don't add do.aux-s but add neg.
-        ((and (or (aux? verb) (eq verb 'be.v)) (not (null neg)))
-         (cons `(cf ,verb) (cons 'not.adv-s (cdr vp))))
+        ;; Don't add do.aux-s but add adv.
+        ((and (or (aux? verb) (eq verb 'be.v)) (not (null adv)))
+         (cons `(cf ,verb) (cons adv (cdr vp))))
         ;; Add do.aux-s and neg.
-        ((not (null neg))
-         (cons '(cf do.aux-s) `(not.adv-s ,vp)))
-        ;; No neg.
+        ((and (not (null adv)) (member adv '(not not.adv-s))) 
+         (cons '(cf do.aux-s) `(,adv ,vp)))
+        ;; Add do.aux-s and adv.
+        ((not (null adv))
+         (list adv (cons `(cf ,verb) (cdr vp))))
+        ;; No adv.
         (t
          (cons `(cf ,verb) (cdr vp))))))
+
+
+
+(defparameter *ttt-flatten-adv-s*
+  '(/ (_!1 ((!2 adv-s?) _+3) _*4)
+      (_!1 !2 _+3 _*4)))
+
+(defun flatten-adv-s (ulf)
+;`````````````````````````
+; Flattens all adv-s in a ULF.
+;
+; (x (*.adv-s y) z) -> (x *.adv-s y z)
+  (ttt:apply-rule *ttt-flatten-adv-s* ulf))  
+
 
 

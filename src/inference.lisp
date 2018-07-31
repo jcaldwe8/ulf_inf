@@ -25,6 +25,14 @@
           *initial-ulf-normalization-fns* 
           :initial-value ulf))
 
+;; Functions for normalizing output.
+(defparameter *output-ulf-normalization-fns*
+  (list #'flatten-adv-s))
+(defun output-ulf-normalization (ulf)
+  (reduce #'(lambda (acc new) (funcall new acc))
+          *output-ulf-normalization-fns*
+          :initial-value ulf))
+
 ;; Functions that perform inferences from premacro ULFs.
 (defparameter *premacro-inference-fns*
   (list #'premacro-request-inferences
@@ -55,7 +63,7 @@
 ;; Returns a list of inferences.
 (defun infer-all (ulf)
   (let ((ulf1 (initial-ulf-normalization ulf))
-        ulf1m ulf2 preinfs postinfs recableinfs recinfs)
+        ulf1m ulf2 preinfs postinfs recableinfs recinfs rawinfs)
     ;; Perform preliminary inferences.
     (setq preinfs (premacro-inferences ulf1))
     ;; Expand macros and fully normalize.
@@ -69,5 +77,6 @@
     (setq recinfs (apply #'append
                          (mapcar #'infer-all recableinfs)))
     ;; Return all inferences in a list.
-    (append preinfs postinfs recinfs)))
+    (setq rawinfs (append preinfs postinfs recinfs))
+    (mapcar #'output-ulf-normalization rawinfs)))
 

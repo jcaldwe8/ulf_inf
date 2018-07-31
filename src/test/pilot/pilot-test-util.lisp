@@ -13,5 +13,6 @@
 ;; Run the selected subset of rules on the given ULF and return a list of:
 ;; (ulf result1 result2 ...)
 (defun run-subset-rules (ulf)
-  (car (results-from-applying-rules *rule-names* (list ulf) t)))
+  (mapcar #'flatten-adv-s
+          (car (results-from-applying-rules *rule-names* (list ulf) t))))
 

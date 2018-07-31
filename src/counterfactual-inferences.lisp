@@ -120,14 +120,15 @@
   '(/ (if.ps (_!1 ((cf (!3 were.v be.v))
                    _? ; possible negation 
                    (to _+2))))
-      (if.ps (_!1 _? (remove-were-to! (_+2))))))
+      (if.ps (_!1 (remove-were-to! (_? _+2))))))
 
 (defparameter *uninvert-if-were-to-inv*
 ;``````````````````````````````````````
 ; Were I to go to sleep -> If I were to go to sleep
 ; Were I ever to go sleep -> If I were ever to go to sleep
-  '(/ ((cf (!3 were.v be.v)) _! _? (to _+2))
-      (if.ps (_! _? (to _+2)))))
+  '(/ ((cf (!3 were.v be.v)) (!1 ~ adv?) ; TODO: replace [~ adv?] with [np?] 
+                             (?4 adv?) (to _+2))
+      (if.ps (!1 ((cf !3) ?4 (to _+2))))))
 
 ;; Counterfactual-specific preprocessing.
 ;; 1. If x were to y, ... -> If x y, ...

@@ -12,8 +12,9 @@
 ;; Define here in case we modify 'counterfactual-preprocess' in ways that
 ;; don't follow assumptions made in this test.
 (defun run-were-to-preproc (ulf)
-  (ttt:apply-rule *preprocess-if-were-to*
-                  (ttt:apply-rule *uninvert-if-were-to-inv* ulf)))
+  (flatten-adv-s   
+    (ttt:apply-rule *preprocess-if-were-to*
+                    (ttt:apply-rule *uninvert-if-were-to-inv* ulf))))
 
 ;````````````````````````````````````
 ; If I were to go to sleep -> If I went to sleep
@@ -77,6 +78,10 @@
       '((If.ps (I.pro ((cf be.v) ever.adv-s (= (a.d person.n)))))
         (I.pro ((cf will.aux-s) (be.v (able.a (to talk.v))))))
       (run-were-to-preproc everbeaperson))
+    (assert-equal
+      '((If.ps (I.pro ((cf be.v) not.adv-s (= (a.d person.n)))))
+        (I.pro ((cf will.aux-s) (be.v (able.a (to talk.v))))))
+      (run-were-to-preproc notbeaperson))
     (assert-equal
       '((If.ps (I.pro ((cf be.v) not.adv-s (= (a.d person.n)))))
         (I.pro ((cf will.aux-s) (be.v (able.a (to talk.v))))))
@@ -166,5 +171,5 @@
       (run-were-to-preproc noifwereto2))
     (assert-equal
       noweretoif
-      (run-wereto-preproc noweretoif))))
+      (run-were-to-preproc noweretoif))))
 
