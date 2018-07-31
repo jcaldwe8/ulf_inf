@@ -343,12 +343,23 @@
 
 
 (setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N)))) ;VP
-;; E.G. '((PRES KNOW.V) (THAT (|MARY| ((PAST GO_TO.V) (THE.D FAIR.N)))))
 (setq ulfpart2 'CAT.N) ;N
 (setq ulfpart2-par (list 'plur ulfpart2)) ;plur N
 (setq ulfpart3 (list 'all.d ulfpart2-par)) ;det + N
 (setq compulf (list ulfpart3 ulfpart1)) ;Formula
 (setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N))))) ;
+
+;; ((the.d man.n) ((past know.v) (that (|Mary| ((past be.v) cold.a)))))
+(setq ulf2part1 '((PRES KNOW.V) (THAT (|MARY| ((PAST BE.V) COLD.A)))))
+(setq ulf2part2 '(THE.D MAN.N))
+(setq compulf2 (list ulf2part2 ulf2part1))
+
+;; ((the.d man.n) ((past do.aux-s) not (know.v (that (|Mary| ((past be.v) cold.a))))))
+(setq ulf3part1 '(KNOW.V (THAT (|MARY| ((PAST BE.V) COLD.A)))))
+(setq ulf3part2 '(THE.D MAN.N))
+(setq ulf3part3 (list '(PAST DO.AUX-S) 'NOT ulf3part1))
+(setq compulf3 (list ulf3part2 ulf3part3))
+
 ; Expected output from these.
 ; (get-segment-polarity ulfpart1 compulf compulf)
 ; +
@@ -364,5 +375,9 @@
 ; NIL
 ; (get-segment-polarity ulfpart2 nil compulf)
 ; NIL
+; (get-segment-polarity ulf2part1 compulf2 compulf2)
+; +
+; (get-segment-polarity ulf3part1 ulf3part3 compulf3)
+; - [?]
 
 
