@@ -150,17 +150,19 @@
            (I.pro ((cf will.aux-s) (be.v (able.a (to succeed.v))))))
   '((i.pro ((pres be.v) not.adv-s you.pro))))
 
-(define-len-pilot-subset-test
-  test-subset-if-17955
-  "If you were to fall from that bridge, it would be almost impossible to rescue you."
-  (:cf :if-then)
-  '((If.ps (you.pro ((cf were.v) 
-                     (to (fall.v (adv-a (from.p (that.d bridge.n)))))))) 
-           (it.pro ((cf will.aux-s) (be.v 
-            (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
-  '((you.pro
-       ((pres will.aux-s) not.adv-s
-        (fall.v (adv-a (from.p (that.d bridge.n))))))))
+; GK(7-31-2018): This requires preprocessing which isn't in the subset rules.
+;                This is tested in the full pipeline, 'infer-all' tests.
+;(define-len-pilot-subset-test
+;  test-subset-if-17955
+;  "If you were to fall from that bridge, it would be almost impossible to rescue you."
+;  (:cf :if-then)
+;  '((If.ps (you.pro ((cf were.v) 
+;                     (to (fall.v (adv-a (from.p (that.d bridge.n)))))))) 
+;           (it.pro ((cf will.aux-s) (be.v 
+;            (almost.adv-a (impossible.a (adv-a (to.p (rescue.v you.pro)))))))))
+;  '((you.pro
+;       ((pres will.aux-s) not.adv-s
+;        (fall.v (adv-a (from.p (that.d bridge.n))))))))
 
 (define-len-pilot-subset-test
   test-subset-if-18636
