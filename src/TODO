@@ -1,10 +1,18 @@
-1. Port the rest of the tests in test/pilot
-2. Update inference pipeline according to needs of tests
+1. Update inference pipeline according to needs of tests
   2a. The consequent of if-then statements are not necessarily counterfactuals, sometimes they only make sense given the antecedent.
   2b. Future less likely instances have "probably will not" inferences
   2c. (past will.aux-s) --[normalizes to]--> (past do.aux-s).  
-      "Having worked too hard, John would not go to the party" -> "John did not go to the party".
-3. Extend tests with undergrad tests (ask them to add it after showing how to
-   do it).
-4. Add tests from sampling/discussion.
+    "Having worked too hard, John would not go to the party" -> "John did not go to the party".
 
+  Figure out what to do about "am to" in counterfactuals.
+    "If I were/was to go home" ==? "If I went home" ; in this case we would want to preprocess out the "was to"
+  This seems right because "am to" *can* be stative is the embedded VP is stative:
+    "If I were to be a dog" -> "I am not a dog"
+    "If I were to go home" -> "I probably won't go home"
+
+
+2. Extend tests with undergrad tests (ask them to add it after showing how to
+   do it).
+3. Add tests from sampling/discussion.
+4. Add full testset from pilot experiments into unit tests.
+5. Add unit tests for non-cf-version! and negate-vp! since they're fairly complicated functions.
