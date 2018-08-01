@@ -6,5 +6,6 @@
 (ql:quickload :alexandria)
 
 (load "../../ttt/src/load.lisp")
+(setq *dynamic-polarity-dir* ".")
 (load "dynamic-polarity.lisp")
 

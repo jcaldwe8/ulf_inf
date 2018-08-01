@@ -24,3 +24,10 @@ Dependencies:
   quicklisp - see https://www.quicklisp.org for download instructions
   Java 8
 
+The init file needs the following lines (with *dynamic-polarity-dir* set appropriately).
+
+(ql:quickload :cl-strings)
+(ql:quickload :alexandria)
+(setq *dynamic-polarity-dir* "dynamic-polarity")
+(load (concatenate 'string *dynamic-polarity-dir* "/dynamic-polarity.lisp"))
+
