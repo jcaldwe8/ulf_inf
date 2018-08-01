@@ -20,7 +20,7 @@
 ;;
 (defun load-uppen-morph (sexp-filepath)
   (print "Loading Uppen Morph data...")
-  (let ((rawentries (read-file-objects2 sexp-filepath))
+  (let ((rawentries (read-file-objects sexp-filepath))
         (ht (make-hash-table :test #'equal))
         entries)
     ;; Reverse the entries: <lemma> -> (<token> <POS> ([features]))
