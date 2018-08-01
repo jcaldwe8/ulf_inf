@@ -126,6 +126,7 @@
         (close raw-fh)
         ;; 2. Run shell script
         ;; TODO: suppress shell output (or make a flag for it).
+        ;; TODO: change to run-program or inferior-shell
         (run-shell-command 
           (format nil 
                   (concatenate 'string 
