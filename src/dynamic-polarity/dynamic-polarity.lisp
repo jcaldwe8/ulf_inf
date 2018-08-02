@@ -379,6 +379,3 @@
 (setq ulf3part2 '(THE.D MAN.N))
 (setq ulf3part3 (list '(PAST DO.AUX-S) 'NOT ulf3part1))
 (setq compulf3 (list ulf3part2 ulf3part3))
-
-
-
