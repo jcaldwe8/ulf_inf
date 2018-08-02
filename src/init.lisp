@@ -27,3 +27,8 @@
 ;; Examples.
 (load "example/ttt-function-examples.lisp")
 
+;; Dynamic polarity
+;; GK: please comment this out if not used since it takes some time to load.
+;(load-uppen-morph *uppen-morph-filepath*)
+;(setq *dynamic-polarity-dir* "dynamic-polarity")
+;(load "dynamic-polarity.lisp")
