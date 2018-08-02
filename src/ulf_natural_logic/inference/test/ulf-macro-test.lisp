@@ -1,5 +1,5 @@
 
-(load "test/test-formulas.lisp")
+(load "../ulf_natural_logic/inference/test/test-formulas.lisp")
 
 (defun test-print (fn-name in &key (depolarize nil))
   (let (out)

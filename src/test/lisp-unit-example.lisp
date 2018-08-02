@@ -11,7 +11,7 @@
 ;; Then try to fix some of the failures and run again to see if it worked! (remember to reload the file).
 
 (setq *print-failures* t) ; prints info on failed tests
-;(setq *print-summary* t) ; prints summary of all tests.
+(setq *print-summary* t) ; prints summary of all tests.
 
 ;; Expected behavior: 
 ;;  Recursively replace all strings with "dummy"
@@ -79,5 +79,9 @@
     (list-assert-equal '((a b) c) '((a c) c)) ; expected to introduce failure
     (list-assert-equal '((This.pro ((pres be.v) (a.d (|ULF| formula.n)))))
                        '((This.pro ((pres be.v) (a.d (|ULF| formula.n))))))))
- 
+
+
+
+
+
 
