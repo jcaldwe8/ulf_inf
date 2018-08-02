@@ -105,6 +105,12 @@
   ;; 4. Reformat into desired format.
   (let* ((tempfile-raw ".natlog_raw.temp")
          (tempfile-ann ".natlog_ann.temp")
+         (full-tempfile-raw (concatenate 'string *dynamic-polarity-dir*
+                                         "/"
+                                         tempfile-raw))
+         (full-tempfile-ann (concatenate 'string *dynamic-polarity-dir*
+                                         "/"
+                                         tempfile-ann))
          raw-fh ann-fh natlog-stranns newstrs)
     
     ;; 1. Write string to temporary file.
@@ -114,25 +120,29 @@
                     strlst))
     (when newstrs
       (progn
-        (setq raw-fh (open tempfile-raw :direction :output))
+        (setq raw-fh (open full-tempfile-raw :direction :output :if-exists :supersede))
         (dolist (str newstrs)
           (write-line str raw-fh))
         (close raw-fh)
         ;; 2. Run shell script
         ;; TODO: suppress shell output (or make a flag for it).
-        (run-shell-command (format nil 
-                                   "./run_natlog.sh ~a ~a" 
-                                   tempfile-raw tempfile-ann))
+        ;; TODO: change to run-program or inferior-shell
+        (run-shell-command 
+          (format nil 
+                  (concatenate 'string 
+                               *dynamic-polarity-dir* 
+                               "/run_natlog.sh ~a ~a ~a") 
+                  *dynamic-polarity-dir* tempfile-raw tempfile-ann))
         ;; 3. Read in tokenized string and annotations
-        (setq ann-fh (open tempfile-ann))
+        (setq ann-fh (open full-tempfile-ann))
         (setq natlog-stranns 
               (mapcar #'(lambda (x) (list (read-line ann-fh)
                                           (read-line ann-fh)))
                       strlst))
         (close ann-fh)
         ;; Delete files.
-        (delete-file tempfile-raw)
-        (delete-file tempfile-ann)))
+        (delete-file full-tempfile-raw)
+        (delete-file full-tempfile-ann)))
     
     ;; 3b. Save new memos and lookup previous memos to combine with new output.
     (if memoize
@@ -342,12 +352,13 @@
                 (annotate-polarity fullulf))))
 
 
-(setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N))))
-(setq ulfpart2 'CAT.N)
-(setq ulfpart2-par (list 'plur ulfpart2))
-(setq ulfpart3 (list 'all.d ulfpart2-par))
-(setq compulf (list ulfpart3 ulfpart1))
-(setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N)))))
+(setq ulfpart1 '((PRES HAVE.V) (K (PLUR TAIL.N)))) ;VP
+;; E.G. '((PRES KNOW.V) (THAT (|MARY| ((PAST GO_TO.V) (THE.D FAIR.N)))))
+(setq ulfpart2 'CAT.N) ;N
+(setq ulfpart2-par (list 'plur ulfpart2)) ;plur N
+(setq ulfpart3 (list 'all.d ulfpart2-par)) ;det + N
+(setq compulf (list ulfpart3 ulfpart1)) ;Formula
+(setq diffulf '((ALL.D (PLUR CAT.N)) ((PRES HAVE.V) (K (PLUR TAIL.N))))) ;
 ; Expected output from these.
 ; (get-segment-polarity ulfpart1 compulf compulf)
 ; +
@@ -363,5 +374,11 @@
 ; NIL
 ; (get-segment-polarity ulfpart2 nil compulf)
 ; NIL
+
+(setq ulf3part1 '(KNOW.V (THAT (|MARY| ((PAST BE.V) COLD.A)))))
+(setq ulf3part2 '(THE.D MAN.N))
+(setq ulf3part3 (list '(PAST DO.AUX-S) 'NOT ulf3part1))
+(setq compulf3 (list ulf3part2 ulf3part3))
+
 
 

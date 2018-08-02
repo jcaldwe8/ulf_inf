@@ -15,6 +15,12 @@
 (load "counterfactual-inferences.lisp")
 (load "request-inferences.lisp")
 
+;; Dynamic Polarity.
+(ql:quickload :cl-strings)
+(ql:quickload :alexandria)
+(setq *dynamic-polarity-dir* "dynamic-polarity")
+(load (concatenate 'string *dynamic-polarity-dir* "/dynamic-polarity.lisp"))
+
 ;; Top-level inference code.
 (load "inference.lisp")
 

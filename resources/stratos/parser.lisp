@@ -1,3 +1,9 @@
+;;; Ben Kane 7-17-2018
+;;;
+;;; Parser tool used to read in .lisp file containing implicative inference rules in Epilog form and
+;;; convert them to TTT rules. Rules are stored as instances of "implicative-rule-ttt" class, with each
+;;; instance containing the type ('S or 'S-PRS (presuppositional)) and polarity of each rule.
+
 (load "../../ttt/src/load")
 
 ;; Read in imp axiom code line-by-line, ignoring empty lines and comments, and return a list of strings for each line of code
@@ -52,6 +58,9 @@
     '((/ ;; ((x VERB.V (that w)) => w)
       '(_! (!1 (x verb? (that w)) (not (x verb? (that w)))) (!2 pos-neg? (modf? pos-neg?)))
       (map-vars! '(/ (x ((! verb? (tense? verb?)) (that w))) !2)))
+    (/ ;; ((it VERB.V (that w)) => (probably w))
+      '(_! (!1 (it verb? (that w)) (not (it verb? (that w)))) (!2 pos-neg? (modf? pos-neg?)))
+      (map-vars! '(/ (it ((! verb? (tense? verb?)) (that w))) !2)))
     (/ ;; ((x (pasv VERB.V) (that w)) => w)
       '(_! (!1 (x (pasv verb?) (that w)) (not (x (pasv verb?) (that w)))) (!2 pos-neg? (modf? pos-neg?)))
       (map-vars! '(/ (x ((pasv verb?) (that w))) !2)))
@@ -79,6 +88,9 @@
     (/ ;; ((x VERB.V y (ka p)) => (x p))
       '(_! (!1 (x verb? y (ka p)) (not (x verb? y (ka p)))) (!2 pos-neg? (modf? pos-neg?)))
       (map-vars! '(/ (x ((! verb? (tense? verb?)) (! (+ y (ka p)) (y (ka p))))) !2)))
+    (/ ;; ((x VERB.V y (for (ka p))) => (x believe.v (that (y p))))
+      '(_! (!1 (x verb? y (for (ka p))) (not (x verb? y (for (ka p))))) (!2 pos-neg? (modf? pos-neg?)))
+      (map-vars! '(/ (x ((! verb? (tense? verb?)) (! (+ y (for (ka p))) (y (for (ka p)))))) !2)))
     (/ ;; ((x VERB.V y) => (x is-a y))
       '(_! (!1 (x verb? y) (not (x verb? y))) (!2 pos-neg? (modf? pos-neg?)))
       (map-vars! '(/ (x ((! verb? (tense? verb?)) y)) !2))))
@@ -88,13 +100,13 @@
 (defun to-classes (rules)
   (append
     '((defun tense? (l) (if (member l '(PAST PRES PERF PROG)) t nil))
-    (defclass axiom-ttt ()
+    (defclass implicative-rule-ttt ()
       ((type \:initarg \:type \:initform 'S)
       (polarity \:initarg \:polarity \:initform '+)
       (rule \:initarg \:rule))))  
-    (list (list 'defparameter '*inference-rules*
+    (list (list 'defparameter '*infer-from-implicative-rules*
       (append '(list) (mapcar (lambda (x)
-        (list 'make-instance ''axiom-ttt '\:type (first x) '\:polarity (second x) '\:rule (third x)))
+        (list 'make-instance ''implicative-rule-ttt '\:type (first x) '\:polarity (second x) '\:rule (third x)))
       rules))))))
 
 ;; Remove indent in string of code
@@ -148,7 +160,9 @@
 
 ;; Checks if symbol is positive (e.g. 'w') or negative (e.g. '(not w)')
 (defun pos-neg? (symbol)
-  (let ((allowed '(w (x p) (y p) (y (can.v p)) (x is-a y))))
+  (let ((allowed '(w (x p) (y p) (y (can.v p)) (x is-a y) (x believe.v (that w))
+    (x believe.v (that (probably w))) (x believe.v (that (probably (not w))))
+    (x believe.v (that (y p))) (x (at-least-occasionally.adv p)) (x want.v (ka p)))))
   (if (or
     (and (listp symbol) (= (length symbol) 2) (equalp (first symbol) 'not) (member (second symbol) allowed :test 'equal))
     (member symbol allowed :test 'equal)) t nil)))
