@@ -46,8 +46,18 @@
     (if (not poscnjs) (return-from um-conjugate lemma))
     (setq sorted (sort poscnjs 
                        #'(lambda (x y)
-                           (> (length (intersection (third x) features))
-                              (length (intersection (third y) features))))))
+                           (or
+                             ;; Select the entry with most overlapping features
+                             ;; with query
+                             (> (length (intersection (third x) features))
+                                (length (intersection (third y) features)))
+                             ;; If multiple overlap the same amount, choose the
+                             ;; one with fewer features.
+                             (and 
+                               (= (length (intersection (third x) features))
+                                  (length (intersection (third y) features)))
+                               (< (length (third x))
+                                  (length (third y))))))))
     (caar sorted)))
 
 
