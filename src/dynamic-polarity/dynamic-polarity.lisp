@@ -52,6 +52,24 @@
       (subseq split 0 (max 1 (1- (length split))))
       :separator ".")))
 
+;; Splits the symbol at the last "." and returns the two values.
+(defun split-by-suffix (sym)
+  (let* ((atoms (split-into-atoms sym))
+         (dotpos (position '|.| atoms :from-end t)))
+    (if dotpos
+      (values (fuse-into-atom (slice atoms 0 dotpos))
+              (fuse-into-atom (slice atoms (+ dotpos 1) (length atoms))))
+      (values sym nil))))
+
+;; Takes a word symbol and a suffix and merges them together.
+(defun add-suffix (word suffix)
+  (if (not suffix) (return-from add-suffix word))
+  (fuse-into-atom
+    (concatenate 'list
+                 (split-into-atoms word)
+                 (list #\.)
+                 (split-into-atoms suffix))))
+
 ;; Returns t if 'token' is an atomic ULF element that has a corresponding token
 ;; in the surface string and return nil otherwise.  e.g.,
 ;;   man.n -> t
@@ -66,6 +84,68 @@
       (member token'(that not and or to))))
 
 
+;; Maps the ULF suffix to a pure POS symbol for UPPEN MORPH.
+;; TODO: complete...
+(defun suffix-to-pos (suffix)
+  (case suffix
+    (adv-a 'adv)
+    (adv-e 'adv)
+    (adv-s 'adv)
+    (adv-f 'adv)
+    ; Uppen morph calls auxiliaries verbs.
+    (aux-s 'v)
+    (aux-v 'v)
+    ;(aux-s 'aux)
+    ;(aux-v 'aux)
+    (otherwise suffix)))
+
+
+(defun pluralize! (ulf)
+;``````````````````````
+; Converts the given ULF to the plural version of the surface form.
+  (cond
+    ((null ulf) nil)
+    ((atom ulf)
+     (multiple-value-bind (word suffix) (split-by-suffix ulf)
+       (add-suffix 
+         (um-conjugate word (suffix-to-pos suffix) (list '3pl))
+         suffix)))
+    ;; TODO: handle recursive cases...
+    (t ulf)))
+
+(defun add-tense! (ulf)
+;``````````````````````
+; Converts the given ULF to the tensed surface form.
+; TODO: handle prog, perf, pasv...
+  (cond 
+    ;; Simple case where there's tense and a simple verb.
+    ((and (= 2 (length ulf)) 
+          (tense? (first ulf))
+          (or (verb? (second ulf))
+              (aux? (second ulf))))
+     (let ((tense (first ulf))
+           (verb (second ulf)))
+       (multiple-value-bind (word suffix) (split-by-suffix verb)
+         (add-suffix
+           (um-conjugate word (suffix-to-pos suffix) (list tense))
+           suffix))))
+    ;; Ignore all other cases for now.
+    (t ulf)))
+
+(defparameter *plur-to-surface*
+  '(/ (plur _!)
+      (pluralize! _!)))
+(defparameter *tense-to-surface*
+  '(/ ((!1 tense?) _!2)
+      (add-tense! (!1 _!2))))
+
+(defun add-morphology (ulf)
+  (ttt:apply-rules (list *plur-to-surface*
+                         *tense-to-surface*)
+                   ulf :max-n 500
+                   :rule-order :slow-forward))
+
+
 ;; Maps a ULF formula to a corresponding surface string.
 ;; NB: currently this is incomplete and not fluent.
 (defun ulf-to-string (ulf)
@@ -77,14 +157,17 @@
   ;; TODO: just have a canonicalization function for introducing implicit
   ;; suffixes and another canonicalization function for identifying words that
   ;; appear in the surface form.
-  (let* ((surface-only (remove-if-not #'is-surface-token?
-                                      (alexandria:flatten ulf)))
+  (let* ((morph-added (add-morphology ulf))
+         (surface-only (remove-if-not #'is-surface-token?
+                                      (alexandria:flatten morph-added)))
          (stringified (mapcar #'sym2str surface-only))
          ;(dotsplit (mapcar #'(lambda (x) (cl-strings:split x ".")) stringified))
          ;(pruned (mapcar #'(lambda (x) (subseq x 0 (max 1 (1- (length x))))) dotsplit))
          ;(rejoined (mapcar #'(lambda (x) (cl-strings:join x :separator ".")) pruned))
          (rejoined (mapcar #'strip-suffix stringified))
          (postform (mapcar #'post-format-ulf-string rejoined)))
+    (format t "morph-added ~s~%" morph-added)
+    (format t "Surface-only ~s~%" surface-only)
     (cl-strings:join postform :separator " ")))
 
 
@@ -103,8 +186,8 @@
   ;; 2. Run shell script.
   ;; 3. Read in tokenized string and annotations.
   ;; 4. Reformat into desired format.
-  (let* ((tempfile-raw ".natlog_raw.temp")
-         (tempfile-ann ".natlog_ann.temp")
+  (let* ((tempfile-raw ".natlog_raw2.temp")
+         (tempfile-ann ".natlog_ann2.temp")
          (full-tempfile-raw (concatenate 'string *dynamic-polarity-dir*
                                          "/"
                                          tempfile-raw))
@@ -146,10 +229,11 @@
     
     ;; 3b. Save new memos and lookup previous memos to combine with new output.
     (if memoize
-      (dolist (nl-strann natlog-stranns)
-        (let ((nl-str (first nl-strann))
-              (nl-ann (second nl-strann)))
-          (setf (gethash nl-str *run-natlog-memo*) nl-ann))))
+      (dolist (raw-nl-strann (mapcar #'list strlst natlog-stranns))
+        (let ((rawstr (first raw-nl-strann))
+              (nl-str (first (second raw-nl-strann)))
+              (nl-ann (second (second raw-nl-strann))))
+          (setf (gethash rawstr *run-natlog-memo*) nl-ann))))
     (if memoize
       (setq natlog-stranns
             (mapcar #'(lambda (s) (list s (gethash s *run-natlog-memo*)))
@@ -199,7 +283,31 @@
          ;; If nil, return (nil pol)
          ((null u)
           (list nil p))
+         ;; TODO: need to handle conjugations...
+         ;(ttt:match-expr '(plur _!) u) ; call um-conjugate and compare...
+         ;(ttt:match-expr '(tense? _!) u) ; call um-conjugate and compare...
+         ;; Plural nouns.
+         ((and (ttt:match-expr '(plur _!) u)
+               (atom (second u)))
+          (let ((plur (split-by-suffix (pluralize! (second u))))
+                (ptok (caar p))
+                (pp (cadar p)))
+            (if (search ptok (string-downcase (string plur)))
+              (list (list (list (first u) pp)
+                          (list (second u) pp)) (cdr p))
+              (list u p))))
 
+         ;; Tensed tokens.
+         ((and (ttt:match-expr '(tense? _!) u)
+               (atom (second u)))
+          (let ((tensed (split-by-suffix (add-tense! u)))
+                (ptok (caar p))
+                (pp (cadar p)))
+            (if (search ptok (string-downcase (string tensed)))
+              (list (list (list (first u) pp)
+                          (list (second u) pp))(cdr p))
+              (list u p))))
+            
          ;; If token, do token comparison.
          ((and (atom u) (is-surface-token? u))
           (let ((ptok (caar p))
@@ -243,6 +351,8 @@
 ;; corresponding to surface strings.
 ;;
 (defun infer-polarities (ulf)
+  (if *debug-ulf-inf*
+    (format t "In infer-polarities~%ulf: ~s~%" ulf))
   (labels
     (
      ;; Returns t if x is a polarized item.
@@ -375,7 +485,7 @@
 ; (get-segment-polarity ulfpart2 nil compulf)
 ; NIL
 
-(setq ulf3part1 '(KNOW.V (THAT (|MARY| ((PAST BE.V) COLD.A)))))
+(setq ulf3part1 '(KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))
 (setq ulf3part2 '(THE.D MAN.N))
 (setq ulf3part3 (list '(PAST DO.AUX-S) 'NOT ulf3part1))
 (setq compulf3 (list ulf3part2 ulf3part3))
