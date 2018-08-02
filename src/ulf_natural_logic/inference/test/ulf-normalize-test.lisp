@@ -1,5 +1,5 @@
 
-(load "test/test-formulas.lisp")
+(load "../ulf_natural_logic/inference/test/test-formulas.lisp")
 
 (setq lex-det-tests
       (list 
