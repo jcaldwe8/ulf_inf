@@ -14,6 +14,8 @@
 ;; Pheomenon-specific code.
 (load "counterfactual-inferences.lisp")
 (load "request-inferences.lisp")
+(load "implicative-inferences.lisp")
+(load "implicative-weak-inferences.lisp")
 
 ;; Dynamic Polarity.
 (ql:quickload :cl-strings)
