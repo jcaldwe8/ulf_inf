@@ -104,7 +104,7 @@ def write_entries(filepath, entries):
   out.close()
 
 def linfo_to_sexp(linfo):
-  return "(" + linfo.lemma + " " + linfo.pos + " " + "(" + " ".join([f for f in linfo.features]) + "))"
+  return "(" + linfo.lemma.replace(" ", "") + " " + linfo.pos + " " + "(" + " ".join([f for f in linfo.features]) + "))"
 
 def mentry_to_sexp(mentry):
   return "(" + mentry.token + " " + "(" + " ".join([linfo_to_sexp(linfo) for linfo in mentry.lemmas]) + "))"
