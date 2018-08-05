@@ -25,9 +25,14 @@
   ;; allocate extra memory for the intermediate data.
   (let ((in (open sexp-filepath))
         (ht (make-hash-table :test #'equal :size 80000))
-        topwords)
+        topwords-ht)
+
     (if limit10000
-      (setq topwords (read-file-objects *top10000-word-filepath*)))
+      ;; Set topwords-ht as a hashtable from word in list -> t.
+      (setq topwords-ht
+            (alexandria:alist-hash-table
+              (mapcar #'(lambda (x) (cons x t))
+                      (read-file-objects *top10000-word-filepath*)))))
 
     (when in
       (loop for e = (read in nil)
@@ -40,7 +45,7 @@
                       (newentry (cons token (cdr lemmainfo))))
                   (if (and (not (eql pos 'propn)) ; ignore proper nouns
                            (or (not limit10000)   ; not limited or member of limit list
-                               (member lemma topwords :test #'eq)))
+                               (gethash lemma topwords-ht)))
                     (setf (gethash lemma ht)
                           (cons newentry (gethash lemma ht))))))))
       (close in)
