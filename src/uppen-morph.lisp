@@ -50,6 +50,9 @@
                           (cons newentry (gethash lemma ht))))))))
       (close in)
       (setq *uppen-morph-data* ht))
+
+    ;; Force garbage collect since this function has a lot of overhead.
+    (excl:gc)
     (print "Done!")))
 
 
