@@ -24,7 +24,8 @@
   ;; Build the data structure as we read the objects so we don't need to 
   ;; allocate extra memory for the intermediate data.
   (let ((in (open sexp-filepath))
-        (ht (make-hash-table :test #'equal :size 80000))
+        (ht (make-hash-table :test #'equal 
+                             :size (if limit10000 6000 80000)))
         topwords-ht)
 
     (if limit10000
