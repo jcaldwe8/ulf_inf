@@ -11,6 +11,8 @@
 
 (setq *uppen-morph-filepath* 
       "../resources/uppen_morph_analysis/morph_english.sexp")
+(setq *top10000-word-filepath*
+      "../resources/google-10000-english.txt")
 (load "uppen-morph.lisp")
 
 
@@ -29,6 +31,6 @@
 
 ;; Dynamic polarity
 ;; GK: please comment this out if not used since it takes some time to load.
-;(load-uppen-morph *uppen-morph-filepath*)
+(load-uppen-morph *uppen-morph-filepath*)
 ;(setq *dynamic-polarity-dir* "dynamic-polarity")
 ;(load "dynamic-polarity.lisp")

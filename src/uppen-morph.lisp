@@ -18,21 +18,35 @@
 ;; The stored hashtable will have the structure:
 ;;  <lemma> -> ((<token> <POS> ([list of features])) ...)
 ;;
-(defun load-uppen-morph (sexp-filepath)
+(defun load-uppen-morph (sexp-filepath &optional (limit10000 t))
   (print "Loading Uppen Morph data...")
-  (let ((rawentries (read-file-objects sexp-filepath))
-        (ht (make-hash-table :test #'equal))
-        entries)
-    ;; Reverse the entries: <lemma> -> (<token> <POS> ([features]))
-    (dolist (e rawentries)
-      ;(print e)
-      (let* ((token (car e))
-             (lemma (caaadr e))
-             (newentry (cons token (cdaadr e))))
-        (setf (gethash lemma ht)
-              (cons newentry (gethash lemma ht)))))
-    (setq *uppen-morph-data* ht))
-  (print "Done!"))
+
+  ;; Build the data structure as we read the objects so we don't need to 
+  ;; allocate extra memory for the intermediate data.
+  (let ((in (open sexp-filepath))
+        (ht (make-hash-table :test #'equal :size 80000))
+        topwords)
+    (if limit10000
+      (setq topwords (read-file-objects *top10000-word-filepath*)))
+
+    (when in
+      (loop for e = (read in nil)
+            while e do
+            (let* ((token (car e))
+                   (lemmainfos (cadr e)))
+              (dolist (lemmainfo lemmainfos)
+                (let ((lemma (first lemmainfo))
+                      (pos (second lemmainfo))
+                      (newentry (cons token (cdr lemmainfo))))
+                  (if (and (not (eql pos 'propn)) ; ignore proper nouns
+                           (or (not limit10000)   ; not limited or member of limit list
+                               (member lemma topwords :test #'eq)))
+                    (setf (gethash lemma ht)
+                          (cons newentry (gethash lemma ht))))))))
+      (close in)
+      (setq *uppen-morph-data* ht))
+    (print "Done!")))
+
 
 ;; Conjugates the given lemma and POS into the construction with the given
 ;; features.  If none are found, it tries to guess.  If results are found, 
@@ -62,5 +76,44 @@
 
 
 
+;; Function used once to make POS to id mapping.
+(defun list-poses (sexp-filepath)
+  (print "Loading Uppen Morph data...")
+  ;; Build the data structure as we read the objects so we don't need to 
+  ;; allocate extra memory for the intermediate data.
+  (let ((in (open sexp-filepath))
+        poses)
+    (when in
+      (loop for e = (read in nil)
+            while e do
+            (let* ((token (car e))
+                   (lemmainfos (cadr e)))
+              (dolist (lemmainfo lemmainfos)
+                (let ((pos (second lemmainfo)))
+                  (if (not (member pos poses))
+                    (setq poses (cons pos poses)))))))
+      (close in))
+    (print "Done!")
+    poses))
 
+;; Function used once to make Feature to id mapping.
+(defun list-features (sexp-filepath)
+  (print "Loading Uppen Morph data...")
+  ;; Build the data structure as we read the objects so we don't need to 
+  ;; allocate extra memory for the intermediate data.
+  (let ((in (open sexp-filepath))
+        featurelst)
+    (when in
+      (loop for e = (read in nil)
+            while e do
+            (let* ((token (car e))
+                   (lemmainfos (cadr e)))
+              (dolist (lemmainfo lemmainfos)
+                (let ((features (third lemmainfo)))
+                  (dolist (f features)
+                    (if (not (member f featurelst))
+                      (setq featurelst (cons f featurelst))))))))
+            (close in))
+      (print "Done!")
+      featurelst))
 

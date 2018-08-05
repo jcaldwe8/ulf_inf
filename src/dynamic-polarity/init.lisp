@@ -16,6 +16,8 @@
 
 (setq *uppen-morph-filepath*
       "../../resources/uppen_morph_analysis/morph_english.sexp")
+(setq *top10000-word-filepath*
+      "../../resources/google-10000-english.txt")
 (load "../uppen-morph.lisp")
 (load-uppen-morph *uppen-morph-filepath*)
 
