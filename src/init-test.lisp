@@ -18,7 +18,7 @@
 
 ;; Load testing code.
 (load "test/test-util.lisp")
-(load "example/lisp-unit-example.lisp")
+;; (load "example/lisp-unit-example.lisp")
 (load "test/pilot/pilot-test-util.lisp")
 (load "test/pilot/len-pilot-tests.lisp")
 (load "test/pilot/gene-devset-tests.lisp")
