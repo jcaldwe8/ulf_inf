@@ -42,3 +42,131 @@
          (t (helper (cdr cur) (+ index 1) acc)))))
     (reverse (helper lst 0 '()))))
 
+
+;; Given ulf, returns segment beginning with verb, its parent, and full ulf
+;; (i.e. the format required for get-segment-polarity in dynamic-polarity/dynamic-polarity.lisp)
+;; Example useage:
+;; (get-ulf-segments-vp '((THE.D MAN.N) ((PAST DO.AUX-S) NOT (KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))))
+;; =>
+;; ((KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A))))
+;;  ((PAST DO.AUX-S) NOT (KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))
+;;  ((THE.D MAN.N) ((PAST DO.AUX-S) NOT (KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))))
+(defun get-ulf-segments-vp (ulf)
+  (let ((res (call-tfdfs-par ulf (until-vp))))
+    (if res (list (first res) (third res) ulf) nil)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; The following functions define a number of recursive
+;;; "thunk"-type functions for tree traversal
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Wrapper function to call tfdfs given evaluation function
+;; Example useage:
+;; (call-tfdfs '((A (B C)) D) (until-m 5)) => (C NIL)
+;; (call-tfdfs '((A (B C)) D) (until-sym 'D)) => (D NIL)
+(defun call-tfdfs (tr fn)
+  (tfdfs tr (funcall fn 0)))
+
+;; Wrapper function to call tfdfs-par given evaluation function
+;; Example useage:
+;; (call-tfdfs-par '((A (B C)) D) (until-m 5)) => (C NIL (B C))
+;; (call-tfdfs-par '((A (B C)) D) (until-sym 'D)) => (D NIL ((A (B C)) D))
+(defun call-tfdfs-par (tr fn)
+  (tfdfs-par tr (funcall fn 0) nil))
+
+;; Depth-first traversal of tree, returns element on which evaluation function 'fn' returns true
+(defun tfdfs (tr fn)
+    (if (null tr) (list nil fn)
+      (let*
+          ((res (funcall fn tr))
+          (evl (first res))
+          (newfn (second res)))
+        (cond
+          (evl (list tr nil))
+          ((atom tr) (list nil newfn))
+          (t
+            (dolist (st tr)
+              (let ((tmpres (tfdfs st newfn)))
+                (if (equalp st '(A B C)) (setq testnewfn newfn))
+                (if (first tmpres)
+                  (return-from tfdfs tmpres))
+                (setq newfn (second tmpres))))
+            (list nil newfn))))))
+
+;; Depth-first traversal of tree, returns element on which evaluation function 'fn' returns true, as
+;; well as that element's parent
+(defun tfdfs-par (tr fn tr-par)
+    (if (null tr) (list nil fn nil)
+      (let*
+          ((res (funcall fn tr))
+          (evl (first res))
+          (newfn (second res)))
+        (cond
+          (evl (list tr nil tr-par))
+          ((atom tr) (list nil newfn tr))
+          (t
+            (dolist (st tr)
+              (let ((tmpres (tfdfs-par st newfn tr)))
+                (if (equalp st '(A B C)) (setq testnewfn newfn))
+                (if (first tmpres)
+                  (return-from tfdfs-par tmpres))
+                (setq newfn (second tmpres))))
+            (list nil newfn tr))))))
+
+;; Depth-first traversal of tree as in tfdfs, but uses car/cdr rather than dolist in traversal
+;; (unused currently)
+(defun tfdfs-car (tr fn)
+  (if (null tr) (list nil fn)
+    (let*
+        ((res (funcall fn tr))
+        (evl (first res))
+        (newfn (second res)) carres)
+      (cond
+        (evl (list tr nil))
+        ((atom tr) (list nil newfn))
+        (t
+          (setq carres (tfdfs-car (car tr) newfn))
+          (if (first (car res)) carres
+            (tfdfs-car (cdr tr) (second carres))))))))
+
+;; Sample tfdfs evaluation function : runs until 'm' increments are reached
+(defun until-m (m)
+  (labels 
+    ((out (n)
+      (lambda (tree)
+        (labels
+          ((n (x)
+            (list (if (= n m) t nil)
+            (out (+ n 1))))
+          ) ; end labels def
+        (n tree))))) #'out))
+
+;; Sample tfdfs evaluation function : runs until symbol 'sym' is reached
+(defun until-sym (sym)
+  (labels
+    ((out (s)
+      (lambda (tree)
+        (labels
+          ((s (x)
+            (list (if (equalp x sym) t nil)
+            (out s)))
+          ) ; end labels def
+        (s tree))))) #'out))
+
+;; Runs until a tree having a verb as the first element is found
+(defun until-vp ()
+  (labels
+    ((out (s)
+      (lambda (tree)
+        (labels
+          ((s (x)
+            (list (if (and (listp x) (is-verb (first x))) t nil)
+            (out s)))
+          ) ; end labels def
+        (s tree))))) #'out))
+
+;; Return true if given symbol is a verb (i.e. ends in .V)
+(defun is-verb (symbol)
+  (cond ((and (symbolp symbol) (search ".V" (string symbol))) t)
+  (t nil)))
