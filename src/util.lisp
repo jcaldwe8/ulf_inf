@@ -42,6 +42,25 @@
          (t (helper (cdr cur) (+ index 1) acc)))))
     (reverse (helper lst 0 '()))))
 
+;; Strips aux verbs and negation from ulf once polarity is extracted
+;; (remove-aux-not '((the.d man.n) ((past do.aux-s) not (know.v (that (| Mary| ((past be.v) cold.a)))))))
+;; =>
+;; ((the.d man.n) (know.v (that (| Mary| ((past be.v) cold.a)))))
+(defun remove-aux-not (ulf)
+  (remove-double-list
+    (cond
+      ((null ulf) nil)
+      ((atom ulf) ulf)
+      ((or (is-aux ulf) (equalp 'NOT ulf)) nil)
+      (t (mapcar (lambda (x) (remove-aux-not x)) ulf)))))
+
+;; Function to recursively remove doubled-up lists (e.g. (remove-double-list '(A ((B C)))) => (A (B C)))
+(defun remove-double-list (tr)
+  (cond
+    ((null tr) nil)
+    ((atom tr) tr)
+    ((and (listp tr) (= 1 (length tr)) (listp (first tr))) (first tr))
+    (t (mapcar (lambda (x) (remove-double-list x)) tr))))
 
 ;; Given ulf, returns segment beginning with verb, its parent, and full ulf
 ;; (i.e. the format required for get-segment-polarity in dynamic-polarity/dynamic-polarity.lisp)
@@ -54,6 +73,20 @@
 (defun get-ulf-segments-vp (ulf)
   (let ((res (call-tfdfs-par ulf (until-vp))))
     (if res (list (first res) (third res) ulf) nil)))
+
+;; Return true if given item is a verb (i.e. ends in .V) or tense+verb (i.e. (PAST *.V))
+(defun is-verb (x)
+  (cond ((and (symbolp x) (search ".V" (string x))) t)
+  ((and (listp x) (= 2 (length x))
+    (symbolp (first x)) (symbolp (second x)) (search ".V" (string (second x)))) t)
+  (t nil)))
+
+;; Return true if given item is a aux-s (i.e. ends in .AUX-S) or tense+aux-s (i.e. (PAST *.AUX-S))
+(defun is-aux (x)
+  (cond ((and (symbolp x) (search ".AUX-S" (string x))) t)
+  ((and (listp x) (= 2 (length x))
+    (symbolp (first x)) (symbolp (second x)) (search ".AUX-S" (string (second x)))) t)
+  (t nil)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -165,8 +198,3 @@
             (out s)))
           ) ; end labels def
         (s tree))))) #'out))
-
-;; Return true if given symbol is a verb (i.e. ends in .V)
-(defun is-verb (symbol)
-  (cond ((and (symbolp symbol) (search ".V" (string symbol))) t)
-  (t nil)))
