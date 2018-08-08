@@ -47,12 +47,11 @@
 ;; =>
 ;; ((the.d man.n) (know.v (that (| Mary| ((past be.v) cold.a)))))
 (defun remove-aux-not (ulf)
-  (remove-double-list
-    (cond
-      ((null ulf) nil)
-      ((atom ulf) ulf)
-      ((or (is-aux ulf) (equalp 'NOT ulf)) nil)
-      (t (mapcar (lambda (x) (remove-aux-not x)) ulf)))))
+  (remove-nil (remove-double-list (cond
+    ((null ulf) nil)
+    ((or (is-aux ulf) (equalp 'NOT ulf)) nil)
+    ((atom ulf) ulf)
+    (t (mapcar (lambda (x) (remove-aux-not x)) ulf))))))
 
 ;; Function to recursively remove doubled-up lists (e.g. (remove-double-list '(A ((B C)))) => (A (B C)))
 (defun remove-double-list (tr)
@@ -61,6 +60,12 @@
     ((atom tr) tr)
     ((and (listp tr) (= 1 (length tr)) (listp (first tr))) (first tr))
     (t (mapcar (lambda (x) (remove-double-list x)) tr))))
+
+;; Function to recursively remove nil from list
+(defun remove-nil (x)
+  (if (listp x)
+    (mapcar #'remove-nil (remove nil x))
+    x))
 
 ;; Given ulf, returns segment beginning with verb, its parent, and full ulf
 ;; (i.e. the format required for get-segment-polarity in dynamic-polarity/dynamic-polarity.lisp)
