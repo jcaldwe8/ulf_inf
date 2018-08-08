@@ -10,7 +10,7 @@
     (mapcar (lambda (x) (if (equalp (slot-value x 'polarity)
       (let ((seg (get-ulf-segments-vp ulf)))
         (get-segment-polarity (first seg) (second seg) (third seg))))
-    (slot-value x 'rule))) *infer-from-implicative-rules*) ulf :shallow t))
+    (slot-value x 'rule))) *infer-from-implicative-rules*) (remove-aux-not ulf) :shallow t))
 
 
 
