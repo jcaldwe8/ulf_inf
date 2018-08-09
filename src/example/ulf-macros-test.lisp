@@ -4,24 +4,12 @@
 (load "../ulf_natural_logic/inference/init.lisp")
 
 
-;;;(defun run-macro-tests (&key (depolarize nil))
-;;;  (test-print #'apply-ulf-macros fracas-test1p :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas5pp :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas5hp :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas6pp :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas6hp :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas16pp :depolarize depolarize)
-;;;  (test-print #'apply-ulf-macros fracas16hp :depolarize depolarize))
-
-
-
 (ql:quickload :lisp-unit)
 (use-package :lisp-unit)
 (setq *print-failures* t)
 (setq *print-summary* t) 
 
 ;; Testing.
-
 
 (define-test test-fracas5pp
     (assert-equal t 
@@ -43,7 +31,7 @@
                          (AND.CC (X7 ((PRES BE.V) ITALIAN.A)) (X7 PERSON.N))))))
                      \.)
                      (apply-ulf-macros fracas5hp))))
-;;failed?
+
 (define-test test-fracas6pp 
     (assert-equal t 
                   (equal? 
@@ -150,8 +138,6 @@
        (equal tr1 tr2)))
    ;; recursion
   ((and (listp tr1) (listp tr2))
-   ;;(and (equal?-helper (car tr1) (car tr2) hash-table) 
-     ;;   (equal?-helper (cdr tr1) (cdr tr2) hash-table)))))
    (reduce #'(lambda (x y) (and x y)) (mapcar #'(lambda (x y) 
                     (equal?-helper x y hash-table)) tr1 tr2)))))
 
