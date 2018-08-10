@@ -13,9 +13,6 @@
              (format t "Depolarized Output: ~s~%" (depolarize out))))
     (format t "~%~%")))
 
-
-
-
 (defun run-macro-tests (&key (depolarize nil))
   (test-print #'apply-ulf-macros fracas-test1p :depolarize depolarize)
   (test-print #'apply-ulf-macros fracas5pp :depolarize depolarize)

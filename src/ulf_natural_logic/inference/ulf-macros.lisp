@@ -299,6 +299,7 @@
         newf))))
 
 
+
 ;; Compress chained lambda expressions.
 (defun is-lambda (f)
   (and 
