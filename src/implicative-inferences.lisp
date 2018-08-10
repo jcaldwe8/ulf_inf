@@ -624,7 +624,7 @@
                     '(/ (_!1 ((! MANAGE.V (TENSE? MANAGE.V)) (KA _!3)))
                         (NOT (_!1 _!3))))
      (MAKE-INSTANCE 'IMPLICATIVE-RULE-TTT :TYPE 'S :POLARITY '- :RULE
-                    '(/ (_!1 ((PAST MEAN.V) (KA _!3))) (_!1 _!3)))
+                    '(/ (_!1 ((! MEAN.V (TENSE? MEAN.V)) (KA _!3))) (_!1 _!3)))
      (MAKE-INSTANCE 'IMPLICATIVE-RULE-TTT :TYPE 'S-PRS :POLARITY '- :RULE
                     '(/ (_!1
                          ((! MENTION.V (TENSE? MENTION.V)) (THAT _!3)))
