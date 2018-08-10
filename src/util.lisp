@@ -46,6 +46,8 @@
 ;; (remove-aux-not '((the.d man.n) ((past do.aux-s) not (know.v (that (| Mary| ((past be.v) cold.a)))))))
 ;; =>
 ;; ((the.d man.n) (know.v (that (| Mary| ((past be.v) cold.a)))))
+
+;; NOTE: prevent from going into (that ...) and (ka ...)
 (defun remove-aux-not (ulf)
   (remove-nil (remove-double-list (cond
     ((null ulf) nil)
