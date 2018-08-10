@@ -53,6 +53,7 @@
     ((null ulf) nil)
     ((or (is-aux ulf) (equalp 'NOT ulf)) nil)
     ((atom ulf) ulf)
+    ((or (equalp (first ulf) 'KA) (equalp (first ulf) 'THAT)) ulf)
     (t (mapcar (lambda (x) (remove-aux-not x)) ulf))))))
 
 ;; Function to recursively remove doubled-up lists (e.g. (remove-double-list '(A ((B C)))) => (A (B C)))
