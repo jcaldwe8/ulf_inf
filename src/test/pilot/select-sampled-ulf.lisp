@@ -226,7 +226,7 @@
              (change.v (his.d plan.n))))
     (he.pro ((past do.aux-s) 
              not.adv-s
-             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))))
+             (know.v (ans-to (what.pro ((past be.v) (about_to.adv-s happen.v)))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-18
