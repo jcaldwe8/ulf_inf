@@ -174,10 +174,11 @@
   "If I were to be born again, I would be a musician"
   '((if.ps (I.pro ((cf were.v) (to ((pasv bear.v) again.adv-s)))))
     (I.pro ((cf will.aux-s) (be.v (= (a.d musician.n))))))
-  '((I.pro ((pres will.aux-s) not
-            ((pasv bear.v) again.adv-s)))
+  '(
     (I.pro ((pres be.v) not.adv-s
-            (= (a.d musician.n))))))
+            (= (a.d musician.n))))
+    (I.pro ((pres will.aux-s) not
+            ((pasv bear.v) again.adv-s)))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-15
@@ -187,8 +188,7 @@
      (you.pro ((cf will.aux-s) (be.v surprised.a))))
   '((I.pro ((pres will.aux-s) not.adv-s
             (tell.v you.pro (the.d truth.n))))
-    (you.pro ((pres will.aux-s) not.adv-s
-              (be.v surprised.a)))))
+    (you.pro ((pres be.v) not.adv-s surprised.a))))
 
 ;;
 ;; Inverted if statements.
@@ -203,12 +203,13 @@
                               ((past be.v) 
                                 (about_to.adv-s happen.v)))))) 
     (he.pro ((cf will.aux-s) (perf (change.v (his.d plan.n)))))) 
-  '((he.pro ((past do.aux-s)
-             not.adv-s
-             (know.v (the.d (what.rel ((past be.v) (about_to.adv-s happen.v)))))))
+  '(
     (he.pro ((past do.aux-s)
              not.adv-s
-             (change.v (his.d plan.n))))))
+             (change.v (his.d plan.n))))
+    (he.pro ((past do.aux-s)
+             not.adv-s
+             (know.v (the.d (what.rel ((past be.v) (about_to.adv-s happen.v)))))))))
 
 ;; v2. -- using ans-to rather than relativizer.
 (define-pilot-select-sampled-test
@@ -219,12 +220,13 @@
              (know.v
                 (ans-to (what.pro ((past be.v) (about_to.adv-s happen.v)))))) 
     (he.pro ((cf will.aux-s) (perf (change.v (his.d plan.n)))))) 
-  '((he.pro ((past do.aux-s) 
-             not.adv-s
-             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))
+  '(
     (he.pro ((past do.aux-s)
              not.adv-s
-             (change.v (his.d plan.n))))))
+             (change.v (his.d plan.n))))
+    (he.pro ((past do.aux-s) 
+             not.adv-s
+             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-18
@@ -235,12 +237,13 @@
                                 ((past be.v) 
                                  (about_to.adv-s happen.v)))))) 
     (they.pro ((cf will.aux-s) (perf (change.v (their.d (plur plan.n))))))) 
-  '((they.pro ((past do.aux-s)
-             not.adv-s
-             (know.v (the.d (what.rel ((past be.v) (about_to.adv-s happen.v)))))))
+  '(
     (they.pro ((past do.aux-s)
              not.adv-s
-             (change.v (their.d plan.n))))))
+             (change.v (their.d plan.n))))
+    (they.pro ((past do.aux-s)
+             not.adv-s
+             (know.v (the.d (what.rel ((past be.v) (about_to.adv-s happen.v)))))))))
 
 ;; v2. -- using ans-to rather than relativizer.
 (define-pilot-select-sampled-test
@@ -251,12 +254,13 @@
                (know.v
                  (ans-to (what.pro ((past be.v) (about_to.adv-s happen.v)))))) 
     (they.pro ((cf will.aux-s) (perf (change.v (their.d (plur plan.n))))))) 
-  '((they.pro ((past do.aux-s) 
-             not.adv-s
-             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))
+  '(
     (they.pro ((past do.aux-s)
              not.adv-s
-             (change.v (their.d plan.n))))))
+             (change.v (their.d plan.n))))
+    (they.pro ((past do.aux-s) 
+             not.adv-s
+             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-20
@@ -275,10 +279,10 @@
   "Had I arrived earlier, I could have seen Kelly."
   '(((cf perf) I.pro (arrive.v earlier.adv-e))
     (I.pro ((cf can.aux-s) (perf (see.v |Kelly|)))))
-  '((I.pro ((past do.aux-s)
+  '((I.pro ((past can.aux-s) not.adv-s (see.v |Kelly|)))
+    (I.pro ((past do.aux-s)
             not.adv-s
             (arrive.v earlier.adv-e)))
-    (I.pro ((past can.aux-s) not.adv-s (see.v |Kelly|)))
     (I.pro ((past do.aux-s) not.adv-s (see.v |Kelly|)))))
 
 (define-pilot-select-sampled-test
@@ -287,9 +291,10 @@
   "Were I you, I would ignore it."
   '(((cf Were.v) I.pro (= you.pro)) 
     (I.pro ((cf will.aux-s) (ignore.v it.pro))))
-  '((I.pro ((pres be.v) not.adv-s (= you.pro)))
+  '(
     ;; Should we include the one below? 
-    (I.pro ((pres will.aux-s) not.adv-s (ignore.v it.pro)))))
+    (I.pro ((pres will.aux-s) not.adv-s (ignore.v it.pro)))
+    (I.pro ((pres be.v) not.adv-s (= you.pro)))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-23
@@ -297,9 +302,10 @@
   "Were I you, I would follow his advice."
   '(((cf Were.v) I.pro (= you.pro)) 
     (I.pro ((cf will.aux-s) (follow.v (his.d advice.n))))) 
-  '((I.pro ((pres be.v) not.adv-s (= you.pro)))
+  '(
     ;; Should we include the one below? 
-    (I.pro ((pres will.aux-s) not.adv-s (follow.v (his.d advice.n))))))
+    (I.pro ((pres will.aux-s) not.adv-s (follow.v (his.d advice.n))))
+    (I.pro ((pres be.v) not.adv-s (= you.pro)))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-24
@@ -307,10 +313,10 @@
   "Had he known the facts, the accident might have been avoided."
   '(((cf perf) he.pro (know.v (the.d (plur fact.n)))) 
     ((the.d accident.n) ((cf might.aux-s) (perf (pasv avoid.v)))))
-  '((I.pro ((past do.aux-s)
+  '(((the.d accident.n) (not.adv-s (pasv avoid.v)))
+    (I.pro ((past do.aux-s)
             not.adv-s 
-            (know.v (the.d (plur fact.n)))))
-    ((the.d accident.n) (not.adv-s (pasv avoid.v)))))
+            (know.v (the.d (plur fact.n)))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-25
@@ -318,12 +324,12 @@
   "Had he known the truth, he would have told me."
   '(((cf perf) he.pro (know.v (the.d truth.n))) 
     (he.pro ((cf will.aux-s) (perf (tell.v me.pro))))) 
-  '((I.pro ((past do.aux-s) 
-            not.adv-s
-            (know.v (the.d truth.n))))
-    (he.pro ((past do.aux-s)
+  '((he.pro ((past do.aux-s)
              not.adv-s
-             (tell.v me.pro)))))
+             (tell.v me.pro)))
+    (I.pro ((past do.aux-s) 
+            not.adv-s
+            (know.v (the.d truth.n))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-26
@@ -331,8 +337,8 @@
   "Were I a bird, I would fly to you."
   '(((cf Were.v) I.pro (= (a.d bird.n))) 
      (I.pro ((cf will.aux-s) (fly.v (adv-a (to.p you.pro)))))) 
-  '((I.pro ((pres be.v) not.adv-s (= (a.d bird.n))))
-    (I.pro ((pres will.aux-s) not.adv-s (fly.v (adv-a (to.p you.pro)))))))
+  '((I.pro ((pres will.aux-s) not.adv-s (fly.v (adv-a (to.p you.pro)))))
+    (I.pro ((pres be.v) not.adv-s (= (a.d bird.n))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-27
@@ -340,8 +346,8 @@
   "Were I in your position, I would oppose that plan."
   '(((cf Were.v) I.pro (in.p (your.d position.n))) 
     (I.pro ((cf will.aux-s) (oppose.v (that.d plan.n)))))
-  '((I.pro ((pres be.v) not.adv-s (in.p (your.d position.n))))
-    (I.pro ((pres do.aux-s) not.adv-s (oppose.v (that.d plan.n))))))
+  '((I.pro ((pres will.aux-s) not.adv-s (oppose.v (that.d plan.n))))
+    (I.pro ((pres be.v) not.adv-s (in.p (your.d position.n))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-28
@@ -382,8 +388,8 @@
   "Had I known about it, I would have told you."
   '(((cf perf) I.pro (know.v (about.p-arg it.pro)))
     (I.pro ((cf will.aux-s) (perf (tell.v you.pro)))))
-  '((I.pro ((past do.aux-s) not.adv-s (know.v (about.p-arg it.pro))))
-    (I.pro ((past do.aux-s) not.adv-s (tell.v you.pro)))))
+  '((I.pro ((past do.aux-s) not.adv-s (tell.v you.pro)))
+    (I.pro ((past do.aux-s) not.adv-s (know.v (about.p-arg it.pro))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-31
@@ -391,17 +397,19 @@
   "Were I in your place I would do the same thing."
   '(((cf Were.v) I.pro (in.p (your.d place.n))) 
     (I.pro ((cf will.aux-s) (do.v (the.d (same.a thing.n)))))) 
-  '((I.pro ((pres be.v) not.adv-s (in.p (your.d place.n))))
-    (I.pro ((pres will.aux-s) not.adv-s (do.v (the.d (same.a thing.n)))))))
+  '((I.pro ((pres will.aux-s) not.adv-s (do.v (the.d (same.a thing.n)))))
+    (I.pro ((pres be.v) not.adv-s (in.p (your.d place.n))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-32
   (:if-inv)
   "Were I in your position, I would do it at once."
-  '(((cf Were.v) I.pro (in.pro (your.d position.n)))
+  '(((cf Were.v) I.pro (in.p (your.d position.n)))
     (I.pro (((cf will.aux-s) (do.v it.pro)) at_once.adv-s))) 
   '((I.pro ((pres be.v) not.adv-s (in.p (your.d position.n))))
-    (I.pro (((pres will.aux-s) not.adv-s (do.v it.pro)) at_once.adv-s))))
+    ))
+    ;; Commented out because of the reference that requires the antecedent truth.
+    ;(I.pro (((pres will.aux-s) not.adv-s (do.v it.pro)) at_once.adv-s))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-33
@@ -409,8 +417,8 @@
   "Were I free from work, I could read these books."
   '(((cf Were.v) I.pro (free.a (adv-a (from.p (k work.n)))))
     (I.pro ((cf can.aux-v) (read.v (these.d (plur book.n)))))) 
-  '((I.pro ((pres be.v) not.adv-s (free.a (adv-a (from.p (k work.n))))))
-    (I.pro ((pres can.aux-v) not.adv-s (read.v (these.d (plur book.n)))))))
+  '((I.pro ((pres can.aux-v) not.adv-s (read.v (these.d (plur book.n)))))
+    (I.pro ((pres be.v) not.adv-s (free.a (adv-a (from.p (k work.n))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-34
@@ -435,7 +443,7 @@
   '((((pres Could.aux-v) you.pro ((call.v again.adv-a) later.adv-e))  
     please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to ((call.v again.adv-a) later.adv-e))))
-    (i.pro ((pres expect.v) you.pro (to ((call.v again.adv-a) later.adv-e))))))
+    (i.pro ((pres expect.v) (that (you.pro ((call.v again.adv-a) later.adv-e)))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-36
@@ -479,7 +487,7 @@
       you.pro
       (turn_on.v (the.d light.n))) please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to (turn_on.v (the.d light.n)))))
-    (i.pro ((pres expect.v) you.pro (to (turn_on.v (the.d light.n)))))))
+    (i.pro ((pres expect.v) (that (you.pro (turn_on.v (the.d light.n))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-40
@@ -661,7 +669,7 @@
             ((cf could.aux-v)
               (go.v (adv-a (to.p (the.d park.n)))
                     (adv-a (with.p you.pro)))))))) 
-  '((i.pro ((pres could.aux-s) not.adv-s
+  '((i.pro ((pres could.aux-v) not.adv-s
             (go.v (adv-a (to.p (the.d park.n)))
                   (adv-a (with.p you.pro)))))))
 
@@ -715,7 +723,7 @@
         (you.pro
           ((cf perf) not.adv-s (tell.v (the.d story.n) (to.p-arg (my.d (mother-of.n *s))))))))) 
   '((you.pro ((past tell.v) (the.d story.n)
-                            (to.p-arg (my.d (mother-of.p *s)))))))
+                            (to.p-arg (my.d (mother-of.n *s)))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-61
@@ -735,5 +743,5 @@
     ((pres wish.v)
       (tht
         ((our.d classroom.n) ((cf were.v) air-conditioned.a)))))
-  '((our.d classroom.n) ((pres be.v) not.adv-s air-conditioned.a)))
+  '(((our.d classroom.n) ((pres be.v) not.adv-s air-conditioned.a))))
 
