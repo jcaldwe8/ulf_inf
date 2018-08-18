@@ -103,12 +103,31 @@ def write_entries(filepath, entries):
     out.write("\n")
   out.close()
 
+def linfo_to_sexp(linfo):
+  return "(" + linfo.lemma.replace(" ", "") + " " + linfo.pos + " " + "(" + " ".join([f for f in linfo.features]) + "))"
+
+def mentry_to_sexp(mentry):
+  return "(" + mentry.token + " " + "(" + " ".join([linfo_to_sexp(linfo) for linfo in mentry.lemmas]) + "))"
+
+def sexp_escape(string):
+  return string.replace("'", "\\'").replace('"', '\\"').replace(",","\\,").replace(".","\\.").replace(";","\\;").replace("`","\\`")
+
 def main():
   args = parse_arguments()
   entries = load_morph_file(args.source)
   filtered = filter_morph_data(entries, args.poses, args.features)
   write_entries(args.target, filtered)
 
+def mentry_to_sexp_main():
+  args = parse_arguments()
+  entries = load_morph_file(args.source)
+  out = file(args.target, 'w')
+  for e in entries:
+    out.write(sexp_escape(mentry_to_sexp(e)))
+    out.write("\n")
+  out.close()
+
 if __name__ == '__main__':
-  main()
+  #main()
+  mentry_to_sexp_main()
 
