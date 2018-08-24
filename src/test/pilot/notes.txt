@@ -1,0 +1,28 @@
+"Can you ride horses?" -/-> "I want you to ride horses"
+vs.
+"Can you ride the horse?" -[maybe]-> "I want you to ride the horse"
+
+Existence of a diectic marker (it, there, here, the, that, etc.)
+
+
+
+
+if x then y might have a -> y didn't a
+if x then y might not have a -> y did a,
+  e.g. "Had I taken his advice, I might have succeeded"
+    -> "I did not succeed"
+
+[CF [might have succeeded]]
+-> [not [might have succeeded]]
+-> [not [possibly succeeded]]
+-> [not succeeded]
+
+similarly
+      "I Had I taken his advice, I might not have failed"
+  ->  "I failed"
+[CF [might not have failed]
+-> [not [might not have failed]]
+-> [not [possibly didn't fail]]
+-> [not didn't fail]
+-> [failed]
+
