@@ -443,7 +443,7 @@
   '((((pres Could.aux-v) you.pro ((call.v again.adv-a) later.adv-e))  
     please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to ((call.v again.adv-a) later.adv-e))))
-    (i.pro ((pres expect.v) (that (you.pro ((call.v again.adv-a) later.adv-e)))))))
+    (i.pro ((pres expect.v) (that (you.pro (((pres call.v) again.adv-a) later.adv-e)))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-36
@@ -487,7 +487,7 @@
       you.pro
       (turn_on.v (the.d light.n))) please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to (turn_on.v (the.d light.n)))))
-    (i.pro ((pres expect.v) (that (you.pro (turn_on.v (the.d light.n))))))))
+    (i.pro ((pres expect.v) (that (you.pro ((pres turn_on.v) (the.d light.n))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-40
