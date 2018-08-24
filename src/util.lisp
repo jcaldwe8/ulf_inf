@@ -46,11 +46,14 @@
 ;; (remove-aux-not '((the.d man.n) ((past do.aux-s) not (know.v (that (| Mary| ((past be.v) cold.a)))))))
 ;; =>
 ;; ((the.d man.n) (know.v (that (| Mary| ((past be.v) cold.a)))))
+
+;; NOTE: prevent from going into (that ...) and (ka ...)
 (defun remove-aux-not (ulf)
   (remove-nil (remove-double-list (cond
     ((null ulf) nil)
     ((or (is-aux ulf) (equalp 'NOT ulf)) nil)
     ((atom ulf) ulf)
+    ((or (equalp (first ulf) 'KA) (equalp (first ulf) 'THAT)) ulf)
     (t (mapcar (lambda (x) (remove-aux-not x)) ulf))))))
 
 ;; Function to recursively remove doubled-up lists (e.g. (remove-double-list '(A ((B C)))) => (A (B C)))
