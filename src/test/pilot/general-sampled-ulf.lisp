@@ -348,8 +348,8 @@
   (:request)
   "Please will you close the door when you go out."
   '((Please.adv-s 
-     (((pres will.aux-v) you.pro (close.v (the.d door.n))) 
-      (when.ps (you.pro (pres go_out.v))))) ?) 
+     (((pres will.aux-v) you.pro ((close.v (the.d door.n)) 
+                                  (when.ps (you.pro (pres go_out.v))))))) ?) 
   '((I.pro ((pres want.v) you.pro 
             (to ((close.v (the.d door.n)) 
                  (when.ps (you.pro (pres go_out.v)))))))
