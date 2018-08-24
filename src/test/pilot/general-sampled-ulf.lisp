@@ -4,7 +4,7 @@
 "They are sensible girls."
 (They.pro ((pres be.v) (sensible.a (plur girl.n)))) 
 
-"You are not better at remembering things that I am."
+"You are not better at remembering things than I am."
 (You.pro ((pres be.v) 
     not 
     (more-x-than 
@@ -17,11 +17,11 @@
 "You must work more."
 (You.pro ((pres must.aux-s) (work.v more.adv-a))) 
 
-"I dod not agree with him."
-(I.pro ((pres do.aux-s) not (agree.v (with-arg.p him.pro)))) 
+"I do not agree with him."
+(I.pro ((pres do.aux-s) not (agree.v (with.p-arg him.pro)))) 
 
 "The spirit is willing, but the flesh is weak."
-(((The-gen.d spirit.n) ((pres be.v) willing.a))  but.cc 
+(((The-gen.d spirit.n) ((pres be.v) willing.a)) but.cc 
  ((the-gen.d flesh.n) ((pres be.v) weak.a))) 
 
 "How beautiful you are!"
@@ -56,8 +56,8 @@
                         (go.v (adv-a (to.p |Venice|)))))))) 
 
 "Go and speak to my colleague."
-(({you.pro} (Go.v and.cc
-             (speak.v (to.p-arg (my.d (colleague-of.n *s)))))) !) 
+(({you.pro} ((pres Go.v) and.cc
+             ((pres speak.v) (to.p-arg (my.d (colleague-of.n *s)))))) !) 
 
 "Who are those guys?"
 ((sub Who.pro ((pres be.v) (those.d (plur guy.n)) (= *h))) ?)
@@ -79,7 +79,7 @@
 "It seems to me that the train is late."
 (It.pro 
   ((pres seem.v) 
-     (to-arg.p me.pro) 
+     (to.p-arg me.pro) 
      (that ((the.d train.n) ((pres be.v) late.a))))) 
 
 "He learned the news while reading the newspaper."
@@ -112,8 +112,8 @@
 
 "I have to take medicine."
 (I.pro 
-    ((pres have.v) 
-       (to (take.v (k medicine.n))))) 
+  ((pres have.v) 
+   (to (take.v (k medicine.n))))) 
 
 "Please do not take photos here."
 ((Please.adv-s 
@@ -160,7 +160,7 @@
 ((My.d hobby.n) 
     ((pres be.v) 
        (= (to (listen.v 
-                (to-arg.p (k music.n))))))) 
+                (to.p-arg (k music.n))))))) 
 
 "Wolves will not usually attack people."
 ((k (plur Wolf.n)) 
@@ -231,7 +231,7 @@ Ah.x
 
 "They will never accept; it is too far."
 ((They.pro ((pres will.aux-s) never.adv-f (accept.v {ref}.pro)))  
-  (it.pro ((pres be.v) (too.adv-a far.a)))) 
+ (it.pro ((pres be.v) (too.adv-a far.a)))) 
 
 "It has been snowing all night."
 ((It.pro ((pres perf) (prog snow.v))) (adv-e (all.a night.n))) 
