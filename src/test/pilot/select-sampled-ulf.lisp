@@ -15,7 +15,7 @@
      (:tag :infer-all :select-pilot ,@tags)
      (let ((actual (mapcar #'result-formula (infer-all ,ulf)))
            (expected ,expected))
-        (list-assert-equal actual expected))))
+        (set-assert-equal actual expected))))
 
 ;; 
 ;; If statements

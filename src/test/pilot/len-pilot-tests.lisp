@@ -19,7 +19,7 @@
         (if expected
           (assert-equal (first result) ulf 
                         (first result) ulf))
-        (list-assert-equal (cdr result) expected))))
+        (set-assert-equal (cdr result) expected))))
 
 ;; Macro for running a test using 'infer-all' (from the core inference code).
 ;; Arguments
@@ -34,7 +34,7 @@
      (:tag :infer-all :len-pilot ,@tags)
      (let ((actual (mapcar #'result-formula (infer-all ,ulf)))
            (expected ,expected))
-        (list-assert-equal actual expected))))
+        (set-assert-equal actual expected))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Define tests.

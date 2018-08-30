@@ -16,7 +16,7 @@
      (:tag :infer-all :general-pilot ,@tags)
      (let ((actual (mapcar #'result-formula (infer-all ,ulf)))
            (expected ,expected))
-        (list-assert-equal actual expected))))
+        (set-assert-equal actual expected))))
 
 ;;
 ;; Tests.
