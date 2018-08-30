@@ -18,7 +18,6 @@
       "../resources/google-10000-english.txt")
 (load "uppen-morph.lisp")
 
-
 ;; Core inference code.
 (load "inference-core.lisp")
 

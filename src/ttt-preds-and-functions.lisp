@@ -725,7 +725,7 @@
 (defun atom? (x) (atom x))
 ;````````````````````````
 
-(defun add-vp-tense (vp tense)
+(defun add-vp-tense! (vp tense)
 ;````````````````````````````
 ; Adds the given tense marker to the given verb phrase.
 ;
@@ -814,7 +814,7 @@
    (cond
      ; past counterfactual
      ((eq 'perf verb)
-      (add-vp-tense (car comps) 'past))
+      (add-vp-tense! (car comps) 'past))
      ; subjunctive 'were'
      ((eq 'were.v verb) 
       (cons '(pres be.v) comps))
@@ -828,7 +828,7 @@
      ; would be in Rome -> am in Rome
      ((and (eq 'will.aux-s verb) (listp (car comps)) 
            (not (null (car comps))) (stative-head-verb? (caar comps)))
-      (add-vp-tense (car comps) 'pres))
+      (add-vp-tense! (car comps) 'pres))
      ; telic would
      ; would go home -> will go home
      ((eq 'will.aux-s verb)

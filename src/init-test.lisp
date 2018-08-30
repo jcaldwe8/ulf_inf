@@ -23,6 +23,7 @@
 (load "test/pilot/len-pilot-tests.lisp")
 (load "test/pilot/gene-devset-tests.lisp")
 (load "test/pilot/select-sampled-ulf.lisp")
+(load "test/pilot/general-sampled-ulf.lisp")
 (load "test/counterfactual-unit-tests.lisp")
 (load "test/implicative-unit-tests.lisp")
 (load "test/request-unit-tests.lisp")

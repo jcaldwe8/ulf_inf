@@ -56,7 +56,7 @@
   ;     since the inversion makes it clear.
   '((pres would.aux-v) you.pro please.adv-s speak_up.v) 
   '((i.pro ((pres want.v) you.pro (to speak_up.v)))
-    (i.pro ((pres expect.v) (that (you.pro speak_up.v))))))
+    (i.pro ((pres expect.v) (that (you.pro (pres speak_up.v)))))))
   
 (define-len-pilot-subset-test
   test-subset-request2
@@ -64,7 +64,7 @@
   (:rq)
   '(((pres can.aux-v) somebody.pro (help.v me.pro)) ?)
   '((i.pro ((pres want.v) somebody.pro (to (help.v me.pro))))
-    (i.pro ((pres expect.v) (that (somebody.pro (help.v me.pro)))))))
+    (i.pro ((pres expect.v) (that (somebody.pro ((pres help.v) me.pro)))))))
 
 (define-len-pilot-subset-test
   test-subset-request3
@@ -78,7 +78,7 @@
              (to (close.v (the.d door.n)
                   (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
     (i.pro ((pres expect.v)
-       (that (you.pro (close.v (the.d door.n)
+       (that (you.pro ((pres close.v) (the.d door.n)
               (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))))
 
 (define-len-pilot-subset-test
@@ -88,7 +88,7 @@
   '((((pres could.aux-v) you.pro (turn_on.v (the.d light.n)))
      please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to (turn_on.v (the.d light.n)))))
-    (i.pro ((pres expect.v) (that (you.pro (turn_on.v (the.d light.n))))))))
+    (i.pro ((pres expect.v) (that (you.pro ((pres turn_on.v) (the.d light.n))))))))
 
 (define-len-pilot-subset-test
   test-subset-wish1
@@ -235,7 +235,7 @@
        you.pro (to ((dial.v {ref1}.pro) (adv-a (for.p me.pro))))))
     (i.pro
       ((pres expect.v)
-       (that (you.pro ((dial.v {ref1}.pro) (adv-a (for.p me.pro)))))))))
+       (that (you.pro (((pres dial.v) {ref1}.pro) (adv-a (for.p me.pro)))))))))
   
 (define-len-pilot-subset-test
   test-subset-req-2242
@@ -243,7 +243,7 @@
   (:rq)
   '(((pres Could.aux-v) you.pro please.adv-s (repeat.v that.pro)) ?)
   '((i.pro ((pres want.v) you.pro (to (repeat.v that.pro))))
-    (i.pro ((pres expect.v) (that (you.pro (repeat.v that.pro)))))))
+    (i.pro ((pres expect.v) (that (you.pro ((pres repeat.v) that.pro)))))))
 
 ;;; Wish constructions.
 
@@ -305,7 +305,7 @@
   ;     since the inversion makes it clear.
   '((pres would.aux-v) you.pro please.adv-s speak_up.v) 
   '((i.pro ((pres want.v) you.pro (to speak_up.v)))
-    (i.pro ((pres expect.v) (that (you.pro speak_up.v))))))
+    (i.pro ((pres expect.v) (that (you.pro (pres speak_up.v)))))))
   
 (define-len-pilot-infer-all-test
   test-infer-all-request2
@@ -313,7 +313,7 @@
   (:rq)
   '(((pres can.aux-v) somebody.pro (help.v me.pro)) ?)
   '((i.pro ((pres want.v) somebody.pro (to (help.v me.pro))))
-    (i.pro ((pres expect.v) (that (somebody.pro (help.v me.pro)))))))
+    (i.pro ((pres expect.v) (that (somebody.pro ((pres help.v) me.pro)))))))
 
 (define-len-pilot-infer-all-test
   test-infer-all-request3
@@ -327,7 +327,7 @@
              (to (close.v (the.d door.n)
                   (adv-e (when.ps (you.pro ((pres go.v) out.adv-a))))))))
     (i.pro ((pres expect.v)
-       (that (you.pro (close.v (the.d door.n)
+       (that (you.pro ((pres close.v) (the.d door.n)
               (adv-e (when.ps (you.pro ((pres go.v) out.adv-a)))))))))))
 
 (define-len-pilot-infer-all-test
@@ -337,7 +337,7 @@
   '((((pres could.aux-v) you.pro (turn_on.v (the.d light.n)))
      please.adv-s) ?)
   '((i.pro ((pres want.v) you.pro (to (turn_on.v (the.d light.n)))))
-    (i.pro ((pres expect.v) (that (you.pro (turn_on.v (the.d light.n))))))))
+    (i.pro ((pres expect.v) (that (you.pro ((pres turn_on.v) (the.d light.n))))))))
 
 (define-len-pilot-infer-all-test
   test-infer-all-wish1
@@ -482,7 +482,7 @@
        you.pro (to ((dial.v {ref1}.pro) (adv-a (for.p me.pro))))))
     (i.pro
       ((pres expect.v)
-       (that (you.pro ((dial.v {ref1}.pro) (adv-a (for.p me.pro)))))))))
+       (that (you.pro (((pres dial.v) {ref1}.pro) (adv-a (for.p me.pro)))))))))
   
 (define-len-pilot-infer-all-test
   test-infer-all-req-2242
@@ -490,7 +490,7 @@
   (:rq)
   '(((pres Could.aux-v) you.pro please.adv-s (repeat.v that.pro)) ?)
   '((i.pro ((pres want.v) you.pro (to (repeat.v that.pro))))
-    (i.pro ((pres expect.v) (that (you.pro (repeat.v that.pro)))))))
+    (i.pro ((pres expect.v) (that (you.pro ((pres repeat.v) that.pro)))))))
 
 ;;; Wish constructions.
 
