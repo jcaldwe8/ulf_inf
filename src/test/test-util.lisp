@@ -24,8 +24,10 @@
     ;; Construct a reordered version of each list such that elements that
     ;; are shared come first in both.
     (setq shared (intersection unique-expect unique-actual :test #'equal))
-    (setq expect-only (set-difference unique-expect unique-actual 
+    (setq expect-only (set-difference unique-expect unique-actual
+                                      :test #'equal))
     (setq actual-only (set-difference unique-actual unique-expect 
+                                      :test #'equal))
     (setq reordered-expect (append shared expect-only))
     (setq reordered-actual (append shared actual-only))
     ;; Assert equal length.
