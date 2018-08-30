@@ -26,7 +26,6 @@
 (load "test/pilot/general-sampled-ulf.lisp")
 (load "test/counterfactual-unit-tests.lisp")
 (load "test/implicative-unit-tests.lisp")
-(load "test/request-unit-tests.lisp")
 (load "test/ttt-preds-and-functions-tests.lisp")
 ; NB: these files run tests automatically, so comment out for now.
 ;(load "test/pilot/tests-gene.lisp")
