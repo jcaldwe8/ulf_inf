@@ -190,7 +190,10 @@
   (:cf :if-inv)
   '(((cf perf) I.pro (know.v (your.d (telephone.n number.n))))
      (I.pro ((cf will.aux-s) (perf (call.v you.pro))))) 
-  '((i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))
+  '(;(i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))
+    ; The inference above is tested in infer-all since it's handled by 
+    ; post-processing.
+    (i.pro ((past will.aux-s) not.adv-s (call.v you.pro)))
     (i.pro
       ((past do.aux-s) not.adv-s
                        (know.v (your.d (telephone.n number.n)))))))
@@ -203,7 +206,10 @@
             (I.pro ((cf will.aux-s) (perf (call.v you.pro)))))
   '((i.pro ((past do.aux-s) not.adv-s
      (know.v (your.d (telephone.n number.n)))))
-    (i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))))
+    ;(i.pro ((past do.aux-s) not.adv-s (call.v you.pro)))))
+    ; The inference above is tested in infer-all since it's handled by 
+    ; post-processing.
+    (i.pro ((past will.aux-s) not.adv-s (call.v you.pro)))))
 
 (define-len-pilot-subset-test
   test-subset-inv-18529
