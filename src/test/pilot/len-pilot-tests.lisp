@@ -179,7 +179,7 @@
   test-subset-if-16988
   "If only I had taken your advice."
   (:cf :if-then)
-  '((If.ps (only.adv-s (I.pro ((cf perf) (take.v (your.d advice.n)))))) {ref1}.s)
+  '((If.ps only.adv-s (I.pro ((cf perf) (take.v (your.d advice.n))))) {ref1}.s)
   '((i.pro ((past do.aux-s) not.adv-s (take.v (your.d advice.n))))))
 
 ;;; Inverted if-then constructions.
