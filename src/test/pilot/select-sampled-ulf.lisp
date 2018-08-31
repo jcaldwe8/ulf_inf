@@ -240,7 +240,7 @@
   '(
     (they.pro ((past do.aux-s)
              not.adv-s
-             (change.v (their.d plan.n))))
+             (change.v (their.d (plur plan.n)))))
     (they.pro ((past do.aux-s)
              not.adv-s
              (know.v (the.d (what.rel ((past be.v) (about_to.adv-s happen.v)))))))))
@@ -260,7 +260,7 @@
              (change.v (their.d (plur plan.n)))))
     (they.pro ((past do.aux-s) 
              not.adv-s
-             (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))))
+             (know.v (ans-to (what.pro ((past be.v) (about_to.adv-s happen.v)))))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-20
@@ -327,9 +327,9 @@
   '((he.pro ((past do.aux-s)
              not.adv-s
              (tell.v me.pro)))
-    (I.pro ((past do.aux-s) 
-            not.adv-s
-            (know.v (the.d truth.n))))))
+    (he.pro ((past do.aux-s) 
+             not.adv-s
+             (know.v (the.d truth.n))))))
 
 (define-pilot-select-sampled-test
   pilot-select-sampled-26
