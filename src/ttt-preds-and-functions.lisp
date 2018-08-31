@@ -728,13 +728,26 @@
 (defun add-vp-tense! (vp tense)
 ;````````````````````````````
 ; Adds the given tense marker to the given verb phrase.
+; Recursively search for first *.v or *.aux in depth first search.
 ;
 ; run.v past -> (past run.v)
 ; (run.v (k home.n)) past -> ((past run.v) (k home.n))
+; ((call.v again.adv-a) later.adv-e) pres
+;   -> (((pres call.v) again.adv-a) later.adv-e)
   (cond 
-    ((atom vp) (list tense vp))
-    (t (cons (list tense (car vp)) (cdr vp)))))
-
+    ;; Base case: found the verb/aux -- add tense and return.
+    ((and (atom vp) (verbaux? vp)) (list tense vp))
+    ;; Base case: other atom, simply return value.
+    ((atom vp) vp)
+    ;; Recursive case:
+    ;;  recurse left, 
+    ;;    if returned val is diff, reconstruct and return
+    ;;    else recurse to right.
+    (t 
+      (let ((leftrec (add-vp-tense! (car vp) tense)))
+        (if (not (equal leftrec (car vp)))
+          (cons leftrec (cdr vp))
+          (cons (car vp) (add-vp-tense! (cdr vp) tense)))))))
 
 (defparameter *stative-verbs*
   '(be.v have.v prog))
