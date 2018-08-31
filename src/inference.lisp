@@ -30,7 +30,8 @@
   ;(list #'flatten-adv-s
   ;      #'past-will-to-past-do))
   ;(list #'flatten-adv-s))
-  (list #'past-will-to-past-do))
+  (list #'past-will-to-past-do
+        #'remove-redundant-do))
 (defun output-ulf-normalization (ulf)
   (reduce #'(lambda (acc new) (funcall new acc))
           *output-ulf-normalization-fns*

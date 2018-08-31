@@ -1085,3 +1085,17 @@
 ; utterance time.
   (ttt:apply-rule *ttt-past-will-to-past-do* ulf))
 
+(defparameter *ttt-remove-redundant-do-basic*
+  '(/ ((tense? do.aux-s) _!1)
+      (add-vp-tense! _!1 tense?)))
+(defparameter *ttt-remove-redundant-do-adv*
+  '(/ ((tense? do.aux-s) _!1 (+ (!2 adv? 
+                                    ((!3 adv-a adv-s adv-a) _!))))
+      ((add-vp-tense! _!1 tense?) +)))
+(defun remove-redundant-do (ulf)
+;```````````````````````````````
+; Removes do.aux-s if followed directly by a verb, rather than, say a negation
+; operator.
+  (ttt:apply-rule *ttt-remove-redundant-do-adv*
+                  (ttt:apply-rule *ttt-remove-redundant-do-basic* ulf)))
+
