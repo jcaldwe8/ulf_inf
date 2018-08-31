@@ -725,29 +725,42 @@
 (defun atom? (x) (atom x))
 ;````````````````````````
 
-(defun add-vp-tense! (vp tense)
+(defun add-vp-tense! (vp+ tense)
 ;````````````````````````````
 ; Adds the given tense marker to the given verb phrase.
 ; Recursively search for first *.v or *.aux in depth first search.
 ;
-; run.v past -> (past run.v)
-; (run.v (k home.n)) past -> ((past run.v) (k home.n))
-; ((call.v again.adv-a) later.adv-e) pres
+; The first argument is a list of a verb phrase plus additional
+; phrases that are wrapped around the vp at the end.
+;
+; (run.v) past -> (past run.v)
+; ((run.v (k home.n))) past -> ((past run.v) (k home.n))
+; (((call.v again.adv-a) later.adv-e)) pres
 ;   -> (((pres call.v) again.adv-a) later.adv-e)
-  (cond 
-    ;; Base case: found the verb/aux -- add tense and return.
-    ((and (atom vp) (verbaux? vp)) (list tense vp))
-    ;; Base case: other atom, simply return value.
-    ((atom vp) vp)
-    ;; Recursive case:
-    ;;  recurse left, 
-    ;;    if returned val is diff, reconstruct and return
-    ;;    else recurse to right.
-    (t 
-      (let ((leftrec (add-vp-tense! (car vp) tense)))
-        (if (not (equal leftrec (car vp)))
-          (cons leftrec (cdr vp))
-          (cons (car vp) (add-vp-tense! (cdr vp) tense)))))))
+  (labels 
+    ((rechelper (vp)
+       (cond 
+         ;; Base case: found the verb/aux -- add tense and return.
+         ((and (atom vp) (verbaux? vp)) (list tense vp))
+         ;; Base case: other atom, simply return value.
+         ((atom vp) vp)
+         ;; Recursive case:
+         ;;  recurse left, 
+         ;;    if returned val is diff, reconstruct and return
+         ;;    else recurse to right.
+         (t 
+           (let ((leftrec (rechelper (car vp))))
+             (if (not (equal leftrec (car vp)))
+               (cons leftrec (cdr vp))
+               (cons (car vp) (rechelper (cdr vp))))))))
+     ) ; end of labels definitions.
+   
+    ;; Main body.
+    (let ((tvp (rechelper (car vp+)))
+          (additional (cdr vp+)))
+      (reduce #'list additional :initial-value tvp))))
+          
+    
 
 (defparameter *stative-verbs*
   '(be.v have.v prog))
@@ -827,7 +840,7 @@
    (cond
      ; past counterfactual
      ((eq 'perf verb)
-      (add-vp-tense! (car comps) 'past))
+      (add-vp-tense! (list (car comps)) 'past))
      ; subjunctive 'were'
      ((eq 'were.v verb) 
       (cons '(pres be.v) comps))
@@ -841,7 +854,7 @@
      ; would be in Rome -> am in Rome
      ((and (eq 'will.aux-s verb) (listp (car comps)) 
            (not (null (car comps))) (stative-head-verb? (caar comps)))
-      (add-vp-tense! (car comps) 'pres))
+      (add-vp-tense! (list (car comps)) 'pres))
      ; telic would
      ; would go home -> will go home
      ((eq 'will.aux-s verb)
@@ -1100,11 +1113,11 @@
 
 (defparameter *ttt-remove-redundant-do-basic*
   '(/ ((tense? do.aux-s) _!1)
-      (add-vp-tense! _!1 tense?)))
+      (add-vp-tense! (_!1) tense?)))
 (defparameter *ttt-remove-redundant-do-adv*
   '(/ ((tense? do.aux-s) _!1 (+ (!2 adv? 
                                     ((!3 adv-a adv-s adv-a) _!))))
-      ((add-vp-tense! _!1 tense?) +)))
+      ((add-vp-tense! (_!1) tense?) +)))
 (defun remove-redundant-do (ulf)
 ;```````````````````````````````
 ; Removes do.aux-s if followed directly by a verb, rather than, say a negation

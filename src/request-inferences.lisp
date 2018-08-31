@@ -20,8 +20,8 @@
 ;     applying hide-ttt-ops (if necessary recovering them via 'unhide-ttt-ops')
    '(/ ((pres (! aux-indicating-request?))
         (!1 you.pro someone.pro somebody.pro)
-        (? please.adv-s) _+)  ; will have to presubst for ?, !
-       (I.pro ((pres want.v) !1 (to _+)))))
+        (? please.adv-s) (+ ~ please.adv-s) (? please.adv-s))  ; will have to presubst for ?, !
+       (I.pro ((pres want.v) !1 (to +)))))
   ; We'll want to potentially chain from the last part, if it enables
   ; further attitudinal, state change/cessation/inception/continuation
   ; or other inferences.
@@ -34,8 +34,8 @@
 ;       (Note: The rule could be refined to yield "...will help me")
    '(/ ((pres (! aux-indicating-request?))
         (!1 you.pro someone.pro somebody.pro)
-        (? please.adv-s) _+) 
-       (I.pro ((pres expect.v) (that (!1 (add-vp-tense! _+ pres)))))))
+        (? please.adv-s) (+ ~ please.adv-s) (? please.adv-s)) 
+       (I.pro ((pres expect.v) (that (!1 (add-vp-tense! (+) pres)))))))
   ; We'll want to potentially chain from the last part, if it enables
   ; further attitudinal, state change/cessation/inception/continuation
   ; or other inferences.
