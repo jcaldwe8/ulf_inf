@@ -313,8 +313,8 @@
   "Had he known the facts, the accident might have been avoided."
   '(((cf perf) he.pro (know.v (the.d (plur fact.n)))) 
     ((the.d accident.n) ((cf might.aux-s) (perf (pasv avoid.v)))))
-  '(((the.d accident.n) (not.adv-s (pasv avoid.v)))
-    (I.pro ((past do.aux-s)
+  '(((the.d accident.n) (not.adv-s (past (pasv avoid.v))))
+    (he.pro ((past do.aux-s)
             not.adv-s 
             (know.v (the.d (plur fact.n)))))))
 
