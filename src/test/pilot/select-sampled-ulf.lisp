@@ -257,7 +257,7 @@
   '(
     (they.pro ((past do.aux-s)
              not.adv-s
-             (change.v (their.d plan.n))))
+             (change.v (their.d (plur plan.n)))))
     (they.pro ((past do.aux-s) 
              not.adv-s
              (know.v (ans-to (what.pro ((past be.v) (about-to.adv-s happen.v)))))))))
