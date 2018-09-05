@@ -27,7 +27,10 @@
 
 ;; Functions for normalizing output.
 (defparameter *output-ulf-normalization-fns*
-  (list #'flatten-adv-s))
+  ;(list #'flatten-adv-s
+  ;      #'past-will-to-past-do))
+  ;(list #'flatten-adv-s))
+  (list #'past-will-to-past-do))
 (defun output-ulf-normalization (ulf)
   (reduce #'(lambda (acc new) (funcall new acc))
           *output-ulf-normalization-fns*
@@ -78,5 +81,9 @@
                          (mapcar #'infer-all recableinfs)))
     ;; Return all inferences in a list.
     (setq rawinfs (append preinfs postinfs recinfs))
-    (mapcar #'output-ulf-normalization rawinfs)))
+    (mapcar #'(lambda (inf-res)
+                (setf (result-formula inf-res)
+                      (output-ulf-normalization (result-formula inf-res)))
+                inf-res)
+            rawinfs)))
 

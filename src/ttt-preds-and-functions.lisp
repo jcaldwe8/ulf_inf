@@ -725,7 +725,7 @@
 (defun atom? (x) (atom x))
 ;````````````````````````
 
-(defun add-vp-tense (vp tense)
+(defun add-vp-tense! (vp tense)
 ;````````````````````````````
 ; Adds the given tense marker to the given verb phrase.
 ;
@@ -814,7 +814,7 @@
    (cond
      ; past counterfactual
      ((eq 'perf verb)
-      (add-vp-tense (car comps) 'past))
+      (add-vp-tense! (car comps) 'past))
      ; subjunctive 'were'
      ((eq 'were.v verb) 
       (cons '(pres be.v) comps))
@@ -828,7 +828,7 @@
      ; would be in Rome -> am in Rome
      ((and (eq 'will.aux-s verb) (listp (car comps)) 
            (not (null (car comps))) (stative-head-verb? (caar comps)))
-      (add-vp-tense (car comps) 'pres))
+      (add-vp-tense! (car comps) 'pres))
      ; telic would
      ; would go home -> will go home
      ((eq 'will.aux-s verb)
@@ -1062,11 +1062,26 @@
 (defparameter *ttt-flatten-adv-s*
   '(/ (_!1 ((!2 adv-s?) _+3) _*4)
       (_!1 !2 _+3 _*4)))
-
 (defun flatten-adv-s (ulf)
 ;`````````````````````````
 ; Flattens all adv-s in a ULF.
 ;
 ; (x (*.adv-s y) z) -> (x *.adv-s y z)
   (ttt:apply-rule *ttt-flatten-adv-s* ulf))  
+
+(defparameter *ttt-past-will-to-past-do*
+  '(/ (past will.aux-s)
+      (past do.aux-s)))
+(defun past-will-to-past-do (ulf)
+;```````````````````````````````
+; Maps (past will.aux-s) to (past do.aux-s).
+; In the context of making inference, the latter is almost always warrented
+; from the former.  For example, if I say "he would realize his mistake" with
+; a (past will.aux-s) interpretation, it is also true that "he realized his
+; mistake".  Logically this is not sound since the modal would in the past
+; allows for cases where the mistake has not yet been realized, but will be.
+; In practice, however, "he would realize his mistake" is only used if the
+; speaker knows that this has happened in between the reference time and the
+; utterance time.
+  (ttt:apply-rule *ttt-past-will-to-past-do* ulf))
 

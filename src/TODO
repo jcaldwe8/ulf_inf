@@ -16,3 +16,21 @@
 3. Add tests from sampling/discussion.
 4. Add full testset from pilot experiments into unit tests.
 5. Add unit tests for non-cf-version! and negate-vp! since they're fairly complicated functions.
+
+
+
+
+
+Notes from pilot/select-sampled-ulf.lisp errors:
+  - polarity issues: anyone will not -> nobody will (pilot-select-sampled-1);  
+    delete 'even.adv-s' in positive polarity (pilot-select-sampled-6)
+  - generalize (past will.aux-s) -> (past do.aux-s) mapping to include cases where do is not necessary.
+  - take a look at flatten-adv-s and see why it's adding errors to :select-pilot.
+  - apply sub before inferences
+  - delete duplicates
+  - do not infer requests from sentences with kinds, generics, a.d
+    related: make some distinction between can.aux-v and could.aux-v (the latter is more request like)
+  - make the stative functionality more robust (e.g. know)
+  - not.adv-s (no.d *.n) -> (k *.n) (pilot-select-sampled-6)
+
+  - tense chaining (embedded cfs should not always be inferred from : pilot-select-sampled-3)
