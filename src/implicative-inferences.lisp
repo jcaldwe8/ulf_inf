@@ -1046,3 +1046,16 @@
                         _!3))
      (MAKE-INSTANCE 'IMPLICATIVE-RULE-TTT :TYPE 'S :POLARITY '- :RULE
                     '(/ ((THAT _!3) (PASV WARN.V)) _!3))))
+
+
+(defun find-imp-verb-in (rule)
+    (cond
+        ((null rule) nil)
+        ((and (atom rule) (search ".V" (string rule))) rule)
+        ((atom rule) nil)
+        (t (dolist (s rule)
+            (setq res (find-imp-verb-in s))
+            (if res (return-from find-imp-verb-in res))))))
+
+(defparameter *IMPLICATIVES*
+    (remove-duplicates (mapcar (lambda (x) (find-imp-verb-in (slot-value x 'rule))) *INFER-FROM-IMPLICATIVE-RULES*)))

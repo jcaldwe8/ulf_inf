@@ -79,14 +79,24 @@
 ;;  ((PAST DO.AUX-S) NOT (KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))
 ;;  ((THE.D MAN.N) ((PAST DO.AUX-S) NOT (KNOW.V (THAT (| MARY| ((PAST BE.V) COLD.A)))))))
 (defun get-ulf-segments-vp (ulf)
-  (let ((res (call-tfdfs-par ulf (until-vp))))
-    (if res (list (first res) (third res) ulf) nil)))
+  ;; Checks for particular format e.g. ((that (...)) (pasv ascertain.v))
+  (if (and (= 2 (length ulf)) (listp (second ulf)) (equalp 'PASV (first (second ulf))) (member (second (second ulf)) *IMPLICATIVES*))
+    (list (second ulf) ulf ulf)
+    (let ((res (call-tfdfs-par ulf (until-imp-vp))))
+      (if res (list (first res) (third res) ulf) nil))))
 
 ;; Return true if given item is a verb (i.e. ends in .V) or tense+verb (i.e. (PAST *.V))
 (defun is-verb (x)
   (cond ((and (symbolp x) (search ".V" (string x))) t)
   ((and (listp x) (= 2 (length x))
     (symbolp (first x)) (symbolp (second x)) (search ".V" (string (second x)))) t)
+  (t nil)))
+
+;; Return true if given item is an implicative verb (i.e. ends in .V and is implicative) or tense+verb (i.e. (PAST *.V))
+(defun is-imp-verb (x)
+  (cond ((and (symbolp x) (member x *IMPLICATIVES*)) t)
+  ((and (listp x) (= 2 (length x))
+    (symbolp (first x)) (symbolp (second x)) (member (second x) *IMPLICATIVES*)) t)
   (t nil)))
 
 ;; Return true if given item is a aux-s (i.e. ends in .AUX-S) or tense+aux-s (i.e. (PAST *.AUX-S))
@@ -129,7 +139,6 @@
           (t
             (dolist (st tr)
               (let ((tmpres (tfdfs st newfn)))
-                (if (equalp st '(A B C)) (setq testnewfn newfn))
                 (if (first tmpres)
                   (return-from tfdfs tmpres))
                 (setq newfn (second tmpres))))
@@ -149,7 +158,6 @@
           (t
             (dolist (st tr)
               (let ((tmpres (tfdfs-par st newfn tr)))
-                (if (equalp st '(A B C)) (setq testnewfn newfn))
                 (if (first tmpres)
                   (return-from tfdfs-par tmpres))
                 (setq newfn (second tmpres))))
@@ -203,6 +211,18 @@
         (labels
           ((s (x)
             (list (if (and (listp x) (is-verb (first x))) t nil)
+            (out s)))
+          ) ; end labels def
+        (s tree))))) #'out))
+
+;; Runs until a tree having an implicative verb as the first element is found
+(defun until-imp-vp ()
+  (labels
+    ((out (s)
+      (lambda (tree)
+        (labels
+          ((s (x)
+            (list (if (and (listp x) (is-imp-verb (first x))) t nil)
             (out s)))
           ) ; end labels def
         (s tree))))) #'out))
