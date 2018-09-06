@@ -59,14 +59,17 @@
 
 ;; Conjugates the given lemma and POS into the construction with the given
 ;; features.  If none are found, it tries to guess.  If results are found, 
-;; the lemma is simple returned.
+;; the lemma is simply returned.
+;;
+;; The function also returns a second value t or nil whether a proper lemma
+;; was found.
 (defun um-conjugate (lemma pos features)
   (if (not *uppen-morph-data*)
     (error "Please first call 'load-uppen-morph' to set up the data structures."))
   (let ((cnjs (gethash lemma *uppen-morph-data*))
         poscnjs filtered)
     (setq poscnjs (remove-if-not #'(lambda (x) (equal pos (second x))) cnjs))
-    (if (not poscnjs) (return-from um-conjugate lemma))
+    (if (not poscnjs) (return-from um-conjugate (values lemma nil)))
     (setq sorted (sort poscnjs 
                        #'(lambda (x y)
                            (or
@@ -81,7 +84,7 @@
                                   (length (intersection (third y) features)))
                                (< (length (third x))
                                   (length (third y))))))))
-    (caar sorted)))
+    (values (caar sorted) t)))
 
 
 
