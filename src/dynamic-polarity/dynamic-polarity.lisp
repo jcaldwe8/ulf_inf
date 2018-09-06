@@ -115,8 +115,13 @@
 
 (defun add-tense! (ulf)
 ;``````````````````````
-; Converts the given ULF to the tensed surface form.
-; TODO: handle prog, perf, pasv...
+; Converts the given ULF to the tensed surface form if the input is of the form
+; (tense ulf).  Otherwise, it just returns the ulf.
+;
+; e.g. 
+;   (past run.v) -> ran.v
+;   (pres sleep.v) -> sleep.v
+; TODO: handle prog, perf...
   (cond 
     ;; Simple case where there's tense and a simple verb.
     ((and (= 2 (length ulf)) 
@@ -132,15 +137,52 @@
     ;; Ignore all other cases for now.
     (t ulf)))
 
+(defun dumb-ppart (word)
+;```````````````````````
+; Takes a word symbol and uses a simple heuristic to make it into the past
+; participle form.
+;   if it ends in 'e', append 'd'
+;   otherwise, append 'ed'
+  (if (atom word)
+    (let ((letters (split-into-atoms word)))
+      (if (member (car (last letters)) '(#\e #\E))
+        (fuse-into-atom (append letters '(#\D)))
+        (fuse-into-atom (append letters '(#\E #\D)))))
+    ;; Just return since it's not an atom.
+    ulfatom))
+
+(defun pasv-to-surface! (ulf)
+;`````````````````````
+; Converts the given ULF to the pasv form if the input is of the form 
+; (pasv ulf).  Otherwise, it returns the input directly.
+;
+; e.g. 
+;   (pasv hit.v) -> ((past be.v) hit.v)
+;   (pasv confuse.v) -> ((past be.v) confused.v)
+  (cond
+    ((and (= (length ulf))
+          (eq 'pasv (first ulf))
+          (verb? (second ulf)))
+     (multiple-value-bind (word suffix) (split-by-suffix (second ulf))
+       (multiple-value-bind (pasvd pasv-succ) (um-conjugate word 'v '(PPART))
+         (if (not pasv-succ)
+           (setq pasvd (dumb-ppart pasvd)))
+         (list '(past be.v)
+               (add-suffix pasvd suffix)))))))
+
 (defparameter *plur-to-surface*
   '(/ (plur _!)
       (pluralize! _!)))
 (defparameter *tense-to-surface*
   '(/ ((!1 tense?) _!2)
       (add-tense! (!1 _!2))))
+(defparameter *pasv-to-surface*
+  '(/ (pasv _!)
+      (pasv-to-surface! (pasv _!))))
 
 (defun add-morphology (ulf)
-  (ttt:apply-rules (list *plur-to-surface*
+  (ttt:apply-rules (list *pasv-to-surface*
+                         *plur-to-surface*
                          *tense-to-surface*)
                    ulf :max-n 500
                    :rule-order :slow-forward))
@@ -166,8 +208,8 @@
          ;(rejoined (mapcar #'(lambda (x) (cl-strings:join x :separator ".")) pruned))
          (rejoined (mapcar #'strip-suffix stringified))
          (postform (mapcar #'post-format-ulf-string rejoined)))
-    (format t "morph-added ~s~%" morph-added)
-    (format t "Surface-only ~s~%" surface-only)
+    ;(format t "morph-added ~s~%" morph-added)
+    ;(format t "Surface-only ~s~%" surface-only)
     (cl-strings:join postform :separator " ")))
 
 
@@ -233,7 +275,7 @@
         (let ((rawstr (first raw-nl-strann))
               (nl-str (first (second raw-nl-strann)))
               (nl-ann (second (second raw-nl-strann))))
-          (setf (gethash rawstr *run-natlog-memo*) nl-ann))))
+          (setf (gethash rawstr *run-natlog-memo*) (list nl-str nl-ann)))))
     (if memoize
       (setq natlog-stranns
             (mapcar #'(lambda (s) (list s (gethash s *run-natlog-memo*)))
@@ -244,8 +286,10 @@
     ;; polarity, where the polarity is represented as one of [+,-,o].
     (mapcar 
       #'(lambda (strann)
-          (let ((natlog-str (first strann))
-                (natlog-ann (second strann)))
+          (let ((natlog-rawstr (first strann))
+                (natlog-str (first (second strann)))
+                (natlog-ann (second (second strann))))
+            ;(format t "natlog-str: ~s~%natlog-ann: ~s~%" natlog-str natlog-ann)
             (mapcar #'list 
                     (cl-strings:split (cl-strings:clean natlog-str))
                     (mapcar #'(lambda (natlog-pol)
@@ -289,6 +333,7 @@
          ;; Plural nouns.
          ((and (ttt:match-expr '(plur _!) u)
                (atom (second u)))
+          ;(format t "align-ulf-polarity -- plural. u: ~s  p: ~s" u p) 
           (let ((plur (split-by-suffix (pluralize! (second u))))
                 (ptok (caar p))
                 (pp (cadar p)))
@@ -300,6 +345,7 @@
          ;; Tensed tokens.
          ((and (ttt:match-expr '(tense? _!) u)
                (atom (second u)))
+          ;(format t "align-ulf-polarity -- tensed. u: ~s  p: ~s" u p) 
           (let ((tensed (split-by-suffix (add-tense! u)))
                 (ptok (caar p))
                 (pp (cadar p)))
@@ -307,12 +353,30 @@
               (list (list (list (first u) pp)
                           (list (second u) pp))(cdr p))
               (list u p))))
-            
+         
+         ;; Passive
+         ((and (ttt:match-expr '(pasv _!) u)
+               (atom (second u)))
+          ;(format t "align-ulf-polarity -- passive. u: ~s  p: ~s" u p) 
+          ;; Passive adds a tensed copula and a conjugated verb so we can just 
+          ;; recurse after properly converting the representation.
+          (let* ((pasvd (pasv-to-surface! u))
+                ; (lrec (rec-helper (car pasvd) p))
+                ; (lu (first lrec))
+                ; (lp (second lrec))
+                ; (rrec (rec-helper (cdr pasvd) lp))
+                ; (ru (first rrec))
+                ; (rp (second rrec)))
+                )
+            (rec-helper pasvd p)))
+
+
          ;; If token, do token comparison.
          ((and (atom u) (is-surface-token? u))
           (let ((ptok (caar p))
                 (pp (cadar p))
                 (procu (post-format-ulf-string (strip-suffix (sym2str u)))))
+          ;(format t "align-ulf-polarity -- surface. u: ~s  p: ~s" u p) 
             ;; If the NatLog version is a subsequence, then mark the current
             ;; ULF with the polarity.  Otherwise, just return the ulf.
             (if (search ptok procu)
@@ -320,7 +384,9 @@
               (list u p))))
 
          ;; If token, but not surface, just return.
-         ((atom u) (list u p))
+         ((atom u) 
+          ;(format t "align-ulf-polarity -- ign atom. u: ~s  p: ~s" u p) 
+          (list u p))
          ;; Otherwise, recursion!
          (t
            (let* ((lrec (rec-helper (car u) p))
