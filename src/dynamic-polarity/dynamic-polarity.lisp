@@ -34,13 +34,17 @@
     (and (eql #\| (nth 0 chars))
          (eql #\| (nth (1- (length chars)) chars)))))
 
-;; Post formats a ULF-to-string mapping.  If it is a name (e.g. |John|), the 
-;; pipes are stripped off.  Otherwise, the string is made lowercase.
+;; Post formats a ULF-to-string mapping.  
+;; If it is a name (e.g. |John|), the pipes are stripped off.  
+;; If not a name replace dash and underscores with spaces.
+;; Otherwise, the string is made lowercase.
 (defun post-format-ulf-string (s)
   (if (is-strict-name? s)
     (coerce (subseq (coerce s 'list) 1 (1- (length s))) 
             'string)
-    (string-downcase s)))
+    (cl-strings:replace-all 
+      (cl-strings:replace-all (string-downcase s) "-" " ")
+      "_" " ")))
 
 ;; Strips the suffix, marked with "." from a string.
 ;;  e.g. "man.n" -> "man"
@@ -322,14 +326,13 @@
   ;; will always have the shortened version of the token.
   ;; TODO: need to handle underscored tokens... and strings?
   (labels
-    ((rec-helper (u p) 
+    ((rec-helper (u p)
+       (if *debug-ulf-inf*
+         (format t "In align-ulf-polarity/rec-helper~%u: ~s~%p: ~s~%" u p))
        (cond 
          ;; If nil, return (nil pol)
          ((null u)
           (list nil p))
-         ;; TODO: need to handle conjugations...
-         ;(ttt:match-expr '(plur _!) u) ; call um-conjugate and compare...
-         ;(ttt:match-expr '(tense? _!) u) ; call um-conjugate and compare...
          ;; Plural nouns.
          ((and (ttt:match-expr '(plur _!) u)
                (atom (second u)))
@@ -346,12 +349,15 @@
          ((and (ttt:match-expr '(tense? _!) u)
                (atom (second u)))
           ;(format t "align-ulf-polarity -- tensed. u: ~s  p: ~s" u p) 
-          (let ((tensed (split-by-suffix (add-tense! u)))
+          (let ((tensed (cl-strings:clean
+                          (post-format-ulf-string
+                            (split-by-suffix (add-tense! u)))))
                 (ptok (caar p))
                 (pp (cadar p)))
             (if (search ptok (string-downcase (string tensed)))
               (list (list (list (first u) pp)
-                          (list (second u) pp))(cdr p))
+                          (list (second u) pp)) 
+                    (nthcdr (1+ (count #\Space tensed)) p))
               (list u p))))
          
          ;; Passive
@@ -370,22 +376,26 @@
                 )
             (rec-helper pasvd p)))
 
-
          ;; If token, do token comparison.
          ((and (atom u) (is-surface-token? u))
           (let ((ptok (caar p))
                 (pp (cadar p))
-                (procu (post-format-ulf-string (strip-suffix (sym2str u)))))
-          ;(format t "align-ulf-polarity -- surface. u: ~s  p: ~s" u p) 
+                (procu (cl-strings:clean 
+                         (post-format-ulf-string 
+                           (strip-suffix 
+                             (sym2str u))))))
+            ;(format t "align-ulf-polarity -- surface. u: ~s  p: ~s" u p) 
             ;; If the NatLog version is a subsequence, then mark the current
             ;; ULF with the polarity.  Otherwise, just return the ulf.
+            ;; If token that maps to multiple words (e.g. contains "-" or "_")
+            ;; skip the right number of polarity marked words.
             (if (search ptok procu)
-              (list (list u pp) (cdr p))
+              (list (list u pp) (nthcdr (1+ (count #\Space procu)) p))
               (list u p))))
 
          ;; If token, but not surface, just return.
          ((atom u) 
-          ;(format t "align-ulf-polarity -- ign atom. u: ~s  p: ~s" u p) 
+          ;(format t "align-ulf-polarity -- ignored atom. u: ~s  p: ~s" u p) 
           (list u p))
          ;; Otherwise, recursion!
          (t
