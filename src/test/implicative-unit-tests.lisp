@@ -121,6 +121,22 @@
     '(| John| (harm.v | Mary|))
       (apply-implicative-rules
     '(| John| ((past do.aux-s) not (mean.v (ka (harm.v | Mary|)))))))
+  (assert-equal
+    '(not (| Mary| (can.v (have.v (the.d prize.n)))))
+      (apply-implicative-rules
+    '(| John| ((past do.aux-s) not (allow.v | Mary| (ka (have.v (the.d prize.n))))))))
+  (assert-equal
+    '(not (he.pro ((past have.v) (a.d car.n))))
+      (apply-implicative-rules
+    '(| John| ((past do.aux-s) not (lie.v (that (he.pro ((past have.v) (a.d car.n)))))))))
+  (assert-equal
+    '(probably (not (| John| (know.v (k math.n)))))
+      (apply-implicative-rules
+    '(| John| ((past do.aux-s) not (pretend.v (ka (know.v (k math.n))))))))
+  (assert-equal
+    '(not (| John| is-a (ka (be.v rich.a))))
+      (apply-implicative-rules
+    '(| John| ((past do.aux-s) not (turn-out.v (ka (be.v rich.a)))))))
   ;; Define more here...
   ;; (assert-equal
   ;;   '()
