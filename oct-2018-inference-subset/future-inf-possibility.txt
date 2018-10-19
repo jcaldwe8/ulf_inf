@@ -1,0 +1,22 @@
+I was thinking if it would make sense to introduce another category of inferences, something like "suggestions". Here are a couple of examples that fit this:
+
+"You 're going to be bored if you go"
+Inference: you'd better not go
+
+"There are more of those in the drawer ."
+Inference: you might want to look in the drawer (or something along those lines)
+
+Georgiy
+
+
+
+
+These are an interesting class of inferences, but I would include these in situational inferences for now.  These inferences seem to be based more of common sense context than the structure of the sentence.  Currently all the classes of inferences we've selected have a core structural component to their inferences since that generalizes well into ULF and would require a minimal amount of work to get working.  I do want to keep this class of inferences in mind though, for discussion and possible future directions.  If we can think of a way to generalize these inferences into a formalizable class then perhaps we can incorporate these into future experiments.
+
+On further thought, there does seem to be some dependence on the structure because it's strange to make a sentence of the form "you're going to _ if you _" where you force a reading that doesn't include a suggestion.  For example, when I try to force it by making the first clause a positive result like so: "You're going to pass the class if you study", it seems to indicate the for some strange reason you don't want to pass the class.  I'm not sure if the other case follows the same regularity.  Still, I don't want to include a new class in the current annotations, but I'll keep a note of this so that perhaps we can include them in future experiments.
+
+Best,
+Gene
+ 
+
+

@@ -1,0 +1,23 @@
+1. Rules for Questions
+2. Finish writing macro-expansion and normalization code.
+3. Setup experiment evaluation code (formatting data from database, scoring code comparison)
+4. Determine how we're going to evaluate the correctness of inferences.  Since the inferences are not ULF annotated, we have a couple of options:
+  4a) generate the text from the ULF and compare 
+    - We can generate alternative surface forms by reordering via topicalization or modifier reordering.  Then we can see that one of them is the same and also do a top output score
+    Issue: Getting a fully accurate string generation is difficult, so maybe we can also do some softer scoring metrics which measures character overlap? or allow a certain maximum edit distance between the two solutions (e.g. 3 characters, or 1 character per 3 words, or something like that).  We could try to get fancy and perform a text-ULF alignment and then map the text straight across for shared structures.
+  4b) We should at least manually compare a subset (and quantify how our system does).  Rather than scoring all inferences -- since some of them will include comparisons with "No inference", we can sample just interesting gold/generated inference pairs.
+  4c) Some sort of automated or manual ULF annotation of inferences?  (Seems too time-consuming)
+  4d) Maybe have a version of the evaluation that somehow is multiple-choice?  Hmmm... hard to come up with a reasonable way to generate negative examples.  We can at least make the problem of deciding if there are any inferences of a certain class a classification problem.  Then can we break it down into whether there are any of each subtype and finally the generation itself (even if we can't make the final step a classification, it can be useful to break down our system's ability to differentiate these issues).    
+    [Sidenote: For generating a dataset, have people considered training a GAN and then having people mark which of the generations are correct and not?]
+
+  4*) We can evaluate recall using the dataset, but what about precision?  We can do precision' where we evaluate how many of our unique inferenced ULFs are in the final inference.  But I expect that this will lead to poor precision... we can see if we can tune the system to generate exactly the sort that the annotations have, but we can also do a manual subset evaluation of the precision of the output.  Recall* is easy since we just look at coverage of the inferences.  Of course, this isn't the full recall, but...
+    [In the paper, we could argue for the setup of an evaluation a little like TAC-KBP where each system is manually scored for precision and then the union of all of them is considered the recall.  There is some issue regarding the wording though.  Things would have to be grouped somehow since a system should not necessarily need to generate all reasonable topicalized version of an inference, just the unique inference].
+
+5. Fine-tune output to exactly the form that the dataset has.
+
+
+For good performance:
+1. Some handling of contextually-controlled inference generation
+2. Fixing current test failures (especially counterfactuals)
+
+

@@ -1,0 +1,31 @@
+Annotators from which we'll use the ULF annotations:
+  auid  name
+  27    Graeme
+  26    Sophie
+  28    Muskaan
+  17    Tianyi
+  8     Gene
+  12    Georgiy
+  29    Ben
+
+Annotators I've completely reviewed annotations for:
+  Muskaan
+
+Partially reviewed annotations:
+  Graeme
+
+
+Annotators participating in inference annotations:
+  Graeme
+  Sophie
+  Muskaan
+  Gene
+  Georgiy
+  Ben
+
+Getting inference ids:
+  Get ulf ann sids for each person.
+  Filter ids by the sids sent to each person.
+  Look up corresponding inference ids
+  Split into sentences for each person.
+
