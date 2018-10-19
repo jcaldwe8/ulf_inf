@@ -1,0 +1,96 @@
+Muskaan:
+  will.aux-v is almost never used -- i will go home > will.aux-s.
+  do.aux-v is also very rare -- only when used for emphasis.  If "do" is introduced because of a negation or an inversion, it is always do.aux-s.
+  when/where.adv-e and how.adv-a should be turned into *.pq.  (this is a fairly recent development and it's easy to correct if you keep making this mistake).
+  We manually uninvert inverted quote attribution: "...", said he -> (sub (\" ... \") (he.pro ((past say.v) *h))).  This is because the inversion is restricted to questions and related forms where the meaning actually changes.  Here, the inversion seems to just be sloppiness that people allow.
+  "I have to do something" -- have.v (to ..) -- [see end of the Modals section on a discussion of this]
+  You should break down the names a bit more: 
+    "the Finger Lakes" -- (the.d (|Finger|.n (plur |Lake|.n))) OR (the.d (plur |Finger Lake|.n))
+    "New York state" -- (k (|New York| state.n))  
+  You seem to need a little bit of practice recognizing relative clauses, e.g. the organization that is presided by ....
+  *.yn don't need pu wrappers.  They're already sentence interpretations. 
+  Distinguishing between noun modifiers and verbal prepositions... "what is the meaning of cpr" -- "meaning of cpr" is one phrase.
+  Wh-questions, especially "what" questions usually require a 'sub' operator.  Notice that in "what does the future hold", the answer to "what" is semantically the object of "hold".  i.e. the answer is "the future hold x".
+  Arguments to the verb phrase in an auxiliary inverted sentence shuold be supplied wiht local scoping: "Did you take the chair" --> ((past do.aux-s) you.pro (take.v (the.d chair.n))).  Notice that "take.v" and "(the.d chair.n)" are scoped together.  We only scope it flat if we need the constituent to be applied to the verb phraase after uninversion.  For example: "Made he a toy quickly" we don't want (toy.n quickly.adv-a) or ((a.d toy.n) quickyl.adv-a).  Rather we want (((past make.v) (a.d toy.n)) quickly.adv-a).  Thus we allow the flat arguments in the inverted form be supplied after the inversion. 
+    ((past make.v) he.pro ((a.d toy.n) quickly.adv-a)) -> (he.pro ((past make.v) ((a.d toy.n) quickly.adv-a)))
+    ((past make.v) he.pro (a.d toy.n) quickly.adv-a) -> (he.pro (((past make.v) (a.d toy.n)) quickly.adv-a)))
+    ((past do.aux-s) you.pro (take.v (the.d chair.n))) -> (you.pro ((past do.aux-s) (take.v (the.d chair.n))))
+    ((past do.aux-s) you.pro take.v (the.d chair.n)) -> (you.pro (((past do.aux-s) take.v) (the.d chair.n)))
+    Notice the that first example is wrong because we can't modify a term with an adv-a.  Opposite, the last example is wrong because we need to supply non-subject arguments before the auxiliary.
+
+
+Graeme:
+  **I think you really need to get into practice of using multiple lines when annotating.  I can give you style guidelines that help with readability if you're consistent with how you write it**
+
+  "All they would do" is a reduced-relative clause.  All.pro and (tht ..) can't compose.
+  *.ps can't used flat.  Needs to be curried.
+  Prepositions should be turned into adverbials when modifying a verb (rather than say acting as a predicate argument).
+  Arguments need to be supplied to anything before being reified.  Reified verbs and nouns can't take any more arguments.
+  sub operator should never take more or less than 2 arguments.
+  sub operator always needs *h in the second argument
+  sid 557369: the prepositions need to be changed to p-arg and adv-a.  Also, "would" was missing tense.
+  rehighlighted 'sub' in 1234912?
+  double-bracketing in 1234912 -- should be caught by sanity checker
+  1234912 -- prepositions should not be applied flat
+  possessive syntax is ((<term> 's) <noun>)
+  double tense in 360041 is not allowed
+  "what did you do" -- (sub what.pro ((past do.aux-s) you.pro (do.v  *h))).   Your annotation doesn't include the sub.  See 360041.
+  use n+preds to modify nouns, 915626.  Also, can't modify terms.
+  brother-of.n (more generally *-of.n) for relational nouns and add *s or *ref as appropriate.  See example 919228
+  Terms can't compose and we can't modify terms (almost all the k operators should be removed from 930914) 
+  Subject must be flat in auxiliarly inverted forms (see 526673)
+  be.v always takes a predicate argument unless it is in an it-cleft construction.
+  929081 needs a relative clause to handle properly.  This was a really tricky case
+  462269 is another tricky relative clause case. 
+  917910: perf vs prog
+  1190554: *.pr is for prepositional phrases in relativizer position.  In this example, there's not relative clause there.
+  917890: "in the United States" needed to be wrapped in an adv-e, and "to prepare another Mafia trial" in adv-a and {for}.p, and 'another' here is a determiner.  "a month after .." is handled the way it is because "a month" is modifying the extent of "after".  This solution is actually preliminary.  We may need to change this.. 
+  925435: relative clauses need an n+preds, np+preds, or n+post.
+  925435: of.p-arg is not right in "a series of ads" because there isn't a corresponding verb that "series" is derived from, which takes "ad" as the semantic argument.
+  915159: missing tense, no prog, can invert perf.
+  640773: arguments should be scoped with verb, not to each other.
+  404037: (pres could.aux-s) -> (past can.aux-s) since the context makes it clear it happened in the past.
+  404037: scoping of *h so that it will scope around ((past can.aux-s) happen.v) since how.pq needs to scope around that rather than around just 'happen.v'
+  404037: on.p-arg -> on.p since 'be.v' takes predicate arguments.
+  431123: with.p -> with.p-arg since "with you" doesn't carry the same meaning when used with other verbs.  It's specific to the verb.  Also, we can get the differenc ein this sentence ("I can't keep up with you" vs "I can't keep up with you following my around" -- in the first example, I'm trying to keep up with you, in the second, I'm trying to keep up with someone else but you're making it hard).
+  431123: a_bit.adv-a (see similar a_little.adv-a discussion in guidelines).
+  922191: underscores for merging tokens into a lexeme.
+  1413661: flat scoping for auxiliary inversions.
+  1413661: (what.a comment.n) -> (what.d comment.n)
+  1413661: np+preds for "on the untimely ...".  This is because we can say "That comment on the untimely ... was unwarranted" where "on the untimely ..." is modifying "that comment".  Also, we can say "What man did you see that was wearing a vest".
+  963833: subject verb inversions need to be manually uninverted and you can use 'sub' to move the quote in the right place.
+  916146: ds should always be a big quote at the end.  Can't mix in interpreted portions.  "at a ..." needs an 'adv-a' wrapper since it's acting as a modifier.  
+  916146: "at peak explosive power" is at.p because 'keep' is a predicate taking verb.  
+  916146: "to keep warheads ..." needs adv-a around it since it's a purpose modifier, not an argument of the 'need'.  This can be supplied with the same basic meaning to almost any verb phrase (notice it's not the case with 'to be regularly replenished' which is definitely an argument of 'need').  
+  916146: 'sub' was not necessary (though not incorrect) since *.ps has flexible scoping due to the disambiguation provided by curried arguments.
+  300549: 'go' isn't a predicate taking verb so the prepositional phrase "to there" needs to either be a predicate argument or modifier.
+  595345: 'tht' needed around the embedded sentence. 
+  595345: 'the' in 'the Philippines' doesn't need to be capitalized so no naming bars around it are necessary.
+  595345: futr -> will.aux-s
+  595345: non-subject arguments must scope before the auxiliaries.
+  915422: use underscores to merge tokens to lexemes. 
+  928972: "chairman of" is a relational reading (can't be a chairman without something to chair). Similarly 'bottom of' is relational.  Can't have a bottom without something (similar to side of).
+  928972: "the Senate select committee ..." should be n+preds since we can't identify the right Senate select committee without the relative clause.
+  743846: scope the object and adverbs separate from the subject (for computational simplicity).  Also, some argument scoping issues
+  931245: adv-a and adv-e needed to get the right meaning of prepositions.  Also, what can be a determiner (basically "what country" means the same as "which country").
+  915912: scope arguments before auxiliaries (including perf and prog)
+  915912: can't chain two prepositions because prepositions take terms as arguments and a prepositional phrase is a predicate.  Instead either merge to a single preposition, split into two separate parallel prepositions, or some other more clever construction...
+  254824: "above the clouds" needs adv-a around it since it's modifying rising.  You should be very careful when you see a bare prepositional phrase (i.e. neither p-arg or wrapped in adv-*)
+  610934: same as preposition comment above
+  863289: scope non-subject arguments before auxiliaries (including perf and prog).
+  687696: the sentences in if.ps also need tense
+  760785: question needs to be reified and "why not" doesn't make sense without an implicit referential sentence.
+  725597: 'not' can be supplied flat in inversions.
+  390757: scope arguments before auxiliaries
+  1389829: determiners take nouns, not individuals as arguments so the kind operators in "duty and humanity" are incorrect.  Also, adv-a can't modify and individual so you need np+preds for "respecting Catherine" instead.
+  915167: "with the stones" is an adverbial modifier.  Also, use underscores for combining tokens to lexemes.
+  1206513: Many corrections.  Please take a look at this one and ask me any questions you have.  Relative cluase error, subtle issues of n+preds needed for noun post-modification using prepositions.
+  915122: these re-arranged quotes can be moved back with 'sub'.  Also, subject-verb inversions such as this must be rearranged manually
+  915578: Again many corrections.  Please review differences.  A few issues: can't modify terms with terms, use n+preds to merge to references to the same thing in a compoound name (i.e. appositives)
+    
+
+
+Notes for Gene:
+  "according to" -- (adv-s (accord.v (to.p-arg ...)))
+
+
