@@ -35,3 +35,6 @@ datasets/project_gutenberg/normalized_top100-*/
 # Ignore decompressed filtered datasets.
 filtered_datasets
 
+# Working directory for getting ULFs from SQL.
+get_ulf_temp/
+
