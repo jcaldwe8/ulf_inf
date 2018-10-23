@@ -1,0 +1,39 @@
+
+Inference eval components:
+
+
+Human inferences
+````````````````````
+Data: sentences with at least one inference of each core category (inference of "no inferences" as appropriate)
+
+Format?
+Probably simple .tsv of
+
+[sentence]\t[sentence metadata]\t[inferred sentence]\t[inference metadata]
+OR
+[sid]\t[sentence]\t[iid]\t[inference]  with separate files for [sid]\t[sentence metadata] and [iid]\t[inference metadata]
+
+
+Human ULF annotations
+```````````````````````
+[usid]\t[isid]\t[sentence]\t[ulf]
+usid: ulf sid
+isid: inf sid
+
+Please run get_ulf_annotations.sh generate the formatted ULF files.  You will
+need to know the password of the SQL database to run this script completely.
+
+Inference system
+````````````````````
+Input: ULF
+Output: list of ULF inferences
+
+
+Eval system
+````````````````````
+Subsystems: ULF -> English, ULF -> rewording (with equivalent meanings, e.g. passivization, adv-e removal)
+
+Main system
+  Input: (human inferences, system inferences)
+  Output: score [possibly precision+recall]
+
