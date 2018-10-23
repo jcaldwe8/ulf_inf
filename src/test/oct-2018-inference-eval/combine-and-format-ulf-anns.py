@@ -12,8 +12,12 @@ if len(sys.argv) < 4:
 
 # Removes unnecessary newlines and tabs.
 # We leave in extra spaces since lisp can do a better job of filtering those.
+# TODO: remember to do the names preprocessing before inputting into Lisp.
 def format_ulf(rawulf):
   return rawulf.replace("\r\\n", "").replace("\\t", "")
+
+def format_sent(sent):
+  return sent.replace("\\n", "")
 
 # File that pulls from SQL to get ulf inference id info.
 # TODO: the SQL database should be updated to include a correspondence between the inference sentence ids and the ulf sentence ids, rather than doing it in python...
@@ -40,7 +44,7 @@ for e in dataset:
   if e["ulf_sentences_id"] in ulfsids:
     u2isid[e["ulf_sentences_id"]] = e["inf_sentences_id"]
 
-sisuf = [[l[0], str(u2isid[int(l[0])]), l[1], format_ulf(l[2])] for l in parsed_ssuf]
+sisuf = [[l[0], str(u2isid[int(l[0])]), format_sent(l[1]), format_ulf(l[2])] for l in parsed_ssuf]
 
 out = file(OUTFILE, 'w')
 out.write("usid\tisid\tsentence\tulf\n")
