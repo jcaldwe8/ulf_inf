@@ -31,3 +31,10 @@
 ;(load "test/pilot/tests-gene.lisp")
 ;(load "test/pilot/tests-preliminary.lisp")
 
+
+;; October 2018 evaluation tests.
+(ql:quickload :cl-strings)
+(ql:quickload :uiop)
+(load "test/oct-2018-inference-eval/data-load.lisp")
+(load "test/oct-2018-inference-eval/run-eval.lisp")
+
