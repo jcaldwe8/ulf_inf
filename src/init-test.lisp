@@ -25,6 +25,7 @@
 (load "test/pilot/select-sampled-ulf.lisp")
 (load "test/pilot/general-sampled-ulf.lisp")
 (load "test/counterfactual-unit-tests.lisp")
+(load "test/question-unit-tests.lisp")
 (load "test/implicative-unit-tests.lisp")
 (load "test/ttt-preds-and-functions-tests.lisp")
 ; NB: these files run tests automatically, so comment out for now.
@@ -36,5 +37,5 @@
 (ql:quickload :cl-strings)
 (ql:quickload :uiop)
 (load "test/oct-2018-inference-eval/data-load.lisp")
-(load "test/oct-2018-inference-eval/run-eval.lisp")
+;(load "test/oct-2018-inference-eval/run-eval.lisp")
 

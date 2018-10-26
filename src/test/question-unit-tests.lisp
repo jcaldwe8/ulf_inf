@@ -21,25 +21,25 @@
         ;; Did that happen?
         (f3 '(((past do.aux-s) that.pro happen.v) ?)))
     (assert-equal
-      '(you.pro probably.adv-s ((pres know.v) (ans-to (sub where.pq (|John| ((past go.v) *H))))))
-      (run-you-know-q-act f1))
+      '(you.pro probably.adv-s ((pres know.v) (ans-to (sub where.pq (|John| ((past go.v) *h))))))
+      (car (infer-you-know-from-wh-q-act-raw f1)))
     (assert-equal
       '(I.pro probably.adv-s ((pres do.aux-s) not (know.v (ans-to (sub where.pq (|John| ((past go.v) *h)))))))
-      (run-i-not-know-q-act f1))
+      (car (infer-i-not-know-from-wh-q-act-raw f1)))
 
     (assert-equal
       '(you.pro probably.adv-s ((pres know.v) (ans-to (sub when.pq (you.pro ((pres prog) ((get.v married.a) *h)))))))
-      (run-you-know-q-act f2))
+      (car (infer-you-know-from-wh-q-act-raw f2)))
     (assert-equal
       '(i.pro probably.adv-s ((pres do.aux-s) not (know.v (ans-to (sub when.pq (you.pro ((pres prog) ((get.v married.a) *h))))))))
-      (run-i-not-know-q-act f2))
+      (car (infer-i-not-know-from-wh-q-act-raw f2)))
 
     (assert-equal
       '(you.pro probably.adv-s ((pres know.v) (whether (that.pro (past happen.v)))))
-      (run-you-know-q-act f3))
+      (car (infer-you-know-from-yn-q-act-raw f3)))
     (assert-equal
       '(i.pro probably.adv-s ((pres do.aux-s) not (know.v (whether (that.pro (past happen.v))))))
-      (run-you-know-q-act f3))))
+      (car (infer-i-not-know-from-yn-q-act-raw f3)))))
 
 
 

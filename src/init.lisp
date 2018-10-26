@@ -24,6 +24,7 @@
 ;; Pheomenon-specific code.
 (load "counterfactual-inferences.lisp")
 (load "request-inferences.lisp")
+(load "question-inferences.lisp")
 (load "implicative-inferences.lisp")
 (load "implicative-weak-inferences.lisp")
 
