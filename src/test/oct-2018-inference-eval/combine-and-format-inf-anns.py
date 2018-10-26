@@ -61,8 +61,8 @@ for isid, plines in isid2infs.iteritems():
   newplines = []
   for pline in plines:
     if is_oldsit_line(pline):
-      pline[3] = "sit"
-      pline[4] = "situational"
+      pline[4] = "sit"
+      pline[5] = "situational"
       newplines.append(pline)
     else:
       newplines.append(pline)
@@ -70,7 +70,7 @@ for isid, plines in isid2infs.iteritems():
 
 # 3. Remove NO INFERENCES FOR THIS CATEGORY INFERENCES.
 def is_noinf_line(pline):
-  return "not-" in pline[5]  
+  return pline[5] in ["not-cf", "not-impl", "not-rq", "not-q"]
 
 outlines = []
 for isid, plines in newsit_isid2infs.iteritems():
