@@ -37,3 +37,15 @@ Main system
   Input: (human inferences, system inferences)
   Output: score [possibly precision+recall]
 
+
+
+
+
+
+
+Specific inference issues:
+1. requests should not be made if embedded in a question
+2. don't make counterfactual inferences in quetions "what would you do?"
+3. add negative request inferences
+
+
