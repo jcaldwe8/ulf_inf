@@ -166,8 +166,8 @@
          ;(rejoined (mapcar #'(lambda (x) (cl-strings:join x :separator ".")) pruned))
          (rejoined (mapcar #'strip-suffix stringified))
          (postform (mapcar #'post-format-ulf-string rejoined)))
-    (format t "morph-added ~s~%" morph-added)
-    (format t "Surface-only ~s~%" surface-only)
+    ;(format t "morph-added ~s~%" morph-added)
+    ;(format t "Surface-only ~s~%" surface-only)
     (cl-strings:join postform :separator " ")))
 
 
