@@ -1,678 +1,677 @@
 isid	infid	userid	inf_text	inf_category	inf_type	temporal_reln	timestamp
-861551	916	bkane2	sit	situational	situational	before	2018-10-08 20:56:55
-698216	1456	gmcguire	Flush toilets have been invented.	impl	OTHER: First	concurrently	2018-10-15 19:21:02
-698216	1459	gmcguire	I don't know when the first flush toilet was invented.	q	q-act	concurrently	2018-10-15 19:21:37
-698216	1460	gmcguire	There was a time when the first flush toilet was invented.	q	q-form-pre	concurrently	2018-10-15 19:22:07
-1010039	1787	genelkim	I don't know if you can tell the position of the rooms	q	q-act	concurrently	2018-10-18 14:41:19
-1010039	1788	genelkim	You know whether you can tell the position of the rooms	q	q-act	concurrently	2018-10-18 14:41:47
-1010039	1789	genelkim	I don't know what those latticed windows at this end are	q	q-act	concurrently	2018-10-18 14:42:49
-1010039	1790	genelkim	You might know what those latticed windows at this end are	q	q-act	concurrently	2018-10-18 14:43:28
-1010039	1786	genelkim	sit	situational	situational	concurrently	2018-10-18 14:40:42
-1010039	1791	genelkim	sit	situational	situational	concurrently	2018-10-18 14:46:29
-487947	1736	genelkim	sit	situational	situational	concurrently	2018-10-17 20:43:51
-487947	1737	genelkim	sit	situational	situational	concurrently	2018-10-17 20:44:02
-696278	1586	platono	I want and expect you to tell me how to determine if a computer monitor has an SVGA adapter	rq	implicit-desire	concurrently	2018-10-16 20:13:38
-696278	1587	platono	You probably know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-16 20:15:41
-696278	1589	platono	I probably don't know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-16 20:16:40
-687867	1832	genelkim	I don't know whether there is something rotten in the kingdom of museums	q	q-act	concurrently	2018-10-18 15:21:07
-687867	1833	genelkim	You might know whether there is something rotten in the kingdom of museums	q	q-act	concurrently	2018-10-18 15:21:25
-687867	1834	genelkim	sit	situational	situational	concurrently	2018-10-18 15:22:15
-109055	2050	ssackste	sit	situational	situational	before	2018-10-19 20:26:27
-703665	1090	gmcguire	There is a particular country you would visit to ski in the Dolomites.	q	q-act	concurrently	2018-10-08 21:40:39
-698998	1185	muskaan	You can see	impl	OTHER: 	concurrently	2018-10-11 18:12:43
-698998	1186	muskaan	I don't know how far you can see	q	q-act	concurrently	2018-10-11 18:13:03
-794693	861	bkane2	He is obligated to change him a hundred-dollar bill	rq	command	before	2018-10-08 20:45:42
-794693	846	bkane2	He changed him a hundred-dollar bill	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 20:43:17
-383675	1406	gmcguire	You are obligated to write your surname on the fourth line.	rq	command	concurrently	2018-10-15 18:38:00
-322282	1675	platono	I want you to come tomorrow	rq	implicit-desire	concurrently	2018-10-16 21:39:33
-694685	1257	muskaan	I want and expect you to name the On Stage character whose face was never seen.	rq	command	afterwards	2018-10-12 19:37:39
-413515	792	bkane2	I want you to give me a moment	rq	implicit-desire	concurrently	2018-10-08 20:19:21
-413515	798	bkane2	sit	situational	situational	concurrently	2018-10-08 20:21:48
-698604	618	genelkim	You probably know how I can find out how much it costs to raise a baby for six months	q	q-act	concurrently	2018-10-04 16:50:32
-698604	619	genelkim	I probably don't know how I can find out how much it costs to raise a baby for six months	q	q-act	concurrently	2018-10-04 16:50:54
-698604	620	genelkim	One can find out how much it costs to raise a baby for six months	q	q-form-pre	concurrently	2018-10-04 16:51:24
-698604	621	genelkim	There is a cost to raising a baby for six months	q	q-form-pre	concurrently	2018-10-04 16:52:18
-688917	1701	platono	sit	situational	situational	concurrently	2018-10-17 16:19:45
-687767	500	genelkim	I want us to just take that	rq	implicit-desire	concurrently	2018-10-04 15:41:40
-778975	1906	genelkim	sit	situational	situational	concurrently	2018-10-18 16:41:09
-778975	1907	genelkim	sit	situational	situational	concurrently	2018-10-18 16:41:27
-778975	1908	genelkim	sit	situational	situational	before	2018-10-18 16:42:03
-695403	1795	genelkim	I don't know how easily I can remove red wine stains from t-shirts	q	q-act	concurrently	2018-10-18 14:47:36
-695403	1796	genelkim	You probably know how easily I can remove red wine stains from t-shirts	q	q-act	concurrently	2018-10-18 14:47:56
-695403	1797	genelkim	Red wine stains can be removed from t-shirts	q	q-form-pre	concurrently	2018-10-18 14:48:31
-695403	1798	genelkim	sit	situational	situational	concurrently	2018-10-18 14:49:21
-693027	1117	muskaan	I don't know how to tell if a female has sexual intercourse.	q	q-act	concurrently	2018-10-11 17:51:32
-688566	247	bkane2	Tritium probably is regularly replenished	impl	something [prob] [aux] [neg] happen [tense] probably none none none pres	concurrently	2018-07-04 02:06:29
-950009	1874	genelkim	He probably will not have known that you already know his sister and father and are liked by them	impl	OTHER: someone finds somethings is the case -> someone probably didn't know something is the case	before	2018-10-18 16:14:26
-950009	1878	genelkim	sit	situational	situational	afterwards	2018-10-18 16:15:36
-950009	1872	genelkim	You already know his sister and father and are liked by them	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-18 16:08:44
-272497	1532	platono	I want and expect you to lend me your pink pen	rq	command	afterwards	2018-10-16 19:36:55
-272497	1534	platono	You probably have a pink pen	q	q-form-pre	concurrently	2018-10-16 19:38:07
-704927	1056	bkane2	I want and expect you to tell me what two countries Andorra is nestled between	rq	implicit-desire	concurrently	2018-10-08 21:29:01
-704927	1058	bkane2	I don't know what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:18
-704927	1059	bkane2	You probably know what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:27
-704927	1060	bkane2	You probably will tell me what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:47
-704927	1061	bkane2	Andorra is nestled between two countries	q	q-form-pre	concurrently	2018-10-08 21:30:04
-854167	947	platono	I have heard Lord St .	impl	OTHER: Situational	before	2018-10-08 21:07:30
-700450	1321	bkane2	I want and expect you to tell me how I can find a list of celebrities' real names	rq	implicit-desire	concurrently	2018-10-13 21:49:23
-700450	1322	bkane2	I don't know how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:50:20
-700450	1323	bkane2	You probably know how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:50:57
-700450	1324	bkane2	You probably will tell me how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:51:26
-700450	1325	bkane2	I can find a list of celebrities' real names somewhere	q	q-form-pre	concurrently	2018-10-13 21:52:09
-704447	2164	ssackste	You know where can I read about Abraham Lincoln	q	q-act	concurrently	2018-10-19 21:15:51
-695702	2090	ssackste	I think you know why it is called `` hamburger '' if there is no ham in it	q	q-act	concurrently	2018-10-19 20:51:36
-695702	2091	ssackste	sit	situational	situational	concurrently	2018-10-19 20:52:54
-421779	1564	platono	you stopped by	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-16 20:04:18
-91232	1247	muskaan	I want you to give me the directions to the subway station	rq	implicit-desire	afterwards	2018-10-11 20:54:38
-690310	1223	muskaan	sit	situational	situational	afterwards	2018-10-11 20:15:18
-690313	640	genelkim	An interview with Contorno had been conducted at an undisclosed location in the United States	impl	OTHER: someone broadcasted something that happened -> something happened	before	2018-10-04 17:07:58
-327051	831	gmcguire	He will probably come tomorrow.	impl	someone2 [prob] [aux] [neg] do [tense] something probably will none none pres	concurrently	2018-10-08 20:37:21
-694128	205	muskaan	The music stops in a game of musical chairs.	impl	OTHER: 	concurrently	2018-06-29 20:14:01
-694128	206	muskaan	I don't know what the players try to do when the music stops in a game of musical chairs.	q	q-act	concurrently	2018-06-29 20:14:23
-697735	856	genelkim	You are obligated to name four famous cartoon cats	rq	command	afterwards	2018-10-08 20:44:53
-330110	1936	genelkim	I probably don't know whether you would take Tom to Boston with you	q	q-act	concurrently	2018-10-18 19:16:32
-330110	1937	genelkim	You know whether you would take Tom to Boston with you	q	q-act	concurrently	2018-10-18 19:16:52
-330110	1938	genelkim	sit	situational	situational	afterwards	2018-10-18 19:18:07
-330110	1935	ssackste	I want you to take Tom to Boston with you	rq	implicit-desire	concurrently	2018-10-18 19:11:47
-699954	1176	muskaan	I don't know what the chances of pregnancy are if the penis does not penetrate the vagina	q	q-act	concurrently	2018-10-11 18:10:11
-511306	884	bkane2	I want you to tell her	rq	implicit-desire	concurrently	2018-10-08 20:50:50
-511306	887	bkane2	I don't know if you will tell her	q	q-act	concurrently	2018-10-08 20:51:41
-511306	688	bkane2	You know something she doesn't	q	q-form-pre	concurrently	2018-10-05 19:49:41
-692548	980	bkane2	I want and expect you to tell me what is the executor in a will	rq	implicit-desire	concurrently	2018-10-08 21:14:40
-692548	982	bkane2	I don't know what is the executor in a will	q	q-act	concurrently	2018-10-08 21:14:58
-692548	983	bkane2	You probably know what is the executor in a will	q	q-act	concurrently	2018-10-08 21:15:17
-692548	985	bkane2	You probably will tell me what is the executor in a will	q	q-act	concurrently	2018-10-08 21:15:53
-692548	986	bkane2	A will has an executor	q	q-form-pre	concurrently	2018-10-08 21:16:08
-203863	1008	platono	I want you to dictate a bit slower	rq	implicit-desire	concurrently	2018-10-08 21:20:24
-689990	1734	genelkim	People don't know where the companion is if you spin up the pulsar with a companion	q	q-act	concurrently	2018-10-17 20:38:59
-689990	1730	genelkim	Fruchter thought that people wondered , ` If you spin up the pulsar with a companion , where is the companion ? '	impl	someone [prob] [aux] [neg] think [tense] that something happened none none none none past	concurrently	2018-10-17 20:34:54
-689990	1731	genelkim	People probably wondered , ` If you spin up the pulsar with a companion , where is the companion ? '	impl	something [prob] [aux] [neg] happen [tense] probably none none none past	before	2018-10-17 20:35:49
-514186	1093	gmcguire	sit	situational	situational	before	2018-10-08 21:44:33
-455175	1480	gmcguire	Something happened yesterday.	impl	OTHER: What-assertion	concurrently	2018-10-15 19:29:21
-455175	1479	gmcguire	Tom is sorry about what happened yesterday.	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-15 19:29:01
-702848	2104	ssackste	You probably know who says `` If you don 't look good , we don 't look good '' ?	q	q-act	concurrently	2018-10-19 20:57:47
-702848	2103	ssackste	Someone says `` If you don 't look good , we don 't look good '' ?	q	q-form-pre	concurrently	2018-10-19 20:57:12
-22869	632	genelkim	I want and expect you to open the door	rq	implicit-desire	concurrently	2018-10-04 17:00:37
-22869	633	genelkim	You probably know if you will open the door	q	q-act	concurrently	2018-10-04 17:02:06
-22869	634	genelkim	I probably don't know if you'll open the door	q	q-act	concurrently	2018-10-04 17:02:21
-22869	635	genelkim	sit	situational	situational	concurrently	2018-10-04 17:02:52
-687998	2178	genelkim	Bennett probably wanted the Pentagon and then-Attorney General Edwin Meese to unleash the U.S. military against foreign drug traffickers	impl	OTHER: someone1 urged someone2 to do something -> someone1 wanted someone2 to do something	concurrently	2018-10-26 02:27:23
-687998	2177	genelkim	The Pentagon and then-Attorney General Edwin Meese possibly unleashed the U.S. military against foreign drug traffickers	impl	someone2 [prob] [aux] [neg] do [tense] something possibly none none none past	afterwards	2018-10-26 02:25:38
-1122659	1847	genelkim	I want and expect you to do me that favour	rq	implicit-desire	concurrently	2018-10-18 15:47:15
-1122659	1848	genelkim	You probably know whether you will do me that favour	q	q-act	concurrently	2018-10-18 15:47:38
-1122659	1849	genelkim	I probably don't know whether you will do me that favour	q	q-act	concurrently	2018-10-18 15:48:20
-429887	1947	ssackste	I want you to loan him some money	rq	implicit-desire	concurrently	2018-10-18 19:35:21
-429887	1949	ssackste	You might know whether you can loan money	q	q-act	concurrently	2018-10-18 19:42:21
-429887	1948	ssackste	sit	situational	situational	concurrently	2018-10-18 19:40:22
-701918	1826	genelkim	You are obligated to name the creator of `` The Muppets ''	rq	command	concurrently	2018-10-18 15:18:04
-701918	1828	genelkim	sit	situational	situational	concurrently	2018-10-18 15:19:39
-699731	897	bkane2	I want and expect you to tell me what someone is caught in if a haboob blows up	rq	implicit-desire	concurrently	2018-10-08 20:53:06
-699731	706	bkane2	You probably know what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 19:59:48
-699731	707	bkane2	You probably will tell me what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 20:00:11
-699731	709	bkane2	I don't know what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 20:01:02
-699731	53	ssackste	You are caught in something if haboob blows up	q	q-form-pre		2018-06-18 20:37:31
-699731	54	ssackste	sit	situational	situational		2018-06-18 20:38:11
-512596	1212	muskaan	You know if you showed her the pictures	q	q-act	concurrently	2018-10-11 19:45:47
-512596	964	muskaan	You have pictures	q	q-form-pre	concurrently	2018-10-08 21:11:10
-1004381	1855	genelkim	You used to know that thing he wrote	impl	OTHER: someone remembers something -> someone used to know something	before	2018-10-18 15:55:28
-1004381	1853	genelkim	I don't know if you remember that thing he wrote	q	q-act	concurrently	2018-10-18 15:50:28
-1004381	1854	genelkim	You know whether you remember that thing he wrote	q	q-act	concurrently	2018-10-18 15:50:55
-1004381	1856	genelkim	sit	situational	situational	before	2018-10-18 15:56:05
-80711	1030	platono	I want you to give me a ride	rq	implicit-desire	concurrently	2018-10-08 21:25:03
-80711	1026	platono	You have a car	q	q-form-pre	concurrently	2018-10-08 21:24:03
-168462	1217	muskaan	sit	situational	situational	afterwards	2018-10-11 20:02:05
-690105	2183	genelkim	Bush probably thought that for personal and family considerations he preferred to remain in Michigan	impl	someone2 [prob] [aux] [neg] think [tense] that something happened probably none none none past	afterwards	2018-10-26 02:33:29
-690105	2182	genelkim	For personal and family considerations he preferred to remain in Michigan	impl	something [prob] [aux] [neg] happen [tense] none none none none past	concurrently	2018-10-26 02:31:42
-690105	2022	ssackste	sit	situational	situational	concurrently	2018-10-19 20:16:44
-701392	2133	ssackste	You might know was chairman of the Senate select committee that tried to get to the bottom of Watergate	q	q-act	concurrently	2018-10-19 21:05:50
-701392	2132	ssackste	There was a was chairman of the Senate select committee that tried to get to the bottom of Watergate	q	q-form-pre	before	2018-10-19 21:05:26
-701392	2134	ssackste	sit	situational	situational	concurrently	2018-10-19 21:06:21
-705268	902	muskaan	I don't know on whom to use the Heimlich maneuver	q	q-act	concurrently	2018-10-08 20:53:51
-705268	1209	muskaan	You use the Heimlich maneuver on someone	q	q-form-pre	concurrently	2018-10-11 19:34:53
-1137026	808	bkane2	The Lion thinks that he is sharp	impl	OTHER: someone remarked something	concurrently	2018-10-08 20:29:25
-697497	1750	genelkim	I don't know how I can find out how much income tax is paid on Social Security income on the 1998 income tax	q	q-act	concurrently	2018-10-18 14:16:50
-697497	1751	genelkim	You probably know how I can find out how much income tax is paid on Social Security income on the 1998 income tax	q	q-act	concurrently	2018-10-18 14:17:10
-697497	1752	genelkim	I can find out how much income tax is paid on Social Security income on the 1998 income tax somehow	q	q-form-pre	concurrently	2018-10-18 14:18:34
-697497	1753	genelkim	Some amount of income tax is paid on Social Security income on the 1998 income tax	q	q-form-pre	concurrently	2018-10-18 14:19:25
-698737	1313	bkane2	I want and expect you to tell me what the all-time stock high of Apple Computer is, and where can I find this information	rq	implicit-desire	concurrently	2018-10-13 21:14:56
-698737	1314	bkane2	I don't know what the all-time stock high of Apple Computer is, or where can I find this information	q	q-act	concurrently	2018-10-13 21:29:51
-698737	1315	bkane2	You probably know what the all-time stock high of Apple Computer is, and where can I find this information	q	q-act	concurrently	2018-10-13 21:30:27
-698737	1316	bkane2	You probably will tell me what the all-time stock high of Apple Computer is, and where can I find this information	q	q-act	concurrently	2018-10-13 21:45:34
-698737	1317	bkane2	The Apple Computer stock had an all-time high	q	q-form-pre	before	2018-10-13 21:46:17
-698737	1318	bkane2	I can find information about the Apple Computer stock somewhere	q	q-form-pre	concurrently	2018-10-13 21:46:58
-704155	1989	ssackste	Some tenths of the Earth 's surface lie under water	q	q-form-pre	before	2018-10-19 19:56:18
-704155	1990	ssackste	sit	situational	situational	concurrently	2018-10-19 19:56:38
-703604	1422	gmcguire	There is a chemical used to control ripening.	q	q-form-pre	concurrently	2018-10-15 19:01:03
-703604	1423	gmcguire	The chemical used to control ripening has a brand name.	q	q-form-pre	concurrently	2018-10-15 19:01:22
-1175	1099	platono	I'm irritated that you said this thing to me	q	rhetorical-question	concurrently	2018-10-08 22:02:35
-1175	1096	platono	You said something to me	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 21:53:06
-229723	700	bkane2	I want and expect you to tell me where I can find them	rq	implicit-desire	concurrently	2018-10-05 19:57:29
-229723	701	bkane2	You probably know where I can find them and will tell me where I can find them	q	q-act	concurrently	2018-10-05 19:57:54
-229723	702	bkane2	I don't know where I can find them	q	q-act	concurrently	2018-10-05 19:58:07
-516589	1238	muskaan	They probably have tried doing something in the past	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-11 20:35:41
-770597	1237	muskaan	sit	situational	situational	concurrently	2018-10-11 20:27:36
-689119	1066	bkane2	I want and expect you to tell me what is going to happen	rq	implicit-desire	concurrently	2018-10-08 21:31:38
-689119	1068	bkane2	I don't know what is going to happen	q	q-act	concurrently	2018-10-08 21:31:56
-689119	1070	bkane2	You probably know what is going to happen	q	q-act	concurrently	2018-10-08 21:32:54
-689119	1074	bkane2	Something is going to happen	q	q-form-pre	concurrently	2018-10-08 21:33:23
-689119	1075	bkane2	I don't think anyone knows what is going to happen	q	rhetorical-question	concurrently	2018-10-08 21:33:59
-204163	2008	ssackste	sit	situational	situational	concurrently	2018-10-19 20:05:12
-688414	1712	genelkim	sit	situational	situational	concurrently	2018-10-17 18:59:22
-688414	1713	genelkim	sit	situational	situational	concurrently	2018-10-17 18:59:35
-439516	447	genelkim	You know whether you were surprised to see Tom	q	q-act	concurrently	2018-10-04 15:13:42
-439516	448	genelkim	I probably don't know whether you were surprised to see Tom	q	q-act	concurrently	2018-10-04 15:14:04
-439516	444	genelkim	You saw Tom	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-04 15:12:57
-699514	2138	ssackste	I obligate you to name the three races unleashed by the Celestials in Marvel comics	rq	command	concurrently	2018-10-19 21:07:13
-699514	2140	ssackste	sit	situational	situational	concurrently	2018-10-19 21:07:45
-515539	1707	genelkim	sit	situational	situational	concurrently	2018-10-17 18:55:19
-515539	1258	muskaan	I want and expect you to make them smile	rq	implicit-desire	afterwards	2018-10-12 19:41:57
-515539	1260	muskaan	I don't know if you can make them smile.	q	q-act	concurrently	2018-10-12 19:42:35
-696903	517	genelkim	You probably know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-04 15:49:59
-696903	518	genelkim	I probably don't know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-04 15:50:21
-696903	519	genelkim	There's a place where I can find a person 's address from a telephone number	q	q-form-pre	concurrently	2018-10-04 15:51:31
-696903	520	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 15:51:49
-696082	410	genelkim	You probably know where I can get a photograph of professor Randolph Quirk	q	q-act	concurrently	2018-10-04 14:44:52
-696082	411	genelkim	I probably don't know where I can get a photograph of professor Randolph Quirk	q	q-act	concurrently	2018-10-04 14:45:12
-703588	2033	ssackste	I obligate you to name a movie that the actress , Sandra Bullock , had a role in	rq	command	concurrently	2018-10-19 20:20:15
-703588	2035	ssackste	sit	situational	situational	concurrently	2018-10-19 20:20:35
-702758	231	bkane2	You probably know who said `` The victor will never be asked if he told the truth '' and will tell me who said it .	q	q-act	concurrently	2018-07-04 01:09:22
-702758	232	bkane2	I probably don't know who said `` The victor will never be asked if he told the truth '' .	q	q-act	concurrently	2018-07-04 01:10:04
-702758	234	bkane2	Someone said : `` The victor will never be asked if he told the truth '' .	q	q-form-pre	before	2018-07-04 01:12:44
-702758	1021	gmcguire	You are obligated to tell me who said: "The victor will never be asked if he told the truth"	rq	command	concurrently	2018-10-08 21:23:26
-702758	1015	gmcguire	I want to know who said: "The victor will never be asked if he told the truth"	rq	implicit-desire	concurrently	2018-10-08 21:22:54
-702758	1029	gmcguire	Someone said: "The victor will never be asked if he told the truth"	q	q-form-pre	concurrently	2018-10-08 21:24:33
-693963	1514	gmcguire	I want to take my dog with me to live in Dominica, West Indies for a year.	rq	implicit-desire	concurrently	2018-10-15 19:48:07
-693963	1516	gmcguire	You know what I need to do to take my dog with me to live in Dominica, West Indies for a year.	q	q-act	concurrently	2018-10-15 19:49:08
-693963	1515	gmcguire	There is something I need to do in order to take my dog with me to live in Dominica, West Indies for a year.	q	q-form-pre	concurrently	2018-10-15 19:48:40
-355745	1498	gmcguire	sit	situational	situational	concurrently	2018-10-15 19:39:31
-687108	1398	gmcguire	I believe this is some kind of mistake.	q	rhetorical-question	concurrently	2018-10-15 17:45:36
-704932	452	genelkim	You probably know how I can determine the radius of an ellipse	q	q-act	concurrently	2018-10-04 15:15:34
-704932	453	genelkim	I probably don't know how I can determine the radius of an ellipse	q	q-act	concurrently	2018-10-04 15:16:17
-704932	455	genelkim	The radius of an ellipse can be determined	q	q-form-pre	concurrently	2018-10-04 15:18:00
-704932	454	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 15:16:43
-696342	869	bkane2	I want and expect you to tell me what goldfish lose if kept in dimly-lit or running water	rq	implicit-desire	concurrently	2018-10-08 20:47:00
-696342	672	bkane2	You probably know what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:39:59
-696342	675	bkane2	I don't know what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:41:04
-696342	676	bkane2	You probably will tell me what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:41:23
-130801	1251	muskaan	I want you to exchange it with another one	rq	implicit-desire	afterwards	2018-10-11 20:56:52
-193441	1438	gmcguire	I want you to help me wash the dishes.	rq	implicit-desire	concurrently	2018-10-15 19:06:54
-193441	1437	gmcguire	I am washing the dishes.	q	q-form-pre	concurrently	2018-10-15 19:06:35
-692214	652	genelkim	You probably know where I can find correct tabs for Third Eye Blind songs	q	q-act	concurrently	2018-10-04 20:28:48
-692214	653	genelkim	I probably don't know where I can find correct tabs for Third Eye Blind songs	q	q-act	concurrently	2018-10-04 20:29:22
-692214	654	genelkim	Correct tabs for Third Eye Blind songs can be found somewhere	q	q-form-pre	concurrently	2018-10-04 20:29:49
-692214	655	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 20:30:12
-1202382	1618	platono	Miss Pross expects you to wait for her	q	q-form-pre	concurrently	2018-10-16 20:31:00
-486748	2043	ssackste	I obligate you to remind me to thank Tom the next time I see him	rq	command	concurrently	2018-10-19 20:24:01
-698681	807	gmcguire	I want you to name the two blob members of the animated Herculoids.	rq	command	concurrently	2018-10-08 20:27:32
-698681	806	gmcguire	I want you to name the two blob members of the animated Herculoids.	rq	implicit-desire	concurrently	2018-10-08 20:27:10
-935819	1133	muskaan	I want you to come to this other table	rq	neg-request	concurrently	2018-10-11 17:56:37
-935819	1134	muskaan	You are not coming to this other table.	rq	neg-request	concurrently	2018-10-11 17:57:00
-935819	1138	muskaan	Anna has already asked you to come to this other table.	impl	OTHER: 	concurrently	2018-10-11 17:59:05
-962974	596	genelkim	the guns and prisoners had been captured	impl	OTHER: someone reported to someone where something happened -> something happened	before	2018-10-04 16:32:36
-962974	176	muskaan	The guns and prisoners had been captured.	impl	something [prob] [aux] [neg] happen [tense] none none none none pres		2018-06-20 20:24:53
-701627	428	genelkim	You probably know where I can find a list of all the companies in America that offer a direct stock purchase plan	q	q-act	concurrently	2018-10-04 15:01:45
-701627	429	genelkim	I probably don't know where I can find a list of all the companies in America that offer a direct stock purchase plan	q	q-act	concurrently	2018-10-04 15:02:12
-701627	430	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 15:02:56
-698702	1802	genelkim	I probably don't know why it is called `` hamburger '' even though there is no ham in it	q	q-act	concurrently	2018-10-18 15:02:51
-698702	1803	genelkim	You might know why it is called  `` hamburger '' even though there is no ham in it	q	q-act	concurrently	2018-10-18 15:03:27
-698702	1804	genelkim	It is called `` hamburger ''	q	q-form-pre	concurrently	2018-10-18 15:03:48
-698702	1805	genelkim	sit	situational	situational	concurrently	2018-10-18 15:04:20
-698848	473	genelkim	You probably know who says `` If you don 't look good , we don 't look good ''	q	q-act	concurrently	2018-10-04 15:25:26
-698848	474	genelkim	I probably don't know who says `` If you don 't look good , we don 't look good ''	q	q-act	concurrently	2018-10-04 15:25:50
-698848	475	genelkim	Someone says `` If you don 't look good , we don 't look good ''	q	q-form-pre	concurrently	2018-10-04 15:26:13
-687609	840	gmcguire	sit	situational	situational	concurrently	2018-10-08 20:41:09
-1159716	2117	ssackste	sit	situational	situational	concurrently	2018-10-19 21:02:11
-420080	1239	muskaan	Tom probably likes me	impl	something [prob] [aux] [neg] happen [tense] probably none none none pres	concurrently	2018-10-11 20:39:34
-704624	1963	ssackste	I want someone 's email address	q	q-act	concurrently	2018-10-19 19:39:13
-704624	1964	ssackste	sit	situational	situational	concurrently	2018-10-19 19:40:48
-691418	754	gmcguire	You are obligated to name the only extant trilogy of classical Greek plays.	rq	command	concurrently	2018-10-08 18:41:32
-691418	906	gmcguire	I want you to name the only extant trilogy of classical Greek plays.	rq	implicit-desire	concurrently	2018-10-08 20:54:52
-703235	1262	muskaan	I don't know how a hurricane forms.	q	q-act	concurrently	2018-10-12 19:43:56
-691553	1339	bkane2	I want and expect you to tell me who comprised the now-defunct comic book team known as the Champions	rq	implicit-desire	concurrently	2018-10-14 00:20:59
-691553	1340	bkane2	I don't know who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:07
-691553	1341	bkane2	You probably know who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:21
-691553	1342	bkane2	You probably will tell me who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:29
-704291	995	bkane2	I want and expect you to tell me where I could go to take a ride on a steam locomotive	rq	implicit-desire	concurrently	2018-10-08 21:18:37
-704291	997	bkane2	I don't know where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:18:47
-704291	1000	bkane2	You probably know where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:18:56
-704291	1002	bkane2	You probably will tell me where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:19:07
-704291	1004	bkane2	I can take a ride on a steam locomotive somewhere	q	q-form-pre	concurrently	2018-10-08 21:19:33
-695027	1360	bkane2	I want and expect you to tell me how anyone can tell if a female had sexual intercourse	rq	implicit-desire	concurrently	2018-10-14 00:56:08
-695027	1361	bkane2	I don't know how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:18
-695027	1362	bkane2	You probably know how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:29
-695027	1363	bkane2	You probably will tell me how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:54
-258997	1478	gmcguire	sit	situational	situational	concurrently	2018-10-15 19:28:18
-648581	725	bkane2	You probably know if you would like to play with us	q	q-act	concurrently	2018-10-07 22:02:54
-648581	726	bkane2	You probably will tell us if you would like to play with us	q	q-act	concurrently	2018-10-07 22:03:10
-648581	727	bkane2	We do not know if you would like to play with us	q	q-act	concurrently	2018-10-07 22:03:23
-648581	728	bkane2	sit	situational	situational-pre	concurrently	2018-10-07 22:03:50
-618766	1722	genelkim	sit	situational	situational	concurrently	2018-10-17 19:23:59
-618766	1723	genelkim	sit	situational	situational	afterwards	2018-10-17 19:24:36
-618766	1276	muskaan	sit	situational	situational	before	2018-10-12 19:52:32
-697343	1043	platono	I want you to tell me how many casinos are in Atlantic City , NJ	rq	implicit-desire	concurrently	2018-10-08 21:26:47
-697343	1045	platono	There are casinos in Atlantic City , NJ	q	q-act	concurrently	2018-10-08 21:27:23
-697343	1048	platono	sit	situational	situational-pre	concurrently	2018-10-08 21:27:51
-697343	1052	platono	sit	situational	situational-pre	concurrently	2018-10-08 21:28:14
-687670	1125	muskaan	Help a savings institution	rq	implicit-desire	concurrently	2018-10-11 17:54:04
-687670	1126	muskaan	You have probably not helped a savings institution	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-11 17:54:37
-694948	1952	ssackste	You're obligated to name the two mystical ravens Odin has at his command	rq	command	concurrently	2018-10-18 19:46:41
-694948	1953	ssackste	sit	situational	situational	concurrently	2018-10-18 19:47:51
-226434	2149	ssackste	You know how much time we have	q	q-act	concurrently	2018-10-19 21:10:43
-226434	2150	ssackste	sit	situational	situational	concurrently	2018-10-19 21:11:00
-690257	1887	genelkim	sit	situational	situational	concurrently	2018-10-18 16:29:59
-690257	1886	genelkim	All refugee boats probably landed	impl	someone [prob] [aux] [neg] do [tense] something probably none none none past	afterwards	2018-10-18 16:28:37
-690257	1885	genelkim	All refugee boats were probably permitted to land and arrivals were probably taken to a special camp in cooperation with the U.N. High Commissioner for Refugees .	impl	something [prob] [aux] [neg] happen [tense] probably none none none past	before	2018-10-18 16:27:10
-704653	1918	genelkim	You are obligated to name a flying mammal	rq	command	afterwards	2018-10-18 16:45:00
-704653	1920	genelkim	sit	situational	situational	concurrently	2018-10-18 16:45:53
-704714	1418	gmcguire	I don't know how to say 2 in Latin and you know how to say 2 in Latin.	q	q-act	concurrently	2018-10-15 18:47:55
-704714	1419	gmcguire	There is a way to say 2 in Latin.	q	q-form-pre	concurrently	2018-10-15 18:48:10
-283340	1600	platono	I want to have a break	rq	implicit-desire	concurrently	2018-10-16 20:20:24
-283340	1601	platono	You probably don't give me a break	q	q-form-pre	before	2018-10-16 20:22:31
-699334	2076	ssackste	You probably know where can I get cotton textiles importer details	q	q-act	concurrently	2018-10-19 20:47:32
-699334	2077	ssackste	sit	situational	situational	concurrently	2018-10-19 20:47:55
-692132	625	genelkim	You probably know what Judith Rossner novel was made into a film starring Diane Keaton	q	q-act	concurrently	2018-10-04 16:58:08
-692132	626	genelkim	I probably don't know what Judith Rossner novel was made into a film starring Diane Keaton	q	q-act	concurrently	2018-10-04 16:58:24
-692132	627	genelkim	A Judith Rossner novel was made into a film starring Diane Keaton	q	q-form-pre	concurrently	2018-10-04 16:58:44
-692132	628	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:59:14
-692132	629	genelkim	sit	situational	situational-pre	before	2018-10-04 16:59:33
-696824	510	genelkim	You probably know where I can find a case on Individuals with Disabilities Education Act of 1991	q	q-act	concurrently	2018-10-04 15:46:23
-696824	511	genelkim	I probably don't know where I can find a case on Individuals with Disabilities Education Act of 1991	q	q-act	concurrently	2018-10-04 15:46:43
-696824	512	genelkim	One can find a case on Individuals with Disabilities Education Act of 1991	q	q-form-pre	concurrently	2018-10-04 15:48:04
-696824	513	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 15:48:29
-705124	553	genelkim	You probably know who the 1st U.S. President was	q	q-act	concurrently	2018-10-04 16:05:26
-705124	554	genelkim	I probably don't know who the 1st U.S. President was	q	q-act	concurrently	2018-10-04 16:05:41
-705124	555	genelkim	Someone was the 1st U.S. President	q	q-form-pre	before	2018-10-04 16:06:42
-705124	556	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:07:09
-705124	557	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:07:35
-694625	433	genelkim	You are obligated to name a Gaelic language	rq	OTHER: 	concurrently	2018-10-04 15:04:35
-704539	1839	genelkim	I probably don't know what  famous coach said `` if you can 't beat 'em in the alley , you can 't beat 'em on the ice ''	q	q-act	concurrently	2018-10-18 15:44:02
-704539	1840	genelkim	Some famous coach said `` if you can 't beat 'em in the alley , you can 't beat 'em on the ice ''	q	q-form-pre	concurrently	2018-10-18 15:44:34
-704539	1835	genelkim	sit	situational	situational	concurrently	2018-10-18 15:43:07
-118570	1624	platono	They play in the snow	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-16 20:33:46
-7497	779	genelkim	I want and expect you to call him into the meeting	rq	implicit-desire	concurrently	2018-10-08 20:05:36
-7497	784	genelkim	You probably know whether you could call him into the meeting	q	q-act	concurrently	2018-10-08 20:13:41
-106500	959	platono	sit	situational	OTHER: situational	concurrently	2018-10-08 21:10:01
-496583	437	genelkim	You are obligated to tell me if it isn't so	rq	OTHER: 	concurrently	2018-10-04 15:08:59
-387347	2039	ssackste	I think you know what will happen if he rejects me	q	q-act	concurrently	2018-10-19 20:22:49
-387347	2040	ssackste	sit	situational	situational	concurrently	2018-10-19 20:23:09
-947253	459	genelkim	You probably know how you can know	q	q-act	concurrently	2018-10-04 15:18:51
-947253	460	genelkim	I probably don't know how you can know	q	q-act	concurrently	2018-10-04 15:19:05
-947253	462	genelkim	You can know	q	q-form-pre	concurrently	2018-10-04 15:21:25
-947253	461	genelkim	sit	situational	situational-pre	before	2018-10-04 15:19:59
-743444	424	genelkim	I want and expect you to  tell me whether it is actually true that Mr. Rochester has asked you to marry him	rq	implicit-desire	concurrently	2018-10-04 14:58:34
-743444	422	genelkim	You probably know whether you can tell me whether it is actually true that Mr. Rochester has asked you to marry him	q	q-act	concurrently	2018-10-04 14:57:33
-743444	423	genelkim	I probably don't know whether you can tell me whether it is actually true that Mr. Rochester has asked you to marry him	q	q-act	concurrently	2018-10-04 14:58:02
-743444	148	muskaan	I don't know if Mr. Rochester asked you to marry him.	q	q-act		2018-06-20 20:09:55
-827533	2081	ssackste	He can connect himself well	cf	OTHER: if-then	concurrently	2018-10-19 20:49:18
-500886	396	genelkim	I want and expect you to get that done.	rq	implicit-desire	concurrently	2018-10-01 21:06:31
-500886	394	genelkim	You probably know how soon you can get that done.	q	q-act	concurrently	2018-10-01 21:05:09
-500886	397	genelkim	I probably don't know how soon you can get that done.	q	q-act	concurrently	2018-10-01 21:07:07
-500886	395	genelkim	You can get that done.	q	q-form-pre	concurrently	2018-10-01 21:05:46
-696638	1609	platono	You probably know What therapy attempts to elicit the `` primal scream ''	q	q-act	concurrently	2018-10-16 20:27:46
-231868	1252	muskaan	sit	situational	situational	before	2018-10-12 19:35:54
-385307	1930	ssackste	someone met someone somewhere	impl	OTHER: 	afterwards	2018-10-18 17:49:20
-385307	1968	ssackste	sit	situational	situational	afterwards	2018-10-19 19:42:12
-495126	1409	gmcguire	I don't know why you poisoned Tom and you know why you poisoned Tom.	rq	implicit-desire	concurrently	2018-10-15 18:38:55
-495126	1410	gmcguire	You poisoned Tom.	q	q-form-pre	before	2018-10-15 18:39:11
-176776	960	genelkim	You probably know how this could happen	q	q-act	concurrently	2018-10-08 21:10:07
-176776	961	genelkim	I probably don't know how this could happen	q	q-act	concurrently	2018-10-08 21:10:21
-176776	963	genelkim	This could happen	q	q-form-pre	concurrently	2018-10-08 21:10:49
-176776	956	genelkim	sit	situational	situational	afterwards	2018-10-08 21:09:13
-176776	968	genelkim	sit	situational	situational-pre	before	2018-10-08 21:11:34
-176776	970	genelkim	sit	situational	situational-pre	before	2018-10-08 21:11:51
-176776	952	genelkim	You probably were not on the pill	impl	something [prob] [aux] [neg] happen [tense] probably do not none past	before	2018-10-08 21:08:37
-184246	940	genelkim	I that there is anything you don't know	q	rhetorical-question	concurrently	2018-10-08 21:05:04
-184246	935	genelkim	sit	situational	situational-pre	concurrently	2018-10-08 21:04:02
-926554	1376	bkane2	sit	situational	situational	concurrently	2018-10-14 01:21:40
-926554	1377	bkane2	sit	situational	situational	before	2018-10-14 01:22:02
-299413	696	bkane2	I want and expect you to step aside	rq	command	concurrently	2018-10-05 19:56:27
-318805	1106	muskaan	I don't know why you volunteered to do this.	q	q-act	concurrently	2018-10-11 17:47:55
-318805	1244	muskaan	You volunteered to do this.	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-11 20:50:02
-335369	1680	platono	You are probably not lying	impl	someone2 [prob] [aux] [neg] do [tense] something probably none not none pres	concurrently	2018-10-16 21:43:00
-940438	815	genelkim	You probably know whether something bad could have happened to me	q	q-act	concurrently	2018-10-08 20:30:47
-940438	816	genelkim	I probably don't know whether something bad could have happened to me	q	q-act	concurrently	2018-10-08 20:31:32
-940438	819	genelkim	sit	situational	situational-pre	before	2018-10-08 20:33:07
-435476	1641	platono	I want to get up	rq	implicit-desire	concurrently	2018-10-16 21:18:20
-52874	1653	platono	I want you to tell me if you can cook anything at all	rq	implicit-desire	concurrently	2018-10-16 21:23:31
-52874	1654	platono	I doubt that you can cook	q	q-form-pre	concurrently	2018-10-16 21:24:04
-703278	1958	ssackste	I want to determine if a computer monitor has an SVGA adapter	rq	implicit-desire	concurrently	2018-10-19 19:36:54
-703278	1959	ssackste	You probably know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-19 19:37:48
-704310	2029	ssackste	vending machines can tell if your dollar is a 1 or a 5	q	q-form-pre	concurrently	2018-10-19 20:19:02
-704310	2030	ssackste	sit	situational	situational	concurrently	2018-10-19 20:19:27
-695323	1687	platono	You are obligated to name Randy Craft 's lawyer	rq	command	afterwards	2018-10-16 22:18:58
-695692	1272	muskaan	I don't know what well-known TV talk show host was a lay preacher by the time he was seventeen	q	q-act	concurrently	2018-10-12 19:49:55
-695692	1271	muskaan	A well-known TV talk show host was a lay preacher by the time he was seventeen	q	q-form-pre	before	2018-10-12 19:47:32
-702582	744	bkane2	You probably know the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:10:37
-702582	745	bkane2	You probably will tell me the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:10:57
-702582	747	bkane2	I don't know the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:11:37
-702582	746	bkane2	Ewoks live on a planet	q	q-form-pre	concurrently	2018-10-07 22:11:16
-704164	2167	ssackste	I obligate you to name the fast food chain with the golden arches	rq	command	concurrently	2018-10-19 21:16:42
-185758	874	muskaan	I don't know what I am supposed to do if Tom comes	q	q-act	concurrently	2018-10-08 20:48:31
-328810	1502	gmcguire	I want to grab a bite to eat somewhere with you.	rq	implicit-desire	concurrently	2018-10-15 19:45:43
-688184	2128	ssackste	sit	situational	situational	concurrently	2018-10-19 21:04:34
-693648	1683	platono	You are obligated to Name Alvin's brothers	rq	command	concurrently	2018-10-16 21:43:59
-705807	1189	muskaan	I don't know who used AuH2O as an election slogan	q	q-act	concurrently	2018-10-11 18:13:52
-181748	590	genelkim	I probably don't know if you feel birthdays are important	q	q-act	concurrently	2018-10-04 16:26:39
-181748	591	genelkim	You probably know if you feel birthdays are important	q	q-act	concurrently	2018-10-04 16:27:08
-181748	588	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:25:56
-695773	2122	ssackste	You know where can I learn about Samuel Gompers	q	q-act	concurrently	2018-10-19 21:03:09
-695773	2123	ssackste	sit	situational	situational	concurrently	2018-10-19 21:03:25
-810922	1234	muskaan	I probably don't know how far this combination characterizes the plan which has been reported by the convention.	q	q-act	concurrently	2018-10-11 20:26:02
-810922	1232	muskaan	This combination characterizes the plan which has been reported by the convention to some degree	q	q-form-pre	concurrently	2018-10-11 20:24:34
-240292	535	genelkim	I probably know when you will go to Germany	q	q-act	concurrently	2018-10-04 15:58:27
-240292	536	genelkim	I probably don't know when you will go to Germany	q	q-act	concurrently	2018-10-04 15:58:43
-240292	537	genelkim	You will probably go to Germany	q	q-form-pre	afterwards	2018-10-04 16:00:52
-240292	538	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:01:12
-342601	2063	ssackste	sit	situational	situational	concurrently	2018-10-19 20:42:41
-693317	875	platono	I want you to tell me where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	rq	implicit-desire	concurrently	2018-10-08 20:48:55
-693317	845	platono	I probably don't know where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	q	q-act	concurrently	2018-10-08 20:43:05
-693317	849	platono	You probably know where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	q	q-act	concurrently	2018-10-08 20:43:57
-568740	1455	gmcguire	sit	situational	situational	before	2018-10-15 19:19:00
-705415	1622	platono	You probably know who wrote The Collector	q	q-act	concurrently	2018-10-16 20:32:01
-705415	1623	platono	You probably don't know who wrote The Collector	q	q-act	concurrently	2018-10-16 20:32:15
-694855	1242	muskaan	You are expected to name the food company that traveled to Soviet Georgia to film a series of ads	rq	command	afterwards	2018-10-11 20:47:00
-951684	1764	genelkim	sit	situational	situational	concurrently	2018-10-18 14:27:57
-951684	1765	genelkim	sit	situational	situational	concurrently	2018-10-18 14:29:01
-951684	1766	genelkim	sit	situational	situational	concurrently	2018-10-18 14:29:19
-951684	1767	genelkim	sit	situational	situational	concurrently	2018-10-18 14:29:38
-951684	1768	genelkim	sit	situational	situational	concurrently	2018-10-18 14:30:02
-951684	1769	genelkim	sit	situational	situational	concurrently	2018-10-18 14:30:22
-951684	1770	genelkim	sit	situational	situational	concurrently	2018-10-18 14:30:41
-688332	1085	platono	uniformed men killed Cecilio	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 21:36:34
-688332	1546	platono	uniformed men demanded food and his weapon	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-16 19:52:59
-696170	569	genelkim	You probably know what the largest island in the West Indies is	q	q-act	concurrently	2018-10-04 16:11:32
-696170	570	genelkim	I probably don't know what the largest island in the West Indies is	q	q-act	concurrently	2018-10-04 16:12:03
-696170	571	genelkim	There are islands in the West Indies	q	q-form-pre	concurrently	2018-10-04 16:12:57
-700246	1939	ssackste	I don't know the meaning of `` CPR ''	q	q-act	concurrently	2018-10-18 19:30:40
-700246	1941	ssackste	You know the meaning of `` CPR ''	q	q-act	concurrently	2018-10-18 19:31:14
-700246	1943	ssackste	`` CPR '' has a meaning	q	q-form-pre	concurrently	2018-10-18 19:33:02
-12434	2112	ssackste	I want a bite	rq	implicit-desire	concurrently	2018-10-19 21:00:32
-12434	2113	ssackste	sit	situational	situational	concurrently	2018-10-19 21:00:54
-692105	1612	platono	I want and expect you to tell me how is Easter Sunday 's date determined	rq	implicit-desire	afterwards	2018-10-16 20:28:53
-692105	1613	platono	I probably don't know how is Easter Sunday 's date determined	q	q-act	concurrently	2018-10-16 20:29:14
-692105	1614	platono	you probably know how is Easter Sunday 's date determined	q	q-act	concurrently	2018-10-16 20:29:27
-675085	644	genelkim	You probably know what happened after Tom disappeared	q	q-act	concurrently	2018-10-04 17:09:10
-675085	645	genelkim	I probably don't know what happened after Tom disappeared	q	q-act	concurrently	2018-10-04 17:09:29
-675085	648	genelkim	Something happened after Tom disappeared	q	q-form-pre	concurrently	2018-10-04 17:10:25
-675085	647	genelkim	sit	situational	situational-pre	before	2018-10-04 17:10:07
-693267	942	bkane2	I want and expect you to tell me how I can find online spelling	rq	implicit-desire	concurrently	2018-10-08 21:05:35
-693267	943	bkane2	I don't know how I can find online spelling	q	q-act	concurrently	2018-10-08 21:05:49
-693267	944	bkane2	You probably know how I can find online spelling	q	q-act	concurrently	2018-10-08 21:06:01
-693267	945	bkane2	You probably will tell me how I can find online spelling	q	q-act	concurrently	2018-10-08 21:06:18
-946571	542	genelkim	You probably know how you can sleep	q	q-act	concurrently	2018-10-04 16:01:47
-946571	543	genelkim	I probably don't know how you can sleep	q	q-act	concurrently	2018-10-04 16:02:10
-946571	544	genelkim	you can sleep	q	q-form-pre	concurrently	2018-10-04 16:02:22
-946571	545	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 16:02:47
-957403	1922	genelkim	sit	situational	situational	concurrently	2018-10-18 16:48:45
-957403	1926	genelkim	sit	situational	situational	concurrently	2018-10-18 16:50:10
-957403	1927	genelkim	sit	situational	situational	concurrently	2018-10-18 16:51:30
-957403	1921	genelkim	We probably won't get him home alive	impl	someone [prob] [aux] [neg] do [tense] something probably will not none pres	afterwards	2018-10-18 16:48:28
-703334	1463	gmcguire	You know where I can get cotton textiles importer details.	rq	implicit-desire	concurrently	2018-10-15 19:24:26
-703334	1464	gmcguire	I can get cotton textiles importer details somewhere.	q	q-form-pre	concurrently	2018-10-15 19:24:39
-600878	1520	gmcguire	You said such an awful thing.	q	q-form-pre	concurrently	2018-10-15 19:50:12
-600878	1519	gmcguire	You should not have said such an awful thing.	q	rhetorical-question	concurrently	2018-10-15 19:50:01
-360826	996	muskaan	I don't know why I am so sleepy	q	q-act	concurrently	2018-10-08 21:18:42
-360826	51	ssackste	I am so sleepy	q	q-form-pre		2018-06-18 20:35:55
-1125872	1227	muskaan	She was surprised and displeased	impl	OTHER: 	concurrently	2018-10-11 20:18:17
-1125872	1229	muskaan	She doesn't know how he knows.	q	q-act	concurrently	2018-10-11 20:18:57
-1125872	1230	muskaan	He probably knows how he knows	q	q-act	concurrently	2018-10-11 20:21:39
-1125872	1225	muskaan	She did not expect him to know.	q	q-form-pre	concurrently	2018-10-11 20:17:26
-1125872	1231	muskaan	He knows	q	q-form-pre	before	2018-10-11 20:21:58
-697855	1079	bkane2	You are obligated to name the food company that traveled to Soviet Georgia to film a series of ads	rq	command	concurrently	2018-10-08 21:34:48
-697855	1080	bkane2	A food company travelled to Soviet Georgia to film a series of ads	q	q-form-pre	concurrently	2018-10-08 21:35:17
-980388	1901	genelkim	sit	situational	situational	before	2018-10-18 16:39:11
-710539	1210	muskaan	I don't think you had any books needed for such a work	q	q-form-pre	concurrently	2018-10-11 19:39:30
-710539	1211	muskaan	sit	situational	situational	concurrently	2018-10-11 19:39:41
-689256	1051	genelkim	sit	situational	situational	concurrently	2018-10-08 21:28:14
-689256	1054	genelkim	sit	situational	situational	concurrently	2018-10-08 21:28:40
-689256	1069	genelkim	sit	situational	situational	concurrently	2018-10-08 21:32:15
-689256	1087	genelkim	sit	situational	situational	before	2018-10-08 21:37:11
-688595	1628	platono	sit	situational	situational	concurrently	2018-10-16 20:35:12
-73287	1214	muskaan	I probably never go there	impl	someone [prob] [aux] [neg] do [tense] something probably none none none pres	concurrently	2018-10-11 19:51:31
-699805	384	genelkim	You probably know where I can find lyrics for R&B.	q	q-act	concurrently	2018-10-01 20:52:35
-699805	385	genelkim	I probably don't know where I can find lyrics for R&B.	q	q-act	concurrently	2018-10-01 20:52:56
-699805	386	genelkim	R&B lyrics can be found somewhere.	q	q-form-pre	concurrently	2018-10-01 20:55:17
-39606	1243	muskaan	I want and expect you to let me borrow this book	rq	implicit-desire	afterwards	2018-10-11 20:47:35
-705843	1024	bkane2	You are obligated to describe the Long March	rq	command	concurrently	2018-10-08 21:23:50
-690017	1821	genelkim	I don't know whether he said he had the murders done	q	q-act	concurrently	2018-10-18 15:15:31
-690017	1822	genelkim	You might know whether he said he had the murders done	q	q-act	concurrently	2018-10-18 15:15:54
-690017	1823	genelkim	sit	situational	situational	concurrently	2018-10-18 15:16:37
-689417	1704	platono	sit	situational	situational	before	2018-10-17 16:27:51
-999991	1892	genelkim	She had not been prudent	impl	OTHER: someone became something -> someone had not been something	before	2018-10-18 16:34:38
-999991	1891	genelkim	She was prudent	impl	OTHER: Someone became something -> someone was something	afterwards	2018-10-18 16:33:53
-999991	1893	genelkim	sit	situational	situational	before	2018-10-18 16:35:10
-687680	1883	genelkim	sit	situational	situational	before	2018-10-18 16:19:12
-687680	1884	genelkim	U.S. District Judge Gerhard Gesell has not acted on Walsh 's request yet	impl	someone [prob] [aux] [neg] do [tense] something none perf not none pres	before	2018-10-18 16:21:42
-687680	1879	genelkim	U.S. District Judge Gerhard Gesell will probably act on Walsh 's request this week	impl	someone [prob] [aux] [neg] do [tense] something probably will none none pres	afterwards	2018-10-18 16:18:05
-697401	1912	genelkim	I probably don't know where I can find information on George Bush	q	q-act	concurrently	2018-10-18 16:43:14
-697401	1913	genelkim	You probably know where I can find information on George Bush	q	q-act	concurrently	2018-10-18 16:43:29
-697401	1914	genelkim	I can find information on George Bush somewhere	q	q-form-pre	concurrently	2018-10-18 16:43:57
-697401	1915	genelkim	sit	situational	situational	concurrently	2018-10-18 16:44:27
-403130	41	ssackste	they think the subjects are students	q	neg-question		2018-06-18 19:33:27
-704769	771	gmcguire	Each player is dealt a certain number of cards in Contact Bridge.	q	q-form-pre	concurrently	2018-10-08 19:33:39
-704769	1040	gmcguire	sit	situational	situational	concurrently	2018-10-08 21:26:16
-704769	1063	gmcguire	sit	situational	situational	concurrently	2018-10-08 21:30:57
-64617	1775	genelkim	sit	situational	situational	concurrently	2018-10-18 14:32:03
-699623	1103	muskaan	I don't know how the 7th inning got started.	q	q-act	concurrently	2018-10-11 17:47:01
-699623	1213	muskaan	The 7th inning got started	q	q-form-pre	concurrently	2018-10-11 19:46:54
-700903	1813	genelkim	I don't know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-18 15:08:13
-700903	1814	genelkim	You probably know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-18 15:08:39
-700903	1815	genelkim	I can find a person 's address from a telephone number somewhere	q	q-form-pre	concurrently	2018-10-18 15:09:54
-700903	1816	genelkim	sit	situational	situational	concurrently	2018-10-18 15:13:03
-700903	1817	genelkim	sit	situational	situational	concurrently	2018-10-18 15:14:09
-960258	1041	bkane2	I want and expect you to tell me if you have abundance	rq	implicit-desire	concurrently	2018-10-08 21:26:28
-960258	1042	bkane2	You probably will tell me if you have abundance	q	q-act	concurrently	2018-10-08 21:26:43
-960258	1044	bkane2	I think you have abundance	q	tag-question	concurrently	2018-10-08 21:27:02
-733556	1718	genelkim	sit	situational	situational	before	2018-10-17 19:15:50
-733556	1720	genelkim	sit	situational	situational	before	2018-10-17 19:17:49
-733556	1721	genelkim	sit	situational	situational	before	2018-10-17 19:21:55
-733556	1719	genelkim	They had horses ready saddled in case we were pursued on our return	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-17 19:16:24
-809715	2159	ssackste	An effect may be produced by this partial reform	q	q-form-pre	concurrently	2018-10-19 21:14:51
-809715	2160	ssackste	sit	situational	situational	concurrently	2018-10-19 21:15:11
-702487	1328	bkane2	I want and expect you to tell me how I find a city if I have the area code	rq	implicit-desire	concurrently	2018-10-14 00:17:26
-702487	1329	bkane2	I don't know how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:34
-702487	1330	bkane2	You probably know how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:46
-702487	1331	bkane2	You probably will tell me how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:55
-702487	1332	bkane2	I can find a city if I have the area code	q	q-form-pre	concurrently	2018-10-14 00:18:22
-216228	2169	ssackste	You would go somewhere if you could time travel	q	q-form-pre	concurrently	2018-10-19 21:17:40
-694109	990	platono	You are obligated to name a tiger that is extinct .	rq	command	concurrently	2018-10-08 21:17:12
-694109	965	platono	I want you to name a tiger that is extinct .	rq	implicit-desire	concurrently	2018-10-08 21:11:10
-430140	1448	gmcguire	Tom's peers have satorial concerns.	impl	OTHER: PP assertion	concurrently	2018-10-15 19:18:20
-430140	1447	gmcguire	Tom has ostensible contempt for satorial concerns of his peers.	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-15 19:16:31
-691648	1571	platono	You are obligated to name Alvin's brothers	rq	command	afterwards	2018-10-16 20:05:27
-691648	1689	platono	I want and expect you to name Alvin 's brothers	rq	implicit-desire	concurrently	2018-10-16 22:31:07
-401584	1672	platono	I actually did know	q	neg-question	before	2018-10-16 21:38:56
-22956	164	muskaan	I don't know what that building is.	q	q-act		2018-06-20 20:20:27
-1010857	1083	bkane2	I want and expect you to tell me if you will like that	rq	implicit-desire	concurrently	2018-10-08 21:36:17
-1010857	1084	bkane2	I don't know if you will like that	q	q-act	concurrently	2018-10-08 21:36:32
-1010857	1086	bkane2	You probably will tell me if you will like that	q	q-act	concurrently	2018-10-08 21:36:46
-1162249	2054	ssackste	you cannot compare my feelings respecting Catherine to his	q	rhetorical-question	concurrently	2018-10-19 20:31:41
-1162249	2055	ssackste	I shall not leave Catherine to his _duty_ and _humanity_	q	rhetorical-question	concurrently	2018-10-19 20:33:44
-1162249	2056	ssackste	sit	situational	situational	concurrently	2018-10-19 20:34:08
-697148	1129	muskaan	You have to run after you hit a home run	impl	OTHER: 	concurrently	2018-10-11 17:55:23
-697148	1130	muskaan	I don't know how far you have to run if you hit a home run	q	q-act	concurrently	2018-10-11 17:55:43
-596863	505	genelkim	You probably know whether you can jump rope	q	q-act	concurrently	2018-10-04 15:43:16
-596863	506	genelkim	I probably don't know whether you can jump rope	q	q-act	concurrently	2018-10-04 15:43:32
-700164	1241	muskaan	You are expected to name the fast food chain with golden arches	rq	command	afterwards	2018-10-11 20:45:50
-331824	2196	genelkim	sit	situational	situational	concurrently	2018-10-26 02:45:56
-331824	2197	genelkim	sit	situational	situational	concurrently	2018-10-26 02:46:17
-331824	915	platono	We're probably here	impl	OTHER: 	concurrently	2018-10-08 20:56:53
-689225	584	genelkim	Reagan will be sending the lame-duck budget to Congress on Monday	impl	OTHER: Relative clause expansion	afterwards	2018-10-04 16:22:14
-689225	580	genelkim	He will probably rework the lame-duck budget Reagan will be sending to Congress on Monday .	impl	someone [prob] [aux] [neg] do [tense] something probably will none none pres	afterwards	2018-10-04 16:19:04
-78905	576	genelkim	You have not passed the exam	impl	someone [prob] [aux] [neg] do [tense] something none perf not none past	before	2018-10-04 16:16:32
-970493	925	bkane2	I want and expect you to tell me if thou not think of murdering the officers when thou gettest to sea	rq	implicit-desire	concurrently	2018-10-08 21:00:59
-970493	926	bkane2	I don't know if thou not think of murdering the officers when thou gettest to sea	q	q-act	concurrently	2018-10-08 21:01:24
-970493	929	bkane2	You will probably tell me if thou not think of murdering the officers when thou gettest to sea	q	q-act	concurrently	2018-10-08 21:01:52
-689595	1982	ssackste	Official trade unions have pledged to strike and mount other protests	cf	OTHER: inverted if-then	concurrently	2018-10-19 19:54:26
-689595	1983	ssackste	wage and social reforms fail to offset price increases are planned by the government	cf	OTHER: inverted if-then	concurrently	2018-10-19 19:55:03
-470585	400	bkane2	I want and expect to have the menu and the wine list	rq	implicit-desire	concurrently	2018-10-02 20:36:28
-470585	401	bkane2	You probably have the menu and the wine list	q	q-act	concurrently	2018-10-02 20:38:36
-470585	402	bkane2	I don't have the menu and the wine list	q	q-act	concurrently	2018-10-02 20:39:04
-368086	803	genelkim	You probably know when you think the Philippines will host the Olympic Games	q	q-act	concurrently	2018-10-08 20:23:40
-368086	804	genelkim	I probably don't know when you think the Philippines will host the Olympic Games	q	q-act	concurrently	2018-10-08 20:23:56
-368086	805	genelkim	sit	situational	situational-pre	concurrently	2018-10-08 20:26:27
-368086	787	genelkim	The Philippines will probably host the Olympic Games at sometime in the future	impl	something [prob] [aux] [neg] happen [tense] probably will none none pres	afterwards	2018-10-08 20:17:33
-355500	2107	ssackste	I want to have the floor	rq	implicit-desire	concurrently	2018-10-19 20:58:24
-355500	2108	ssackste	You know if I can have the floor	q	q-act	concurrently	2018-10-19 20:59:15
-285250	667	genelkim	You are obligated to show me the picture	rq	command	afterwards	2018-10-04 20:35:07
-697917	1995	ssackste	You probably know what two commanders directed the forces in the Battle of El Alamein	q	q-act	concurrently	2018-10-19 19:58:49
-697917	1996	ssackste	Two commanders directed the forces in the Battle of El Alamein	q	q-form-pre	concurrently	2018-10-19 19:59:11
-694991	1491	gmcguire	I don't know what will happen when sodium is put in water.	q	q-act	concurrently	2018-10-15 19:38:11
-694991	1492	gmcguire	You know what will happen when sodium is put in water.	q	q-act	concurrently	2018-10-15 19:38:28
-694991	1493	gmcguire	Something will happen when sodium is put in water.	q	q-form-pre	concurrently	2018-10-15 19:38:42
-986566	1156	muskaan	I shouldn't have kept it back from him	impl	OTHER: 	concurrently	2018-10-11 18:05:24
-986566	1216	muskaan	I probably did not keep it back from him	impl	someone [prob] [aux] [neg] do [tense] something probably none not none pres	before	2018-10-11 20:00:15
-407631	1702	platono	sit	situational	situational	concurrently	2018-10-17 16:23:52
-407631	1703	platono	sit	situational	situational	concurrently	2018-10-17 16:26:19
-697257	1370	bkane2	I want and expect you to tell me what is the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	rq	implicit-desire	concurrently	2018-10-14 01:16:01
-697257	1371	bkane2	I don't know the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:18
-697257	1372	bkane2	You probably know the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:46
-697257	1373	bkane2	You probably will tell me the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:57
-697257	1374	bkane2	W.B. Yeats wrote the poem, `` The Three Hermits ''	q	q-form-pre	before	2018-10-14 01:18:17
-130779	2016	ssackste	I obligate you to show me another one	rq	command	concurrently	2018-10-19 20:06:58
-130779	2017	ssackste	There is another one you can show me	q	q-form-pre	concurrently	2018-10-19 20:13:55
-130779	2018	ssackste	sit	situational	situational	concurrently	2018-10-19 20:14:23
-705365	1779	genelkim	You probably know where I can get information on the original 13 US colonies	q	q-act	concurrently	2018-10-18 14:33:32
-705365	1780	genelkim	I probably don't know where I can get information on the original 13 US colonies	q	q-act	concurrently	2018-10-18 14:34:07
-705365	1781	genelkim	I can get information on the original 13 US colonies somewhere	q	q-form-pre	concurrently	2018-10-18 14:34:31
-705365	1782	genelkim	sit	situational	situational	concurrently	2018-10-18 14:37:33
-691577	1177	muskaan	I don't know when the Bounty mutiny took place.	q	q-act	concurrently	2018-10-11 18:10:59
-691577	1248	muskaan	The Bounty mutiny has taken place	q	q-form-pre	before	2018-10-11 20:55:15
-698616	483	genelkim	You probably know what year the first issue of `` Playboy '' came out	q	q-act	concurrently	2018-10-04 15:28:54
-698616	484	genelkim	I probably don't know what year the first issue of `` Playboy '' came out	q	q-act	concurrently	2018-10-04 15:29:14
-698616	485	genelkim	The first issue of `` Playboy '' came out already	q	q-form-pre	before	2018-10-04 15:29:55
-698616	486	genelkim	sit	situational	situational-pre	concurrently	2018-10-04 15:30:34
-82350	217	muskaan	I think you can picture Ed in a woman's disguise.	q	neg-question	concurrently	2018-06-29 20:47:09
-51896	1345	bkane2	I want and expect you to tell me what you did with your camera	rq	implicit-desire	concurrently	2018-10-14 00:22:11
-51896	1346	bkane2	I don't know what you did with your camera	q	q-act	concurrently	2018-10-14 00:22:17
-51896	1348	bkane2	You probably will tell me what you did with your camera	q	q-act	concurrently	2018-10-14 00:22:40
-51896	1347	bkane2	You did something with your camera	q	q-form-pre	concurrently	2018-10-14 00:22:30
-417491	839	genelkim	You know whether you think you're handsome	q	q-act	concurrently	2018-10-08 20:40:09
-417491	847	genelkim	I probably don't know whether you think you're handsome	q	q-act	concurrently	2018-10-08 20:43:23
-699403	1078	gmcguire	I probably don't know what AFS is.	q	q-act	concurrently	2018-10-08 21:34:44
-687756	878	muskaan	We want foreign investors to come in	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-08 20:50:15
-37852	1592	platono	I want to use this	rq	implicit-desire	concurrently	2018-10-16 20:17:16
-704732	663	genelkim	You are obligated to name four comic strips about pilots	rq	command	afterwards	2018-10-04 20:33:57
-52654	527	genelkim	I want and expect you to show me your album	rq	implicit-desire	concurrently	2018-10-04 15:54:47
-52654	529	genelkim	You probably know whether you will show me your album	q	q-act	concurrently	2018-10-04 15:55:57
-52654	530	genelkim	I probably don't know whether you will show me your album	q	q-act	concurrently	2018-10-04 15:56:17
-52654	528	genelkim	sit	situational	situational	concurrently	2018-10-04 15:55:25
-387682	418	genelkim	I want you to protect me	rq	implicit-desire	concurrently	2018-10-04 14:51:45
-387682	419	genelkim	You probably know whether you can protect me	q	q-act	concurrently	2018-10-04 14:52:13
-132780	1634	platono	There are some tigers in the cages	q	q-form-pre	concurrently	2018-10-16 20:42:34
-699082	767	gmcguire	I can get a photograph of professor Randolph Quirk somewhere.	q	q-form-pre	concurrently	2018-10-08 19:03:54
-699082	1034	gmcguire	sit	situational	situational	concurrently	2018-10-08 21:25:33
-698967	783	bkane2	You are obligated to name a civil war battlefield	rq	command	concurrently	2018-10-08 20:11:19
-701124	213	muskaan	I know their e-mail address.	impl	OTHER: Someone knew something	concurrently	2018-06-29 20:27:34
-701124	128	muskaan	I don't know how to find someone's phone number if I only know their e-mail address	q	q-act		2018-06-20 16:07:46
-92537	1552	platono	My little brother had a dreadful dream last night	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-16 20:00:52
-702675	1735	genelkim	You probably know where I can find a website that gives comparisons of good prices	q	q-act	concurrently	2018-10-17 20:41:29
-702675	1298	muskaan	I don't know where I can find a website that gives comparisons of good prices.	q	q-act	concurrently	2018-10-12 20:50:27
-702675	1302	muskaan	sit	situational	situational	concurrently	2018-10-12 20:51:17
-979650	1928	genelkim	The monk thinks that you presume to do such deeds	impl	OTHER: someone asked how something is the case -> someone thinks something is the case	concurrently	2018-10-18 17:19:30
-979650	1696	platono	You did such things	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-17 16:14:45
-701027	1294	muskaan	I want and expect you to name the soft drink that is `` number one in the sun . ''	rq	implicit-desire	afterwards	2018-10-12 20:48:11
-736253	1563	platono	one doesn't know who is that	q	q-act	concurrently	2018-10-16 20:03:23
-435528	1596	platono	I want you to help me down	rq	implicit-desire	concurrently	2018-10-16 20:19:21
-694092	2066	ssackste	I obligate you to name the organization that is presided by a Security Council	rq	command	concurrently	2018-10-19 20:45:40
-694092	2068	ssackste	sit	situational	situational	concurrently	2018-10-19 20:46:01
-231184	1558	platono	I want and expect to see you a moment	rq	implicit-desire	concurrently	2018-10-16 20:01:56
-704813	1473	gmcguire	A famous communist leader died in Mexico City.	q	q-form-pre	concurrently	2018-10-15 19:27:24
-406124	1446	gmcguire	You know if you can miss the present moment.	q	q-act	concurrently	2018-10-15 19:15:19
-689493	1706	platono	sit	situational	situational	afterwards	2018-10-17 16:32:17
-689493	1705	platono	His whereabouts were unknown	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-17 16:31:47
-978933	1729	genelkim	He is a judge over them	impl	OTHER: someone1 makes someone2 something -> someone2 is something	afterwards	2018-10-17 19:30:51
-978933	1292	muskaan	He probably doesn't know who has made him a judge over them.	q	q-act	concurrently	2018-10-12 20:00:38
-978933	1291	muskaan	He has been made a judge over them	q	q-form-pre	concurrently	2018-10-12 19:59:15
-688581	1218	muskaan	Mikhail S. Gorbachev expected them to expect `` manna from heaven ''	impl	OTHER: 	concurrently	2018-10-11 20:09:16
-688581	1219	muskaan	They should not expect `` manna from heaven '	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none pres	afterwards	2018-10-11 20:10:16
-701230	1662	platono	You probably know what are two plants that clothes are made from	q	q-act	concurrently	2018-10-16 21:27:29
-701230	1663	platono	I probably don't know what are two plants that clothes are made from	q	q-act	concurrently	2018-10-16 21:27:55
-695544	1392	gmcguire	I don't know how birds find their way back to the same place every year.	q	q-act	concurrently	2018-10-15 17:42:16
-695544	1391	gmcguire	Birds find their way back to the same place every year.	q	q-form-pre	concurrently	2018-10-15 17:40:07
-701721	710	muskaan	You probably know where I can look at a perpetual calendar	q	q-act	concurrently	2018-10-07 00:13:13
-687985	441	genelkim	sit	situational	situational	concurrently	2018-10-04 15:11:43
-926959	1367	bkane2	I don't know what to tell you	q	rhetorical-question	concurrently	2018-10-14 01:15:01
-93503	1246	muskaan	I want and expect you to put your seat back up.	rq	implicit-desire	afterwards	2018-10-11 20:51:38
-37245	817	bkane2	Father is still alive	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-08 20:32:53
-703350	226	bkane2	You are obligated to name a female figure skater .	rq	OTHER: 	concurrently	2018-07-04 00:47:07
-703350	794	gmcguire	You are obligated to name a female figure skater.	rq	command	concurrently	2018-10-08 20:20:26
-703350	793	gmcguire	I want you to name a female figure skater.	rq	implicit-desire	concurrently	2018-10-08 20:19:53
-703350	796	gmcguire	sit	situational	situational	concurrently	2018-10-08 20:20:48
-705697	1978	ssackste	I want to buy a pony on the Big Island for my daughter	q	q-act	concurrently	2018-10-19 19:48:56
-705697	1979	ssackste	sit	situational	situational	concurrently	2018-10-19 19:49:17
-687579	2085	ssackste	We forgotten our children were killed	q	rhetorical-question	concurrently	2018-10-19 20:50:12
-687579	2086	ssackste	sit	situational	situational	before	2018-10-19 20:50:25
-699680	1744	genelkim	I probably don't know where you can find the Venus flytrap	q	q-act	concurrently	2018-10-18 14:14:11
-699680	1745	genelkim	You probably know where you can find the Venus flytrap	q	q-act	concurrently	2018-10-18 14:14:27
-699680	1746	genelkim	The Venus flytrap can be found	q	q-form-pre	concurrently	2018-10-18 14:14:48
-150034	2155	ssackste	sit	situational	situational	concurrently	2018-10-19 21:13:27
-264066	466	genelkim	You probably know what he saw	q	q-act	concurrently	2018-10-04 15:22:42
-264066	467	genelkim	I probably don't know what he saw	q	q-act	concurrently	2018-10-04 15:22:58
-264066	469	genelkim	He saw something	q	q-form-pre	concurrently	2018-10-04 15:23:36
-646633	1973	ssackste	I know you persuaded Tom to help us	q	q-act	concurrently	2018-10-19 19:43:57
-646633	1972	ssackste	You persuaded Tom to help us	q	q-form-pre	before	2018-10-19 19:43:34
-697418	1605	platono	You are obligated to name the only extant trilogy of classical Greek plays	rq	command	afterwards	2018-10-16 20:27:04
-697418	1604	platono	You probably know the only extant trilogy of classical Greek plays	q	q-act	concurrently	2018-10-16 20:26:26
-484719	1215	muskaan	sit	situational	situational	concurrently	2018-10-11 19:55:36
-705559	1860	genelkim	I probably don't know what country the worlds leading supplier of cannabis is	q	q-act	concurrently	2018-10-18 15:57:24
-705559	1861	genelkim	You probably know what country the worlds leading supplier of cannabis is	q	q-act	concurrently	2018-10-18 15:57:54
-705559	1862	genelkim	Some country is known to be the worlds leading supplier of cannabis	q	q-form-pre	concurrently	2018-10-18 15:59:21
-208734	2192	genelkim	You are obligated to not worry	rq	command	afterwards	2018-10-26 02:38:31
-208734	1245	muskaan	sit	situational	situational	before	2018-10-11 20:50:56
-702401	2095	ssackste	You probably know how light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-act	concurrently	2018-10-19 20:53:58
-702401	2096	ssackste	light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-form-pre	concurrently	2018-10-19 20:54:17
-702401	2097	ssackste	light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-form-pre	concurrently	2018-10-19 20:54:18
-702401	2098	ssackste	sit	situational	situational	concurrently	2018-10-19 20:54:40
-688046	1724	genelkim	sit	situational	situational	concurrently	2018-10-17 19:25:27
-688046	1727	genelkim	sit	situational	situational	concurrently	2018-10-17 19:26:35
-158441	1870	genelkim	I don't know whether to have recently taken a trip anywhere	q	q-act	concurrently	2018-10-18 16:04:35
-158441	1871	genelkim	You know whether you have recently taken a trip anywhere	q	q-act	concurrently	2018-10-18 16:04:52
-495736	1511	gmcguire	sit	situational	situational	concurrently	2018-10-15 19:47:20
-37885	495	genelkim	You probably know where you would like me to put this	q	q-act	concurrently	2018-10-04 15:39:07
-37885	496	genelkim	I probably don't know where you would like me to put this	q	q-act	concurrently	2018-10-04 15:39:22
-37885	497	genelkim	There is somewhere that you would like me to put this	q	q-form-pre	concurrently	2018-10-04 15:40:07
-37885	492	genelkim	I probably did not put this somewhere	impl	someone2 [prob] [aux] [neg] do [tense] something probably do not none past	before	2018-10-04 15:38:37
-559520	2144	ssackste	You know whether to trust them	q	q-act	concurrently	2018-10-19 21:09:29
-559520	2145	ssackste	sit	situational	situational	concurrently	2018-10-19 21:09:49
-252031	1549	platono	I want to assist you	rq	implicit-desire	concurrently	2018-10-16 19:57:12
-252031	1551	platono	You probably need assistance	q	q-act	concurrently	2018-10-16 19:59:20
-695758	1250	muskaan	I don't know who said `` The victor will never be asked if he told the truth '' ?	q	q-act	concurrently	2018-10-11 20:56:06
-272297	1505	gmcguire	I want you to play with me.	rq	implicit-desire	concurrently	2018-10-15 19:46:11
-272297	1506	gmcguire	You won't play with me.	q	q-form-pre	concurrently	2018-10-15 19:46:29
-535024	1537	platono	I want and expect you to lend me a hand	rq	implicit-desire	afterwards	2018-10-16 19:39:31
-205489	2013	ssackste	sit	situational	situational	concurrently	2018-10-19 20:06:08
-533528	1012	bkane2	I want you to tell me why not	rq	implicit-desire	concurrently	2018-10-08 21:22:19
-533528	1014	bkane2	I don't know why not	q	q-act	concurrently	2018-10-08 21:22:42
-533528	1016	bkane2	sit	situational	situational-pre	concurrently	2018-10-08 21:23:06
-688182	1529	gmcguire	You are obligated to explain the part U.S. warnings played in the major 's unwillingness to pull the trigger when he had General Noriega in custody.	rq	command	concurrently	2018-10-15 19:54:01
-688182	1528	gmcguire	U.S. warnings played a part in the major 's unwillingness to pull the trigger when he had General Noriega in custody.	q	q-form-pre	concurrently	2018-10-15 19:53:10
-697870	901	genelkim	You are obligated to name Name Li 'l Abner 's favorite Indian drink	rq	command	afterwards	2018-10-08 20:53:27
-697870	922	genelkim	sit	situational	situational	concurrently	2018-10-08 21:00:17
-688628	601	genelkim	Hull probably thinks that Soghum output is likely to rebound this year if yields are normal , although total use may continue to exceed production	impl	I [prob] [aux] [neg] think [tense] that something happened probably none none none pres	concurrently	2018-10-04 16:37:10
-688628	600	genelkim	Total use exceeds production	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-04 16:35:32
-688628	605	genelkim	Possibly Soghum output will rebound this year	impl	something [prob] [aux] [neg] happen [tense] possibly will none none pres	afterwards	2018-10-04 16:41:24
-696154	2193	genelkim	Someone said: "What contemptible scoundrel stole the cork from my lunch?"	q	q-form-pre	concurrently	2018-10-26 02:43:14
-696154	868	gmcguire	sit	situational	situational	concurrently	2018-10-08 20:46:49
-705172	1728	genelkim	You probably know how long you have to live in a community to vote	q	q-act	concurrently	2018-10-17 19:28:08
-705172	1287	muskaan	I don't know how long do you have to live in a community to vote.	q	q-act	concurrently	2018-10-12 19:56:52
-705172	1290	muskaan	You have to live in a community to vote.	q	q-form-pre	before	2018-10-12 19:57:29
-688627	759	gmcguire	sit	situational	situational	concurrently	2018-10-08 18:51:46
-982167	1999	ssackste	I want to you to go over and have a look at it with me	rq	implicit-desire	concurrently	2018-10-19 20:01:05
-982167	2001	ssackste	sit	situational	situational	concurrently	2018-10-19 20:02:37
-982167	2000	ssackste	I think you would go over and have a look at it with me	q	tag-question	concurrently	2018-10-19 20:02:08
-919465	251	muskaan	I have done something	impl	OTHER: 	before	2018-07-06 00:33:57
-919465	52	ssackste	Someone thinks I have done something	q	q-form-pre		2018-06-18 20:36:32
-378486	611	genelkim	You probably know what you would suggest that I do	q	q-act	concurrently	2018-10-04 16:47:13
-378486	612	genelkim	I probably don't know what you would suggest that I do	q	q-act	concurrently	2018-10-04 16:47:31
-378486	613	genelkim	I probably don't know what you would suggest that I do	q	q-act	concurrently	2018-10-04 16:47:32
-378486	614	genelkim	There is something you would suggest that I do	q	q-form-pre	concurrently	2018-10-04 16:47:58
-689611	1240	muskaan	sit	situational	situational	afterwards	2018-10-11 20:44:39
-691260	1574	platono	I want and expect you to tell me what is Spumante	rq	implicit-desire	afterwards	2018-10-16 20:06:57
-691260	1575	platono	You probably know what is spumante	q	q-act	concurrently	2018-10-16 20:07:25
-691108	1739	genelkim	You probably know where I can find information on the Narragansett Indians and other tribes in Rhode Island	q	q-act	concurrently	2018-10-17 20:46:22
-691108	1740	genelkim	There is information on the Narragansett Indians and other tribes in Rhode Island	q	q-form-pre	concurrently	2018-10-17 20:48:36
-691108	1738	genelkim	sit	situational	situational	concurrently	2018-10-17 20:45:56
-691108	1307	muskaan	I don't know where I can find information on the Narragansett Indians and other tribes in Rhode Island	q	q-act	concurrently	2018-10-12 20:53:35
-1036819	1356	bkane2	Nobody has any right to speak against it	q	rhetorical-question	concurrently	2018-10-14 00:55:07
-1036819	1357	bkane2	sit	situational	situational	concurrently	2018-10-14 00:55:21
+861551	916	29	sit	situational	situational	before	2018-10-08 20:56:55
+698216	1456	27	Flush toilets have been invented.	impl	OTHER: First	concurrently	2018-10-15 19:21:02
+698216	1459	27	I don't know when the first flush toilet was invented.	q	q-act	concurrently	2018-10-15 19:21:37
+698216	1460	27	There was a time when the first flush toilet was invented.	q	q-form-pre	concurrently	2018-10-15 19:22:07
+1010039	1787	8	I don't know if you can tell the position of the rooms	q	q-act	concurrently	2018-10-18 14:41:19
+1010039	1788	8	You know whether you can tell the position of the rooms	q	q-act	concurrently	2018-10-18 14:41:47
+1010039	1789	8	I don't know what those latticed windows at this end are	q	q-act	concurrently	2018-10-18 14:42:49
+1010039	1790	8	You might know what those latticed windows at this end are	q	q-act	concurrently	2018-10-18 14:43:28
+1010039	1786	8	sit	situational	situational	concurrently	2018-10-18 14:40:42
+1010039	1791	8	sit	situational	situational	concurrently	2018-10-18 14:46:29
+487947	1736	8	sit	situational	situational	concurrently	2018-10-17 20:43:51
+487947	1737	8	sit	situational	situational	concurrently	2018-10-17 20:44:02
+696278	1586	21	I want and expect you to tell me how to determine if a computer monitor has an SVGA adapter	rq	implicit-desire	concurrently	2018-10-16 20:13:38
+696278	1587	21	You probably know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-16 20:15:41
+696278	1589	21	I probably don't know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-16 20:16:40
+687867	1832	8	I don't know whether there is something rotten in the kingdom of museums	q	q-act	concurrently	2018-10-18 15:21:07
+687867	1833	8	You might know whether there is something rotten in the kingdom of museums	q	q-act	concurrently	2018-10-18 15:21:25
+687867	1834	8	sit	situational	situational	concurrently	2018-10-18 15:22:15
+109055	2050	26	sit	situational	situational	before	2018-10-19 20:26:27
+703665	1090	27	There is a particular country you would visit to ski in the Dolomites.	q	q-act	concurrently	2018-10-08 21:40:39
+698998	1185	28	You can see	impl	OTHER: 	concurrently	2018-10-11 18:12:43
+698998	1186	28	I don't know how far you can see	q	q-act	concurrently	2018-10-11 18:13:03
+794693	861	29	He is obligated to change him a hundred-dollar bill	rq	command	before	2018-10-08 20:45:42
+794693	846	29	He changed him a hundred-dollar bill	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 20:43:17
+383675	1406	27	You are obligated to write your surname on the fourth line.	rq	command	concurrently	2018-10-15 18:38:00
+322282	1675	21	I want you to come tomorrow	rq	implicit-desire	concurrently	2018-10-16 21:39:33
+694685	1257	28	I want and expect you to name the On Stage character whose face was never seen.	rq	command	afterwards	2018-10-12 19:37:39
+413515	792	29	I want you to give me a moment	rq	implicit-desire	concurrently	2018-10-08 20:19:21
+413515	798	29	sit	situational	situational	concurrently	2018-10-08 20:21:48
+698604	618	8	You probably know how I can find out how much it costs to raise a baby for six months	q	q-act	concurrently	2018-10-04 16:50:32
+698604	619	8	I probably don't know how I can find out how much it costs to raise a baby for six months	q	q-act	concurrently	2018-10-04 16:50:54
+698604	620	8	One can find out how much it costs to raise a baby for six months	q	q-form-pre	concurrently	2018-10-04 16:51:24
+698604	621	8	There is a cost to raising a baby for six months	q	q-form-pre	concurrently	2018-10-04 16:52:18
+688917	1701	21	sit	situational	situational	concurrently	2018-10-17 16:19:45
+687767	500	8	I want us to just take that	rq	implicit-desire	concurrently	2018-10-04 15:41:40
+778975	1906	8	sit	situational	situational	concurrently	2018-10-18 16:41:09
+778975	1907	8	sit	situational	situational	concurrently	2018-10-18 16:41:27
+778975	1908	8	sit	situational	situational	before	2018-10-18 16:42:03
+695403	1795	8	I don't know how easily I can remove red wine stains from t-shirts	q	q-act	concurrently	2018-10-18 14:47:36
+695403	1796	8	You probably know how easily I can remove red wine stains from t-shirts	q	q-act	concurrently	2018-10-18 14:47:56
+695403	1797	8	Red wine stains can be removed from t-shirts	q	q-form-pre	concurrently	2018-10-18 14:48:31
+695403	1798	8	sit	situational	situational	concurrently	2018-10-18 14:49:21
+693027	1117	28	I don't know how to tell if a female has sexual intercourse.	q	q-act	concurrently	2018-10-11 17:51:32
+688566	247	29	Tritium probably is regularly replenished	impl	something [prob] [aux] [neg] happen [tense] probably none none none pres	concurrently	2018-07-04 02:06:29
+950009	1874	8	He probably will not have known that you already know his sister and father and are liked by them	impl	OTHER: someone finds somethings is the case -> someone probably didn't know something is the case	before	2018-10-18 16:14:26
+950009	1878	8	sit	situational	situational	afterwards	2018-10-18 16:15:36
+950009	1872	8	You already know his sister and father and are liked by them	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-18 16:08:44
+272497	1532	21	I want and expect you to lend me your pink pen	rq	command	afterwards	2018-10-16 19:36:55
+272497	1534	21	You probably have a pink pen	q	q-form-pre	concurrently	2018-10-16 19:38:07
+704927	1056	29	I want and expect you to tell me what two countries Andorra is nestled between	rq	implicit-desire	concurrently	2018-10-08 21:29:01
+704927	1058	29	I don't know what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:18
+704927	1059	29	You probably know what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:27
+704927	1060	29	You probably will tell me what two countries Andorra is nestled between	q	q-act	concurrently	2018-10-08 21:29:47
+704927	1061	29	Andorra is nestled between two countries	q	q-form-pre	concurrently	2018-10-08 21:30:04
+854167	947	21	I have heard Lord St .	impl	OTHER: Situational	before	2018-10-08 21:07:30
+700450	1321	29	I want and expect you to tell me how I can find a list of celebrities' real names	rq	implicit-desire	concurrently	2018-10-13 21:49:23
+700450	1322	29	I don't know how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:50:20
+700450	1323	29	You probably know how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:50:57
+700450	1324	29	You probably will tell me how I can find a list of celebrities' real names	q	q-act	concurrently	2018-10-13 21:51:26
+700450	1325	29	I can find a list of celebrities' real names somewhere	q	q-form-pre	concurrently	2018-10-13 21:52:09
+704447	2164	26	You know where can I read about Abraham Lincoln	q	q-act	concurrently	2018-10-19 21:15:51
+695702	2090	26	I think you know why it is called `` hamburger '' if there is no ham in it	q	q-act	concurrently	2018-10-19 20:51:36
+695702	2091	26	sit	situational	situational	concurrently	2018-10-19 20:52:54
+421779	1564	21	you stopped by	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-16 20:04:18
+91232	1247	28	I want you to give me the directions to the subway station	rq	implicit-desire	afterwards	2018-10-11 20:54:38
+690310	1223	28	sit	situational	situational	afterwards	2018-10-11 20:15:18
+690313	640	8	An interview with Contorno had been conducted at an undisclosed location in the United States	impl	OTHER: someone broadcasted something that happened -> something happened	before	2018-10-04 17:07:58
+327051	831	27	He will probably come tomorrow.	impl	someone2 [prob] [aux] [neg] do [tense] something probably will none none pres	concurrently	2018-10-08 20:37:21
+694128	205	28	The music stops in a game of musical chairs.	impl	OTHER: 	concurrently	2018-06-29 20:14:01
+694128	206	28	I don't know what the players try to do when the music stops in a game of musical chairs.	q	q-act	concurrently	2018-06-29 20:14:23
+697735	856	8	You are obligated to name four famous cartoon cats	rq	command	afterwards	2018-10-08 20:44:53
+330110	1936	8	I probably don't know whether you would take Tom to Boston with you	q	q-act	concurrently	2018-10-18 19:16:32
+330110	1937	8	You know whether you would take Tom to Boston with you	q	q-act	concurrently	2018-10-18 19:16:52
+330110	1938	8	sit	situational	situational	afterwards	2018-10-18 19:18:07
+330110	1935	26	I want you to take Tom to Boston with you	rq	implicit-desire	concurrently	2018-10-18 19:11:47
+699954	1176	28	I don't know what the chances of pregnancy are if the penis does not penetrate the vagina	q	q-act	concurrently	2018-10-11 18:10:11
+511306	884	29	I want you to tell her	rq	implicit-desire	concurrently	2018-10-08 20:50:50
+511306	887	29	I don't know if you will tell her	q	q-act	concurrently	2018-10-08 20:51:41
+511306	688	29	You know something she doesn't	q	q-form-pre	concurrently	2018-10-05 19:49:41
+692548	980	29	I want and expect you to tell me what is the executor in a will	rq	implicit-desire	concurrently	2018-10-08 21:14:40
+692548	982	29	I don't know what is the executor in a will	q	q-act	concurrently	2018-10-08 21:14:58
+692548	983	29	You probably know what is the executor in a will	q	q-act	concurrently	2018-10-08 21:15:17
+692548	985	29	You probably will tell me what is the executor in a will	q	q-act	concurrently	2018-10-08 21:15:53
+692548	986	29	A will has an executor	q	q-form-pre	concurrently	2018-10-08 21:16:08
+203863	1008	21	I want you to dictate a bit slower	rq	implicit-desire	concurrently	2018-10-08 21:20:24
+689990	1734	8	People don't know where the companion is if you spin up the pulsar with a companion	q	q-act	concurrently	2018-10-17 20:38:59
+689990	1730	8	Fruchter thought that people wondered , ` If you spin up the pulsar with a companion , where is the companion ? '	impl	someone [prob] [aux] [neg] think [tense] that something happened none none none none past	concurrently	2018-10-17 20:34:54
+689990	1731	8	People probably wondered , ` If you spin up the pulsar with a companion , where is the companion ? '	impl	something [prob] [aux] [neg] happen [tense] probably none none none past	before	2018-10-17 20:35:49
+514186	1093	27	sit	situational	situational	before	2018-10-08 21:44:33
+455175	1480	27	Something happened yesterday.	impl	OTHER: What-assertion	concurrently	2018-10-15 19:29:21
+455175	1479	27	Tom is sorry about what happened yesterday.	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-15 19:29:01
+702848	2104	26	You probably know who says `` If you don 't look good , we don 't look good '' ?	q	q-act	concurrently	2018-10-19 20:57:47
+702848	2103	26	Someone says `` If you don 't look good , we don 't look good '' ?	q	q-form-pre	concurrently	2018-10-19 20:57:12
+22869	632	8	I want and expect you to open the door	rq	implicit-desire	concurrently	2018-10-04 17:00:37
+22869	633	8	You probably know if you will open the door	q	q-act	concurrently	2018-10-04 17:02:06
+22869	634	8	I probably don't know if you'll open the door	q	q-act	concurrently	2018-10-04 17:02:21
+22869	635	8	sit	situational	situational	concurrently	2018-10-04 17:02:52
+687998	2178	8	Bennett probably wanted the Pentagon and then-Attorney General Edwin Meese to unleash the U.S. military against foreign drug traffickers	impl	OTHER: someone1 urged someone2 to do something -> someone1 wanted someone2 to do something	concurrently	2018-10-26 02:27:23
+687998	2177	8	The Pentagon and then-Attorney General Edwin Meese possibly unleashed the U.S. military against foreign drug traffickers	impl	someone2 [prob] [aux] [neg] do [tense] something possibly none none none past	afterwards	2018-10-26 02:25:38
+1122659	1847	8	I want and expect you to do me that favour	rq	implicit-desire	concurrently	2018-10-18 15:47:15
+1122659	1848	8	You probably know whether you will do me that favour	q	q-act	concurrently	2018-10-18 15:47:38
+1122659	1849	8	I probably don't know whether you will do me that favour	q	q-act	concurrently	2018-10-18 15:48:20
+429887	1947	26	I want you to loan him some money	rq	implicit-desire	concurrently	2018-10-18 19:35:21
+429887	1949	26	You might know whether you can loan money	q	q-act	concurrently	2018-10-18 19:42:21
+429887	1948	26	sit	situational	situational	concurrently	2018-10-18 19:40:22
+701918	1826	8	You are obligated to name the creator of `` The Muppets ''	rq	command	concurrently	2018-10-18 15:18:04
+701918	1828	8	sit	situational	situational	concurrently	2018-10-18 15:19:39
+699731	897	29	I want and expect you to tell me what someone is caught in if a haboob blows up	rq	implicit-desire	concurrently	2018-10-08 20:53:06
+699731	706	29	You probably know what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 19:59:48
+699731	707	29	You probably will tell me what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 20:00:11
+699731	709	29	I don't know what someone is caught in if a haboob blows up	q	q-act	concurrently	2018-10-05 20:01:02
+699731	53	26	You are caught in something if haboob blows up	q	q-form-pre		2018-06-18 20:37:31
+699731	54	26	sit	situational	situational		2018-06-18 20:38:11
+512596	1212	28	You know if you showed her the pictures	q	q-act	concurrently	2018-10-11 19:45:47
+512596	964	28	You have pictures	q	q-form-pre	concurrently	2018-10-08 21:11:10
+1004381	1855	8	You used to know that thing he wrote	impl	OTHER: someone remembers something -> someone used to know something	before	2018-10-18 15:55:28
+1004381	1853	8	I don't know if you remember that thing he wrote	q	q-act	concurrently	2018-10-18 15:50:28
+1004381	1854	8	You know whether you remember that thing he wrote	q	q-act	concurrently	2018-10-18 15:50:55
+1004381	1856	8	sit	situational	situational	before	2018-10-18 15:56:05
+80711	1030	21	I want you to give me a ride	rq	implicit-desire	concurrently	2018-10-08 21:25:03
+80711	1026	21	You have a car	q	q-form-pre	concurrently	2018-10-08 21:24:03
+168462	1217	28	sit	situational	situational	afterwards	2018-10-11 20:02:05
+690105	2183	8	Bush probably thought that for personal and family considerations he preferred to remain in Michigan	impl	someone2 [prob] [aux] [neg] think [tense] that something happened probably none none none past	afterwards	2018-10-26 02:33:29
+690105	2182	8	For personal and family considerations he preferred to remain in Michigan	impl	something [prob] [aux] [neg] happen [tense] none none none none past	concurrently	2018-10-26 02:31:42
+690105	2022	26	sit	situational	situational	concurrently	2018-10-19 20:16:44
+701392	2133	26	You might know was chairman of the Senate select committee that tried to get to the bottom of Watergate	q	q-act	concurrently	2018-10-19 21:05:50
+701392	2132	26	There was a was chairman of the Senate select committee that tried to get to the bottom of Watergate	q	q-form-pre	before	2018-10-19 21:05:26
+701392	2134	26	sit	situational	situational	concurrently	2018-10-19 21:06:21
+705268	902	28	I don't know on whom to use the Heimlich maneuver	q	q-act	concurrently	2018-10-08 20:53:51
+705268	1209	28	You use the Heimlich maneuver on someone	q	q-form-pre	concurrently	2018-10-11 19:34:53
+1137026	808	29	The Lion thinks that he is sharp	impl	OTHER: someone remarked something	concurrently	2018-10-08 20:29:25
+697497	1750	8	I don't know how I can find out how much income tax is paid on Social Security income on the 1998 income tax	q	q-act	concurrently	2018-10-18 14:16:50
+697497	1751	8	You probably know how I can find out how much income tax is paid on Social Security income on the 1998 income tax	q	q-act	concurrently	2018-10-18 14:17:10
+697497	1752	8	I can find out how much income tax is paid on Social Security income on the 1998 income tax somehow	q	q-form-pre	concurrently	2018-10-18 14:18:34
+697497	1753	8	Some amount of income tax is paid on Social Security income on the 1998 income tax	q	q-form-pre	concurrently	2018-10-18 14:19:25
+698737	1313	29	I want and expect you to tell me what the all-time stock high of Apple Computer is, and where can I find this information	rq	implicit-desire	concurrently	2018-10-13 21:14:56
+698737	1314	29	I don't know what the all-time stock high of Apple Computer is, or where can I find this information	q	q-act	concurrently	2018-10-13 21:29:51
+698737	1315	29	You probably know what the all-time stock high of Apple Computer is, and where can I find this information	q	q-act	concurrently	2018-10-13 21:30:27
+698737	1316	29	You probably will tell me what the all-time stock high of Apple Computer is, and where can I find this information	q	q-act	concurrently	2018-10-13 21:45:34
+698737	1317	29	The Apple Computer stock had an all-time high	q	q-form-pre	before	2018-10-13 21:46:17
+698737	1318	29	I can find information about the Apple Computer stock somewhere	q	q-form-pre	concurrently	2018-10-13 21:46:58
+704155	1989	26	Some tenths of the Earth 's surface lie under water	q	q-form-pre	before	2018-10-19 19:56:18
+704155	1990	26	sit	situational	situational	concurrently	2018-10-19 19:56:38
+703604	1422	27	There is a chemical used to control ripening.	q	q-form-pre	concurrently	2018-10-15 19:01:03
+703604	1423	27	The chemical used to control ripening has a brand name.	q	q-form-pre	concurrently	2018-10-15 19:01:22
+1175	1099	21	I'm irritated that you said this thing to me	q	rhetorical-question	concurrently	2018-10-08 22:02:35
+1175	1096	21	You said something to me	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 21:53:06
+229723	700	29	I want and expect you to tell me where I can find them	rq	implicit-desire	concurrently	2018-10-05 19:57:29
+229723	701	29	You probably know where I can find them and will tell me where I can find them	q	q-act	concurrently	2018-10-05 19:57:54
+229723	702	29	I don't know where I can find them	q	q-act	concurrently	2018-10-05 19:58:07
+516589	1238	28	They probably have tried doing something in the past	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-11 20:35:41
+770597	1237	28	sit	situational	situational	concurrently	2018-10-11 20:27:36
+689119	1066	29	I want and expect you to tell me what is going to happen	rq	implicit-desire	concurrently	2018-10-08 21:31:38
+689119	1068	29	I don't know what is going to happen	q	q-act	concurrently	2018-10-08 21:31:56
+689119	1070	29	You probably know what is going to happen	q	q-act	concurrently	2018-10-08 21:32:54
+689119	1074	29	Something is going to happen	q	q-form-pre	concurrently	2018-10-08 21:33:23
+689119	1075	29	I don't think anyone knows what is going to happen	q	rhetorical-question	concurrently	2018-10-08 21:33:59
+204163	2008	26	sit	situational	situational	concurrently	2018-10-19 20:05:12
+688414	1712	8	sit	situational	situational	concurrently	2018-10-17 18:59:22
+688414	1713	8	sit	situational	situational	concurrently	2018-10-17 18:59:35
+439516	447	8	You know whether you were surprised to see Tom	q	q-act	concurrently	2018-10-04 15:13:42
+439516	448	8	I probably don't know whether you were surprised to see Tom	q	q-act	concurrently	2018-10-04 15:14:04
+439516	444	8	You saw Tom	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-04 15:12:57
+699514	2138	26	I obligate you to name the three races unleashed by the Celestials in Marvel comics	rq	command	concurrently	2018-10-19 21:07:13
+699514	2140	26	sit	situational	situational	concurrently	2018-10-19 21:07:45
+515539	1707	8	sit	situational	situational	concurrently	2018-10-17 18:55:19
+515539	1258	28	I want and expect you to make them smile	rq	implicit-desire	afterwards	2018-10-12 19:41:57
+515539	1260	28	I don't know if you can make them smile.	q	q-act	concurrently	2018-10-12 19:42:35
+696903	517	8	You probably know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-04 15:49:59
+696903	518	8	I probably don't know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-04 15:50:21
+696903	519	8	There's a place where I can find a person 's address from a telephone number	q	q-form-pre	concurrently	2018-10-04 15:51:31
+696903	520	8	sit	situational	situational-pre	concurrently	2018-10-04 15:51:49
+696082	410	8	You probably know where I can get a photograph of professor Randolph Quirk	q	q-act	concurrently	2018-10-04 14:44:52
+696082	411	8	I probably don't know where I can get a photograph of professor Randolph Quirk	q	q-act	concurrently	2018-10-04 14:45:12
+703588	2033	26	I obligate you to name a movie that the actress , Sandra Bullock , had a role in	rq	command	concurrently	2018-10-19 20:20:15
+703588	2035	26	sit	situational	situational	concurrently	2018-10-19 20:20:35
+702758	231	29	You probably know who said `` The victor will never be asked if he told the truth '' and will tell me who said it .	q	q-act	concurrently	2018-07-04 01:09:22
+702758	232	29	I probably don't know who said `` The victor will never be asked if he told the truth '' .	q	q-act	concurrently	2018-07-04 01:10:04
+702758	234	29	Someone said : `` The victor will never be asked if he told the truth '' .	q	q-form-pre	before	2018-07-04 01:12:44
+702758	1021	27	You are obligated to tell me who said: "The victor will never be asked if he told the truth"	rq	command	concurrently	2018-10-08 21:23:26
+702758	1015	27	I want to know who said: "The victor will never be asked if he told the truth"	rq	implicit-desire	concurrently	2018-10-08 21:22:54
+702758	1029	27	Someone said: "The victor will never be asked if he told the truth"	q	q-form-pre	concurrently	2018-10-08 21:24:33
+693963	1514	27	I want to take my dog with me to live in Dominica, West Indies for a year.	rq	implicit-desire	concurrently	2018-10-15 19:48:07
+693963	1516	27	You know what I need to do to take my dog with me to live in Dominica, West Indies for a year.	q	q-act	concurrently	2018-10-15 19:49:08
+693963	1515	27	There is something I need to do in order to take my dog with me to live in Dominica, West Indies for a year.	q	q-form-pre	concurrently	2018-10-15 19:48:40
+355745	1498	27	sit	situational	situational	concurrently	2018-10-15 19:39:31
+687108	1398	27	I believe this is some kind of mistake.	q	rhetorical-question	concurrently	2018-10-15 17:45:36
+704932	452	8	You probably know how I can determine the radius of an ellipse	q	q-act	concurrently	2018-10-04 15:15:34
+704932	453	8	I probably don't know how I can determine the radius of an ellipse	q	q-act	concurrently	2018-10-04 15:16:17
+704932	455	8	The radius of an ellipse can be determined	q	q-form-pre	concurrently	2018-10-04 15:18:00
+704932	454	8	sit	situational	situational-pre	concurrently	2018-10-04 15:16:43
+696342	869	29	I want and expect you to tell me what goldfish lose if kept in dimly-lit or running water	rq	implicit-desire	concurrently	2018-10-08 20:47:00
+696342	672	29	You probably know what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:39:59
+696342	675	29	I don't know what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:41:04
+696342	676	29	You probably will tell me what goldfish lose if kept in dimly-lit or running water	q	q-act	concurrently	2018-10-05 19:41:23
+130801	1251	28	I want you to exchange it with another one	rq	implicit-desire	afterwards	2018-10-11 20:56:52
+193441	1438	27	I want you to help me wash the dishes.	rq	implicit-desire	concurrently	2018-10-15 19:06:54
+193441	1437	27	I am washing the dishes.	q	q-form-pre	concurrently	2018-10-15 19:06:35
+692214	652	8	You probably know where I can find correct tabs for Third Eye Blind songs	q	q-act	concurrently	2018-10-04 20:28:48
+692214	653	8	I probably don't know where I can find correct tabs for Third Eye Blind songs	q	q-act	concurrently	2018-10-04 20:29:22
+692214	654	8	Correct tabs for Third Eye Blind songs can be found somewhere	q	q-form-pre	concurrently	2018-10-04 20:29:49
+692214	655	8	sit	situational	situational-pre	concurrently	2018-10-04 20:30:12
+1202382	1618	21	Miss Pross expects you to wait for her	q	q-form-pre	concurrently	2018-10-16 20:31:00
+486748	2043	26	I obligate you to remind me to thank Tom the next time I see him	rq	command	concurrently	2018-10-19 20:24:01
+698681	807	27	I want you to name the two blob members of the animated Herculoids.	rq	command	concurrently	2018-10-08 20:27:32
+698681	806	27	I want you to name the two blob members of the animated Herculoids.	rq	implicit-desire	concurrently	2018-10-08 20:27:10
+935819	1133	28	I want you to come to this other table	rq	neg-request	concurrently	2018-10-11 17:56:37
+935819	1134	28	You are not coming to this other table.	rq	neg-request	concurrently	2018-10-11 17:57:00
+935819	1138	28	Anna has already asked you to come to this other table.	impl	OTHER: 	concurrently	2018-10-11 17:59:05
+962974	596	8	the guns and prisoners had been captured	impl	OTHER: someone reported to someone where something happened -> something happened	before	2018-10-04 16:32:36
+962974	176	28	The guns and prisoners had been captured.	impl	something [prob] [aux] [neg] happen [tense] none none none none pres		2018-06-20 20:24:53
+701627	428	8	You probably know where I can find a list of all the companies in America that offer a direct stock purchase plan	q	q-act	concurrently	2018-10-04 15:01:45
+701627	429	8	I probably don't know where I can find a list of all the companies in America that offer a direct stock purchase plan	q	q-act	concurrently	2018-10-04 15:02:12
+701627	430	8	sit	situational	situational-pre	concurrently	2018-10-04 15:02:56
+698702	1802	8	I probably don't know why it is called `` hamburger '' even though there is no ham in it	q	q-act	concurrently	2018-10-18 15:02:51
+698702	1803	8	You might know why it is called  `` hamburger '' even though there is no ham in it	q	q-act	concurrently	2018-10-18 15:03:27
+698702	1804	8	It is called `` hamburger ''	q	q-form-pre	concurrently	2018-10-18 15:03:48
+698702	1805	8	sit	situational	situational	concurrently	2018-10-18 15:04:20
+698848	473	8	You probably know who says `` If you don 't look good , we don 't look good ''	q	q-act	concurrently	2018-10-04 15:25:26
+698848	474	8	I probably don't know who says `` If you don 't look good , we don 't look good ''	q	q-act	concurrently	2018-10-04 15:25:50
+698848	475	8	Someone says `` If you don 't look good , we don 't look good ''	q	q-form-pre	concurrently	2018-10-04 15:26:13
+687609	840	27	sit	situational	situational	concurrently	2018-10-08 20:41:09
+1159716	2117	26	sit	situational	situational	concurrently	2018-10-19 21:02:11
+420080	1239	28	Tom probably likes me	impl	something [prob] [aux] [neg] happen [tense] probably none none none pres	concurrently	2018-10-11 20:39:34
+704624	1963	26	I want someone 's email address	q	q-act	concurrently	2018-10-19 19:39:13
+704624	1964	26	sit	situational	situational	concurrently	2018-10-19 19:40:48
+691418	754	27	You are obligated to name the only extant trilogy of classical Greek plays.	rq	command	concurrently	2018-10-08 18:41:32
+691418	906	27	I want you to name the only extant trilogy of classical Greek plays.	rq	implicit-desire	concurrently	2018-10-08 20:54:52
+703235	1262	28	I don't know how a hurricane forms.	q	q-act	concurrently	2018-10-12 19:43:56
+691553	1339	29	I want and expect you to tell me who comprised the now-defunct comic book team known as the Champions	rq	implicit-desire	concurrently	2018-10-14 00:20:59
+691553	1340	29	I don't know who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:07
+691553	1341	29	You probably know who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:21
+691553	1342	29	You probably will tell me who comprised the now-defunct comic book team known as the Champions	q	q-act	concurrently	2018-10-14 00:21:29
+704291	995	29	I want and expect you to tell me where I could go to take a ride on a steam locomotive	rq	implicit-desire	concurrently	2018-10-08 21:18:37
+704291	997	29	I don't know where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:18:47
+704291	1000	29	You probably know where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:18:56
+704291	1002	29	You probably will tell me where I could go to take a ride on a steam locomotive	q	q-act	concurrently	2018-10-08 21:19:07
+704291	1004	29	I can take a ride on a steam locomotive somewhere	q	q-form-pre	concurrently	2018-10-08 21:19:33
+695027	1360	29	I want and expect you to tell me how anyone can tell if a female had sexual intercourse	rq	implicit-desire	concurrently	2018-10-14 00:56:08
+695027	1361	29	I don't know how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:18
+695027	1362	29	You probably know how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:29
+695027	1363	29	You probably will tell me how anyone can tell if a female had sexual intercourse	q	q-act	concurrently	2018-10-14 00:56:54
+258997	1478	27	sit	situational	situational	concurrently	2018-10-15 19:28:18
+648581	725	29	You probably know if you would like to play with us	q	q-act	concurrently	2018-10-07 22:02:54
+648581	726	29	You probably will tell us if you would like to play with us	q	q-act	concurrently	2018-10-07 22:03:10
+648581	727	29	We do not know if you would like to play with us	q	q-act	concurrently	2018-10-07 22:03:23
+648581	728	29	sit	situational	situational-pre	concurrently	2018-10-07 22:03:50
+618766	1722	8	sit	situational	situational	concurrently	2018-10-17 19:23:59
+618766	1723	8	sit	situational	situational	afterwards	2018-10-17 19:24:36
+618766	1276	28	sit	situational	situational	before	2018-10-12 19:52:32
+697343	1043	21	I want you to tell me how many casinos are in Atlantic City , NJ	rq	implicit-desire	concurrently	2018-10-08 21:26:47
+697343	1045	21	There are casinos in Atlantic City , NJ	q	q-act	concurrently	2018-10-08 21:27:23
+697343	1048	21	sit	situational	situational-pre	concurrently	2018-10-08 21:27:51
+697343	1052	21	sit	situational	situational-pre	concurrently	2018-10-08 21:28:14
+687670	1125	28	Help a savings institution	rq	implicit-desire	concurrently	2018-10-11 17:54:04
+687670	1126	28	You have probably not helped a savings institution	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-11 17:54:37
+694948	1952	26	You're obligated to name the two mystical ravens Odin has at his command	rq	command	concurrently	2018-10-18 19:46:41
+694948	1953	26	sit	situational	situational	concurrently	2018-10-18 19:47:51
+226434	2149	26	You know how much time we have	q	q-act	concurrently	2018-10-19 21:10:43
+226434	2150	26	sit	situational	situational	concurrently	2018-10-19 21:11:00
+690257	1887	8	sit	situational	situational	concurrently	2018-10-18 16:29:59
+690257	1886	8	All refugee boats probably landed	impl	someone [prob] [aux] [neg] do [tense] something probably none none none past	afterwards	2018-10-18 16:28:37
+690257	1885	8	All refugee boats were probably permitted to land and arrivals were probably taken to a special camp in cooperation with the U.N. High Commissioner for Refugees .	impl	something [prob] [aux] [neg] happen [tense] probably none none none past	before	2018-10-18 16:27:10
+704653	1918	8	You are obligated to name a flying mammal	rq	command	afterwards	2018-10-18 16:45:00
+704653	1920	8	sit	situational	situational	concurrently	2018-10-18 16:45:53
+704714	1418	27	I don't know how to say 2 in Latin and you know how to say 2 in Latin.	q	q-act	concurrently	2018-10-15 18:47:55
+704714	1419	27	There is a way to say 2 in Latin.	q	q-form-pre	concurrently	2018-10-15 18:48:10
+283340	1600	21	I want to have a break	rq	implicit-desire	concurrently	2018-10-16 20:20:24
+283340	1601	21	You probably don't give me a break	q	q-form-pre	before	2018-10-16 20:22:31
+699334	2076	26	You probably know where can I get cotton textiles importer details	q	q-act	concurrently	2018-10-19 20:47:32
+699334	2077	26	sit	situational	situational	concurrently	2018-10-19 20:47:55
+692132	625	8	You probably know what Judith Rossner novel was made into a film starring Diane Keaton	q	q-act	concurrently	2018-10-04 16:58:08
+692132	626	8	I probably don't know what Judith Rossner novel was made into a film starring Diane Keaton	q	q-act	concurrently	2018-10-04 16:58:24
+692132	627	8	A Judith Rossner novel was made into a film starring Diane Keaton	q	q-form-pre	concurrently	2018-10-04 16:58:44
+692132	628	8	sit	situational	situational-pre	concurrently	2018-10-04 16:59:14
+692132	629	8	sit	situational	situational-pre	before	2018-10-04 16:59:33
+696824	510	8	You probably know where I can find a case on Individuals with Disabilities Education Act of 1991	q	q-act	concurrently	2018-10-04 15:46:23
+696824	511	8	I probably don't know where I can find a case on Individuals with Disabilities Education Act of 1991	q	q-act	concurrently	2018-10-04 15:46:43
+696824	512	8	One can find a case on Individuals with Disabilities Education Act of 1991	q	q-form-pre	concurrently	2018-10-04 15:48:04
+696824	513	8	sit	situational	situational-pre	concurrently	2018-10-04 15:48:29
+705124	553	8	You probably know who the 1st U.S. President was	q	q-act	concurrently	2018-10-04 16:05:26
+705124	554	8	I probably don't know who the 1st U.S. President was	q	q-act	concurrently	2018-10-04 16:05:41
+705124	555	8	Someone was the 1st U.S. President	q	q-form-pre	before	2018-10-04 16:06:42
+705124	556	8	sit	situational	situational-pre	concurrently	2018-10-04 16:07:09
+705124	557	8	sit	situational	situational-pre	concurrently	2018-10-04 16:07:35
+694625	433	8	You are obligated to name a Gaelic language	rq	OTHER: 	concurrently	2018-10-04 15:04:35
+704539	1839	8	I probably don't know what  famous coach said `` if you can 't beat 'em in the alley , you can 't beat 'em on the ice ''	q	q-act	concurrently	2018-10-18 15:44:02
+704539	1840	8	Some famous coach said `` if you can 't beat 'em in the alley , you can 't beat 'em on the ice ''	q	q-form-pre	concurrently	2018-10-18 15:44:34
+704539	1835	8	sit	situational	situational	concurrently	2018-10-18 15:43:07
+118570	1624	21	They play in the snow	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-16 20:33:46
+7497	779	8	I want and expect you to call him into the meeting	rq	implicit-desire	concurrently	2018-10-08 20:05:36
+7497	784	8	You probably know whether you could call him into the meeting	q	q-act	concurrently	2018-10-08 20:13:41
+106500	959	21	sit	situational	OTHER: situational	concurrently	2018-10-08 21:10:01
+496583	437	8	You are obligated to tell me if it isn't so	rq	OTHER: 	concurrently	2018-10-04 15:08:59
+387347	2039	26	I think you know what will happen if he rejects me	q	q-act	concurrently	2018-10-19 20:22:49
+387347	2040	26	sit	situational	situational	concurrently	2018-10-19 20:23:09
+947253	459	8	You probably know how you can know	q	q-act	concurrently	2018-10-04 15:18:51
+947253	460	8	I probably don't know how you can know	q	q-act	concurrently	2018-10-04 15:19:05
+947253	462	8	You can know	q	q-form-pre	concurrently	2018-10-04 15:21:25
+947253	461	8	sit	situational	situational-pre	before	2018-10-04 15:19:59
+743444	424	8	I want and expect you to  tell me whether it is actually true that Mr. Rochester has asked you to marry him	rq	implicit-desire	concurrently	2018-10-04 14:58:34
+743444	422	8	You probably know whether you can tell me whether it is actually true that Mr. Rochester has asked you to marry him	q	q-act	concurrently	2018-10-04 14:57:33
+743444	423	8	I probably don't know whether you can tell me whether it is actually true that Mr. Rochester has asked you to marry him	q	q-act	concurrently	2018-10-04 14:58:02
+743444	148	28	I don't know if Mr. Rochester asked you to marry him.	q	q-act		2018-06-20 20:09:55
+827533	2081	26	He can connect himself well	cf	OTHER: if-then	concurrently	2018-10-19 20:49:18
+500886	396	8	I want and expect you to get that done.	rq	implicit-desire	concurrently	2018-10-01 21:06:31
+500886	394	8	You probably know how soon you can get that done.	q	q-act	concurrently	2018-10-01 21:05:09
+500886	397	8	I probably don't know how soon you can get that done.	q	q-act	concurrently	2018-10-01 21:07:07
+500886	395	8	You can get that done.	q	q-form-pre	concurrently	2018-10-01 21:05:46
+696638	1609	21	You probably know What therapy attempts to elicit the `` primal scream ''	q	q-act	concurrently	2018-10-16 20:27:46
+231868	1252	28	sit	situational	situational	before	2018-10-12 19:35:54
+385307	1930	26	someone met someone somewhere	impl	OTHER: 	afterwards	2018-10-18 17:49:20
+385307	1968	26	sit	situational	situational	afterwards	2018-10-19 19:42:12
+495126	1409	27	I don't know why you poisoned Tom and you know why you poisoned Tom.	rq	implicit-desire	concurrently	2018-10-15 18:38:55
+495126	1410	27	You poisoned Tom.	q	q-form-pre	before	2018-10-15 18:39:11
+176776	960	8	You probably know how this could happen	q	q-act	concurrently	2018-10-08 21:10:07
+176776	961	8	I probably don't know how this could happen	q	q-act	concurrently	2018-10-08 21:10:21
+176776	963	8	This could happen	q	q-form-pre	concurrently	2018-10-08 21:10:49
+176776	956	8	sit	situational	situational	afterwards	2018-10-08 21:09:13
+176776	968	8	sit	situational	situational-pre	before	2018-10-08 21:11:34
+176776	970	8	sit	situational	situational-pre	before	2018-10-08 21:11:51
+176776	952	8	You probably were not on the pill	impl	something [prob] [aux] [neg] happen [tense] probably do not none past	before	2018-10-08 21:08:37
+184246	940	8	I that there is anything you don't know	q	rhetorical-question	concurrently	2018-10-08 21:05:04
+184246	935	8	sit	situational	situational-pre	concurrently	2018-10-08 21:04:02
+926554	1376	29	sit	situational	situational	concurrently	2018-10-14 01:21:40
+926554	1377	29	sit	situational	situational	before	2018-10-14 01:22:02
+299413	696	29	I want and expect you to step aside	rq	command	concurrently	2018-10-05 19:56:27
+318805	1106	28	I don't know why you volunteered to do this.	q	q-act	concurrently	2018-10-11 17:47:55
+318805	1244	28	You volunteered to do this.	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-11 20:50:02
+335369	1680	21	You are probably not lying	impl	someone2 [prob] [aux] [neg] do [tense] something probably none not none pres	concurrently	2018-10-16 21:43:00
+940438	815	8	You probably know whether something bad could have happened to me	q	q-act	concurrently	2018-10-08 20:30:47
+940438	816	8	I probably don't know whether something bad could have happened to me	q	q-act	concurrently	2018-10-08 20:31:32
+940438	819	8	sit	situational	situational-pre	before	2018-10-08 20:33:07
+435476	1641	21	I want to get up	rq	implicit-desire	concurrently	2018-10-16 21:18:20
+52874	1653	21	I want you to tell me if you can cook anything at all	rq	implicit-desire	concurrently	2018-10-16 21:23:31
+52874	1654	21	I doubt that you can cook	q	q-form-pre	concurrently	2018-10-16 21:24:04
+703278	1958	26	I want to determine if a computer monitor has an SVGA adapter	rq	implicit-desire	concurrently	2018-10-19 19:36:54
+703278	1959	26	You probably know how to determine if a computer monitor has an SVGA adapter	q	q-act	concurrently	2018-10-19 19:37:48
+704310	2029	26	vending machines can tell if your dollar is a 1 or a 5	q	q-form-pre	concurrently	2018-10-19 20:19:02
+704310	2030	26	sit	situational	situational	concurrently	2018-10-19 20:19:27
+695323	1687	21	You are obligated to name Randy Craft 's lawyer	rq	command	afterwards	2018-10-16 22:18:58
+695692	1272	28	I don't know what well-known TV talk show host was a lay preacher by the time he was seventeen	q	q-act	concurrently	2018-10-12 19:49:55
+695692	1271	28	A well-known TV talk show host was a lay preacher by the time he was seventeen	q	q-form-pre	before	2018-10-12 19:47:32
+702582	744	29	You probably know the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:10:37
+702582	745	29	You probably will tell me the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:10:57
+702582	747	29	I don't know the name of the planet that Ewoks live on	q	q-act	concurrently	2018-10-07 22:11:37
+702582	746	29	Ewoks live on a planet	q	q-form-pre	concurrently	2018-10-07 22:11:16
+704164	2167	26	I obligate you to name the fast food chain with the golden arches	rq	command	concurrently	2018-10-19 21:16:42
+185758	874	28	I don't know what I am supposed to do if Tom comes	q	q-act	concurrently	2018-10-08 20:48:31
+328810	1502	27	I want to grab a bite to eat somewhere with you.	rq	implicit-desire	concurrently	2018-10-15 19:45:43
+688184	2128	26	sit	situational	situational	concurrently	2018-10-19 21:04:34
+693648	1683	21	You are obligated to Name Alvin's brothers	rq	command	concurrently	2018-10-16 21:43:59
+705807	1189	28	I don't know who used AuH2O as an election slogan	q	q-act	concurrently	2018-10-11 18:13:52
+181748	590	8	I probably don't know if you feel birthdays are important	q	q-act	concurrently	2018-10-04 16:26:39
+181748	591	8	You probably know if you feel birthdays are important	q	q-act	concurrently	2018-10-04 16:27:08
+181748	588	8	sit	situational	situational-pre	concurrently	2018-10-04 16:25:56
+695773	2122	26	You know where can I learn about Samuel Gompers	q	q-act	concurrently	2018-10-19 21:03:09
+695773	2123	26	sit	situational	situational	concurrently	2018-10-19 21:03:25
+810922	1234	28	I probably don't know how far this combination characterizes the plan which has been reported by the convention.	q	q-act	concurrently	2018-10-11 20:26:02
+810922	1232	28	This combination characterizes the plan which has been reported by the convention to some degree	q	q-form-pre	concurrently	2018-10-11 20:24:34
+240292	535	8	I probably know when you will go to Germany	q	q-act	concurrently	2018-10-04 15:58:27
+240292	536	8	I probably don't know when you will go to Germany	q	q-act	concurrently	2018-10-04 15:58:43
+240292	537	8	You will probably go to Germany	q	q-form-pre	afterwards	2018-10-04 16:00:52
+240292	538	8	sit	situational	situational-pre	concurrently	2018-10-04 16:01:12
+342601	2063	26	sit	situational	situational	concurrently	2018-10-19 20:42:41
+693317	875	21	I want you to tell me where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	rq	implicit-desire	concurrently	2018-10-08 20:48:55
+693317	845	21	I probably don't know where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	q	q-act	concurrently	2018-10-08 20:43:05
+693317	849	21	You probably know where to find the lyrics for the song ` Getting Married Today ' from the musical ` Company '	q	q-act	concurrently	2018-10-08 20:43:57
+568740	1455	27	sit	situational	situational	before	2018-10-15 19:19:00
+705415	1622	21	You probably know who wrote The Collector	q	q-act	concurrently	2018-10-16 20:32:01
+705415	1623	21	You probably don't know who wrote The Collector	q	q-act	concurrently	2018-10-16 20:32:15
+694855	1242	28	You are expected to name the food company that traveled to Soviet Georgia to film a series of ads	rq	command	afterwards	2018-10-11 20:47:00
+951684	1764	8	sit	situational	situational	concurrently	2018-10-18 14:27:57
+951684	1765	8	sit	situational	situational	concurrently	2018-10-18 14:29:01
+951684	1766	8	sit	situational	situational	concurrently	2018-10-18 14:29:19
+951684	1767	8	sit	situational	situational	concurrently	2018-10-18 14:29:38
+951684	1768	8	sit	situational	situational	concurrently	2018-10-18 14:30:02
+951684	1769	8	sit	situational	situational	concurrently	2018-10-18 14:30:22
+951684	1770	8	sit	situational	situational	concurrently	2018-10-18 14:30:41
+688332	1085	21	uniformed men killed Cecilio	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-08 21:36:34
+688332	1546	21	uniformed men demanded food and his weapon	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-16 19:52:59
+696170	569	8	You probably know what the largest island in the West Indies is	q	q-act	concurrently	2018-10-04 16:11:32
+696170	570	8	I probably don't know what the largest island in the West Indies is	q	q-act	concurrently	2018-10-04 16:12:03
+696170	571	8	There are islands in the West Indies	q	q-form-pre	concurrently	2018-10-04 16:12:57
+700246	1939	26	I don't know the meaning of `` CPR ''	q	q-act	concurrently	2018-10-18 19:30:40
+700246	1941	26	You know the meaning of `` CPR ''	q	q-act	concurrently	2018-10-18 19:31:14
+700246	1943	26	`` CPR '' has a meaning	q	q-form-pre	concurrently	2018-10-18 19:33:02
+12434	2112	26	I want a bite	rq	implicit-desire	concurrently	2018-10-19 21:00:32
+12434	2113	26	sit	situational	situational	concurrently	2018-10-19 21:00:54
+692105	1612	21	I want and expect you to tell me how is Easter Sunday 's date determined	rq	implicit-desire	afterwards	2018-10-16 20:28:53
+692105	1613	21	I probably don't know how is Easter Sunday 's date determined	q	q-act	concurrently	2018-10-16 20:29:14
+692105	1614	21	you probably know how is Easter Sunday 's date determined	q	q-act	concurrently	2018-10-16 20:29:27
+675085	644	8	You probably know what happened after Tom disappeared	q	q-act	concurrently	2018-10-04 17:09:10
+675085	645	8	I probably don't know what happened after Tom disappeared	q	q-act	concurrently	2018-10-04 17:09:29
+675085	648	8	Something happened after Tom disappeared	q	q-form-pre	concurrently	2018-10-04 17:10:25
+675085	647	8	sit	situational	situational-pre	before	2018-10-04 17:10:07
+693267	942	29	I want and expect you to tell me how I can find online spelling	rq	implicit-desire	concurrently	2018-10-08 21:05:35
+693267	943	29	I don't know how I can find online spelling	q	q-act	concurrently	2018-10-08 21:05:49
+693267	944	29	You probably know how I can find online spelling	q	q-act	concurrently	2018-10-08 21:06:01
+693267	945	29	You probably will tell me how I can find online spelling	q	q-act	concurrently	2018-10-08 21:06:18
+946571	542	8	You probably know how you can sleep	q	q-act	concurrently	2018-10-04 16:01:47
+946571	543	8	I probably don't know how you can sleep	q	q-act	concurrently	2018-10-04 16:02:10
+946571	544	8	you can sleep	q	q-form-pre	concurrently	2018-10-04 16:02:22
+946571	545	8	sit	situational	situational-pre	concurrently	2018-10-04 16:02:47
+957403	1922	8	sit	situational	situational	concurrently	2018-10-18 16:48:45
+957403	1926	8	sit	situational	situational	concurrently	2018-10-18 16:50:10
+957403	1927	8	sit	situational	situational	concurrently	2018-10-18 16:51:30
+957403	1921	8	We probably won't get him home alive	impl	someone [prob] [aux] [neg] do [tense] something probably will not none pres	afterwards	2018-10-18 16:48:28
+703334	1463	27	You know where I can get cotton textiles importer details.	rq	implicit-desire	concurrently	2018-10-15 19:24:26
+703334	1464	27	I can get cotton textiles importer details somewhere.	q	q-form-pre	concurrently	2018-10-15 19:24:39
+600878	1520	27	You said such an awful thing.	q	q-form-pre	concurrently	2018-10-15 19:50:12
+600878	1519	27	You should not have said such an awful thing.	q	rhetorical-question	concurrently	2018-10-15 19:50:01
+360826	996	28	I don't know why I am so sleepy	q	q-act	concurrently	2018-10-08 21:18:42
+360826	51	26	I am so sleepy	q	q-form-pre		2018-06-18 20:35:55
+1125872	1227	28	She was surprised and displeased	impl	OTHER: 	concurrently	2018-10-11 20:18:17
+1125872	1229	28	She doesn't know how he knows.	q	q-act	concurrently	2018-10-11 20:18:57
+1125872	1230	28	He probably knows how he knows	q	q-act	concurrently	2018-10-11 20:21:39
+1125872	1225	28	She did not expect him to know.	q	q-form-pre	concurrently	2018-10-11 20:17:26
+1125872	1231	28	He knows	q	q-form-pre	before	2018-10-11 20:21:58
+697855	1079	29	You are obligated to name the food company that traveled to Soviet Georgia to film a series of ads	rq	command	concurrently	2018-10-08 21:34:48
+697855	1080	29	A food company travelled to Soviet Georgia to film a series of ads	q	q-form-pre	concurrently	2018-10-08 21:35:17
+980388	1901	8	sit	situational	situational	before	2018-10-18 16:39:11
+710539	1210	28	I don't think you had any books needed for such a work	q	q-form-pre	concurrently	2018-10-11 19:39:30
+710539	1211	28	sit	situational	situational	concurrently	2018-10-11 19:39:41
+689256	1051	8	sit	situational	situational	concurrently	2018-10-08 21:28:14
+689256	1054	8	sit	situational	situational	concurrently	2018-10-08 21:28:40
+689256	1069	8	sit	situational	situational	concurrently	2018-10-08 21:32:15
+689256	1087	8	sit	situational	situational	before	2018-10-08 21:37:11
+688595	1628	21	sit	situational	situational	concurrently	2018-10-16 20:35:12
+73287	1214	28	I probably never go there	impl	someone [prob] [aux] [neg] do [tense] something probably none none none pres	concurrently	2018-10-11 19:51:31
+699805	384	8	You probably know where I can find lyrics for R&B.	q	q-act	concurrently	2018-10-01 20:52:35
+699805	385	8	I probably don't know where I can find lyrics for R&B.	q	q-act	concurrently	2018-10-01 20:52:56
+699805	386	8	R&B lyrics can be found somewhere.	q	q-form-pre	concurrently	2018-10-01 20:55:17
+39606	1243	28	I want and expect you to let me borrow this book	rq	implicit-desire	afterwards	2018-10-11 20:47:35
+705843	1024	29	You are obligated to describe the Long March	rq	command	concurrently	2018-10-08 21:23:50
+690017	1821	8	I don't know whether he said he had the murders done	q	q-act	concurrently	2018-10-18 15:15:31
+690017	1822	8	You might know whether he said he had the murders done	q	q-act	concurrently	2018-10-18 15:15:54
+690017	1823	8	sit	situational	situational	concurrently	2018-10-18 15:16:37
+689417	1704	21	sit	situational	situational	before	2018-10-17 16:27:51
+999991	1892	8	She had not been prudent	impl	OTHER: someone became something -> someone had not been something	before	2018-10-18 16:34:38
+999991	1891	8	She was prudent	impl	OTHER: Someone became something -> someone was something	afterwards	2018-10-18 16:33:53
+999991	1893	8	sit	situational	situational	before	2018-10-18 16:35:10
+687680	1883	8	sit	situational	situational	before	2018-10-18 16:19:12
+687680	1884	8	U.S. District Judge Gerhard Gesell has not acted on Walsh 's request yet	impl	someone [prob] [aux] [neg] do [tense] something none perf not none pres	before	2018-10-18 16:21:42
+687680	1879	8	U.S. District Judge Gerhard Gesell will probably act on Walsh 's request this week	impl	someone [prob] [aux] [neg] do [tense] something probably will none none pres	afterwards	2018-10-18 16:18:05
+697401	1912	8	I probably don't know where I can find information on George Bush	q	q-act	concurrently	2018-10-18 16:43:14
+697401	1913	8	You probably know where I can find information on George Bush	q	q-act	concurrently	2018-10-18 16:43:29
+697401	1914	8	I can find information on George Bush somewhere	q	q-form-pre	concurrently	2018-10-18 16:43:57
+697401	1915	8	sit	situational	situational	concurrently	2018-10-18 16:44:27
+403130	41	26	they think the subjects are students	q	neg-question		2018-06-18 19:33:27
+704769	771	27	Each player is dealt a certain number of cards in Contact Bridge.	q	q-form-pre	concurrently	2018-10-08 19:33:39
+704769	1040	27	sit	situational	situational	concurrently	2018-10-08 21:26:16
+704769	1063	27	sit	situational	situational	concurrently	2018-10-08 21:30:57
+64617	1775	8	sit	situational	situational	concurrently	2018-10-18 14:32:03
+699623	1103	28	I don't know how the 7th inning got started.	q	q-act	concurrently	2018-10-11 17:47:01
+699623	1213	28	The 7th inning got started	q	q-form-pre	concurrently	2018-10-11 19:46:54
+700903	1813	8	I don't know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-18 15:08:13
+700903	1814	8	You probably know where I can find a person 's address from a telephone number	q	q-act	concurrently	2018-10-18 15:08:39
+700903	1815	8	I can find a person 's address from a telephone number somewhere	q	q-form-pre	concurrently	2018-10-18 15:09:54
+700903	1816	8	sit	situational	situational	concurrently	2018-10-18 15:13:03
+700903	1817	8	sit	situational	situational	concurrently	2018-10-18 15:14:09
+960258	1041	29	I want and expect you to tell me if you have abundance	rq	implicit-desire	concurrently	2018-10-08 21:26:28
+960258	1042	29	You probably will tell me if you have abundance	q	q-act	concurrently	2018-10-08 21:26:43
+960258	1044	29	I think you have abundance	q	tag-question	concurrently	2018-10-08 21:27:02
+733556	1718	8	sit	situational	situational	before	2018-10-17 19:15:50
+733556	1720	8	sit	situational	situational	before	2018-10-17 19:17:49
+733556	1721	8	sit	situational	situational	before	2018-10-17 19:21:55
+733556	1719	8	They had horses ready saddled in case we were pursued on our return	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-17 19:16:24
+809715	2159	26	An effect may be produced by this partial reform	q	q-form-pre	concurrently	2018-10-19 21:14:51
+809715	2160	26	sit	situational	situational	concurrently	2018-10-19 21:15:11
+702487	1328	29	I want and expect you to tell me how I find a city if I have the area code	rq	implicit-desire	concurrently	2018-10-14 00:17:26
+702487	1329	29	I don't know how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:34
+702487	1330	29	You probably know how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:46
+702487	1331	29	You probably will tell me how I find a city if I have the area code	q	q-act	concurrently	2018-10-14 00:17:55
+702487	1332	29	I can find a city if I have the area code	q	q-form-pre	concurrently	2018-10-14 00:18:22
+216228	2169	26	You would go somewhere if you could time travel	q	q-form-pre	concurrently	2018-10-19 21:17:40
+694109	990	21	You are obligated to name a tiger that is extinct .	rq	command	concurrently	2018-10-08 21:17:12
+694109	965	21	I want you to name a tiger that is extinct .	rq	implicit-desire	concurrently	2018-10-08 21:11:10
+430140	1448	27	Tom's peers have satorial concerns.	impl	OTHER: PP assertion	concurrently	2018-10-15 19:18:20
+430140	1447	27	Tom has ostensible contempt for satorial concerns of his peers.	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-15 19:16:31
+691648	1571	21	You are obligated to name Alvin's brothers	rq	command	afterwards	2018-10-16 20:05:27
+691648	1689	21	I want and expect you to name Alvin 's brothers	rq	implicit-desire	concurrently	2018-10-16 22:31:07
+401584	1672	21	I actually did know	q	neg-question	before	2018-10-16 21:38:56
+22956	164	28	I don't know what that building is.	q	q-act		2018-06-20 20:20:27
+1010857	1083	29	I want and expect you to tell me if you will like that	rq	implicit-desire	concurrently	2018-10-08 21:36:17
+1010857	1084	29	I don't know if you will like that	q	q-act	concurrently	2018-10-08 21:36:32
+1010857	1086	29	You probably will tell me if you will like that	q	q-act	concurrently	2018-10-08 21:36:46
+1162249	2054	26	you cannot compare my feelings respecting Catherine to his	q	rhetorical-question	concurrently	2018-10-19 20:31:41
+1162249	2055	26	I shall not leave Catherine to his _duty_ and _humanity_	q	rhetorical-question	concurrently	2018-10-19 20:33:44
+1162249	2056	26	sit	situational	situational	concurrently	2018-10-19 20:34:08
+697148	1129	28	You have to run after you hit a home run	impl	OTHER: 	concurrently	2018-10-11 17:55:23
+697148	1130	28	I don't know how far you have to run if you hit a home run	q	q-act	concurrently	2018-10-11 17:55:43
+596863	505	8	You probably know whether you can jump rope	q	q-act	concurrently	2018-10-04 15:43:16
+596863	506	8	I probably don't know whether you can jump rope	q	q-act	concurrently	2018-10-04 15:43:32
+700164	1241	28	You are expected to name the fast food chain with golden arches	rq	command	afterwards	2018-10-11 20:45:50
+331824	2196	8	sit	situational	situational	concurrently	2018-10-26 02:45:56
+331824	2197	8	sit	situational	situational	concurrently	2018-10-26 02:46:17
+331824	915	21	We're probably here	impl	OTHER: 	concurrently	2018-10-08 20:56:53
+689225	584	8	Reagan will be sending the lame-duck budget to Congress on Monday	impl	OTHER: Relative clause expansion	afterwards	2018-10-04 16:22:14
+689225	580	8	He will probably rework the lame-duck budget Reagan will be sending to Congress on Monday .	impl	someone [prob] [aux] [neg] do [tense] something probably will none none pres	afterwards	2018-10-04 16:19:04
+78905	576	8	You have not passed the exam	impl	someone [prob] [aux] [neg] do [tense] something none perf not none past	before	2018-10-04 16:16:32
+970493	925	29	I want and expect you to tell me if thou not think of murdering the officers when thou gettest to sea	rq	implicit-desire	concurrently	2018-10-08 21:00:59
+970493	926	29	I don't know if thou not think of murdering the officers when thou gettest to sea	q	q-act	concurrently	2018-10-08 21:01:24
+970493	929	29	You will probably tell me if thou not think of murdering the officers when thou gettest to sea	q	q-act	concurrently	2018-10-08 21:01:52
+689595	1982	26	Official trade unions have pledged to strike and mount other protests	cf	OTHER: inverted if-then	concurrently	2018-10-19 19:54:26
+689595	1983	26	wage and social reforms fail to offset price increases are planned by the government	cf	OTHER: inverted if-then	concurrently	2018-10-19 19:55:03
+470585	400	29	I want and expect to have the menu and the wine list	rq	implicit-desire	concurrently	2018-10-02 20:36:28
+470585	401	29	You probably have the menu and the wine list	q	q-act	concurrently	2018-10-02 20:38:36
+470585	402	29	I don't have the menu and the wine list	q	q-act	concurrently	2018-10-02 20:39:04
+368086	803	8	You probably know when you think the Philippines will host the Olympic Games	q	q-act	concurrently	2018-10-08 20:23:40
+368086	804	8	I probably don't know when you think the Philippines will host the Olympic Games	q	q-act	concurrently	2018-10-08 20:23:56
+368086	805	8	sit	situational	situational-pre	concurrently	2018-10-08 20:26:27
+368086	787	8	The Philippines will probably host the Olympic Games at sometime in the future	impl	something [prob] [aux] [neg] happen [tense] probably will none none pres	afterwards	2018-10-08 20:17:33
+355500	2107	26	I want to have the floor	rq	implicit-desire	concurrently	2018-10-19 20:58:24
+355500	2108	26	You know if I can have the floor	q	q-act	concurrently	2018-10-19 20:59:15
+285250	667	8	You are obligated to show me the picture	rq	command	afterwards	2018-10-04 20:35:07
+697917	1995	26	You probably know what two commanders directed the forces in the Battle of El Alamein	q	q-act	concurrently	2018-10-19 19:58:49
+697917	1996	26	Two commanders directed the forces in the Battle of El Alamein	q	q-form-pre	concurrently	2018-10-19 19:59:11
+694991	1491	27	I don't know what will happen when sodium is put in water.	q	q-act	concurrently	2018-10-15 19:38:11
+694991	1492	27	You know what will happen when sodium is put in water.	q	q-act	concurrently	2018-10-15 19:38:28
+694991	1493	27	Something will happen when sodium is put in water.	q	q-form-pre	concurrently	2018-10-15 19:38:42
+986566	1156	28	I shouldn't have kept it back from him	impl	OTHER: 	concurrently	2018-10-11 18:05:24
+986566	1216	28	I probably did not keep it back from him	impl	someone [prob] [aux] [neg] do [tense] something probably none not none pres	before	2018-10-11 20:00:15
+407631	1702	21	sit	situational	situational	concurrently	2018-10-17 16:23:52
+407631	1703	21	sit	situational	situational	concurrently	2018-10-17 16:26:19
+697257	1370	29	I want and expect you to tell me what is the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	rq	implicit-desire	concurrently	2018-10-14 01:16:01
+697257	1371	29	I don't know the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:18
+697257	1372	29	You probably know the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:46
+697257	1373	29	You probably will tell me the meaning of W.B. Yeat 's poem , `` The Three Hermits ''	q	q-act	concurrently	2018-10-14 01:16:57
+697257	1374	29	W.B. Yeats wrote the poem, `` The Three Hermits ''	q	q-form-pre	before	2018-10-14 01:18:17
+130779	2016	26	I obligate you to show me another one	rq	command	concurrently	2018-10-19 20:06:58
+130779	2017	26	There is another one you can show me	q	q-form-pre	concurrently	2018-10-19 20:13:55
+130779	2018	26	sit	situational	situational	concurrently	2018-10-19 20:14:23
+705365	1779	8	You probably know where I can get information on the original 13 US colonies	q	q-act	concurrently	2018-10-18 14:33:32
+705365	1780	8	I probably don't know where I can get information on the original 13 US colonies	q	q-act	concurrently	2018-10-18 14:34:07
+705365	1781	8	I can get information on the original 13 US colonies somewhere	q	q-form-pre	concurrently	2018-10-18 14:34:31
+705365	1782	8	sit	situational	situational	concurrently	2018-10-18 14:37:33
+691577	1177	28	I don't know when the Bounty mutiny took place.	q	q-act	concurrently	2018-10-11 18:10:59
+691577	1248	28	The Bounty mutiny has taken place	q	q-form-pre	before	2018-10-11 20:55:15
+698616	483	8	You probably know what year the first issue of `` Playboy '' came out	q	q-act	concurrently	2018-10-04 15:28:54
+698616	484	8	I probably don't know what year the first issue of `` Playboy '' came out	q	q-act	concurrently	2018-10-04 15:29:14
+698616	485	8	The first issue of `` Playboy '' came out already	q	q-form-pre	before	2018-10-04 15:29:55
+698616	486	8	sit	situational	situational-pre	concurrently	2018-10-04 15:30:34
+82350	217	28	I think you can picture Ed in a woman's disguise.	q	neg-question	concurrently	2018-06-29 20:47:09
+51896	1345	29	I want and expect you to tell me what you did with your camera	rq	implicit-desire	concurrently	2018-10-14 00:22:11
+51896	1346	29	I don't know what you did with your camera	q	q-act	concurrently	2018-10-14 00:22:17
+51896	1348	29	You probably will tell me what you did with your camera	q	q-act	concurrently	2018-10-14 00:22:40
+51896	1347	29	You did something with your camera	q	q-form-pre	concurrently	2018-10-14 00:22:30
+417491	839	8	You know whether you think you're handsome	q	q-act	concurrently	2018-10-08 20:40:09
+417491	847	8	I probably don't know whether you think you're handsome	q	q-act	concurrently	2018-10-08 20:43:23
+699403	1078	27	I probably don't know what AFS is.	q	q-act	concurrently	2018-10-08 21:34:44
+687756	878	28	We want foreign investors to come in	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-08 20:50:15
+37852	1592	21	I want to use this	rq	implicit-desire	concurrently	2018-10-16 20:17:16
+704732	663	8	You are obligated to name four comic strips about pilots	rq	command	afterwards	2018-10-04 20:33:57
+52654	527	8	I want and expect you to show me your album	rq	implicit-desire	concurrently	2018-10-04 15:54:47
+52654	529	8	You probably know whether you will show me your album	q	q-act	concurrently	2018-10-04 15:55:57
+52654	530	8	I probably don't know whether you will show me your album	q	q-act	concurrently	2018-10-04 15:56:17
+52654	528	8	sit	situational	situational	concurrently	2018-10-04 15:55:25
+387682	418	8	I want you to protect me	rq	implicit-desire	concurrently	2018-10-04 14:51:45
+387682	419	8	You probably know whether you can protect me	q	q-act	concurrently	2018-10-04 14:52:13
+132780	1634	21	There are some tigers in the cages	q	q-form-pre	concurrently	2018-10-16 20:42:34
+699082	767	27	I can get a photograph of professor Randolph Quirk somewhere.	q	q-form-pre	concurrently	2018-10-08 19:03:54
+699082	1034	27	sit	situational	situational	concurrently	2018-10-08 21:25:33
+698967	783	29	You are obligated to name a civil war battlefield	rq	command	concurrently	2018-10-08 20:11:19
+701124	213	28	I know their e-mail address.	impl	OTHER: Someone knew something	concurrently	2018-06-29 20:27:34
+701124	128	28	I don't know how to find someone's phone number if I only know their e-mail address	q	q-act		2018-06-20 16:07:46
+92537	1552	21	My little brother had a dreadful dream last night	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-16 20:00:52
+702675	1735	8	You probably know where I can find a website that gives comparisons of good prices	q	q-act	concurrently	2018-10-17 20:41:29
+702675	1298	28	I don't know where I can find a website that gives comparisons of good prices.	q	q-act	concurrently	2018-10-12 20:50:27
+702675	1302	28	sit	situational	situational	concurrently	2018-10-12 20:51:17
+979650	1928	8	The monk thinks that you presume to do such deeds	impl	OTHER: someone asked how something is the case -> someone thinks something is the case	concurrently	2018-10-18 17:19:30
+979650	1696	21	You did such things	impl	someone [prob] [aux] [neg] do [tense] something none none none none past	before	2018-10-17 16:14:45
+701027	1294	28	I want and expect you to name the soft drink that is `` number one in the sun . ''	rq	implicit-desire	afterwards	2018-10-12 20:48:11
+736253	1563	21	one doesn't know who is that	q	q-act	concurrently	2018-10-16 20:03:23
+435528	1596	21	I want you to help me down	rq	implicit-desire	concurrently	2018-10-16 20:19:21
+694092	2066	26	I obligate you to name the organization that is presided by a Security Council	rq	command	concurrently	2018-10-19 20:45:40
+694092	2068	26	sit	situational	situational	concurrently	2018-10-19 20:46:01
+231184	1558	21	I want and expect to see you a moment	rq	implicit-desire	concurrently	2018-10-16 20:01:56
+704813	1473	27	A famous communist leader died in Mexico City.	q	q-form-pre	concurrently	2018-10-15 19:27:24
+406124	1446	27	You know if you can miss the present moment.	q	q-act	concurrently	2018-10-15 19:15:19
+689493	1706	21	sit	situational	situational	afterwards	2018-10-17 16:32:17
+689493	1705	21	His whereabouts were unknown	impl	something [prob] [aux] [neg] happen [tense] none none none none past	before	2018-10-17 16:31:47
+978933	1729	8	He is a judge over them	impl	OTHER: someone1 makes someone2 something -> someone2 is something	afterwards	2018-10-17 19:30:51
+978933	1292	28	He probably doesn't know who has made him a judge over them.	q	q-act	concurrently	2018-10-12 20:00:38
+978933	1291	28	He has been made a judge over them	q	q-form-pre	concurrently	2018-10-12 19:59:15
+688581	1218	28	Mikhail S. Gorbachev expected them to expect `` manna from heaven ''	impl	OTHER: 	concurrently	2018-10-11 20:09:16
+688581	1219	28	They should not expect `` manna from heaven '	impl	someone2 [prob] [aux] [neg] do [tense] something none none none none pres	afterwards	2018-10-11 20:10:16
+701230	1662	21	You probably know what are two plants that clothes are made from	q	q-act	concurrently	2018-10-16 21:27:29
+701230	1663	21	I probably don't know what are two plants that clothes are made from	q	q-act	concurrently	2018-10-16 21:27:55
+695544	1392	27	I don't know how birds find their way back to the same place every year.	q	q-act	concurrently	2018-10-15 17:42:16
+695544	1391	27	Birds find their way back to the same place every year.	q	q-form-pre	concurrently	2018-10-15 17:40:07
+701721	710	28	You probably know where I can look at a perpetual calendar	q	q-act	concurrently	2018-10-07 00:13:13
+687985	441	8	sit	situational	situational	concurrently	2018-10-04 15:11:43
+926959	1367	29	I don't know what to tell you	q	rhetorical-question	concurrently	2018-10-14 01:15:01
+93503	1246	28	I want and expect you to put your seat back up.	rq	implicit-desire	afterwards	2018-10-11 20:51:38
+37245	817	29	Father is still alive	impl	something [prob] [aux] [neg] happen [tense] none none none none pres	concurrently	2018-10-08 20:32:53
+703350	226	29	You are obligated to name a female figure skater .	rq	OTHER: 	concurrently	2018-07-04 00:47:07
+703350	794	27	You are obligated to name a female figure skater.	rq	command	concurrently	2018-10-08 20:20:26
+703350	793	27	I want you to name a female figure skater.	rq	implicit-desire	concurrently	2018-10-08 20:19:53
+703350	796	27	sit	situational	situational	concurrently	2018-10-08 20:20:48
+705697	1978	26	I want to buy a pony on the Big Island for my daughter	q	q-act	concurrently	2018-10-19 19:48:56
+705697	1979	26	sit	situational	situational	concurrently	2018-10-19 19:49:17
+687579	2085	26	We forgotten our children were killed	q	rhetorical-question	concurrently	2018-10-19 20:50:12
+687579	2086	26	sit	situational	situational	before	2018-10-19 20:50:25
+699680	1744	8	I probably don't know where you can find the Venus flytrap	q	q-act	concurrently	2018-10-18 14:14:11
+699680	1745	8	You probably know where you can find the Venus flytrap	q	q-act	concurrently	2018-10-18 14:14:27
+699680	1746	8	The Venus flytrap can be found	q	q-form-pre	concurrently	2018-10-18 14:14:48
+150034	2155	26	sit	situational	situational	concurrently	2018-10-19 21:13:27
+264066	466	8	You probably know what he saw	q	q-act	concurrently	2018-10-04 15:22:42
+264066	467	8	I probably don't know what he saw	q	q-act	concurrently	2018-10-04 15:22:58
+264066	469	8	He saw something	q	q-form-pre	concurrently	2018-10-04 15:23:36
+646633	1973	26	I know you persuaded Tom to help us	q	q-act	concurrently	2018-10-19 19:43:57
+646633	1972	26	You persuaded Tom to help us	q	q-form-pre	before	2018-10-19 19:43:34
+697418	1605	21	You are obligated to name the only extant trilogy of classical Greek plays	rq	command	afterwards	2018-10-16 20:27:04
+697418	1604	21	You probably know the only extant trilogy of classical Greek plays	q	q-act	concurrently	2018-10-16 20:26:26
+484719	1215	28	sit	situational	situational	concurrently	2018-10-11 19:55:36
+705559	1860	8	I probably don't know what country the worlds leading supplier of cannabis is	q	q-act	concurrently	2018-10-18 15:57:24
+705559	1861	8	You probably know what country the worlds leading supplier of cannabis is	q	q-act	concurrently	2018-10-18 15:57:54
+705559	1862	8	Some country is known to be the worlds leading supplier of cannabis	q	q-form-pre	concurrently	2018-10-18 15:59:21
+208734	2192	8	You are obligated to not worry	rq	command	afterwards	2018-10-26 02:38:31
+208734	1245	28	sit	situational	situational	before	2018-10-11 20:50:56
+702401	2095	26	You probably know how light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-act	concurrently	2018-10-19 20:53:58
+702401	2096	26	light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-form-pre	concurrently	2018-10-19 20:54:17
+702401	2097	26	light travels through the void of space if there is no medium for it to ` wave ' or ` pulse '	q	q-form-pre	concurrently	2018-10-19 20:54:18
+702401	2098	26	sit	situational	situational	concurrently	2018-10-19 20:54:40
+688046	1724	8	sit	situational	situational	concurrently	2018-10-17 19:25:27
+688046	1727	8	sit	situational	situational	concurrently	2018-10-17 19:26:35
+158441	1870	8	I don't know whether to have recently taken a trip anywhere	q	q-act	concurrently	2018-10-18 16:04:35
+158441	1871	8	You know whether you have recently taken a trip anywhere	q	q-act	concurrently	2018-10-18 16:04:52
+495736	1511	27	sit	situational	situational	concurrently	2018-10-15 19:47:20
+37885	495	8	You probably know where you would like me to put this	q	q-act	concurrently	2018-10-04 15:39:07
+37885	496	8	I probably don't know where you would like me to put this	q	q-act	concurrently	2018-10-04 15:39:22
+37885	497	8	There is somewhere that you would like me to put this	q	q-form-pre	concurrently	2018-10-04 15:40:07
+37885	492	8	I probably did not put this somewhere	impl	someone2 [prob] [aux] [neg] do [tense] something probably do not none past	before	2018-10-04 15:38:37
+559520	2144	26	You know whether to trust them	q	q-act	concurrently	2018-10-19 21:09:29
+559520	2145	26	sit	situational	situational	concurrently	2018-10-19 21:09:49
+252031	1549	21	I want to assist you	rq	implicit-desire	concurrently	2018-10-16 19:57:12
+252031	1551	21	You probably need assistance	q	q-act	concurrently	2018-10-16 19:59:20
+695758	1250	28	I don't know who said `` The victor will never be asked if he told the truth '' ?	q	q-act	concurrently	2018-10-11 20:56:06
+272297	1505	27	I want you to play with me.	rq	implicit-desire	concurrently	2018-10-15 19:46:11
+272297	1506	27	You won't play with me.	q	q-form-pre	concurrently	2018-10-15 19:46:29
+535024	1537	21	I want and expect you to lend me a hand	rq	implicit-desire	afterwards	2018-10-16 19:39:31
+205489	2013	26	sit	situational	situational	concurrently	2018-10-19 20:06:08
+533528	1012	29	I want you to tell me why not	rq	implicit-desire	concurrently	2018-10-08 21:22:19
+533528	1014	29	I don't know why not	q	q-act	concurrently	2018-10-08 21:22:42
+533528	1016	29	sit	situational	situational-pre	concurrently	2018-10-08 21:23:06
+688182	1529	27	You are obligated to explain the part U.S. warnings played in the major 's unwillingness to pull the trigger when he had General Noriega in custody.	rq	command	concurrently	2018-10-15 19:54:01
+688182	1528	27	U.S. warnings played a part in the major 's unwillingness to pull the trigger when he had General Noriega in custody.	q	q-form-pre	concurrently	2018-10-15 19:53:10
+697870	901	8	You are obligated to name Name Li 'l Abner 's favorite Indian drink	rq	command	afterwards	2018-10-08 20:53:27
+697870	922	8	sit	situational	situational	concurrently	2018-10-08 21:00:17
+688628	601	8	Hull probably thinks that Soghum output is likely to rebound this year if yields are normal , although total use may continue to exceed production	impl	I [prob] [aux] [neg] think [tense] that something happened probably none none none pres	concurrently	2018-10-04 16:37:10
+688628	600	8	Total use exceeds production	impl	someone [prob] [aux] [neg] do [tense] something none none none none pres	concurrently	2018-10-04 16:35:32
+688628	605	8	Possibly Soghum output will rebound this year	impl	something [prob] [aux] [neg] happen [tense] possibly will none none pres	afterwards	2018-10-04 16:41:24
+696154	2193	8	Someone said: "What contemptible scoundrel stole the cork from my lunch?"	q	q-form-pre	concurrently	2018-10-26 02:43:14
+696154	868	27	sit	situational	situational	concurrently	2018-10-08 20:46:49
+705172	1728	8	You probably know how long you have to live in a community to vote	q	q-act	concurrently	2018-10-17 19:28:08
+705172	1287	28	I don't know how long do you have to live in a community to vote.	q	q-act	concurrently	2018-10-12 19:56:52
+705172	1290	28	You have to live in a community to vote.	q	q-form-pre	before	2018-10-12 19:57:29
+688627	759	27	sit	situational	situational	concurrently	2018-10-08 18:51:46
+982167	1999	26	I want to you to go over and have a look at it with me	rq	implicit-desire	concurrently	2018-10-19 20:01:05
+982167	2001	26	sit	situational	situational	concurrently	2018-10-19 20:02:37
+982167	2000	26	I think you would go over and have a look at it with me	q	tag-question	concurrently	2018-10-19 20:02:08
+919465	251	28	I have done something	impl	OTHER: 	before	2018-07-06 00:33:57
+919465	52	26	Someone thinks I have done something	q	q-form-pre		2018-06-18 20:36:32
+378486	611	8	You probably know what you would suggest that I do	q	q-act	concurrently	2018-10-04 16:47:13
+378486	613	8	I probably don't know what you would suggest that I do	q	q-act	concurrently	2018-10-04 16:47:32
+378486	614	8	There is something you would suggest that I do	q	q-form-pre	concurrently	2018-10-04 16:47:58
+689611	1240	28	sit	situational	situational	afterwards	2018-10-11 20:44:39
+691260	1574	21	I want and expect you to tell me what is Spumante	rq	implicit-desire	afterwards	2018-10-16 20:06:57
+691260	1575	21	You probably know what is spumante	q	q-act	concurrently	2018-10-16 20:07:25
+691108	1739	8	You probably know where I can find information on the Narragansett Indians and other tribes in Rhode Island	q	q-act	concurrently	2018-10-17 20:46:22
+691108	1740	8	There is information on the Narragansett Indians and other tribes in Rhode Island	q	q-form-pre	concurrently	2018-10-17 20:48:36
+691108	1738	8	sit	situational	situational	concurrently	2018-10-17 20:45:56
+691108	1307	28	I don't know where I can find information on the Narragansett Indians and other tribes in Rhode Island	q	q-act	concurrently	2018-10-12 20:53:35
+1036819	1356	29	Nobody has any right to speak against it	q	rhetorical-question	concurrently	2018-10-14 00:55:07
+1036819	1357	29	sit	situational	situational	concurrently	2018-10-14 00:55:21

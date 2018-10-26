@@ -27,7 +27,7 @@ def ids_to_inf_anns(iids, outfile):
   out = file(outfile, 'w')
   out.write(usage_message(outfile))
   out.write("\n")
-  out.write("""SELECT a.sid, a.id, l.username, a.inference, a.category, a.inf_type, a.temporal_reln, a.timestamp
+  out.write("""SELECT a.sid, a.id, l.id, a.inference, a.category, a.inf_type, a.temporal_reln, a.timestamp
   FROM inf_annotations a, el_annotator_login l 
   WHERE a.auid = l.id
     AND a.id NOT IN ( SELECT annid FROM inf_deleted_annotations )
