@@ -11,7 +11,7 @@ Probably simple .tsv of
 
 [sentence]\t[sentence metadata]\t[inferred sentence]\t[inference metadata]
 OR
-[sid]\t[sentence]\t[iid]\t[inference]  with separate files for [sid]\t[sentence metadata] and [iid]\t[inference metadata]
+[usid]\t[sentence]\t[isid]\t[inference]  with separate files for [usid]\t[sentence metadata] and [isid]\t[inference metadata]
 
 
 Human ULF annotations
