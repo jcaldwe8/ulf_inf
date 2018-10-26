@@ -38,9 +38,11 @@
        (line)
        (let ((splitline (cl-strings:split line #\Tab)))
          ;; The first two elements need to be turned into integers. 
+         ;; The ULF is read into symbols (TODO: preprocess ULF names)
          (append (mapcar #'cl-strings:parse-number 
                          (subseq splitline 0 2))
-                 (subseq splitline 2)))))
+                 (list (nth 2 splitline))
+                 (list (read-from-string (nth 3 splitline)))))))
     ;; Only keep entries where the usid is a member of select-usids.
     (remove-if
       #'(lambda (x) (and select-usids
