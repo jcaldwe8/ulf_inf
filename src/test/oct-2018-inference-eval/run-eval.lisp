@@ -65,8 +65,8 @@
 ;; Basic inference matching function that calls ulf2string on the generated
 ;; inference and checks for exact match with the human inference.
 (defun ulf2string-match (ginf hinf)
-  (let ((gstr (ulf-to-string ginf))
-        (did-match (equal gstr hinf)))
+  (let* ((gstr (ulf-to-string ginf))
+         (did-match (equal gstr hinf)))
     (if did-match
       (list t (list ginf gstr hinf))
       (list nil (list ginf gstr hinf)))))
@@ -130,6 +130,7 @@
         (setq matched (remove-if-not #'(lambda (x) (not (null (second x)))) matchdata))
 
         (format t "~%==Info for USID: ~s==~%" usid)
+        (format t "sentence: ~s~%ULF: ~s~%" sent ulf)
         (format t "~s out of ~s human inferences matched for usid: ~s~%" (length matched) (length matchdata) usid) 
         (format t "-- match details --~%")
         (format t "-- MATCHED --~%")
@@ -151,6 +152,8 @@
 ;; TODO: add a configurable eval selector if we end up having multiple
 ;;    OR just run them all if they don't take too long.
 (setq ind-ulf-evals (mapcar (eval-single-sent human-infs) auto-infs))
+
+;(format t "AUTO-INFS   ~s~%" auto-infs)
 
 (format t "~s sentences" (length ind-ulf-evals))
 
