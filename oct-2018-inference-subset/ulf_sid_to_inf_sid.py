@@ -8,7 +8,7 @@ import sys
 import json
 
 if len(sys.argv) < 4:
-  print "Usage: python ulf_sid_to_inf_sid.py [dataset json file] [ulf sid file] [output file]"
+  sys.exit("Usage: python ulf_sid_to_inf_sid.py [dataset json file] [ulf sid file] [output file]")
 
 
 ulfsids = set([int(e) for e in file(sys.argv[2], 'r').read().splitlines()])
