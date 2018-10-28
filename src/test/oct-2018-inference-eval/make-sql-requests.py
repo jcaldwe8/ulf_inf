@@ -23,6 +23,23 @@ def ids_to_sent_n_ulfs(sids, outfile):
   out.write(");")
   out.close()
 
+
+def ids_to_sent_n_ulfs_no_gene(sids, outfile):
+  out = file(outfile, 'w')
+  out.write(usage_message(outfile))
+  out.write("\n")
+  out.write("""select la.sid, la.auid, la.ann_certainty, s.sentence, la.implicit_ops_added from layer_annotations la
+  inner join (select max(id) id, sid
+    from layer_annotations where auid != 8
+    group by sid)
+  unq on unq.id = la.id
+  inner join sentences s on s.id = la.sid
+  where la.sid in (""")
+  out.write(",".join(sids))
+  out.write(");")
+  out.close()
+
+
 def ids_to_inf_anns(iids, outfile):
   out = file(outfile, 'w')
   out.write(usage_message(outfile))
@@ -48,5 +65,6 @@ sids = [l for l in file(sys.argv[1],'r').read().splitlines() if l.strip() != ""]
 iids = [l for l in file(sys.argv[2], 'r').read().splitlines() if l.strip() != ""]
 
 ids_to_sent_n_ulfs(sids, sys.argv[3])
+ids_to_sent_n_ulfs_no_gene(sids, sys.argv[3] + ".no_gene")
 ids_to_inf_anns(iids, sys.argv[4])
 
