@@ -1,0 +1,6 @@
+This is the folder that contains the ULF sentence ids that I assigned and sent
+to each annotator for the 2018 inference experiment.  These ids were generated
+via a sampling procedure to get sentences that are likely to contain the
+phenomena of interest, as well as some random sampling without the specific
+features.  Not all of these sentences were used in the inference experiments
+since we weren't able to confidently annotate ULFs for all of them.
