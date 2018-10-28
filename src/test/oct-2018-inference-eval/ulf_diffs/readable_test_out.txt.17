@@ -1,0 +1,299 @@
+SID: 925497	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What two commanders directed the forces in the Battle of El Alamein ?
+  ORIGINAL ULF:	(((What.d (two.a (plur commander.n))) (((past direct.v) (the.d (plur force.n))) (adv-a (in.p (the.d (n+preds Battle.n (of.p |El Alamein|.n))))))) ?)
+  CORRECTD ULF:	(((What.d (two.a (plur commander.n))) (((past direct.v) (the.d (plur force.n))) (adv-a (in.p (the.d (n+preds Battle.n (of.p |El Alamein|.n))))))) ?)
+============================
+SID: 1207968	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	If that 's all , you 've reassured me .
+  ORIGINAL ULF:	((If.ps (that.pro ((pres be.v) all.a))) (you.pro (((pres perf) reassure.v) me.pro)))
+  CORRECTD ULF:	((If.ps (that.pro ((pres be.v) all.a))) (you.pro (((pres perf) reassure.v) me.pro)))
+============================
+SID: 932204	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	How can I get someone 's email address ?
+  ORIGINAL ULF:	((sub How.adv-a ((pres can.aux-v) I.pro (get.v (someone.pro 's (email.n address.n)) *h))) ?)
+  CORRECTD ULF:	((sub How.adv-a ((pres can.aux-v) I.pro (get.v (someone.pro 's (email.n address.n)) *h))) ?)
+============================
+SID: 435994	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	You don't worry.\n
+  ORIGINAL ULF:	(You.pro ((pres do.aux-s) (not worry.v)))
+  CORRECTD ULF:	(You.pro ((pres do.aux-s) (not worry.v)))
+============================
+SID: 1353452	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	She stood and stared at him for a minute , looking both surprised and displeased , then walked on , saying sharply , " How do you know ? "
+  ORIGINAL ULF:	(She.pro ((past stand.v) and.cc (((past stare.v) (at.p-arg him.pro)) (for.p-arg (a.a minute.n))) (adv-a ((pres look) (both.adv-s (surprised.a and.cc displeased.a))))) ((then.adv-s (past walk_on.v)) (adv-a (((pres say.v) sharply.adv-a) (\\" (sub How.adv-a ((prev do.aux-v) you.pro (know *h))) ?) \\")))))
+  CORRECTD ULF:	(She.pro ((past stand.v) and.cc (((past stare.v) (at.p-arg him.pro)) (for.p-arg (a.a minute.n))) (adv-a ((pres look) (both.adv-s (surprised.a and.cc displeased.a))))) ((then.adv-s (past walk_on.v)) (adv-a (((pres say.v) sharply.adv-a) (\\" (sub How.adv-a ((prev do.aux-v) you.pro (know *h))) ?) \\")))))
+============================
+SID: 922205	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Name a Gaelic language .
+  ORIGINAL ULF:	(({you}.pro ((pres name.v) (a.d (Gaelic.a language.n))))!)
+  CORRECTD ULF:	(({you}.pro ((pres name.v) (a.d (Gaelic.a language.n))))!)
+============================
+SID: 479291	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	May I assist you?\n
+  ORIGINAL ULF:	(((pres May.aux-v) I.pro assist.v you.pro) ?)
+  CORRECTD ULF:	(((pres May.aux-v) I.pro assist.v you.pro) ?)
+============================
+SID: 932848	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Who would you use the Heimlich maneuver on ?
+  ORIGINAL ULF:	((sub Who.pro ((pres would.aux-s) you.pro ((use.v (the.d (Heimlich.n maneuver.n))) (adv-a (on.p *h))))) ?)
+  CORRECTD ULF:	((sub Who.pro ((pres would.aux-s) you.pro ((use.v (the.d (Heimlich.n maneuver.n))) (adv-a (on.p *h))))) ?)
+============================
+SID: 1037295	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What effect may be produced by this partial reform , must be left to further experience .
+  ORIGINAL ULF:	((ans-to ((What.d effect.n) ((pres may.aux-s) ((pasv produce.v) (adv-a (by.p (this.d (partial.a reform.n)))))))) ((pres must.aux-s) ((pasv leave.v) (to.p-arg (further.a experience.n)))))
+  CORRECTD ULF:	((ans-to ((What.d effect.n) ((pres may.aux-s) ((pasv produce.v) (adv-a (by.p (this.d (partial.a reform.n)))))))) ((pres must.aux-s) ((pasv leave.v) (to.p-arg (further.a experience.n)))))
+============================
+SID: 306167	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	You'll have to work hard if you want to pass the exam.\n
+  ORIGINAL ULF:	((You.pro ((pres will.aux-s) (have.v (to (work.v hard.adv-a))))) (if.ps (you.pro ((pres want.v) (to (pass.v (the.d exam.n)))))))
+  CORRECTD ULF:	((You.pro ((pres will.aux-s) (have.v (to (work.v hard.adv-a))))) (if.ps (you.pro ((pres want.v) (to (pass.v (the.d exam.n)))))))
+============================
+SID: 933139	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What country is the worlds leading supplier of cannabis ?
+  ORIGINAL ULF:	(((What.d country.n) ((pres be.v) (the.d (worlds.a (leading.a (n+preds supplier.n (of.p cannabis.n))))))) ?)
+  CORRECTD ULF:	(((What.d country.n) ((pres be.v) (the.d (worlds.a (leading.a (n+preds supplier.n (of.p cannabis.n))))))) ?)
+============================
+SID: 628842	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Did you really think I didn't know?\n
+  ORIGINAL ULF:	(((past do.aux-s) you.pro (really.adv-a (think.v (tht (I.pro ((past do.aux-s) (not know.v))))))) ?)
+  CORRECTD ULF:	(((past do.aux-s) you.pro (really.adv-a (think.v (tht (I.pro ((past do.aux-s) (not know.v))))))) ?)
+============================
+SID: 741443	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	I didn't say I persuaded them.\n
+  ORIGINAL ULF:	(I.pro ((past do.aux-s) (say.v (tht (I.pro ((past persuade.v) them.pro))))))
+  CORRECTD ULF:	(I.pro ((past do.aux-s) (say.v (tht (I.pro ((past persuade.v) them.pro))))))
+============================
+SID: 556069	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Would you like to grab a bite to eat somewhere?\n
+  ORIGINAL ULF:	(((past would.aux-v) you.pro (like.v (to ((grab.v (a.d bite.n)) (to (eat.v somewhere.adv-e)))))) ?)
+  CORRECTD ULF:	(((past would.aux-v) you.pro (like.v (to ((grab.v (a.d bite.n)) (to (eat.v somewhere.adv-e)))))) ?)
+============================
+SID: 647338	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	I think Tom really likes me.\n
+  ORIGINAL ULF:	(I.pro ((pres think.v) (tht (|Tom| (really.adv-a ((pres like.v) me.pro))))))
+  CORRECTD ULF:	(I.pro ((pres think.v) (tht (|Tom| (really.adv-a ((pres like.v) me.pro))))))
+============================
+SID: 919157	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	When did the Bounty mutiny take place ?
+  ORIGINAL ULF:	((sub When.pq ((past do.aux-s) (the.d (Bounty.n mutiny.n)) ((take.v place.n) *h))) ?)
+  CORRECTD ULF:	((sub When.pq ((past do.aux-s) (the.d (Bounty.n mutiny.n)) ((take.v place.n) *h))) ?)
+============================
+SID: 915260	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	U.S. District Judge Gerhard Gesell is expected to act on Walsh 's request this week .
+  ORIGINAL ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
+  CORRECTD ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
+============================
+SID: 714006	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Remind me to thank Tom the next time I see him.\n
+  ORIGINAL ULF:	({you}.pro (remind.v (me.pro (to ((thank.v |Tom|) (adv-e ({at}.p (the.d (next.a time.n)) (tht.rel (I.pro ((pres see.v) him.pro))))))))))
+  CORRECTD ULF:	({you}.pro (remind.v (me.pro (to ((thank.v |Tom|) (adv-e ({at}.p (the.d (next.a time.n)) (tht.rel (I.pro ((pres see.v) him.pro))))))))))
+============================
+SID: 1181949	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What could I have lost ?
+  ORIGINAL ULF:	((sub What.pro (((pres perf) could.aux-s) I.pro (lose.v *h))) ?)
+  CORRECTD ULF:	((sub What.pro (((pres perf) could.aux-s) I.pro (lose.v *h))) ?)
+============================
+SID: 917034	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	When he first was diagnosed as retarded , he was 9 . ''
+  ORIGINAL ULF:	((When.pr (he.pro (first.adv-e (((past pasv) diagnose.v) (adv-a (as.p retarded.a)))))) (he.pro ((past be.v) 9.a)))
+  CORRECTD ULF:	((When.pr (he.pro (first.adv-e (((past pasv) diagnose.v) (adv-a (as.p retarded.a)))))) (he.pro ((past be.v) 9.a)))
+============================
+SID: 924728	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	How far do you have to run if you hit a home run ?
+  ORIGINAL ULF:	(((sub (How.adv-a far.a) ((pres do.aux-s) you.pro (have.v (to (run.v *h))))) (if.ps (you.pro ((pres hit.v) (a.d (home.n run.n)))))) ?)
+  CORRECTD ULF:	(((sub (How.adv-a far.a) ((pres do.aux-s) you.pro (have.v (to (run.v *h))))) (if.ps (you.pro ((pres hit.v) (a.d (home.n run.n)))))) ?)
+============================
+SID: 916455	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	`` But I do n't know if they will be actually sons and daughters .
+  ORIGINAL ULF:	(But.cc (I.pro ((pres do.aux-s) (know.v (whether (they.pro ((((pres will.aux-s) be.v) actually.adv-a) ((plur son.n) and.cc (plur daughter.n)))))))))
+  CORRECTD ULF:	(But.cc (I.pro ((pres do.aux-s) (know.v (whether (they.pro ((((pres will.aux-s) be.v) actually.adv-a) ((plur son.n) and.cc (plur daughter.n)))))))))
+============================
+SID: 679415	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Am I still in charge here?\n
+  ORIGINAL ULF:	((I.pro ((pres be.v) (still.adv-a ((in.p (k charge.n)) here.adv-e)))) ?)
+  CORRECTD ULF:	((I.pro ((pres be.v) (still.adv-a ((in.p (k charge.n)) here.adv-e)))) ?)
+============================
+SID: 683293	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	If the opposition were to win, it would not entail a radical departure from current policies.\n
+  ORIGINAL ULF:	((If.ps ((the.d opposition.n) ((past are.v) (to win)))) (it.pro ((past would.aux-s) (not (entail.v (a.d (radical.a (n+preds departure.n (from.p (current.a (plur policy.n)))))))))))
+  CORRECTD ULF:	((If.ps ((the.d opposition.n) ((past are.v) (to win)))) (it.pro ((past would.aux-s) (not (entail.v (a.d (radical.a (n+preds departure.n (from.p (current.a (plur policy.n)))))))))))
+============================
+SID: 917695	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	`` It 's a program we 've run a winning national campaign on , a program ratified in the light of intense national examination . ''
+  ORIGINAL ULF:	(It.pro ((past be.v) (= (np+preds (a.d (n+preds (program.n (sub tht.rel (we.pro ((pres perf) (ran.v ((a.d (winning.a (national.a campaign.n)) (adv-a (on.p *h))))))))))) (= (n+preds (a.d (program.n (ratify.v (adv-a (in.p (the.d (n+preds (light.n (of.p (intense.a (national.a examination.n)))))))))))))))))
+  CORRECTD ULF:	(It.pro ((past be.v) (= (np+preds (a.d (n+preds (program.n (sub tht.rel (we.pro ((pres perf) (ran.v ((a.d (winning.a (national.a campaign.n)) (adv-a (on.p *h))))))))))) (= (n+preds (a.d (program.n (ratify.v (adv-a (in.p (the.d (n+preds (light.n (of.p (intense.a (national.a examination.n)))))))))))))))))
+============================
+SID: 998177	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Shall we go into ecstasies over Russia ?
+  ORIGINAL ULF:	(((pres shall.aux-s) we.pro (go.v (adv-a (into.p (k (plur (n+preds ecstasy.n (over.p |Russia|.n)))))))) ?)
+  CORRECTD ULF:	(((pres shall.aux-s) we.pro (go.v (adv-a (into.p (k (plur (n+preds ecstasy.n (over.p |Russia|.n)))))))) ?)
+============================
+SID: 916557	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Typically , money-fund yields beat comparable short-term investments because portfolio managers can vary maturities and go after the highest rates .
+  ORIGINAL ULF:	(Typically.adv-e (((k (money-fund.a (plur yield.n))) ((pres beat.v) (k (comparable.a (short-term.a (plur investment.n)))))) (because.ps (((k (portfolio.a (plur manager.n))) ((pres can.aux-s) (vary.v (plur maturity.n)))) and.cc (go.v (after.p-arg (the.d (most-n high.a (plur rate.n)))))))))
+  CORRECTD ULF:	(Typically.adv-e (((k (money-fund.a (plur yield.n))) ((pres beat.v) (k (comparable.a (short-term.a (plur investment.n)))))) (because.ps (((k (portfolio.a (plur manager.n))) ((pres can.aux-s) (vary.v (plur maturity.n)))) and.cc (go.v (after.p-arg (the.d (most-n high.a (plur rate.n)))))))))
+============================
+SID: 1184983	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	" We do n't expect to get him home alive !
+  ORIGINAL ULF:	(We.pro ((pres do.aux-s) (expect.v (to (((get.v him.pro) home.adv-e) alive.adv-a)))))
+  CORRECTD ULF:	(We.pro ((pres do.aux-s) (expect.v (to (((get.v him.pro) home.adv-e) alive.adv-a)))))
+============================
+SID: 1123611	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	VALDEMAR
+  ORIGINAL ULF:	|VALDEMAR|.n
+  CORRECTD ULF:	|VALDEMAR|.n
+============================
+SID: 274359	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What a feast we had when we visited my aunt!\n
+  ORIGINAL ULF:	((sub (What.a (a.d feast.n)) (we.pro ((past have.v) *h))) (when.pr (we.pro ((past visit.v) (my.pro aunt.n)))))
+  CORRECTD ULF:	((sub (What.a (a.d feast.n)) (we.pro ((past have.v) *h))) (when.pr (we.pro ((past visit.v) (my.pro aunt.n)))))
+============================
+SID: 932945	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Where can I get information on the original 13 US colonies ?
+  ORIGINAL ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((get.v (n+preds information.n (on.p (the.d (original.a (13.a (US.a (plur colony.n)))))))) *h))) ?)
+  CORRECTD ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((get.v (n+preds information.n (on.p (the.d (original.a (13.a (US.a (plur colony.n)))))))) *h))) ?)
+============================
+SID: 601967	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	If I'd known the truth, I would've told it to you.\n
+  ORIGINAL ULF:	((If.ps (I.pro ((cf perf) (know.v (the.d truth.n))))) (I.pro ((cf will.aux-s) (perf ((tell.v it.pro) (adv-a (to.p you.pro)))))))
+  CORRECTD ULF:	((If.ps (I.pro ((cf perf) (know.v (the.d truth.n))))) (I.pro ((cf will.aux-s) (perf ((tell.v it.pro) (adv-a (to.p you.pro)))))))
+============================
+SID: 1149658	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	" A-a-h ! Yes , I remember ....
+  ORIGINAL ULF:	(A-a-h.x (Yes.yn (I.pro (pres remember.v))))
+  CORRECTD ULF:	(A-a-h.x (Yes.yn (I.pro (pres remember.v))))
+============================
+SID: 915336	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	`` We try very hard to keep some of the hotels in a decent state so the foreign investors can come in .
+  ORIGINAL ULF:	((We.pro (((pres try.v) very.adv-a hard.adv-a) (to ((keep.v (n+preds some.n (of.p (the.d (plur hotel.n))))) (adv-a (in.p (a.d (decent.a state.n)))))))) so.cc ((the.d (foreign.a (plur investor.n))) ((pres can.aux-v) (come.v in.adv-e))))
+  CORRECTD ULF:	((We.pro (((pres try.v) very.adv-a hard.adv-a) (to ((keep.v (n+preds some.n (of.p (the.d (plur hotel.n))))) (adv-a (in.p (a.d (decent.a state.n)))))))) so.cc ((the.d (foreign.a (plur investor.n))) ((pres can.aux-v) (come.v in.adv-e))))
+============================
+SID: 284282	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	The dog traced the rabbit into the forest.\n
+  ORIGINAL ULF:	((The.d dog.n) (((pres trace.v) (the.d rabbit.n)) (adv-e (into.p (the.d forest.n)))))
+  CORRECTD ULF:	((The.d dog.n) (((pres trace.v) (the.d rabbit.n)) (adv-e (into.p (the.d forest.n)))))
+============================
+SID: 917533	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	If the debts are repaid , it could clear the way for Soviet bonds to be sold in the U.S .
+  ORIGINAL ULF:	((If.ps ((the.d (plur debt.n)) ((pres pasv) pay.v))) (it.pro ((pres could.aux-v) (((clear.v (the.d way.n)) (for.p-arg (Soviet.a (plur bond.n)))) (to ((pasv sell.v) (adv-e (in.p (the.d |U.S.|.n)))))))))
+  CORRECTD ULF:	((If.ps ((the.d (plur debt.n)) ((pres pasv) pay.v))) (it.pro ((pres could.aux-v) (((clear.v (the.d way.n)) (for.p-arg (Soviet.a (plur bond.n)))) (to ((pasv sell.v) (adv-e (in.p (the.d |U.S.|.n)))))))))
+============================
+SID: 559083	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Tom won't even know we were here.\n
+  ORIGINAL ULF:	(|Tom| (not ((pres will.aux-s) (even.adv-a (know.v (tht (we.pro ((past be.v) here.adv-e))))))))
+  CORRECTD ULF:	(|Tom| (not ((pres will.aux-s) (even.adv-a (know.v (tht (we.pro ((past be.v) here.adv-e))))))))
+============================
+SID: 1097346	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Not for you do I wait here in these mountains ; not with you may I descend for the last time .
+  ORIGINAL ULF:	((sub (adv-a (for.p you.pro)) (I.pro ((pres do.aux-s) (not (((wait.v here.adv-e) (adv-e (in.p (these.d (plur mountain.n))))) *h))))) (sub (adv-a (with.p you.pro)) (I.pro ((pres may.aux-v) ((descend.v (adv-e (for.p (the.d (most-n late.a time.n))))) *h)))))
+  CORRECTD ULF:	((sub (adv-a (for.p you.pro)) (I.pro ((pres do.aux-s) (not (((wait.v here.adv-e) (adv-e (in.p (these.d (plur mountain.n))))) *h))))) (sub (adv-a (with.p you.pro)) (I.pro ((pres may.aux-v) ((descend.v (adv-e (for.p (the.d (most-n late.a time.n))))) *h)))))
+============================
+SID: 915347	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Let 's just take that .
+  ORIGINAL ULF:	({you}.pro (((pres let.v) us.pro) (just.adv-a (take.v that.pro))))
+  CORRECTD ULF:	({you}.pro (((pres let.v) us.pro) (just.adv-a (take.v that.pro))))
+============================
+SID: 1326553	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	I saw all .
+  ORIGINAL ULF:	(I.pro ((past see.v) all.pro))
+  CORRECTD ULF:	(I.pro ((past see.v) all.pro))
+============================
+SID: 1255177	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	" Well I might if I liked,"--but I did not .
+  ORIGINAL ULF:	((\\" (Well.x ((I.pro ((pres might.aux-s) {do}.v)) (if.ps (I.pro (past like.v))))) \\") but.cc (I.pro ((past do.aux-s) (not {like}.v))))
+  CORRECTD ULF:	((\\" (Well.x ((I.pro ((pres might.aux-s) {do}.v)) (if.ps (I.pro (past like.v))))) \\") but.cc (I.pro ((past do.aux-s) (not {like}.v))))
+============================
+SID: 923453	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Name a Salt Lake City newspaper .
+  ORIGINAL ULF:	(({you}.pro ((pres name.v) (a.d (|Salt Lake City|.n newspaper.n)))) !)
+  CORRECTD ULF:	(({you}.pro ((pres name.v) (a.d (|Salt Lake City|.n newspaper.n)))) !)
+============================
+SID: 923353	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Where can I learn about Samuel Gompers ?
+  ORIGINAL ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((learn.v (adv-a (about.p |Samuel Gompers|))) *h))) ?)
+  CORRECTD ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((learn.v (adv-a (about.p |Samuel Gompers|))) *h))) ?)
+============================
+SID: 722994	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Tom probably thought I was thirsty.\n
+  ORIGINAL ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
+  CORRECTD ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
+============================
+SID: 924630	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Name the operating system that runs on IBM-compatible machines .
+  ORIGINAL ULF:	(({You}.pro ((pres name.v) (the.d (operating.a (n+preds system.n (that.rel ((pres run.v) (on.p-arg (IBM-compatible.a (plur machine.n)))))))))) !)
+  CORRECTD ULF:	(({You}.pro ((pres name.v) (the.d (operating.a (n+preds system.n (that.rel ((pres run.v) (on.p-arg (IBM-compatible.a (plur machine.n)))))))))) !)
+============================
+SID: 291879	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Our hens laid a lot of eggs yesterday.\n
+  ORIGINAL ULF:	((Our.pro (plur hen.n)) (((past lay.v) (a.d (n+preds lot.n (of.p (plur egg.n))))) yesterday.adv-e))
+  CORRECTD ULF:	((Our.pro (plur hen.n)) (((past lay.v) (a.d (n+preds lot.n (of.p (plur egg.n))))) yesterday.adv-e))
+============================
+SID: 250131	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Will you open the door?\n
+  ORIGINAL ULF:	(((pres will.aux-v) you.pro (open.v (the.d door.n))) ?)
+  CORRECTD ULF:	(((pres will.aux-v) you.pro (open.v (the.d door.n))) ?)
+============================
+SID: 554310	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	He says that he will come tomorrow.\n
+  ORIGINAL ULF:	(He.pro ((pres say.v) (that.rel (he.pro ((pres will.aux-s) (come.v tomorrow.adv-e))))))
+  CORRECTD ULF:	(He.pro ((pres say.v) (that.rel (he.pro ((pres will.aux-s) (come.v tomorrow.adv-e))))))
+============================
+SID: 453694	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	How much time do we have?\n
+  ORIGINAL ULF:	((sub (How.adv-a (much.a (k time.n))) ((pres do.aux-s) we.pro (have.v *h))) ?)
+  CORRECTD ULF:	((sub (How.adv-a (much.a (k time.n))) ((pres do.aux-s) we.pro (have.v *h))) ?)
+============================
+SID: 657398	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	I do not understand Tom's ostensible contempt for satorial concerns of his peers.\n
+  ORIGINAL ULF:	(I.pro ((pres do.aux-s) (not (understand.v (n+preds ((|Tom|'s) (ostensible.a (contempt-of.n *s))) (for.p (n+preds (satorial.a (plur concern.n)) (of.p (his.d (plur peer.n))))))))))
+  CORRECTD ULF:	(I.pro ((pres do.aux-s) (not (understand.v (n+preds ((|Tom|'s) (ostensible.a (contempt-of.n *s))) (for.p (n+preds (satorial.a (plur concern.n)) (of.p (his.d (plur peer.n))))))))))
+============================
+SID: 902341	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What happened after Tom disappeared?\n
+  ORIGINAL ULF:	(((What.pro (past happen.v)) (after.ps (|Tom| (past disappear.v)))) ?)
+  CORRECTD ULF:	(((What.pro (past happen.v)) (after.ps (|Tom| (past disappear.v)))) ?)
+============================
+SID: 932119	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	What famous coach said `` if you can 't beat 'em in the alley , you can 't beat 'em on the ice '' ?
+  ORIGINAL ULF:	(((What.d (famous.a coach.n)) ((past say.v) (\\" ((if.ps (you.pro ((pres can.aux-v) (not ((beat.v them.pro) (adv-e (in.p (the.d alley.n)))))))) (you.pro ((pres can.aux-v) (not ((beat.v them.pro) (adv-e (on.p (the.d ice.n)))))))) \\"))) ?)
+  CORRECTD ULF:	(((What.d (famous.a coach.n)) ((past say.v) (\\" ((if.ps (you.pro ((pres can.aux-v) (not ((beat.v them.pro) (adv-e (in.p (the.d alley.n)))))))) (you.pro ((pres can.aux-v) (not ((beat.v them.pro) (adv-e (on.p (the.d ice.n)))))))) \\"))) ?)
+============================
+SID: 930067	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	How do I find a city if I have the area code ?
+  ORIGINAL ULF:	((sub How.pq ((pres do.aux-s) I.pro (((find.v (a.d city.n)) *h) (if.ps (I.pro ((pres have.v) (the.d (area.n code.n)))))))) ?)
+  CORRECTD ULF:	((sub How.pq ((pres do.aux-s) I.pro (((find.v (a.d city.n)) *h) (if.ps (I.pro ((pres have.v) (the.d (area.n code.n)))))))) ?)
+============================
+SID: 915994	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Where we have a contribution to make , we do all we can .
+  ORIGINAL ULF:	((Where.pr (we.pro (((pres have.v) (a.d contribution.n)) (to make.v)))) (we.pro (do.v (n+preds all.n ({that}.rel (we.pro ((pres can.aux-v) {do}.v)))))))
+  CORRECTD ULF:	((Where.pr (we.pro (((pres have.v) (a.d contribution.n)) (to make.v)))) (we.pro (do.v (n+preds all.n ({that}.rel (we.pro ((pres can.aux-v) {do}.v)))))))
+============================
+SID: 917175	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Official trade unions have pledged to strike and mount other protests if wage and social reforms fail to offset price increases planned by the government , a union newspaper said Saturday .
+  ORIGINAL ULF:	(sub ((Official.a (plur (trade.n union.n))) ((((pres perf) pledge) (to strike and mount other protests)) (if.ps ((wage.n and.cc (plur (social.a reform.n))) (fail.v (to (offset.v (n+preds (plur (price.n increase.n)) ((pasv plan) (by.p-arg (the.d government.n))))))))))) ((a.d (union.n newspaper.n)) (((past say.v) tht.rel *h) (adv-e (on.p Saturday.n)))))
+  CORRECTD ULF:	(sub ((Official.a (plur (trade.n union.n))) ((((pres perf) pledge) (to strike and mount other protests)) (if.ps ((wage.n and.cc (plur (social.a reform.n))) (fail.v (to (offset.v (n+preds (plur (price.n increase.n)) ((pasv plan) (by.p-arg (the.d government.n))))))))))) ((a.d (union.n newspaper.n)) (((past say.v) tht.rel *h) (adv-e (on.p Saturday.n)))))
+============================
+SID: 1161642	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	The time soon came , when the eldest brother thought that he would make haste to go to the princess , and say that he was the one who had set her free , and that he should have her for his wife , and the kingdom with her .
+  ORIGINAL ULF:	(((The.d time.n) (soon.adv-e (past come.v))) (when.ps ((the eldest brother) (((past think.v) (that (he.n ((past will.aux-s) (make_haste.v (to (go.v (to (the.d princess.n))))))))) and.cc ((past say.v) ((that (he.pro ((past be.v) (n+preds (the.d one.pro) (who.rel (((past perf) set.v) (her.pro free.a)))))) and.cc (that (he.pro ((past shall.aux-s) (((have.v her.pro) (adv-a (for.p (his.pro wife.n)))) and.cc ({have}.v ((the.d kingdom.n)) (adv-a (with.p her.pro))))))))))))))
+  CORRECTD ULF:	(((The.d time.n) (soon.adv-e (past come.v))) (when.ps ((the eldest brother) (((past think.v) (that (he.n ((past will.aux-s) (make_haste.v (to (go.v (to (the.d princess.n))))))))) and.cc ((past say.v) ((that (he.pro ((past be.v) (n+preds (the.d one.pro) (who.rel (((past perf) set.v) (her.pro free.a)))))) and.cc (that (he.pro ((past shall.aux-s) (((have.v her.pro) (adv-a (for.p (his.pro wife.n)))) and.cc ({have}.v ((the.d kingdom.n)) (adv-a (with.p her.pro))))))))))))))
+============================
+SID: 1022273	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	" Can you change me a hundred-dollar bill ? " he demanded .
+  ORIGINAL ULF:	(sub (\\" (((pres can.aux-v) you.pro (change.v (me.pro (a.d (hundred-dollar.a bill.n))))) ?) \\") (he.pro ((past demand.v) *h)))
+  CORRECTD ULF:	(sub (\\" (((pres can.aux-v) you.pro (change.v (me.pro (a.d (hundred-dollar.a bill.n))))) ?) \\") (he.pro ((past demand.v) *h)))
+============================
+SID: 1350239	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Will you do me that favour ? "
+  ORIGINAL ULF:	(((pres Will.aux-s) you.pro (do.v (me.pro (that.d favour.n)))) ?)
+  CORRECTD ULF:	(((pres Will.aux-s) you.pro (do.v (me.pro (that.d favour.n)))) ?)
+============================
+SID: 266868	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	May I borrow this book?\n
+  ORIGINAL ULF:	(((pres may.aux-v) I.pro (borrow.v (this.d book.n))) ?)
+  CORRECTD ULF:	(((pres may.aux-v) I.pro (borrow.v (this.d book.n))) ?)
+============================
+SID: 1147045	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Have I ? "
+  ORIGINAL ULF:	(((pres perf) I.pro {ref}.v)? )
+  CORRECTD ULF:	(((pres perf) I.pro {ref}.v)? )

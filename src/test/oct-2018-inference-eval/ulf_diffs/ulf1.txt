@@ -1,0 +1,1 @@
+((sub what.pro (((pres be.v) (= (two.d (plur plant.n)))) ((plur cloth.n) ((pres (pasv make.v)) (from.p *h))))) ?)
