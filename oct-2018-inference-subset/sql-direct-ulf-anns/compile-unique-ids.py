@@ -92,20 +92,20 @@ for u in userdoublecount:
   print "{}\t{}".format(u,userdoublecount[u])
 
 
-print "not assigned ids by user"
-nassigned = [e for e in all_ids if e not in assigned]
-usernass = {}
-for fid in nassigned:
-  users = iduser_dict[fid]
-  for u in users:
-    if u not in usernass:
-      usernass[u] = list()
-    usernass[u].append(fid)
-
-for u in usernass:
-  print u
-  for sid in usernass[u]:
-    print sid
+#print "not assigned ids by user"
+#nassigned = [e for e in all_ids if e not in assigned]
+#usernass = {}
+#for fid in nassigned:
+#  users = iduser_dict[fid]
+#  for u in users:
+#    if u not in usernass:
+#      usernass[u] = list()
+#    usernass[u].append(fid)
+#
+#for u in usernass:
+#  print u
+#  for sid in usernass[u]:
+#    print sid
 
 
 
