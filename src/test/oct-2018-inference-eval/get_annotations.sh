@@ -14,7 +14,7 @@ mkdir ${WORKING_DIR}
 # TODO: add option to supply arguments.
 
 # Input ids.
-DEFAULT_ANN_DIR="../../../oct-2018-inference-subset/revised-sql-direct-ulf-anns/"
+DEFAULT_ANN_DIR="../../../oct-2018-inference-subset/sql-direct-ulf-anns/"
 DEFAULT_ULF_ANN_FILE=${DEFAULT_ANN_DIR}"assigned_ulf_anns.txt"
 DEFAULT_INF_ANN_FILE=${DEFAULT_ANN_DIR}"assigned_inf_anns.txt"
 
