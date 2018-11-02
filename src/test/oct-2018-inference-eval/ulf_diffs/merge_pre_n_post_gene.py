@@ -18,8 +18,8 @@ def format_ulf(rawulf):
   return newnewulf
 
 
-if len(sys.argv) < 4:
-  sys.exit("Usage: merge_pre_n_post_gene.py [full tsv file] [no gene tsv] [output file]")
+if len(sys.argv) < 5:
+  sys.exit("Usage: merge_pre_n_post_gene.py [full tsv file] [no gene tsv] [readable comparison file] [readable separate files]")
 
 # full tsv file format: usid\tsentence\tulf
 full_lines = [l.split("\t") for l in file(sys.argv[1]).read().split(os.linesep)[1:] if l.strip() != ""]
@@ -67,6 +67,23 @@ def readable_comparison(nl):
   CORRECTD ULF:\t{}""".format(usid, auid, cert, sent, old_ulf, new_ulf)
   return compstr
 
+# Generates a pair of strings for the comparision, each with Lisp commented
+# info followed by the formula.
+def separate_commented_format(nl):
+  usid = nl[0]
+  sent = nl[1]
+  old_auid = nl[2]
+  new_auid = "unknown" # We don't include the auid in that part of the lookup so we don't have this info...
+  cert = nl[3]
+  old_ulf = format_ulf(nl[4])
+  new_ulf = format_ulf(nl[5])
+  template = """;; SID: {}\tULF ANNOTATOR ID: {}\tCERTAINTY: {}
+;; SENTENCE:\t{}
+{}"""
+  old_msg = template.format(usid, old_auid, cert, sent, old_ulf)
+  new_msg = template.format(usid, new_auid, "certain", sent, new_ulf)
+  return (old_msg, new_msg)
+
 
 #out.write("\t".join(["usid", "sentence", "auid", "certainty", "old_ulf", "new_ulf"]))
 #out.write("\n")
@@ -75,12 +92,25 @@ out = file(sys.argv[3], 'w')
 out.write("\n===========================\n".join([readable_comparison(nl) for k, nl in new_lines.iteritems()]))
 out.close()
 
-
 # Generate a file for each annotator.
 anntrs = list(set([l[2] for k, l in new_lines.iteritems() if l[2] != "n/a"]))
 for a in anntrs:
   out = file(sys.argv[3] + "." + a, 'w')
   out.write("\n============================\n".join([readable_comparison(nl) for k, nl in new_lines.iteritems() if a == nl[2]]))
   out.close()
+
+# Generate one file each for the old and new versions, with metadata in Lisp 
+# comments.
+
+sep_format = [separate_commented_format(nl) for k, nl in new_lines.iteritems() if nl[2] != "n/a"]
+oout = file(sys.argv[4] + ".old", 'w')
+nout = file(sys.argv[4] + ".new", 'w')
+for old_msg, new_msg in sep_format:
+  oout.write(old_msg)
+  oout.write("\n\n")
+  nout.write(new_msg)
+  nout.write("\n\n")
+oout.close()
+nout.close()
 
 

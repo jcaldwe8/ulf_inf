@@ -38,6 +38,11 @@ SID: 1174151	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   ORIGINAL ULF:	((Oh.x (sub how.adv-a ((pres can.aux-v) you.pro sleep.v *h)))?)
   CORRECTD ULF:	((Oh.x (sub how.adv-a ((pres can.aux-v) you.pro sleep.v *h)))?)
 ============================
+SID: 932233	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
+  SENTENCE:	Name a flying mammal .
+  ORIGINAL ULF:	(({you}.pro (pres name.v) (a.d (flying.a mammal.n)))!)
+  CORRECTD ULF:	(({you}.pro ((pres name.v) (a.d (flying.a mammal.n)))) !)
+============================
 SID: 924404	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	Where can I find a case on Individuals with Disabilities Education Act of 1991 ?
   ORIGINAL ULF:	((sub Where.pq ((pres can.aux-v) I.pro (find.v ((a.d case.n) (on.p-arg (n+preds ((n+preds (plur |Individual|.n) (with.p (plur |Disability|.n)) (|Education|.n |Act|.n)) (of.p |1991|))))) *h)))?)
@@ -87,6 +92,11 @@ SID: 963833	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	' Who 's that ? ' says one .
   ORIGINAL ULF:	((\\" ((Who.pro ((pres be.v) (= that.pro)))?) \\") ((pres say.v) one.a {ref1}.n))
   CORRECTD ULF:	(sub (\\" ((Who.pro ((pres be.v) (= that.pro))) ?) \\") (one.pro ((pres say.v) *h)))
+============================
+SID: 928030	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
+  SENTENCE:	How can I find a list of celebrities ' real names ?
+  ORIGINAL ULF:	((sub How.pq ((pres can.aux-s) I.pro (find.v (a.d (n+preds list.v (of.p ((k (plur celebrity.n)) 's (real.a (plur name.n)))))) *h)))?)
+  CORRECTD ULF:	((sub How.pq ((pres can.aux-v) I.pro ((find.v (a.d (n+preds list.n (of.p (((k (plur celebrity.n)) 's) (real.a (plur name.n))))))) *h))) ?)
 ============================
 SID: 404037	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	How could this happen? I thought you were on the pill.\n
@@ -148,6 +158,11 @@ SID: 431123	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   ORIGINAL ULF:	(I.pro ((pres can.aux-v) not (keep-up.v (with.p you.pro)))) (((pres could.aux-v) you.pro (dictate.v ((a.d bit.n) slower.a)))?)
   CORRECTD ULF:	(I.pro ((pres can.aux-v) not (keep_up.v (with.p-arg you.pro)))) (((pres could.aux-v) you.pro (dictate.v (adv-a (a_bit.adv-a slower.a)))) ?)
 ============================
+SID: 1174833	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
+  SENTENCE:	" How can you know ?
+  ORIGINAL ULF:	((sub How.pq (((pres can.aux-v) you.pro know.v) *h))?)
+  CORRECTD ULF:	((sub How.pq (((pres can.aux-v) you.pro know.v) *h))?)
+============================
 SID: 743846	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	Let's let them try that again.\n
   ORIGINAL ULF:	(({you}.pro (pres let.v) (us.pro (let.v them.pro (try.v (that.pro again.adv-e)))))!)
@@ -167,11 +182,6 @@ SID: 929081	OLD ULF ANNOTATOR ID: 27	CERTAINTY: uncertain
   SENTENCE:	Name the various super-teams to which the Angel has belonged .
   ORIGINAL ULF:	(({you}.pro (pres name.v) (sub (the.d (various.a (super.a (plur team.n)))) ((to.p which.pro) ((the.d |Angel|.n) ((pres perf) belong.v *h)))))!)
   CORRECTD ULF:	(({you}.pro ((pres name.v) (the.d (n+preds (various.a (super.a (plur team.n))) (sub (to.p-arg which.rel) ((the.d |Angel|.n) ((pres perf) (belong.v *h)))))))) !)
-============================
-SID: 1174833	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
-  SENTENCE:	" How can you know ?
-  ORIGINAL ULF:	((sub How.pq (((pres can.aux-v) you.pro know.v) *h))?)
-  CORRECTD ULF:	((sub How.pq (((pres can.aux-v) you.pro know.v) *h))?)
 ============================
 SID: 930428	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	Who says , `` If you don 't look good , we don 't look good '' ?
@@ -318,11 +328,6 @@ SID: 917890	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   ORIGINAL ULF:	((The.d shooting.n) ((past come.v) ((a.d month.n) (after.p-arg (|Contorno| ((past testify.v) (before.p-arg (np+preds (k (|Italian|.a (plur magistrate.n))) (who.rel (((past question.v) him.pro) (in.p (the.d |United States|.n)) (to (prepare.v (another.a (mass.a (|Mafia| trial.n)))))))))))))))
   CORRECTD ULF:	((The.d shooting.n) ((past come.v) ((adv-a ({by}.p (a.d month.n))) (after.ps (|Contorno| ((past testify.v) (before.p-arg (np+preds (k (|Italian|.a (plur magistrate.n))) (who.rel (((past question.v) him.pro) (adv-e (in.p (the.d |United States|.n))) (adv-a ({for}.p (to (prepare.v (another.d (mass.a (|Mafia| trial.n)))))))))))))))))
 ============================
-SID: 932233	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
-  SENTENCE:	Name a flying mammal .
-  ORIGINAL ULF:	(({you}.pro (pres name.v) (a.d (flying.a mammal.n)))!)
-  CORRECTD ULF:	(({you}.pro ((pres name.v) (a.d (flying.a mammal.n)))) !)
-============================
 SID: 933387	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	Who used AuH2O as an election slogan ?
   ORIGINAL ULF:	((Who.pro ((past use.v) |AuH2O| (as.p-arg (an.d (election.n slogan.n)))))?)
@@ -367,11 +372,6 @@ SID: 917910	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	If by that he meant women , so far , he has fallen short .
   ORIGINAL ULF:	((If.ps (sub (by.p-arg that.pro) (he.pro ((past mean.v) (k (plur woman.n)) *h)))) ((adv-e (so.adv-a far.a)) (he.pro ((pres prog) fall-short.v))))
   CORRECTD ULF:	((If.ps (sub (by.p-arg that.pro) (he.pro (((past mean.v) (k (plur woman.n))) *h)))) ((adv-e (so.adv-a far.a)) (he.pro ((pres perf) fall_short.v))))
-============================
-SID: 928030	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
-  SENTENCE:	How can I find a list of celebrities ' real names ?
-  ORIGINAL ULF:	((sub How.pq ((pres can.aux-s) I.pro (find.v (a.d (n+preds list.v (of.p ((k (plur celebrity.n)) 's (real.a (plur name.n)))))) *h)))?)
-  CORRECTD ULF:	((sub How.pq ((pres can.aux-v) I.pro ((find.v (a.d (n+preds list.n (of.p (((k (plur celebrity.n)) 's) (real.a (plur name.n))))))) *h))) ?)
 ============================
 SID: 873889	OLD ULF ANNOTATOR ID: 27	CERTAINTY: certain
   SENTENCE:	How did you persuade Tom to help us?\n

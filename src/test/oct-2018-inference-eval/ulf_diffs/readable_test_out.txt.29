@@ -23,6 +23,11 @@ SID: 928607	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   ORIGINAL ULF:	(({you}.pro ((pres name.v) (the.d (n+preds (soft.a drink.n) (that.rel ((pres be.v) (= (\\" (np+preds (k (number.n one.n)) (in.p (the.d sun.n))) \\")))))))) !)
   CORRECTD ULF:	(({you}.pro ((pres name.v) (the.d (n+preds (soft.a drink.n) (that.rel ((pres be.v) (n+preds (number.n one.n) (in.p (the.d sun.n))) )))))) !)
 ============================
+SID: 918998	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
+  SENTENCE:	Name the only extant trilogy of classical Greek plays .
+  ORIGINAL ULF:	(({you}.pro ((pres name.v) (the.d (n+preds ((only.adv-a extant.a) trilogy.n) (of.p (k ((classical.a |Greek|.a) (plur play.n)))))))) !)
+  CORRECTD ULF:	(({you}.pro ((pres name.v) (the.d (n+preds (only.a (extant.a trilogy.n)) (of.p (k (((adv-a classical.a) |Greek|.a) (plur play.n)))))))) !)
+============================
 SID: 923428	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Who says , `` If you don 't look good , we don 't look good '' ?
   ORIGINAL ULF:	((who.pro ((pres say.v) (\\" ((if.ps (you.pro ((pres do.aux-v) not (look.v good.a)))) (we.pro ((pres do.aux-v) not (look.v good.a)))) \\"))) ?)
@@ -113,11 +118,6 @@ SID: 1081747	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   ORIGINAL ULF:	(sub (so.adv-a far.a) (i.pro ((pres perf) get.v *h (before.ps (i.pro (ever.adv-a ((past hear.v) |Lord St|)))))))
   CORRECTD ULF:	(sub (so.adv-a far.a) (i.pro ((pres perf) get.v *h (before.ps (i.pro (ever.adv-a ((past hear.v) |Lord St|)))))))
 ============================
-SID: 866267	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
-  SENTENCE:	It must've been destiny.\n
-  ORIGINAL ULF:	(it.pro ((pres must.aux-v) ((perf be.v) (k destiny.n))))
-  CORRECTD ULF:	(it.pro ((pres must.aux-s) ((perf be.v) destiny.n)))
-============================
 SID: 915250	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Do n't wait -- a savings institution needs your help now !
   ORIGINAL ULF:	(((pu ((pres do.aux-s) not wait.v)) !) ((a.d (savings.a institution.n)) (((pres need.v) (your.d help.n)) now.adv-a)))
@@ -138,11 +138,6 @@ SID: 282967	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   ORIGINAL ULF:	((sub (how.adv-a long.a) ((pres perf) you.pro (date.v *h))) ?)
   CORRECTD ULF:	((sub (how.adv-a long.a) ((pres perf) you.pro (prog (date.v *h)))) ?)
 ============================
-SID: 918998	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
-  SENTENCE:	Name the only extant trilogy of classical Greek plays .
-  ORIGINAL ULF:	(({you}.pro ((pres name.v) (the.d (n+preds ((only.adv-a extant.a) trilogy.n) (of.p (k ((classical.a |Greek|.a) (plur play.n)))))))) !)
-  CORRECTD ULF:	(({you}.pro ((pres name.v) (the.d (n+preds (only.a (extant.a trilogy.n)) (of.p (k (((adv-a classical.a) |Greek|.a) (plur play.n)))))))) !)
-============================
 SID: 916776	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	When it 's time for their biannual powwow , the nation 's manufacturing titans typically jet off to the sunny confines of resort towns like Boca Raton and Hot Springs .
   ORIGINAL ULF:	((when.ps (it-cleft.pro ((pres be.v) (np+preds (k time.n) (for.p (their.d (biannual.a powwow.n))))))) ((((the.d nation.n) 's) (manufacturing.n titans.n)) (typically.adv-f ((pres jet.v) (off_to.p-arg (the.d (n+preds (sunny.a (plur confine.n)) (of.p (np+preds (k (resort.a (plur town.n))) (like.p (set-of |Boca Raton| |Hot Springs|)))))))))))
@@ -152,6 +147,11 @@ SID: 739853	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Did you show her your pictures?\n
   ORIGINAL ULF:	(((past do.aux-s) you.pro ((show.v her.pro) (your.d (plur picture.n)))) ?)
   CORRECTD ULF:	(((past do.aux-s) you.pro ((show.v her.pro) (your.d (plur picture.n)))) ?)
+============================
+SID: 762281	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
+  SENTENCE:	Would you lend me a hand?\n
+  ORIGINAL ULF:	(((pres would.aux-s) you.pro ((lend.v me.pro) (a.d hand.n))) ?)
+  CORRECTD ULF:	(((pres would.aux-s) you.pro ((lend.v me.pro) (a.d hand.n))) ?)
 ============================
 SID: 930930	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Name a female figure skater .
@@ -233,11 +233,6 @@ SID: 932294	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   ORIGINAL ULF:	((sub how.pq ((pres do.aux-s) you.pro ((say.v |2|) (adv-a (in.p |Latin|)) *h))) ?)
   CORRECTD ULF:	((sub how.pq ((pres do.aux-s) you.pro ((say.v (\\" 2 \\")) (adv-a (in.p |Latin|)) *h))) ?)
 ============================
-SID: 762281	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
-  SENTENCE:	Would you lend me a hand?\n
-  ORIGINAL ULF:	(((pres would.aux-s) you.pro ((lend.v me.pro) (a.d hand.n))) ?)
-  CORRECTD ULF:	(((pres would.aux-s) you.pro ((lend.v me.pro) (a.d hand.n))) ?)
-============================
 SID: 925607	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	How can anyone tell if a female had sexual intercourse ?
   ORIGINAL ULF:	((sub how.pq ((pres can.aux-s) anyone.pro ((tell.v (whether ((a.d female.n) ((past have.v) (k (sexual.a intercourse.n)))))) *h))) ?)
@@ -257,6 +252,11 @@ SID: 971024	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Now , can you tell me whether it is actually true that Mr. Rochester has asked you to marry him ?
   ORIGINAL ULF:	((now.adv-s ((pres can.aux-s) you.pro (tell.v me.pro (whether (it.pro ((pres be.v) ((adv-a actually.a) true.a) (that (|Mr. Rochester| ((pres perf) (ask.v you.pro (to (marry.v him.pro)))))))))))) ?)
   CORRECTD ULF:	((now.adv-s ((pres can.aux-v) you.pro (tell.v me.pro (whether (it-extra.pro (((pres be.v) (actually.adv-a true.a)) (that (|Mr. Rochester| ((pres perf) (ask.v you.pro (to (marry.v him.pro)))))))))))) ?)
+============================
+SID: 928483	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
+  SENTENCE:	Where can I find a person 's address from a telephone number ?
+  ORIGINAL ULF:	((sub where.pq ((pres can.aux-s) i.pro (((find.v (= (((a.d person.n) 's) address.n))) *h) (adv-a (from.p (a.d (telephone.a number.n))))))) ?)
+  CORRECTD ULF:	((sub where.pq ((pres can.aux-s) i.pro (((find.v ((a.d person.n) 's) address.n)) *h (adv-a (from.p (a.d (telephone.a number.n))))))) ?)
 ============================
 SID: 923137	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	How can you tell if someone is lying ?
@@ -282,6 +282,11 @@ SID: 876454	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Tom insulted me.\n
   ORIGINAL ULF:	(|Tom| ((past insult.v) me.pro))
   CORRECTD ULF:	(|Tom| ((past insult.v) me.pro))
+============================
+SID: 866267	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
+  SENTENCE:	It must've been destiny.\n
+  ORIGINAL ULF:	(it.pro ((pres must.aux-v) ((perf be.v) (k destiny.n))))
+  CORRECTD ULF:	(it.pro ((pres must.aux-s) ((perf be.v) destiny.n)))
 ============================
 SID: 924998	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Name the only extant trilogy of classical Greek plays .
@@ -382,11 +387,6 @@ SID: 448286	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	If he had worked harder, he could have succeeded.\n
   ORIGINAL ULF:	((if.ps (he.pro ((cf perf) (work.v harder.a)))) (he.pro ((past can.aux-v) (perf succeed.v))))
   CORRECTD ULF:	((if.ps (he.pro ((cf perf) (work.v (adv-a harder.a))))) (he.pro ((cf can.aux-v) (perf succeed.v))))
-============================
-SID: 928483	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
-  SENTENCE:	Where can I find a person 's address from a telephone number ?
-  ORIGINAL ULF:	((sub where.pq ((pres can.aux-s) i.pro (((find.v (= (((a.d person.n) 's) address.n))) *h) (adv-a (from.p (a.d (telephone.a number.n))))))) ?)
-  CORRECTD ULF:	((sub where.pq ((pres can.aux-s) i.pro (((find.v ((a.d person.n) 's) address.n)) *h (adv-a (from.p (a.d (telephone.a number.n))))))) ?)
 ============================
 SID: 923282	OLD ULF ANNOTATOR ID: 29	CERTAINTY: certain
   SENTENCE:	Why is it called `` hamburger '' if there is no ham in it ?

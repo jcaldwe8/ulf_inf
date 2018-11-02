@@ -78,11 +78,6 @@ SID: 919157	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   ORIGINAL ULF:	((sub When.pq ((past do.aux-s) (the.d (Bounty.n mutiny.n)) ((take.v place.n) *h))) ?)
   CORRECTD ULF:	((sub When.pq ((past do.aux-s) (the.d (Bounty.n mutiny.n)) ((take.v place.n) *h))) ?)
 ============================
-SID: 915260	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
-  SENTENCE:	U.S. District Judge Gerhard Gesell is expected to act on Walsh 's request this week .
-  ORIGINAL ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
-  CORRECTD ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
-============================
 SID: 714006	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	Remind me to thank Tom the next time I see him.\n
   ORIGINAL ULF:	({you}.pro (remind.v (me.pro (to ((thank.v |Tom|) (adv-e ({at}.p (the.d (next.a time.n)) (tht.rel (I.pro ((pres see.v) him.pro))))))))))
@@ -102,6 +97,11 @@ SID: 924728	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	How far do you have to run if you hit a home run ?
   ORIGINAL ULF:	(((sub (How.adv-a far.a) ((pres do.aux-s) you.pro (have.v (to (run.v *h))))) (if.ps (you.pro ((pres hit.v) (a.d (home.n run.n)))))) ?)
   CORRECTD ULF:	(((sub (How.adv-a far.a) ((pres do.aux-s) you.pro (have.v (to (run.v *h))))) (if.ps (you.pro ((pres hit.v) (a.d (home.n run.n)))))) ?)
+============================
+SID: 722994	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	Tom probably thought I was thirsty.\n
+  ORIGINAL ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
+  CORRECTD ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
 ============================
 SID: 916455	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	`` But I do n't know if they will be actually sons and daughters .
@@ -213,11 +213,6 @@ SID: 923353	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   ORIGINAL ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((learn.v (adv-a (about.p |Samuel Gompers|))) *h))) ?)
   CORRECTD ULF:	((sub Where.pq ((pres can.aux-v) I.pro ((learn.v (adv-a (about.p |Samuel Gompers|))) *h))) ?)
 ============================
-SID: 722994	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
-  SENTENCE:	Tom probably thought I was thirsty.\n
-  ORIGINAL ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
-  CORRECTD ULF:	(|Tom| (probably.adv-a ((past think.v) (tht (I.pro ((past is.v) thirsty.a))))))
-============================
 SID: 924630	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	Name the operating system that runs on IBM-compatible machines .
   ORIGINAL ULF:	(({You}.pro ((pres name.v) (the.d (operating.a (n+preds system.n (that.rel ((pres run.v) (on.p-arg (IBM-compatible.a (plur machine.n)))))))))) !)
@@ -287,6 +282,11 @@ SID: 1350239	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	Will you do me that favour ? "
   ORIGINAL ULF:	(((pres Will.aux-s) you.pro (do.v (me.pro (that.d favour.n)))) ?)
   CORRECTD ULF:	(((pres Will.aux-s) you.pro (do.v (me.pro (that.d favour.n)))) ?)
+============================
+SID: 915260	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
+  SENTENCE:	U.S. District Judge Gerhard Gesell is expected to act on Walsh 's request this week .
+  ORIGINAL ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
+  CORRECTD ULF:	((|U.S.| ((District.n Judge.n) |Gerhard Gesell|)) (((pres pasv) expect.v) (to ((act.v (on.p-arg ((|Walsh| 's) request.n))) (adv-e ({in}.p (this.d week.n)))))))
 ============================
 SID: 266868	OLD ULF ANNOTATOR ID: 17	CERTAINTY: certain
   SENTENCE:	May I borrow this book?\n
