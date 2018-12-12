@@ -39,9 +39,16 @@
    (apply-implicative-rules
     '(It-extra.pro
       ((pres be.v) (odd.a
-       (that (I.pro
-	      (((past be.v) hungry.a)
-		     (adv-e (after.p ({ref}.d lunch.n)))))))))))
+                    (that (I.pro
+	                   (((past be.v) hungry.a)
+		            (adv-e (after.p ({ref}.d lunch.n)))))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    ((It-extra.pro
+      ((pres be.v) (unlikely.a
+                    (that ((the.d fruit.n)
+                           ((pres be.v) spoiled.a)))))))))
   ;;add more here
   )
 
@@ -64,6 +71,12 @@
       ((pres be.v) (furious.a
 		    (that ((an.d employee.n)
 			   ((past be.v) absent.a))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((the.d janitor.n) ((pres be.v)
+                         (willing.a
+                          (to (wash.v (the.d chalkboard.n))))))))
   )
 
 ;;; Type C: Certain propositional attitude verbs:
@@ -85,6 +98,29 @@
 	(not ((prog complete.v) (his.d homework.n)))))
       (but.cc
        ({he}.pro ((past do.aux-s) not (regret.v it.pro)))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '(I.pro ((past dream.v)
+             (that ((I.pro ((past be.v) |German|.a)) and.cc
+                    (nobody.pro (know.v it.pro))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '(We.pro (((past mishear.v)
+              (that ((the.d dinner.n) ((past be.v) free.a)))
+              and.cc
+               (be.v (glad.a (to not (have.v (to pay.v))))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '(| Sally| (((past misremember.v) not ((perf leave.v) (a.d tip.n)))
+                and.cc
+                (regret.v it.pro)))))
+  (assert-equal
+  '(| Sally| (((past perf) not leave.v) (a.d tip.n)))
+  (apply-implicative-rules
+   '(| Sally| ((past regret.v) not ((perf leave.v) (a.d tip.n))))))
   )
 
 ;;; Type D: Verbs of discovery:
@@ -114,7 +150,7 @@
    (apply-implicative-rules
     '((the.d (plur professor.n))
       ((past find-out.v)
-       (that ((the.d (coffee.a machine.n))
+       (that ((the.d (coffee.n machine.n))
 	((past be.v) broken.a)))))))
   (assert-equal
    'nil
@@ -122,8 +158,50 @@
     '((the.d (plur professor.n))
       ((past do.aux-s) not
        (find-out.v (that
-		    ((the.d (coffee.a machine.n))
-		    ((past be.v) broken.a))))))))
+		    ((the.d (coffee.n machine.n))
+		     ((past be.v) broken.a))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((past do.aux-s)
+      ((the.d (plur professor.n))
+       (find-out.v (that
+                    ((the.d (coffee.n machine.n))
+                     (past be.v) broken.a)))) ? )))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((if.ps ((the.d (plur professor.n))
+              ((past find-out.v)
+               (that ((the.d (coffee.n machine.n))
+                      (past be.v) broken.a)))))
+      (it.pro ((cf should.aux-s) (perf fix.v))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((the.d police.n) ((past do.aux-s) not
+                        (discover.v
+                         (that ((any.d (plur car.n))
+                                (((past perf) tamper.v) with.a))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((if.ps ((the.d police.n)
+              ((past do.aux-s) not
+               (discover.v
+                (that ((any.d (plur car.n))
+                       (((past perf) tamper.v)) with.a))))))
+      ((the.d (plur suspect.n)) ((cf should.aux-s) (be.v (let.v go.a)))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '((Perhaps.adv-s
+       ((the.d police.n)
+        ((pres will.aux-s) discover.v
+         (that ((some.d (plur car.n))
+                (((past perf) tamper.v) with.a))))))
+      but.cc
+      ((so.adv-e far.a) they.pro ((pres have.v) not)))))
   )
 
 ;;; Type E: Certain verbs of communication: acknowledge, admit, confess; as opposed to say 
@@ -139,11 +217,17 @@
    'nil
    (apply-implicative-rules
     '(| Tim|
-      ((pres do.aux-s) not (admit.v
-			    (that (he.pro
-				   ((pres do.aux-s)
-				    not (study.v (for.p (the.d exam.n))))
-				   ))
-			    )))))
+      ((pres do.aux-s) not
+       (admit.v
+	(that (he.pro
+	       ((pres do.aux-s)
+		not (study.v (for.p (the.d exam.n)))))))))))
+  (assert-equal
+   'nil
+   (apply-implicative-rules
+    '(| Cheney| ((past do.aux-s) not
+                 (acknowledge.v
+                  (that ((the.d (| Iraq|.a war.n)) ((past be.v)
+                                                    (= (a.d mistake.n))))))))))
   )
 
